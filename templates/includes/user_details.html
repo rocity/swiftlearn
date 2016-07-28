@@ -1,0 +1,133 @@
+{% load staticfiles %}
+
+<div class="col-md-4 col-lg-3 user-profile">
+    <div class="user-details">
+        <div class="row">
+            <div class="col-md-2 col-lg-3">
+                <img src="{% static 'images/img1.jpg' %}" class="img-rounded">
+            </div>
+            <div class="col-md-10 col-lg-9">
+                <h3>
+                    <a href="#">{{ user.get_full_name|title }}</a>
+                </h3>
+                <h4>
+                    {{ user.position|title }}
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class=" profile-status">
+        <label for=""> You're 40% closer to complete your profile </label>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" id="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-1">
+                <i class="fa fa-check-circle  alert-info" aria-hidden="true"></i>
+            </div>
+            <div class="col-lg-10">
+                <p>
+                    Write profile details
+                </p>
+            </div>
+            <div class="col-lg-1">
+                <i class="fa fa-check-circle  alert-info" aria-hidden="true"></i>
+            </div>
+            <div class="col-lg-10">
+                <p>
+                    Verify account information
+                </p>
+            </div>
+            <div class="col-lg-1">
+                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+            </div>
+            <div class="col-lg-10">
+                <p>
+                    Select field of interests
+                </p>
+            </div>
+            <div class="col-lg-1">
+                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+            </div>
+            <div class="col-lg-10">
+                <p>
+                    Lorem ipsum dolor
+                </p>
+            </div>
+            <div class="col-lg-1">
+                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+            </div>
+            <div class="col-lg-10">
+                <p>
+                    Cum sociis natoque penatibus
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 feeds ">
+            <ul>
+                <li>
+                    <a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> My Feeds</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i> My Bookmarks</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> My Trends</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-12 col-lg-12 recent-tutorials">
+            <h4 class="column-header">
+            RECENT TUTORIALS
+        </h4>
+            <div class="tutorial-items">
+                <div class="row">
+                    <div class="col-md-2 col-lg-2">
+                        <img src="{% static 'images/angular-logo.png' %}">
+                    </div>
+                    <div class="col-md-10 col-lg-10">
+                        <h4>
+                <a href="#">Angular JS</a>
+            </h4>
+                        <p>
+                            <a href="#">by Paul Gilmore </a> | 9 days
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="tutorial-items">
+                <div class="row">
+                    <div class="col-md-2 col-lg-2">
+                        <img src="{% static 'images/bootstrap.png' %}">
+                    </div>
+                    <div class="col-md-10 col-lg-10">
+                        <h4>
+                <a href="#">How to align items in bootstrap</a>
+            </h4>
+                        <p>
+                            <a href="#">by Paul Gilmore </a> | 9 days
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="tutorial-items">
+                <div class="row">
+                    <div class="col-md-2 col-lg-2">
+                        <img src="{% static 'images/Jquery.png' %}">
+                    </div>
+                    <div class="col-md-10 col-lg-10">
+                        <h4>
+                <a href="#">Jquery</a>
+            </h4>
+                        <p>
+                            <a href="#">by Paul Gilmore </a> | 9 days
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

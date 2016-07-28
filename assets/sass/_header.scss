@@ -1,19 +1,42 @@
-body{
-	background: #fff;
-}
-.nav-bar{
-	background: #f7f7f7;
-	padding: 10px 0;
-}
-.banner{
-	padding: 10px 0;
-	background: #055179;
-	font-family: $Montserrat-Light;
-	a{
-		color: #fff;
-		text-decoration: none;
-		font-size: 20px;
+body {}
 
+.navbar {
+    margin-bottom: 0;
+}
+
+.navbar-default {
+    background: #fff;
+    border: none;
+    font-family: $Montserrat-Light;
+    box-shadow: 2px 2px 2px #eeeeee;
+    .navbar-brand {
+        color: #cf032b;
+    }
+    ul {
+        list-style: none;
+        li {
+            float: left;
+            a {
+                display: block;
+                color: #666;
+                margin: 20px;
+                .number {
+                    background: #a71212;
+                    color: #fff;
+                    border-radius: 30px;
+                    padding: 6px 8px;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+.email-notification{
+	.content{
+		margin: 0;
 	}
-
+	a{
+		color: #a94442;
+		text-decoration: none;
+	}
 }

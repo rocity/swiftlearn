@@ -15,6 +15,10 @@
   src: url(../fonts/Montserrat-Light.otf);
 }
 @font-face {
+  font-family: 'Montserrat-Hairline';
+  src: url(../fonts/Montserrat-Hairline.otf);
+}
+@font-face {
   font-family: 'Montserrat-Regular';
   src: url(../fonts/Montserrat-Regular.otf);
 }
@@ -26,7 +30,7 @@
   font-family: 'Montserrat-UltraLight';
   src: url(../fonts/Montserrat-UltraLight.otf);
 }
-/* line 29, ../sass/_typography.scss */
+/* line 33, ../sass/_typography.scss */
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -34,7 +38,7 @@ body {
 
 /* line 1, ../sass/_dashboard.scss */
 .page {
-  background: #fff;
+  background: #f5f5f5;
   font-family: 'arial', 'san-serif';
   overflow: hidden;
 }
@@ -54,29 +58,36 @@ body {
   margin-top: 20px;
 }
 
-/* line 21, ../sass/_dashboard.scss */
+/* line 20, ../sass/_dashboard.scss */
+.user-profile .user-details {
+  background: #fdfdfd;
+  margin: 10px 0 5px;
+  border: 1px solid #f1f1f1;
+  padding: 10px;
+}
+/* line 25, ../sass/_dashboard.scss */
 .user-profile .user-details img {
   width: 50px;
 }
-/* line 24, ../sass/_dashboard.scss */
+/* line 28, ../sass/_dashboard.scss */
 .user-profile .user-details h3 {
   font-family: "Montserrat-Regular";
   margin-top: 0px;
 }
-/* line 27, ../sass/_dashboard.scss */
+/* line 31, ../sass/_dashboard.scss */
 .user-profile .user-details h3 a {
   color: #666;
-  font-size: 24px;
+  font-size: 18px;
   text-decoration: none;
 }
-/* line 33, ../sass/_dashboard.scss */
+/* line 37, ../sass/_dashboard.scss */
 .user-profile .user-details h4 {
-  font-size: 1.2em;
+  font-size: 1em;
   color: #666;
   font-family: "Montserrat-Light";
   margin-top: -5px;
 }
-/* line 40, ../sass/_dashboard.scss */
+/* line 44, ../sass/_dashboard.scss */
 .user-profile .bio {
   font-family: 'arial', 'san-serif';
   line-height: 150%;
@@ -84,204 +95,325 @@ body {
   font-size: 1em;
   color: #666;
 }
-/* line 46, ../sass/_dashboard.scss */
+/* line 50, ../sass/_dashboard.scss */
 .user-profile .bio a {
   text-decoration: none;
 }
-/* line 52, ../sass/_dashboard.scss */
+/* line 54, ../sass/_dashboard.scss */
+.user-profile .feeds {
+  color: #999;
+  font-family: "Montserrat-Light";
+  margin: 20px 0;
+}
+/* line 58, ../sass/_dashboard.scss */
+.user-profile .feeds ul {
+  list-style: none;
+}
+/* line 60, ../sass/_dashboard.scss */
+.user-profile .feeds ul li {
+  margin-left: -40px;
+}
+/* line 62, ../sass/_dashboard.scss */
+.user-profile .feeds ul li a {
+  display: block;
+  color: #999;
+  margin: 10px 0;
+  text-decoration: none;
+}
+/* line 67, ../sass/_dashboard.scss */
+.user-profile .feeds ul li a .fa-bookmark-o {
+  width: 16px;
+}
+/* line 75, ../sass/_dashboard.scss */
+.user-profile .recent-tutorials .tutorial-items {
+  margin: 10px 0 5px;
+}
+/* line 77, ../sass/_dashboard.scss */
 .user-profile .recent-tutorials .tutorial-items img {
   width: 40px;
   margin-top: 10px;
 }
-/* line 56, ../sass/_dashboard.scss */
+/* line 81, ../sass/_dashboard.scss */
 .user-profile .recent-tutorials .tutorial-items p {
   font-size: 12px;
 }
-/* line 59, ../sass/_dashboard.scss */
+/* line 84, ../sass/_dashboard.scss */
 .user-profile .recent-tutorials .tutorial-items h4 {
   font-size: 16px;
   font-family: "Montserrat-Light";
 }
-/* line 63, ../sass/_dashboard.scss */
+/* line 88, ../sass/_dashboard.scss */
 .user-profile .recent-tutorials .tutorial-items a {
   text-decoration: none;
 }
 
-/* line 70, ../sass/_dashboard.scss */
+/* line 95, ../sass/_dashboard.scss */
+.profile-status {
+  font-family: "Montserrat-Light";
+  padding: 10%;
+  background: #f8fcfa;
+  color: #747575;
+  font-size: 13px;
+}
+/* line 102, ../sass/_dashboard.scss */
+.profile-status .progress {
+  background-color: #e1f5fe;
+  border-radius: 10px;
+  height: 15px;
+  -webkit-box-shadow: none;
+  margin: 10px 0;
+}
+/* line 109, ../sass/_dashboard.scss */
+.profile-status .alert-info {
+  background: none;
+}
+
+/* line 114, ../sass/_dashboard.scss */
 .tutorial-feed {
   overflow: hidden;
 }
-/* line 72, ../sass/_dashboard.scss */
+/* line 116, ../sass/_dashboard.scss */
 .tutorial-feed img {
   width: 100%;
 }
-/* line 75, ../sass/_dashboard.scss */
+/* line 119, ../sass/_dashboard.scss */
 .tutorial-feed .feed-header {
   margin-bottom: 20px;
 }
-/* line 76, ../sass/_dashboard.scss */
+/* line 121, ../sass/_dashboard.scss */
 .tutorial-feed .feed-header ul {
   padding: 0;
   list-style: none;
 }
-/* line 79, ../sass/_dashboard.scss */
+/* line 124, ../sass/_dashboard.scss */
 .tutorial-feed .feed-header ul li {
   display: inline-block;
 }
-/* line 83, ../sass/_dashboard.scss */
+/* line 128, ../sass/_dashboard.scss */
 .tutorial-feed .feed-header .feed-options {
   margin-top: 20px;
 }
-/* line 85, ../sass/_dashboard.scss */
+/* line 130, ../sass/_dashboard.scss */
 .tutorial-feed .feed-header .feed-options .filter-style {
   border: none;
 }
-/* line 87, ../sass/_dashboard.scss */
+/* line 132, ../sass/_dashboard.scss */
 .tutorial-feed .feed-header .feed-options .filter-style:hover {
   background: #fff;
 }
-/* line 90, ../sass/_dashboard.scss */
+/* line 135, ../sass/_dashboard.scss */
 .tutorial-feed .feed-header .feed-options .filter-style:focus {
   outline: none;
   background: #fff;
 }
-/* line 94, ../sass/_dashboard.scss */
+/* line 139, ../sass/_dashboard.scss */
 .tutorial-feed .feed-header .feed-options .filter-style:active {
   border: none;
 }
-/* line 97, ../sass/_dashboard.scss */
+/* line 142, ../sass/_dashboard.scss */
 .tutorial-feed .feed-header .feed-options .filter-style:visited {
   border: none;
 }
-/* line 102, ../sass/_dashboard.scss */
+/* line 147, ../sass/_dashboard.scss */
 .tutorial-feed .feed-header h3 {
-  font-family: "Montserrat-Light";
+  font-size: 14px;
+  text-transform: uppercase;
 }
 
-/* line 110, ../sass/_dashboard.scss */
-.recent-activities img {
-  width: 100%;
-  margin-top: 5px;
+/* line 154, ../sass/_dashboard.scss */
+.recent-activities {
+  color: #313131;
 }
-/* line 114, ../sass/_dashboard.scss */
-.recent-activities .activity-details {
+/* line 156, ../sass/_dashboard.scss */
+.recent-activities .activity-item {
+  margin-top: 10px;
+  background: #fdfdfd;
+  border: 1px solid #f1f1f1;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+/* line 163, ../sass/_dashboard.scss */
+.recent-activities .activity-item img {
+  width: 40px;
+  margin-top: -20px;
+}
+/* line 167, ../sass/_dashboard.scss */
+.recent-activities .activity-item .activity-details {
   margin-left: -20px;
 }
-/* line 116, ../sass/_dashboard.scss */
-.recent-activities .activity-details a {
+/* line 169, ../sass/_dashboard.scss */
+.recent-activities .activity-item .activity-details a {
   text-decoration: none;
   font-family: "Montserrat-Light";
 }
+/* line 173, ../sass/_dashboard.scss */
+.recent-activities .activity-item .activity-details .time {
+  color: #666;
+  font-size: 12px;
+}
 
-/* line 123, ../sass/_dashboard.scss */
+/* line 181, ../sass/_dashboard.scss */
 .item-container {
-  height: 75vh;
+  height: 100vh;
   width: 100%;
   overflow: auto;
-  padding-right: 20px;
 }
-/* line 128, ../sass/_dashboard.scss */
+/* line 186, ../sass/_dashboard.scss */
 .item-container .items {
-  margin: 20px 0 20px;
+  font-family: "Montserrat-Light";
+  background: #fff;
+  margin: 10px 0 10px;
+  border: 1px solid #f9f9f9;
+  border-radius: 5px;
+  padding: 10px 5px;
+  box-shadow: -2px 1px 3px #f1f1f1;
+  display: flex;
+  align-items: center;
 }
-/* line 130, ../sass/_dashboard.scss */
-.item-container .items h3 {
-  margin-top: 0px;
-  font-size: 18px;
+/* line 197, ../sass/_dashboard.scss */
+.item-container .items .item-picture img {
+  margin: 0 auto 18px;
+  width: 80px;
 }
-/* line 134, ../sass/_dashboard.scss */
-.item-container .items .tutorial-detail {
+/* line 201, ../sass/_dashboard.scss */
+.item-container .items .item-picture a {
+  text-decoration: none;
+  color: #fff;
+  background: #337ab7;
+  padding: 5px 30px;
+  border-radius: 4px;
+}
+/* line 210, ../sass/_dashboard.scss */
+.item-container .items .item-details a {
+  text-decoration: none;
+}
+/* line 212, ../sass/_dashboard.scss */
+.item-container .items .item-details a :hover {
+  color: #337ab7;
+}
+/* line 216, ../sass/_dashboard.scss */
+.item-container .items .item-details h3 {
+  font-family: "Montserrat-Regular";
+  font-size: 16px;
+  line-height: 150%;
+}
+/* line 222, ../sass/_dashboard.scss */
+.item-container .items .item-details h6 {
+  font-family: 'arial', 'san-serif';
+  font-size: 12px;
+}
+/* line 226, ../sass/_dashboard.scss */
+.item-container .items .item-details p {
+  font-family: 'arial', 'san-serif';
+  color: #999;
+  font-size: 13px;
+}
+/* line 231, ../sass/_dashboard.scss */
+.item-container .items .item-details .tutor {
+  color: #999;
+}
+/* line 234, ../sass/_dashboard.scss */
+.item-container .items .item-details .tutorial-detail {
   margin-left: -15px;
   color: #666;
 }
 
-/* line 141, ../sass/_dashboard.scss */
+/* line 242, ../sass/_dashboard.scss */
 ::-webkit-scrollbar {
   display: none;
 }
 
-/* line 148, ../sass/_dashboard.scss */
+/* line 248, ../sass/_dashboard.scss */
 .hire .popover {
   width: 100%;
 }
-/* line 151, ../sass/_dashboard.scss */
-.hire .hire-btn {
-  margin: 10% 0;
-  padding: 6px 30%;
-  color: #fff;
-  background: #8fcc4d;
-}
-/* line 156, ../sass/_dashboard.scss */
-.hire .hire-btn:focus {
-  outline: none;
-  background: #64a024;
-}
-/* line 160, ../sass/_dashboard.scss */
-.hire .hire-btn:hover {
-  background: #64a024;
-  transition: 1s;
-}
 
-/* line 171, ../sass/_dashboard.scss */
+/* line 255, ../sass/_dashboard.scss */
 .tutor-background .tutor-details {
   line-height: 150%;
 }
-/* line 175, ../sass/_dashboard.scss */
+/* line 259, ../sass/_dashboard.scss */
 .tutor-background .item-container .items {
   margin: 50px 20px;
 }
 
-/* line 182, ../sass/_dashboard.scss */
+/* line 266, ../sass/_dashboard.scss */
 .badges h4 {
   font-size: 12px;
   color: #666;
 }
 
-/* line 1, ../sass/_header.scss */
-body {
+/* line 3, ../sass/_header.scss */
+.navbar {
+  margin-bottom: 0;
+}
+
+/* line 7, ../sass/_header.scss */
+.navbar-default {
   background: #fff;
-}
-
-/* line 4, ../sass/_header.scss */
-.nav-bar {
-  background: #f7f7f7;
-  padding: 10px 0;
-}
-
-/* line 8, ../sass/_header.scss */
-.banner {
-  padding: 10px 0;
-  background: #055179;
+  border: none;
   font-family: "Montserrat-Light";
+  box-shadow: 2px 2px 2px #eeeeee;
 }
 /* line 12, ../sass/_header.scss */
-.banner a {
+.navbar-default .navbar-brand {
+  color: #cf032b;
+}
+/* line 15, ../sass/_header.scss */
+.navbar-default ul {
+  list-style: none;
+}
+/* line 17, ../sass/_header.scss */
+.navbar-default ul li {
+  float: left;
+}
+/* line 19, ../sass/_header.scss */
+.navbar-default ul li a {
+  display: block;
+  color: #666;
+  margin: 20px;
+}
+/* line 23, ../sass/_header.scss */
+.navbar-default ul li a .number {
+  background: #a71212;
   color: #fff;
-  text-decoration: none;
-  font-size: 20px;
+  border-radius: 30px;
+  padding: 6px 8px;
+  font-size: 12px;
 }
 
-/* line 1, ../sass/sign-up.scss */
+/* line 35, ../sass/_header.scss */
+.email-notification .content {
+  margin: 0;
+}
+/* line 38, ../sass/_header.scss */
+.email-notification a {
+  color: #a94442;
+  text-decoration: none;
+}
+
+/* line 1, ../sass/_sign-up.scss */
 .signup-page {
   background: #fff;
   background-size: cover;
 }
-/* line 4, ../sass/sign-up.scss */
+/* line 4, ../sass/_sign-up.scss */
 .signup-page .divider {
   border-left: solid 1px #666;
 }
-/* line 7, ../sass/sign-up.scss */
+/* line 7, ../sass/_sign-up.scss */
 .signup-page .signup {
   font-family: "Montserrat-Light";
   display: flex;
   height: 100vh;
   align-items: center;
 }
-/* line 12, ../sass/sign-up.scss */
+/* line 12, ../sass/_sign-up.scss */
 .signup-page .signup h1 {
   margin: 30px auto;
 }
-/* line 15, ../sass/sign-up.scss */
+/* line 15, ../sass/_sign-up.scss */
 .signup-page .signup input {
   font-family: "Montserrat-Light";
   background: #fff;
@@ -293,43 +425,38 @@ body {
   border-shadow: none;
   -webkit-box-shadow: none;
 }
-/* line 25, ../sass/sign-up.scss */
+/* line 25, ../sass/_sign-up.scss */
 .signup-page .signup input:focus {
   -webkit-box-shadow: none;
 }
-/* line 29, ../sass/sign-up.scss */
+/* line 29, ../sass/_sign-up.scss */
 .signup-page .signup ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   color: #a1a1a1;
 }
-/* line 33, ../sass/sign-up.scss */
+/* line 33, ../sass/_sign-up.scss */
 .signup-page .signup .email-signup {
   background: #055179;
-  padding: 11.5px 32%;
 }
-/* line 37, ../sass/sign-up.scss */
+/* line 37, ../sass/_sign-up.scss */
 .signup-page .signup .signup-btn {
   background: #055179;
-  padding: 11.5px 41.59%;
 }
-/* line 42, ../sass/sign-up.scss */
+/* line 42, ../sass/_sign-up.scss */
 .signup-page .signup .fb {
   background: #39579b;
-  padding: 11.5px 27.5%;
   margin: 10px 0;
 }
-/* line 47, ../sass/sign-up.scss */
+/* line 47, ../sass/_sign-up.scss */
 .signup-page .signup .google {
   background: #dd4b38;
-  padding: 11.5px 24%;
   margin: 10px 0;
 }
-/* line 52, ../sass/sign-up.scss */
+/* line 52, ../sass/_sign-up.scss */
 .signup-page .signup .twitter {
   background: #25a8e0;
-  padding: 11.5px 24%;
 }
-/* line 58, ../sass/sign-up.scss */
+/* line 58, ../sass/_sign-up.scss */
 .signup-page .signup button {
   color: #fff;
   border-radius: 10px;
@@ -337,20 +464,20 @@ body {
   text-transform: uppercase;
   margin: 10px 0;
 }
-/* line 64, ../sass/sign-up.scss */
+/* line 64, ../sass/_sign-up.scss */
 .signup-page .signup button:hover {
   background: #2d7aa3;
   transition-duration: 1s;
 }
-/* line 68, ../sass/sign-up.scss */
+/* line 68, ../sass/_sign-up.scss */
 .signup-page .signup button:focus {
   -webkit-box-shadow: none;
 }
-/* line 73, ../sass/sign-up.scss */
+/* line 73, ../sass/_sign-up.scss */
 .signup-page .signup .login-link p {
   margin-top: 10px;
 }
-/* line 75, ../sass/sign-up.scss */
+/* line 75, ../sass/_sign-up.scss */
 .signup-page .signup .login-link p a {
   text-decoration: none;
 }
@@ -404,7 +531,6 @@ body {
   border-radius: 10px;
   border: none;
   text-transform: uppercase;
-  padding: 11.5px 44%;
 }
 /* line 43, ../sass/_log-in.scss */
 .login-page .log-in button:hover {
@@ -433,4 +559,76 @@ body {
 /* line 67, ../sass/_log-in.scss */
 .divider {
   border-left: solid 1px #666;
+}
+
+/* line 1, ../sass/_profile.scss */
+.profile-header-background {
+  background: #fdfdfd;
+  height: 160px;
+  z-index: -1;
+  margin-top: 50px;
+}
+
+/* line 8, ../sass/_profile.scss */
+.profile-header {
+  display: flex;
+  align-items: center;
+  z-index: 999999;
+  margin-top: -180px;
+}
+/* line 13, ../sass/_profile.scss */
+.profile-header img {
+  width: 100%;
+}
+/* line 18, ../sass/_profile.scss */
+.profile-header .profile-background img {
+  width: 200px;
+  border-radius: 30px;
+  padding: 15px;
+  background: #fdfdfd;
+}
+
+/* line 27, ../sass/_profile.scss */
+.profile-content {
+  background: #fdfdfd;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+/* line 33, ../sass/_profile.scss */
+.btn-hire {
+  width: 100%;
+  background: #00bfa5;
+  color: #fff;
+  margin: 20px 0 0;
+}
+/* line 38, ../sass/_profile.scss */
+.btn-hire:hover {
+  color: #fff;
+  transition: 1s;
+  background: #039985;
+}
+/* line 43, ../sass/_profile.scss */
+.btn-hire:focus {
+  outline: none;
+  background: #64a024;
+}
+/* line 47, ../sass/_profile.scss */
+.btn-hire:active {
+  color: #fff;
+  transition: 1s;
+  background: #039985;
+}
+/* line 52, ../sass/_profile.scss */
+.btn-hire:visited {
+  color: #fff;
+  transition: 1s;
+  background: #039985;
+}
+
+/* line 59, ../sass/_profile.scss */
+.owl-carousel {
+  margin: 20px 0;
+  background: #fdfdfd;
+  padding: 10px;
 }

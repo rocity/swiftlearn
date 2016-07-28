@@ -1,0 +1,63 @@
+.profile-header-background {
+    background: #fdfdfd;
+    height: 160px;
+    z-index: -1;
+    margin-top: 50px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    z-index: 999999;
+    margin-top: -180px;
+    img {
+        width: 100%;
+      //  border-radius: 40px;
+    }
+    .profile-background {
+        img {
+            width: 200px;
+            border-radius: 30px;
+            padding: 15px;
+            background: #fdfdfd;
+        }
+    }
+}
+
+.profile-content {
+    background: #fdfdfd;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.btn-hire {
+    width: 100%;
+    background: #00bfa5;
+    color: #fff;
+    margin: 20px 0 0;
+    &:hover {
+        color: #fff;
+        transition: 1s;
+        background: #039985;
+    }
+    &:focus {
+        outline: none;
+        background: #64a024;
+    }
+    &:active {
+        color: #fff;
+        transition: 1s;
+        background: #039985;
+    }
+    &:visited {
+        color: #fff;
+        transition: 1s;
+        background: #039985;
+    }
+}
+
+.owl-carousel {
+    margin: 20px 0;
+    background: #fdfdfd;
+    padding: 10px;
+}
