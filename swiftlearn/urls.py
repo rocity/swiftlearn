@@ -5,5 +5,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^events/', include('events.urls')),
     url(r'^', include('accounts.urls')),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
