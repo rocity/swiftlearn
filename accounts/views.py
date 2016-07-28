@@ -17,7 +17,7 @@ class SignupView(TemplateView):
 
     def get(self, *args, **kwargs):
         form = SignupForm()
-        return render(self.request, self.template_name, {'form': form})
+        return render(self.request, self.template_name, {'form': form, 'has_error': False})
 
     def post(self, *args, **kwargs):
         form = SignupForm(self.request.POST)
@@ -29,7 +29,7 @@ class SignupView(TemplateView):
             login(self.request, instance)
 
             return HttpResponseRedirect(reverse('dashboard'))
-        return render(self.request, self.template_name, {'form': form})
+        return render(self.request, self.template_name, {'form': form, 'has_error': True})
 
 
 class LoginView(TemplateView):

@@ -28,19 +28,22 @@
                                 <form class="hidden email-entry" method="post">
                                     {% csrf_token %}
                                     <div class="form-group">
-                                        <input type="email" name="email" class="form-control" placeholder="E-mail address">
+                                        {{ form.email.errors.as_text }}
+                                        {{ form.email }}
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="password" class="form-control" placeholder="Password">
+                                        {{ form.password.errors.as_text }}
+                                        {{ form.password }}
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="confirm_password" class="form-control" placeholder=" Confirm password">
+                                        {{ form.confirm_password.errors.as_text }}
+                                        {{ form.confirm_password }}
                                     </div>
-                                    <button type="submit" class="btn signup-btn">sign up</button>
+                                    <button type="submit" class="btn signup-btn form-control">sign up</button>
                                 </form>
                                 <div id="signup-options">
-                                    <button type="submit" class="btn email-signup" value="email">sign up with email</button>
-                                    <button type="submit" class="btn fb" value="facebook">sign up with facebook</button>
+                                    <button type="submit" class="btn email-signup form-control" value="email">sign up with email</button>
+                                    <button type="submit" class="btn fb form-control" value="facebook">sign up with facebook</button>
                                 </div>
                             </div>
                         </div>
@@ -52,10 +55,15 @@
 </body>
 <script src="{% static 'js/jquery-1.9.1.min.js' %}"></script>
 <script>
+var signup = $('.email-entry');
+var options = $('#signup-options');
+
+{% if has_error %}
+signup.removeClass('hidden');
+options.addClass('hidden');
+{% endif %}
 
 $('#signup-options button').on("click", function() {
-    var signup = $('.email-entry');
-    var options = $('#signup-options');
     
     if ($(this).val() == 'email') {
         

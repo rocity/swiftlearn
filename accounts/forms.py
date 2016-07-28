@@ -8,9 +8,15 @@ from .models import Account
 class SignupForm(forms.ModelForm):
     """ form for new learners
     """
-    email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput)
-    confirm_password = forms.CharField(widget=forms.PasswordInput)
+    email = forms.EmailField(widget=forms.EmailInput({
+        'class': 'form-control', 'placeholder': 'E-mail address'
+    }))
+    password = forms.CharField(widget=forms.PasswordInput({
+        'class': 'form-control', 'placeholder': 'Password'
+    }))
+    confirm_password = forms.CharField(widget=forms.PasswordInput({
+        'class': 'form-control', 'placeholder': 'Confirm password'
+    }))
 
     class Meta:
         model = Account
