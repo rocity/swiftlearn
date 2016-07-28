@@ -1,0 +1,45 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Log in</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div class="login-page">
+        <div class="log-in">
+            <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <h1>Welcome to Swift Online Tutorial Platform</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eu sapien metus. Suspendisse vel leo eget nunc aliquam sagittis. Fusce atnunc ac enim feugiat fermentum ut finibus massa.
+                    </p>
+                    <div class="col-md-4 col-md-offset-4">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="email" name="username" class="form-control" placeholder="E-mail address">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control" placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn">login</button>
+                        </form>
+                       <div class="login-links">
+                        <a href="{% url 'signup' %}">Create a new account</a>
+                        <a href="#">Forgot password</a>
+                       </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

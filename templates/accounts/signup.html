@@ -1,0 +1,71 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sign up</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div class="signup-page">
+        <div class="signup">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <h1 class="text-center">
+                        Create an account
+                    </h1>
+                        <div class="login-link">
+                            <p class="text-center">
+                                Already have an account? <a href="{% url 'login' %}">Log in</a>
+                            </p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4">
+                                <form class="hidden email-entry" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="form-control" placeholder="E-mail address">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" class="form-control" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="confirm_password" class="form-control" placeholder=" Confirm password">
+                                    </div>
+                                    <button type="submit" class="btn signup-btn">sign up</button>
+                                </form>
+                                <div id="signup-options">
+                                    <button type="submit" class="btn email-signup" value="email">sign up with email</button>
+                                    <button type="submit" class="btn fb" value="facebook">sign up with facebook</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="{% static 'js/jquery-1.9.1.min.js' %}"></script>
+<script>
+
+$('#signup-options button').on("click", function() {
+    var signup = $('.email-entry');
+    var options = $('#signup-options');
+    
+    if ($(this).val() == 'email') {
+        
+        signup.removeClass('hidden');
+        options.addClass('hidden');
+
+    } else {
+        signup.addClass('hidden');
+    }
+});
+</script>
+
+</html>

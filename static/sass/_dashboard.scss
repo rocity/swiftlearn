@@ -1,0 +1,186 @@
+.page {
+    background: #fff;
+    font-family: 'arial', 'san-serif';
+    overflow: hidden;
+}
+
+.column-header {
+    font-size: 12px;
+}
+
+.img-rounded {
+    border-radius: 5px;
+}
+
+.dashboard {
+    margin-top: 20px;
+}
+
+.user-profile {
+    .user-details {
+        img {
+            width: 50px;
+        }
+        h3 {
+            font-family: $Montserrat-Regular;
+            margin-top: 0px;
+            a {
+                color: #666;
+                font-size: 24px;
+                text-decoration: none;
+            }
+        }
+        h4 {
+            font-size: 1.2em;
+            color: #666;
+            font-family: $Montserrat-Light;
+            margin-top: -5px;
+        }
+    }
+    .bio {
+        font-family: 'arial', 'san-serif';
+        line-height: 150%;
+        margin-top: 10px;
+        font-size: 1em;
+        color: #666;
+        a {
+            text-decoration: none;
+        }
+    }
+    .recent-tutorials {
+        .tutorial-items {
+            img {
+                width: 40px;
+                margin-top: 10px;
+            }
+            p {
+                font-size: 12px;
+            }
+            h4 {
+                font-size: 16px;
+                font-family: $Montserrat-Light;
+            }
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.tutorial-feed {
+    overflow: hidden;
+    img {
+        width: 100%;
+    }
+    .feed-header {
+        ul {
+            padding: 0;
+            list-style: none;
+            li {
+                display: inline-block;
+            }
+        }
+        .feed-options {
+            margin-top: 20px;
+            .filter-style {
+                border: none;
+                &:hover {
+                    background: #fff;
+                }
+                &:focus {
+                    outline: none;
+                    background: #fff;
+                }
+                &:active {
+                    border: none;
+                }
+                &:visited {
+                    border: none;
+                }
+            }
+        }
+        h3 {
+            font-family: $Montserrat-Light;
+        }
+        margin-bottom: 20px;
+    }
+}
+
+.recent-activities {
+    img {
+        width: 100%;
+        margin-top: 5px;
+    }
+    .activity-details {
+        margin-left: -20px;
+        a {
+            text-decoration: none;
+            font-family: $Montserrat-Light;
+        }
+    }
+}
+
+.item-container {
+    height: 75vh;
+    width: 100%;
+    overflow: auto;
+    padding-right: 20px;
+    .items {
+        margin: 20px 0 20px;
+        h3 {
+            margin-top: 0px;
+            font-size: 18px;
+        }
+        .tutorial-detail {
+            margin-left: -15px;
+            color: #666;
+        }
+    }
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+//tutor.html
+.hire {
+
+    .popover{
+        width: 100%;
+    }
+    .hire-btn {
+        margin: 10% 0;
+        padding: 6px 30%;
+        color: #fff;
+        background: #8fcc4d;
+        &:focus {
+            outline: none;
+            background: #64a024;
+        }
+        &:hover {
+            background: #64a024;
+            transition:1s;
+        }
+    }
+
+}
+
+
+
+.tutor-background {
+    .tutor-details {
+        line-height: 150%;
+    }
+    .item-container {
+        .items {
+            margin: 50px 20px;
+        }
+    }
+}
+
+.badges {
+    h4 {
+        font-size: 12px;
+        color: #666;
+    }
+}
