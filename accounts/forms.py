@@ -38,7 +38,6 @@ class SignupForm(forms.ModelForm):
         if commit:
             instance.set_password(self.cleaned_data['password'])
             instance.save()
-            instance.generate_confirm_key()
 
         return instance
 

@@ -1,6 +1,7 @@
 from uuid import uuid4
 
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.core.mail import EmailMessage
 from django.core.management import call_command
 from django.core.urlresolvers import reverse
 from django.db import models
@@ -136,8 +137,6 @@ class Account(AbstractBaseUser, PermissionsMixin):
     def _send_confirmation_email(self):
         """ Send confirmation key to user.
         """
-        from django.core.mail import EmailMessage
-
         confirm_key = self.generate_confirm_key()
 
         subject =   "Swift Tutorial Confirmation Key"

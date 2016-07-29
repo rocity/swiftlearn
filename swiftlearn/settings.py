@@ -25,12 +25,6 @@ SECRET_KEY = 'l4*+w%-nr-@opo2nqlc1wdaxn56!eb#t)7uk^%=^!mc76!iu6-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'swiftkindgong@gmail.com'
-EMAIL_HOST_PASSWORD = 'rumbaoa12345'
-EMAIL_PORT = 465
-EMAIL_USE_SSL = True
-
 ALLOWED_HOSTS = []
 
 
