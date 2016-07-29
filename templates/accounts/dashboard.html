@@ -16,186 +16,31 @@
                 </div>
             </form>
         </div>
-        <!--  <div class=" col-md-12 col-lg-12 ">
-            <ul>
-                <li class="pull-left">
-                    <h3>Preferred Tutorials</h3>
-                </li>
-                <li class="feed-options">
-                       <ul>
-                           <li>
-                            <div class="dropdown">
-                                <button class="dropdown-toggle btn btn-default filter-style" type="button" id="filter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-filter" aria-hidden="true"></i>
-                                    <span class="caret"></span></button>
-                                <ul class="dropdown-menu" aria-labelledby="filter">
-                                    <li >
-                                        <a href="#">Filter by Tutor</a>
-                                    </li>
-                                    <li>
-                                      <a href="#"> Filter by Tutorial</a>
-                                       
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dropdown">
-                                <button class="dropdown-toggle  btn btn-default filter-style" type="button" id="sort" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i>
-                                    <span class="caret"></span></button>
-                                <ul class="dropdown-menu" aria-labelledby="sort">
-                                    <li>
-                                        <a href="#">Sort Ascending</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> Sort Descending</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div> -->
     </div>
     <div class="item-container">
+        {% for item in feed %}
         <div class="row items ">
             <div class="col-md-3 col-lg-3 text-center item-picture">
                 <img src="{% static 'images/sass.png' %}">
-                <a href="" > View</a>
+                <a href="{% url 'event' item.id %}"> View</a>
             </div>
             <div class="col-md-9 col-lg-9 item-details">
                 <h3>
-                    <a href="#">CSS styling using Sass: Syntactically Awesome Style Sheets </a>
+                    <a href="#">{{ item.title }}</a>
                 </h3>
                 <h6>
-                    <a href="#">CSS, SASS, Web design, Web development</a>
+                    <a href="#">{{ item.tags.all|join:", " }}</a>
                 </h6>
-                <p>
-                    Django is a high-level Python Web framework that encourages rapiddevelopment and clean, pragmatic design.
-                </p>
+                <p>{{ item.info|truncatewords:28 }}</p>
                 <div class="tutor">
                     <h6>
-                    <a href="#">Sarah Jackson</a> - Bangkok, Thailand  <a href="#"> 9 hours ago</a>
+                    <a href="#">{{ item.educator.get_full_name }}</a> - Bangkok, Thailand  <a href="#">{{ item.date_created|timesince }} ago</a>
                 </h6>
                     
                 </div>
             </div>
         </div>
-        <div class="row items ">
-            <div class="col-md-3 col-lg-3 text-center item-picture">
-                <img src="{% static 'images/node.png' %}">
-                <a href="" > View</a>
-            </div>
-            <div class="col-md-9 col-lg-9 item-details">
-                <h3>
-                    <a href="#">Node JS Style Sheets </a>
-                </h3>
-                <h6>
-                    <a href="#"> Web design, Web development</a>
-                </h6>
-                <p>
-                    Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it ...
-                </p>
-                <div class="tutor">
-                    <h6>
-                    <a href="#">Sarah Jackson</a> - Bangkok, Thailand  <a href="#"> 9 hours ago</a>
-                </h6>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="row items ">
-            <div class="col-md-3 col-lg-3 text-center item-picture">
-                <img src="{% static 'images/oracle.png' %}">
-                <a href="" > View</a>
-            </div>
-            <div class="col-md-9 col-lg-9 item-details">
-                <h3>
-                    <a href="#">Oracle </a>
-                </h3>
-                <h6>
-                    <a href="#"> Web development</a>
-                </h6>
-                <p>
-                    Oracle has products and solutions for every role in the enterprise.
-                </p>
-                <div class="tutor">
-                    <h6>
-                    <a href="#">Sarah Jackson</a> - Bangkok, Thailand  <a href="#"> 9 hours ago</a>
-                </h6>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="row items ">
-            <div class="col-md-3 col-lg-3 text-center item-picture">
-                <img src="{% static 'images/less.png' %}">
-                <a href="" > View</a>
-            </div>
-            <div class="col-md-9 col-lg-9 item-details">
-                <h3>
-                    <a href="#">Less is a CSS pre-processor </a>
-                </h3>
-                <h6>
-                    <a href="#">CSS, Web design, Web development</a>
-                </h6>
-                <p>
-                    Less is a CSS pre-processor, meaning that it extends the CSS language, adding features that allow variables, mixins, functions and many othe...
-                </p>
-                <div class="tutor">
-                    <h6>
-                    <a href="#">Sarah Jackson</a> - Bangkok, Thailand  <a href="#"> 9 hours ago</a>
-                </h6>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="row items ">
-            <div class="col-md-3 col-lg-3 text-center item-picture">
-                <img src="{% static 'images/css3.png' %}">
-                <a href="" > View</a>
-            </div>
-            <div class="col-md-9 col-lg-9 item-details">
-                <h3>
-                    <a href="#">CSS styling using Css3 </a>
-                </h3>
-                <h6>
-                    <a href="#">CSS,  Web design</a>
-                </h6>
-                <p>
-                    Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in ...
-                </p>
-                <div class="tutor">
-                    <h6>
-                    <a href="#">Sarah Jackson</a> - Bangkok, Thailand  <a href="#"> 9 hours ago</a>
-                </h6>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="row items ">
-            <div class="col-md-3 col-lg-3 text-center item-picture">
-                <img src="{% static 'images/sass.png' %}">
-                <a href="" > View</a>
-            </div>
-            <div class="col-md-9 col-lg-9 item-details">
-                <h3>
-                    <a href="#">CSS styling using Sass: Syntactically Awesome Style Sheets </a>
-                </h3>
-                <h6>
-                    <a href="#">CSS, SASS, Web design, Web development</a>
-                </h6>
-                <p>
-                    Django is a high-level Python Web framework that encourages rapiddevelopment and clean, pragmatic design.
-                </p>
-                <div class="tutor">
-                    <h6>
-                    <a href="#">Sarah Jackson</a> - Bangkok, Thailand  <a href="#"> 9 hours ago</a>
-                </h6>
-                    
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 

@@ -2,10 +2,22 @@ from uuid import uuid4
 
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.core.management import call_command
+from django.core.urlresolvers import reverse
 from django.db import models
+from django.db.models import Sum
 from django.utils import timezone
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
+
+
+class AccountCompletionTask(models.Model):
+    """ learner's account completion
+    """
+    desc = models.CharField(max_length=255)
+    points = models.IntegerField(default=0)
+
+    def __str__(self):
+        return "{desc}".format(desc=self.desc)
 
 
 class AccountManager(BaseUserManager):
@@ -49,9 +61,19 @@ class Account(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=250, unique=True)
     first_name = models.CharField(max_length=40, null=True, blank=True)
     last_name = models.CharField(max_length=40, null=True, blank=True)
+    city = models.CharField(max_length=200, null=True, blank=True)
+    country = models.CharField(max_length=200, null=True, blank=True)
+    phone = models.CharField(max_length=200, null=True, blank=True)
+
+    cover_photo = models.ImageField(upload_to='covers/', null=True, blank=True)
+    profile_picture = models.ImageField(upload_to='profiles/', null=True, blank=True)
 
     # more info
     position = models.CharField(max_length=255, null=True, blank=True)
+    primary_expertise = models.ForeignKey('Skill', related_name='primary_expertise', null=True, blank=True)
+    expertise = models.ManyToManyField('Skill', related_name='expertise', blank=True)
+
+    completion = models.ManyToManyField('AccountCompletionTask', blank=True)
 
     date_joined = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -101,6 +123,16 @@ class Account(AbstractBaseUser, PermissionsMixin):
         from accounts.models import ConfirmationKey
         return ConfirmationKey.objects.create(user=self)
 
+    def completion_percent(self):
+        """ number of the completion percentage
+        """
+        percent = self.completion.all().aggregate(Sum('points'))
+        return "{percent}".format(percent=percent['points__sum'] or 0)
+
+    def get_profile_url(self):
+        #return reverse('profile', args=[self.id])
+        return "/profile/" + str(self.id) + "/"
+
 
 class ConfirmationKey(models.Model):
     """ learner's email confirmation key
@@ -121,21 +153,25 @@ class ConfirmationKey(models.Model):
         return uuid4().hex
 
 
-# class Educator(models.Model):
-#     """ educators model
-#     """
-#     user = models.OneToOneField(Account)
+class Education(models.Model):
+    """ education background
+    """
+    user = models.ForeignKey(Account)
+    school = models.CharField(max_length=255)
+    degree = models.CharField(max_length=255)
+    date_attended_fr = models.DateField(null=True, blank=True)
+    date_attended_to = models.DateField(null=True, blank=True)
+
+    description = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return "{degree}".format(degree=self.degree)
 
 
-# class Session(models.Model):
-#     """ educator's session
-#     """
-#     title = models.CharField(max_length=255)
-#     info = models.TextField(null=True, blank=True)
+class Skill(models.Model):
+    """ Global tags
+    """
+    name = models.CharField(max_length=200)
 
-#     start_date = models.DateTimeField(null=True, blank=True)
-#     fee = models.DecimalField(max_digits=9, decimal_places=2, default=0.00)
-#     is_finished = models.BooleanField(default=False)
-
-#     def __str__(self):
-#         return "{title}".format(title=self.title)
+    def __str__(self):
+        return "{name}".format(name=self.name)

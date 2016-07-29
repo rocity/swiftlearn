@@ -7,6 +7,8 @@ from django.views.generic import TemplateView, View
 from django.shortcuts import render
 
 from braces.views import LoginRequiredMixin
+from events.models import Event
+
 from .forms import SignupForm, LoginForm
 
 
@@ -62,4 +64,5 @@ class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'accounts/dashboard.html'
 
     def get(self, *args, **kwargs):
-        return render(self.request, self.template_name, {})
+        feed = Event.objects.all().order_by('-date_created')
+        return render(self.request, self.template_name, {'feed': feed})
