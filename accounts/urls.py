@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^logout/$', LogoutView.as_view(), name='logout'),
     url(r'^dashboard/$', DashboardView.as_view(), name='dashboard'),
     url(r'^activate/(?P<key>.+)/$', ActivationView.as_view(), name="activate"),
+    url(r'^resend_key/$', ResendActivationView.as_view(), name="resend"),
 ]
