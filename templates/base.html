@@ -27,15 +27,17 @@
             </div>
         </div>
     </nav>
+    {% if not request.user.is_activated %}
     <nav class="email-notification">
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center alert alert-danger content">
-                    <p><strong>Wait up! Confirm your email.</strong> Check your emaill inbox or <strong><a href="#">Resend email</a></strong></p>
+                    <p><strong>Wait up! Confirm your email.</strong> Check your emaill inbox or <strong><a href="{% url 'resend' %}">Resend email</a></strong></p>
                 </div>
             </div>
         </div>
     </nav>
+    {% endif %}
     <div class="page">
         <div class="container">
             <div class="row dashboard">

@@ -83,3 +83,13 @@ class ActivationView(TemplateView):
             activate.save()
             ConfirmationKey.objects.filter(user=activate.user, is_used=False).delete()
             return HttpResponseRedirect(reverse('dashboard'))
+
+
+class ResendActivationView(TemplateView):
+    """ Resend Activation Key to user
+    """
+    def get(self, *args, **kwargs):
+        user = Account.objects.get(email=self.request.user)
+        user._send_confirmation_email()
+
+        return HttpResponseRedirect(reverse('dashboard'))
