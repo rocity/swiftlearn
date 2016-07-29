@@ -2,47 +2,49 @@
 {% load staticfiles %}
 
 {% block content %}
-{% include 'includes/user_details.html' %}
+<div class="row dashboard">
+    {% include 'includes/user_details.html' %}
 
-<div class="col-md-6 col-lg-6 tutorial-feed">
-    <div class="row feed-header ">
-        <div class="col-md-12 col-lg-12">
-            <form>
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </span>
-                    <input type="text" name="search" class="form-control" placeholder="Search a tutorial">
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="item-container">
-        {% for item in feed %}
-        <div class="row items ">
-            <div class="col-md-3 col-lg-3 text-center item-picture">
-                <img src="{% static 'images/sass.png' %}">
-                <a href="{% url 'event' item.id %}"> View</a>
+    <div class="col-md-6 col-lg-6 tutorial-feed">
+        <div class="row feed-header ">
+            <div class="col-md-12 col-lg-12">
+                <form>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </span>
+                        <input type="text" name="search" class="form-control" placeholder="Search a tutorial">
+                    </div>
+                </form>
             </div>
-            <div class="col-md-9 col-lg-9 item-details">
-                <h3>
-                    <a href="#">{{ item.title }}</a>
-                </h3>
-                <h6>
-                    <a href="#">{{ item.tags.all|join:", " }}</a>
-                </h6>
-                <p>{{ item.info|truncatewords:28 }}</p>
-                <div class="tutor">
+        </div>
+        <div class="item-container">
+            {% for item in feed %}
+            <div class="row items ">
+                <div class="col-md-3 col-lg-3 text-center item-picture">
+                    <img src="{% static 'images/sass.png' %}">
+                    <a href="{% url 'event' item.id %}"> View</a>
+                </div>
+                <div class="col-md-9 col-lg-9 item-details">
+                    <h3>
+                        <a href="#">{{ item.title }}</a>
+                    </h3>
                     <h6>
-                    <a href="#">{{ item.educator.get_full_name }}</a> - Bangkok, Thailand  <a href="#">{{ item.date_created|timesince }} ago</a>
-                </h6>
-                    
+                        <a href="#">{{ item.tags.all|join:", " }}</a>
+                    </h6>
+                    <p>{{ item.info|truncatewords:28 }}</p>
+                    <div class="tutor">
+                        <h6>
+                        <a href="#">{{ item.educator.get_full_name }}</a> - Bangkok, Thailand  <a href="#">{{ item.date_created|timesince }} ago</a>
+                    </h6>
+                        
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
-</div>
 
-{% include 'includes/recent_activities.html' %}
+    {% include 'includes/recent_activities.html' %}
+</div>
 {% endblock %}

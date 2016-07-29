@@ -32,6 +32,7 @@ body {}
     }
 }
 .email-notification{
+    width: 100%;
 	.content{
 		margin: 0;
 	}
@@ -39,4 +40,25 @@ body {}
 		color: #a94442;
 		text-decoration: none;
 	}
+}
+.affix {
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: 9999;
+    transition: 0.5s;
+    padding: 0;
+
+      -webkit-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out;
+}
+
+.affix-top {
+    position: static;
+    top: -50px;
+}
+
+.affix ~ .container-fluid {
+
+    padding-top: 70px;
 }

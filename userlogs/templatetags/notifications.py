@@ -11,7 +11,8 @@ def load_notifications(user):
 
 @register.filter
 def shorten_timetag(strtime):
-    return strtime.replace("minutes", "mins")
+    strtime = strtime.split(",")[0]
+    return strtime.replace("minutes ", "mins ").replace("minute ", "min ")
 
 @register.filter
 def notification_text(activity):

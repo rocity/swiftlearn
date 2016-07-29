@@ -81,6 +81,7 @@ AUTH_BACKEND = 'django.contrib.auth.backends.ModelBackend'
 AUTH_USER_MODEL = 'accounts.Account'
 LOGIN_URL = '/login/'
 
+DEFAULT_PROFILE_IMAGE = 'images/profile-default.png'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases

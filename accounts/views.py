@@ -69,6 +69,17 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         return render(self.request, self.template_name, {'feed': feed})
 
 
+class ProfileView(LoginRequiredMixin, TemplateView):
+    """ user's profile
+    """
+    template_name = 'accounts/profile.html'
+
+    def get(self, *args, **kwargs):
+        user_id = kwargs.get('user_id')
+        profile = get_object_or_404(Account, id=user_id) if user_id else self.request.user
+        return render(self.request, self.template_name, {'profile': profile})
+
+
 class ActivationView(TemplateView):
     """ User Activation View
     """
