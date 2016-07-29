@@ -1,0 +1,23 @@
+{% load staticfiles profile_completion %}
+
+<div class=" profile-status">
+    <label for=""> You're {{ user.completion_percent }}% closer to complete your profile </label>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" id="progressbar" aria-valuenow="{{ user.completion_percent }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ user.completion_percent }}%;">
+        </div>
+    </div>
+    <div class="row">
+        {% with tasks=user|get_profile_tasks completed_tasks=user.completion.all %}
+            {% for task in tasks %}
+                <div class="col-lg-1">
+                    <i class="fa fa-check-circle{% if not task in completed_tasks %}-o{% endif %} alert-info" aria-hidden="true"></i>
+                </div>
+                <div class="col-lg-10">
+                    <p>
+                        {{ task.desc }}
+                    </p>
+                </div>
+            {% endfor %}
+        {% endwith %}
+    </div>
+</div>

@@ -68,6 +68,8 @@ class Account(AbstractBaseUser, PermissionsMixin):
 
     cover_photo = models.ImageField(upload_to='covers/', null=True, blank=True)
     profile_picture = models.ImageField(upload_to='profiles/', null=True, blank=True)
+    quote = models.TextField(null=True, blank=True)
+    overview = models.TextField(null=True, blank=True)
 
     # more info
     position = models.CharField(max_length=255, null=True, blank=True)

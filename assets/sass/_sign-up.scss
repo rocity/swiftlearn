@@ -1,9 +1,9 @@
 .signup-page {
     background: #fff;
     background-size: cover;
-    .divider{
-    border-left:solid 1px #666;
-}
+    .divider {
+        border-left: solid 1px #666;
+    }
     .signup {
         font-family: $Montserrat-Light;
         display: flex;
@@ -36,26 +36,14 @@
         }
         .signup-btn {
             background: #055179;
-    
         }
-        
-            .fb {
-                background: #39579b;
-         
-                margin: 10px 0;
-            }
-            .google{
-            	background: #dd4b38;
-        
-                margin: 10px 0;
-            }
-           .twitter{
-            	background: #25a8e0;
-  
-                
-            }
-        
+        .fb {
+            background: #39579b;
+            margin: 10px 0;
+        }
         button {
+            font-family: $Lato-Regular;
+            height: 45px;
             color: #fff;
             border-radius: 10px;
             border: none;
@@ -63,7 +51,7 @@
             margin: 10px 0;
             &:hover {
                 background: #2d7aa3;
-                transition-duration: 1s;
+                transition: 1s;
             }
             &:focus {
                 -webkit-box-shadow: none;

@@ -34,15 +34,17 @@
             color: #fff;
         }
         button {
+            height: 45px;
             background: #055179;
             color: #fff;
             border-radius: 10px;
-            border: none;
+            border: solid #055179 2px;
             text-transform: uppercase;
 
             &:hover{
+                border: solid #2d7aa3 2px;
             	background: #2d7aa3;
-            	 transition-duration: 1s;
+            	 transition: 1s;
             }
              &:focus{
             	-webkit-box-shadow:none;

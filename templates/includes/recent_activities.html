@@ -1,4 +1,4 @@
-{% load staticfiles notifications %}
+{% load staticfiles profile notifications %}
 
 <div class="col-md-3 col-lg-3 recent-activities">
     <h4 class="column-header">
@@ -7,7 +7,7 @@
     {% for activity in user|load_notifications %}
     <div class="row activity-item">
         <div class="col-lg-3">
-            <img src="{{ MEDIA_URL }}{{ activity.user.profile_picture.url }}" class="img-rounded">
+            <img src="{{ MEDIA_URL }}{{ activity.user.profile_picture|get_image_url }}" class="img-rounded">
         </div>
         <div class="col-lg-9 activity-details">
             <a href="#" class="name">{{ activity.user.get_full_name }}</a> <a href="" class="pull-right time">{{ activity.date_created|timesince|shorten_timetag }} ago</a>

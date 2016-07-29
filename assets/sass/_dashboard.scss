@@ -179,10 +179,9 @@
 }
 
 .item-container {
-    height: 100vh;
+    height: 120vh;
     width: 100%;
     overflow: auto;
-
     .items {
         font-family: $Montserrat-Light;
         background: #fff;
@@ -205,8 +204,13 @@
                 padding: 5px 30px;
                 border-radius: 4px;
             }
+            .going-count {
+                color: #999;
+                font-size: 12px;
+            }
         }
         .item-details {
+            line-height: 150%;
             a {
                 text-decoration: none;
                 :hover {
@@ -222,11 +226,13 @@
             h6 {
                 font-family: 'arial', 'san-serif';
                 font-size: 12px;
+                line-height: 150%;
             }
             p {
-                font-family: 'arial', 'san-serif';
+                font-family: $OpenSans-Light;
                 color: #999;
                 font-size: 13px;
+                line-height: 150%;
             }
             .tutor {
                 color: #999;
@@ -234,6 +240,10 @@
             .tutorial-detail {
                 margin-left: -15px;
                 color: #666;
+            }
+            .date {
+                color: #666;
+                font-size: 15px;
             }
         }
     }
@@ -248,7 +258,6 @@
     .popover {
         width: 100%;
     }
-
 }
 
 .tutor-background {

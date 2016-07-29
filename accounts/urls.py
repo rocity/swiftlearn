@@ -6,6 +6,8 @@ urlpatterns = [
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^logout/$', LogoutView.as_view(), name='logout'),
     url(r'^dashboard/$', DashboardView.as_view(), name='dashboard'),
+    url(r'^profile/me/$', ProfileView.as_view(), name='profileme'),
+    url(r'^profile/(?P<user_id>[0-9]+)/$', ProfileView.as_view(), name='profile'),
     url(r'^activate/(?P<key>.+)/$', ActivationView.as_view(), name="activate"),
     url(r'^resend_key/$', ResendActivationView.as_view(), name="resend"),
 ]

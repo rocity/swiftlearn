@@ -2,17 +2,27 @@
     background: #fdfdfd;
     height: 160px;
     z-index: -1;
-    margin-top: 50px;
+
+}
+
+.cover-photo {
+    height: 300px;
+    background: {
+        image: url("../images/cover.jpg");
+        size: cover;
+        position-y: -330px;
+    }
 }
 
 .profile-header {
     display: flex;
     align-items: center;
-    z-index: 999999;
+    z-index: 9;
     margin-top: -180px;
+    font-family: $Montserrat-Light;
     img {
         width: 100%;
-      //  border-radius: 40px;
+        //  border-radius: 40px;
     }
     .profile-background {
         img {
@@ -22,12 +32,33 @@
             background: #fdfdfd;
         }
     }
+    .quote{
+    	font-family: $Georgia-Regular;
+    	color: #999;
+    	font-size: 24px;
+    }
+    h3 {
+        span {
+            color: #999;
+            font-size: 16px;
+        }
+    }
 }
 
 .profile-content {
+    margin: 20px 0;
     background: #fdfdfd;
     border-radius: 5px;
-    padding: 20px;
+    padding: 5% 7%;
+    h4 {
+        font-family: $Montserrat-Light;
+    }
+    p {
+        font-family: $OpenSans-Regular;
+        line-height: 150%;
+        letter-spacing: 0.1px;
+        margin: 20px 0;
+    }
 }
 
 .btn-hire {
@@ -38,21 +69,21 @@
     &:hover {
         color: #fff;
         transition: 1s;
-        background: #039985;
+        background: #00bfa5;
     }
     &:focus {
         outline: none;
-        background: #64a024;
+        background: #00bfa5;
     }
     &:active {
         color: #fff;
         transition: 1s;
-        background: #039985;
+        background: #00bfa5;
     }
     &:visited {
         color: #fff;
         transition: 1s;
-        background: #039985;
+        background: #00bfa5;
     }
 }
 
@@ -60,4 +91,48 @@
     margin: 20px 0;
     background: #fdfdfd;
     padding: 10px;
+}
+
+.portfolio {
+    .video {
+        display: inline-block;
+        margin: 20px 0;
+        .item {
+            width: 220px;
+            margin: 10px;
+            float: left;
+
+            img {
+                width: 100%;
+                height: auto;
+                border-radius: 5px;
+            }
+            a {
+                text-decoration: none;
+                font-family: $Montserrat-Regular;
+                color: #777;
+                text-transform: uppercase;
+                margin: 10px 0 0;
+                line-height: 150%;
+            }
+        }
+    }
+}
+.feedback{
+	.feedback-content{
+		font-family: $Montserrat-Light;
+		margin: 50px 0;
+		line-height: 150%;
+		border-bottom: #ebebeb solid 1px;
+		&:last-child{
+			border: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.rating{
+			color: #fdd835;
+		}
+
+	}
 }
