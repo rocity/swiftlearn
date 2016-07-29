@@ -1,6 +1,7 @@
 from uuid import uuid4
 
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.core.mail import EmailMessage
 from django.core.management import call_command
 from django.core.urlresolvers import reverse
 from django.db import models
@@ -132,6 +133,17 @@ class Account(AbstractBaseUser, PermissionsMixin):
     def get_profile_url(self):
         #return reverse('profile', args=[self.id])
         return "/profile/" + str(self.id) + "/"
+
+    def _send_confirmation_email(self):
+        """ Send confirmation key to user.
+        """
+        confirm_key = self.generate_confirm_key()
+
+        subject =   "Swift Tutorial Confirmation Key"
+        message =   "Click link to activate\n\n http://127.0.0.1:8000/activate/" + confirm_key.key
+        email_to = confirm_key.user
+        msg = EmailMessage(subject, message, to=[email_to])
+        msg.send()
 
 
 class ConfirmationKey(models.Model):
