@@ -133,6 +133,19 @@ class Account(AbstractBaseUser, PermissionsMixin):
         #return reverse('profile', args=[self.id])
         return "/profile/" + str(self.id) + "/"
 
+    def _send_confirmation_email(self):
+        """ Send confirmation key to user.
+        """
+        from django.core.mail import EmailMessage
+
+        confirm_key = self.generate_confirm_key()
+
+        subject =   "Swift Tutorial Confirmation Key"
+        message =   "Click link to activate\n\n http://127.0.0.1:8000/activate/" + confirm_key.key
+        email_to = confirm_key.user
+        msg = EmailMessage(subject, message, to=[email_to])
+        msg.send()
+
 
 class ConfirmationKey(models.Model):
     """ learner's email confirmation key

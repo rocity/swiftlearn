@@ -4,12 +4,13 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 
 from django.views.generic import TemplateView, View
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from braces.views import LoginRequiredMixin
 from events.models import Event
 
 from .forms import SignupForm, LoginForm
+from .models import ConfirmationKey, Account
 
 
 class SignupView(TemplateView):
@@ -24,8 +25,8 @@ class SignupView(TemplateView):
     def post(self, *args, **kwargs):
         form = SignupForm(self.request.POST)
         if form.is_valid():
-            instance = form.save()
-            #instance._send_confirmation_email() # activate account
+            instance = form.save()           
+            instance._send_confirmation_email() # activate account
             # login user
             instance.backend = settings.AUTH_BACKEND
             login(self.request, instance)
@@ -66,3 +67,19 @@ class DashboardView(LoginRequiredMixin, TemplateView):
     def get(self, *args, **kwargs):
         feed = Event.objects.all().order_by('-date_created')
         return render(self.request, self.template_name, {'feed': feed})
+
+
+class ActivationView(TemplateView):
+    """ User Activation View
+    """
+    def get(self, *args, **kwargs):
+        activate = get_object_or_404(ConfirmationKey, key=kwargs['key'])
+        user = Account.objects.get(email=activate.user)
+        
+        if user.is_active == True:
+            user.is_activated = True 
+            user.save()
+            activate.is_used = True
+            activate.save()
+            ConfirmationKey.objects.filter(user=activate.user, is_used=False).delete()
+            return HttpResponseRedirect(reverse('dashboard'))
