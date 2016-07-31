@@ -25,21 +25,19 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4">
-                                <form class="hidden email-entry" method="post">
+                                <form class="hidden email-entry" method="post" id="signup">
+                                    <div id="error"></div>
                                     {% csrf_token %}
-                                    <div class="form-group">
-                                        {{ form.email.errors.as_text }}
+                                    <div class="form-group" id="email_group">
                                         {{ form.email }}
                                     </div>
-                                    <div class="form-group">
-                                        {{ form.password.errors.as_text }}
+                                    <div class="form-group" id="password_group">
                                         {{ form.password }}
                                     </div>
-                                    <div class="form-group">
-                                        {{ form.confirm_password.errors.as_text }}
+                                    <div class="form-group" id="confirm_password_group">
                                         {{ form.confirm_password }}
                                     </div>
-                                    <button type="submit" class="btn signup-btn form-control">sign up</button>
+                                    <button type="button" class="btn signup-btn form-control" id="signup-btn">sign up</button>
                                 </form>
                                 <div id="signup-options">
                                     <button type="submit" class="btn email-signup form-control" value="email">sign up with email</button>
@@ -55,15 +53,9 @@
 </body>
 <script src="{% static 'js/jquery-1.9.1.min.js' %}"></script>
 <script>
-var signup = $('.email-entry');
-var options = $('#signup-options');
-
-{% if has_error %}
-signup.removeClass('hidden');
-options.addClass('hidden');
-{% endif %}
-
 $('#signup-options button').on("click", function() {
+    var signup = $('.email-entry');
+    var options = $('#signup-options');
     
     if ($(this).val() == 'email') {
         
@@ -76,4 +68,47 @@ $('#signup-options button').on("click", function() {
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#signup-btn').on('click',function(event){
+    // reset the validation before execute again
+    clearValidation();
+    // form execution
+    var url = $(this).attr('action');
+    var data  = $('#signup').serialize();
+
+    $.ajax({
+            url:url,
+            data:data,
+            type:"POST",
+            dataType:'json',
+            error:function(response){
+                var errors = JSON.parse(response.responseText);
+                $.each(errors,function(index, error){
+                     // error dissemination 
+                     var id = "#"+index+"_group";
+                        $(id).addClass('has-error');
+                        $(id).prepend(error).css({"color": "#a94442"});
+                        $('.errorlist').css({"list-style":"none","margin":"0","padding":"0"});
+                    // set focus text field if there is a error
+                     var txtid="#id_"+index;
+                        $(txtid).focus();
+                });
+            }
+    }).done(function(response){
+        // success 
+        if(response == "success"){
+              window.location.href="{% url 'dashboard' %}";  
+        }
+      });
+        event.preventDefault();
+    });
+});
+
+function clearValidation(){
+  $('.form-group').removeClass('has-error');
+  $('.errorlist').remove();
+}
+
+</script>
 </html>
