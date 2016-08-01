@@ -10,6 +10,8 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
+from .mixins import TimezoneMixin
+
 
 class AccountCompletionTask(models.Model):
     """ learner's account completion
@@ -54,7 +56,7 @@ class AccountManager(BaseUserManager):
         return account
 
 
-class Account(AbstractBaseUser, PermissionsMixin):
+class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
     """ Model class which contains the user's
         account information
     """
@@ -133,8 +135,10 @@ class Account(AbstractBaseUser, PermissionsMixin):
         return "{percent}".format(percent=percent['points__sum'] or 0)
 
     def get_profile_url(self):
-        #return reverse('profile', args=[self.id])
-        return "/profile/" + str(self.id) + "/"
+        return reverse('profile', args=[self.id])
+
+    def get_gmt(self):
+        return self.get_timezone(self.city)
 
     def _send_confirmation_email(self):
         """ Send confirmation key to user.
@@ -186,6 +190,8 @@ class Skill(models.Model):
     """ Global tags
     """
     name = models.CharField(max_length=200)
+    logo = models.ImageField(upload_to='skills/logo/', null=True, blank=True)
+    date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return "{name}".format(name=self.name)

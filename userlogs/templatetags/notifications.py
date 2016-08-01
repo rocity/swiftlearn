@@ -15,5 +15,9 @@ def shorten_timetag(strtime):
     return strtime.replace("minutes ", "mins ").replace("minute ", "min ")
 
 @register.filter
+def single_timetag(strtime):
+    return strtime.split(",")[0]
+
+@register.filter
 def notification_text(activity):
     return RECENT_ACTIVITY_MESSAGES[activity.action][activity.action_type]

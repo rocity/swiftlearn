@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load staticfiles notifications %}
 
 {% block content %}
 <div class="row dashboard">
@@ -35,7 +35,7 @@
                     <p>{{ item.info|truncatewords:28 }}</p>
                     <div class="tutor">
                         <h6>
-                        <a href="#">{{ item.educator.get_full_name }}</a> - Bangkok, Thailand  <a href="#">{{ item.date_created|timesince }} ago</a>
+                        <a href="{% url 'profile' item.educator.id %}">{{ item.educator.get_full_name }}</a> - {{ item.educator.city }}, {{ item.educator.country }}  <a href="#">{{ item.date_created|timesince|single_timetag }} ago</a>
                     </h6>
                         
                     </div>
