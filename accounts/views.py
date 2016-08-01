@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.contrib.auth import login, logout
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponse
 
 from django.views.generic import TemplateView, View
 from django.shortcuts import render, get_object_or_404
@@ -12,6 +12,7 @@ from events.models import Event
 from .forms import SignupForm, LoginForm
 from .models import ConfirmationKey, Account
 
+import json
 
 class SignupView(TemplateView):
     """ Registration view for new learners
@@ -20,7 +21,7 @@ class SignupView(TemplateView):
 
     def get(self, *args, **kwargs):
         form = SignupForm()
-        return render(self.request, self.template_name, {'form': form, 'has_error': False})
+        return render(self.request, self.template_name, {'form': form})
 
     def post(self, *args, **kwargs):
         form = SignupForm(self.request.POST)
@@ -30,9 +31,17 @@ class SignupView(TemplateView):
             # login user
             instance.backend = settings.AUTH_BACKEND
             login(self.request, instance)
-
-            return HttpResponseRedirect(reverse('dashboard'))
-        return render(self.request, self.template_name, {'form': form, 'has_error': True})
+            success = "success"
+            return HttpResponse(json.dumps(success))
+        else:
+            if self.request.is_ajax():
+                errors_dict = { }
+                if form.errors:
+                    for error in form.errors:
+                        e = form.errors[error]
+                        errors_dict[error] = unicode(e)
+                return HttpResponseBadRequest(json.dumps(errors_dict))
+        return render(self.request, self.template_name, {'form': form})
 
 
 class LoginView(TemplateView):
