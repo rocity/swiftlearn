@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load staticfiles profile %}
+{% load tz %}
 
 {% block profile_header %}
-<div class="cover-photo">
+<div class="cover-photo" style="background-image:url('{{ profile.cover_photo|get_image_url }}');">
 </div>
 <div class="profile-header-background">
 </div>
@@ -18,7 +19,7 @@
     <div class="col-lg-9 ">
         <h1>{{ profile.get_full_name|title }}</h1>
         <h3>
-            {{ user.position|title }} <span> - {{ profile.city }}, {{ profile.country }} (GMT + 8:00) </span> 
+            {{ user.position|title }} <span> - {{ profile.city }}, {{ profile.country }} ({{ profile.get_gmt }}) </span> 
         </h3>
         <p>
             <span class="quote">"</span>{{ profile.quote }}<span  class="quote">"</span>
@@ -73,7 +74,7 @@
             </div>
         </div>
         <div class="profile-content">
-            <h4>ABOUT EARVIN</h4>
+            <h4>ABOUT {{ profile.first_name|upper }}</h4>
             <table class="table">
                 <tr>
                     <td>
@@ -81,7 +82,7 @@
                     </td>
                     <td>
                         <div>
-                            cooking
+                            {% for skill in profile.expertise.all %}{{ skill }}{% if not forloop.last %}, {% endif %}{% endfor %}
                         </div>
                     </td>
                 </tr>

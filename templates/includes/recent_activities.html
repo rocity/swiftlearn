@@ -10,7 +10,7 @@
             <img src="{{ MEDIA_URL }}{{ activity.user.profile_picture|get_image_url }}" class="img-rounded">
         </div>
         <div class="col-lg-9 activity-details">
-            <a href="#" class="name">{{ activity.user.get_full_name }}</a> <a href="" class="pull-right time">{{ activity.date_created|timesince|shorten_timetag }} ago</a>
+            <a href="{% url 'profile' activity.user.id %}" class="name">{{ activity.user.get_full_name }}</a> <a href="" class="pull-right time">{{ activity.date_created|timesince|shorten_timetag }} ago</a>
             <p>
                 {{ activity|notification_text }}
             </p>

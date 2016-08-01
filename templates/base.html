@@ -28,6 +28,7 @@
             </div>
         </div>
     </nav>
+    {% if not request.user.is_activated %}
     <nav class="container-fluid email-notification">
         <div class="row">
             <div class="col-md-12 alert alert-danger content">

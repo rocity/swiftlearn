@@ -8,7 +8,7 @@
             </div>
             <div class="col-md-10 col-lg-9">
                 <h3>
-                    <a href="#">{{ user.get_full_name|title }}</a>
+                    <a href="{% url 'profileme' %}">{{ user.get_full_name|title }}</a>
                 </h3>
                 <h4>
                     {{ user.position|title }}
