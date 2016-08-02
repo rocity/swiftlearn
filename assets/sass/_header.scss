@@ -9,18 +9,26 @@ body {}
     border: none;
     font-family: $Montserrat-Light;
     box-shadow: 2px 2px 2px #eeeeee;
-    display: flex;
-    align-items: center;
-    height: 60px;
     .navbar-brand {
         color: #cf032b;
     }
     ul {
-        list-style: none;
         li {
-            float: left;
+            .tutorial-link {
+                background: #fdd835;
+                color: #fff;
+                padding: 7px 15px;
+                margin-top: 7px;
+                border-radius: 5px;
+                font-family: $Montserrat-Light;
+                &:hover {
+                    background: #fdcc35;
+                    transition: 0.5s;
+                    color: #fff;
+                    cursor: pointer;
+                }
+            }
             a {
-                display: block;
                 color: #666;
                 .number {
                     background: #a71212;
@@ -30,10 +38,72 @@ body {}
                     font-size: 12px;
                 }
                 img {
-                    width: 40px;
+                    width: 30px;
+                    margin: 10px auto;
+                    border-radius: 5px;
                 }
             }
-            
+        }
+    }
+    .navbar-right {
+        .user-dropdown {
+            width: 250px;
+            .profile-link{
+                h5{
+                    color: #303030;
+                }
+                h6{
+                    color: #888;
+                    font-size: 13px;
+                }
+            }
+        }
+        .dropdown {
+            #user-profile {
+                padding: 0;
+                transition: background 0s linear;
+                -webkit-transition: background 0s linear;
+                background: #fff;
+                &:focus {
+                    background: #fff;
+                }
+                &:hover {
+                    background: #fff;
+                    cursor: pointer;
+                }
+            }
+            ul {
+                li {
+                    .start-teaching {
+                        background: #fdd835;
+                        padding-left: 10px;
+                        margin: auto 10px;
+                        color: #fff;
+                        border-radius: 5px;
+                        margin-right: 45%;
+                        &:hover{
+                            background: #fdcc35;
+                            transition: 0.5s;
+                        }
+                    }
+                    a {
+                        //margin: 10px 0;
+                        padding: 5px 0 5px 20px;
+                       
+                    }
+                    img {
+                        width: 25px;
+                        margin-top: -80px;
+                        margin-left: 116px;
+                        &:hover{
+                            background:none;
+                        }
+                    }
+                     :hover{
+                            background: #e4f3ff;
+                        }
+                }
+            }
         }
     }
 }

@@ -33,8 +33,16 @@ $(document).ready(function() {
             text.removeClass('hidden');
         }
     });
+    $('#profile-tab a').click(function(e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
 
-
-
+    $('#portfolio-modal').on('shown.bs.modal', function() {
+        $('#myInput').focus()
+    })
+     $('upload-file input').change(function () {
+    
+  });
 
 });

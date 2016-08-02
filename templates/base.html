@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load staticfiles profile %}
 
 <!DOCTYPE html>
 <html>
@@ -16,23 +16,53 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="{% url 'dashboard' %}">Swift Tutorial</a>
             </div>
-            <div class="pull-right">
-                <ul>
-                    <li>
-                        <a href="#"><i class="fa fa-bell-o" aria-hidden="true"></i>Notifications <span class="number">12</span></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'logout' %}">Log out</a>
-                    </li>
-                </ul>
-            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="tutorial-link"><i class="fa fa-plus" aria-hidden="true"></i> Start tutorial!</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-bell-o" aria-hidden="true"></i>Notifications <span class="number">12</span></a>
+                </li>
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" type="button" id="user-profile" data-toggle="dropdown" aria-hashpop="true" aria-expanded="true">
+                        <img src="{{ MEDIA_URL }}{{ user.profile_picture|get_image_url }}">
+                    </a>
+                    <ul class="dropdown-menu user-dropdown" aria-labelledby="user-profile">
+                        <li>
+                            <a href="{% url 'profileme' %}" class="profile-link">
+                                <h5>Earvin Gemenez</h5>
+                                <h6>view profile</h6></a>
+                        </li>
+                        <li class="divider" role="separator"></li>
+                        <li>
+                            <a href="#"> Messages</a>
+                        </li>
+                        <li>
+                            <a href="#"> Settings</a>
+                        </li>
+                        <li>
+                            <a href="#"> My Tutorials</a>
+                        </li>
+                        <li>
+                            <a href="#"> My Bookmarks</a>
+                        </li>
+                        <li>
+                            <a href="#" class="start-teaching">Start Teaching </a>
+                            <img src="{% static 'images/surprise-icon.png' %}">
+                        </li>
+                        <li class="divider" role="separator"></li>
+                        <li><a href="{% url 'logout' %}">Log out</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </nav>
+
     {% if not request.user.is_activated %}
-    <nav class="container-fluid email-notification">
-        <div class="row">
+    <nav class="email-notification container-fluid">
+        <div class="row ">
             <div class="col-md-12 alert alert-danger content">
-                <div class="text-center">
+                <div class="text-center ">
                     <p><strong>Wait up! Confirm your email.</strong> Check your emaill inbox or <strong><a href="{% url 'resend' %}">Resend email</a></strong></p>
                 </div>
             </div>

@@ -19,7 +19,7 @@
     <div class="col-lg-9 ">
         <h1>{{ profile.get_full_name|title }}</h1>
         <h3>
-            {{ user.position|title }} <span> - {{ profile.city }}, {{ profile.country }} ({{ profile.get_gmt }}) </span> 
+            {{ user.position|title }} <span> - {{ profile.city }}, {{ profile.country }} ({{ profile.timezone }}) </span> 
         </h3>
         <p>
             <span class="quote">"</span>{{ profile.quote }}<span  class="quote">"</span>

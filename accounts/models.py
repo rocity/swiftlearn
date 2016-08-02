@@ -67,6 +67,7 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
     city = models.CharField(max_length=200, null=True, blank=True)
     country = models.CharField(max_length=200, null=True, blank=True)
     phone = models.CharField(max_length=200, null=True, blank=True)
+    timezone = models.CharField(max_length=50, null=True, blank=True)
 
     cover_photo = models.ImageField(upload_to='covers/', null=True, blank=True)
     profile_picture = models.ImageField(upload_to='profiles/', null=True, blank=True)
@@ -98,6 +99,11 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return "{email}".format(email=self.email)
+
+    def save(self, *args, **kwargs):
+        if not self.timezone:
+            self.timezone = self.get_gmt()
+        return super(Account, self).save(*args, **kwargs)
 
     def get_full_name(self):
         """ Returns the first_name pluse the last_name, with a space

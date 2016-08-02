@@ -2,6 +2,7 @@
     background: #f5f5f5;
     font-family: 'arial', 'san-serif';
     overflow: hidden;
+
 }
 
 .column-header {
@@ -20,7 +21,7 @@
     .user-details {
         background: #fdfdfd;
         margin: 0 0 5px;
-        border: 1px solid #f1f1f1;
+        border: 1px solid #efefef;
         padding: 10px;
         img {
             width: 50px;
@@ -98,6 +99,7 @@
     background: #f8fcfa;
     color: #747575;
     font-size: 13px;
+    border: 1px solid #efefef;
     .progress {
         background-color: #e1f5fe;
         border-radius: 10px;
@@ -253,11 +255,7 @@
 }
 
 //tutor.html
-.hire {
-    .popover {
-        width: 100%;
-    }
-}
+
 
 .tutor-background {
     .tutor-details {
