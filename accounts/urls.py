@@ -10,10 +10,8 @@ urlpatterns = [
     url(r'^profile/(?P<user_id>[0-9]+)/$', ProfileView.as_view(), name='profile'),
     url(r'^activate/(?P<key>.+)/$', ActivationView.as_view(), name="activate"),
     url(r'^resend_key/$', ResendActivationView.as_view(), name="resend"),
-<<<<<<< HEAD
     url(r'^search/$', SearchView.as_view(), name='search'),
-=======
     url(r'^reset_password/$', ResetPasswordRequestView.as_view(), name="reset_password"),
     url(r'^reset_password_confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', ResetPasswordConfirmView.as_view(),name='reset_password_confirm'),
->>>>>>> Forgot password
+
 ]

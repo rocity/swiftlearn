@@ -90,7 +90,7 @@ class ChangePasswordForm(forms.ModelForm):
 
     def clean_password(self):
         password = self.cleaned_data['password']
-        confirm_password = self.cleaned_data['confirm_password']
+        confirm_password = self.data['confirm_password']
 
         if password != confirm_password:
             raise forms.ValidationError("Password didn't match. Try again.")

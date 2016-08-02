@@ -125,7 +125,6 @@ class ResendActivationView(TemplateView):
         return HttpResponseRedirect(reverse('dashboard'))
 
 
-<<<<<<< HEAD
 class SearchView(View):
     """Search for Preffered Tutorial
     """
@@ -143,7 +142,8 @@ class SearchView(View):
                 Q(tags__name__icontains=search)
                 )
         return render(self.request, self.template_name,{'feed':feed})
-=======
+
+
 class ResetPasswordRequestView(TemplateView):
     """ User reset password request view
     """
@@ -167,8 +167,8 @@ class ResetPasswordRequestView(TemplateView):
                         'uid': urlsafe_base64_encode(force_bytes(user)),
                         'token': default_token_generator.make_token(user),
                         }
-
-                    email_template_name='accounts/password_reset_email.html'
+                    #send reset pass link to user
+                    email_template_name = 'accounts/password_reset_email.html'
                     subject = "Swiftkind Password Reset"
                     email = loader.render_to_string(email_template_name, c)
                     send_mail(subject, email, DEFAULT_FROM_EMAIL , [user.email], fail_silently=False)
@@ -179,6 +179,7 @@ class ResetPasswordRequestView(TemplateView):
                 return render(self.request, self.template_name, {'form': form})
 
         return render(self.request, self.template_name, {'form': form})
+
 
 
 class ResetPasswordConfirmView(TemplateView):
@@ -206,9 +207,8 @@ class ResetPasswordConfirmView(TemplateView):
                 user.save()
                 return HttpResponseRedirect(reverse('login'))
             else:
-                messages.error(request, 'Password reset has not been unsuccessful.')
+                messages.error(request, 'Password reset has been unsuccessful.')
                 return render(self.request, self.template_name, {'form': form})
         else:
             messages.error(request,'The reset password link is no longer valid.')
             return render(self.request, self.template_name, {'form': form})
->>>>>>> Forgot password
