@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 
 from .models import Account
+from events.models import Event
 
 
 class SignupForm(forms.ModelForm):
