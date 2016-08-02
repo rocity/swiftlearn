@@ -121,7 +121,6 @@ class SearchView(View):
     """Search for Preffered Tutorial
     """
     template_name = 'accounts/search.html'
-    context = {}
 
     def get(self, *args, **kwargs):
         feed = Event.objects.all().order_by('-date_created')
@@ -134,8 +133,4 @@ class SearchView(View):
                 Q(info__icontains=search)|
                 Q(tags__name__icontains=search)
                 )
-            self.context['feed'] = feed
-        else:
-            self.context['feed'] = feed
-        return render(self.request, self.template_name,self.context)
-        
+        return render(self.request, self.template_name,{'feed':feed})
