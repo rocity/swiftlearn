@@ -2,9 +2,63 @@
 
 
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Create</button>
-</form>
+<div class="row dashboard">
+    {% include 'includes/user_details.html' %}    
+
+    <div class=" col-md-9 create-event">
+        <div>
+            <h4>Create event</h4>
+        </div>
+        <hr/>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>
+                    Event Title
+                </label>
+                {{ form.title.errors.as_text }}
+                {{ form.title }}
+                <hr/>
+                <label>
+                    Description
+                </label>
+                {{ form.info.errors.as_text }}
+                {{ form.info }}
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Select date</label>
+                        {{ form.start_date.errors }}
+                        {{ form.start_date }}
+                    </div>
+                    <div class="col-md-4">
+                        <label>Start time</label>
+                        {{ form.start_time.errors }}
+                        {{ form.start_time }}
+                    </div>
+                    <div class="col-md-4">
+                        <label>End Time</label>
+                        {{ form.end_time.errors }}
+                        {{ form.end_time }}
+                    </div>
+                </div>
+                <div class="row bottom">
+                    <div class="col-md-8">
+                        <label>Categories</label>
+                        {{ form.tags }}
+                    </div>
+                    <div class="col-md-4">
+                        <label>Event URL</label>
+                        {{ form.fee.errors.as_text }}
+                        {{ form.fee }}
+                        <div class="input-group">
+                            <input type="text" class="form-control username" placeholder="event URL" aria-describedby="category">
+                            <span class="input-group-addon url-btn" id="category"><a href="">copy</a></span>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success pull-right">CREATE EVENT</button>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}

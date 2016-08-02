@@ -13,7 +13,9 @@ class Event(RecentActivityMixin, models.Model):
     tags = models.ManyToManyField(Skill, blank=True)
 
     date_created = models.DateTimeField(auto_now_add=True)
-    start_date = models.DateTimeField(null=True, blank=True)
+    start_date = models.DateField(null=True, blank=True)
+    start_time = models.TimeField(null=True, blank=True)
+    end_time = models.TimeField(null=True, blank=True)
     fee = models.DecimalField(max_digits=9, decimal_places=2, default=0.00)
     is_finished = models.BooleanField(default=False)
 

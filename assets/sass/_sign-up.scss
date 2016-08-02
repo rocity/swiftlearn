@@ -32,14 +32,9 @@
         }
         .email-signup {
             background: #055179;
-
         }
         .signup-btn {
             background: #055179;
-        }
-        .fb {
-            background: #39579b;
-            margin: 10px 0;
         }
         button {
             font-family: $Lato-Regular;
@@ -64,6 +59,17 @@
                     text-decoration: none;
                 }
             }
+        }
+    }
+}
+
+.social-signup {
+    text-align: center;
+    a {
+        margin: 0 10px;
+        img {
+            width: 50px;
+
         }
     }
 }

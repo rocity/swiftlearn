@@ -9,6 +9,9 @@ body {}
     border: none;
     font-family: $Montserrat-Light;
     box-shadow: 2px 2px 2px #eeeeee;
+    display: flex;
+    align-items: center;
+    height: 60px;
     .navbar-brand {
         color: #cf032b;
     }
@@ -19,7 +22,6 @@ body {}
             a {
                 display: block;
                 color: #666;
-                margin: 20px;
                 .number {
                     background: #a71212;
                     color: #fff;
@@ -27,20 +29,26 @@ body {}
                     padding: 6px 8px;
                     font-size: 12px;
                 }
+                img {
+                    width: 40px;
+                }
             }
+            
         }
     }
 }
-.email-notification{
+
+.email-notification {
     width: 100%;
-	.content{
-		margin: 0;
-	}
-	a{
-		color: #a94442;
-		text-decoration: none;
-	}
+    .content {
+        margin: 0;
+    }
+    a {
+        color: #a94442;
+        text-decoration: none;
+    }
 }
+
 .affix {
     top: 0;
     width: 100%;
@@ -48,9 +56,8 @@ body {}
     z-index: 9999;
     transition: 0.5s;
     padding: 0;
-
-      -webkit-transition: all 0.5s ease-in-out;
-      transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 .affix-top {
@@ -59,6 +66,5 @@ body {}
 }
 
 .affix ~ .container-fluid {
-
     padding-top: 70px;
 }
