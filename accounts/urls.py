@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^profile/(?P<user_id>[0-9]+)/$', ProfileView.as_view(), name='profile'),
     url(r'^activate/(?P<key>.+)/$', ActivationView.as_view(), name="activate"),
     url(r'^resend_key/$', ResendActivationView.as_view(), name="resend"),
+    url(r'^search$', SearchView.as_view(), name='search'),
 ]

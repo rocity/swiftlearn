@@ -3,6 +3,8 @@ from django.contrib.auth import login, logout
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponse
 
+from django.db.models import Q
+
 from django.views.generic import TemplateView, View
 from django.shortcuts import render, get_object_or_404
 
@@ -72,7 +74,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
     """ Dashboard View
     """
     template_name = 'accounts/dashboard.html'
-
+    
     def get(self, *args, **kwargs):
         feed = Event.objects.all().order_by('-date_created')
         return render(self.request, self.template_name, {'feed': feed})
@@ -113,3 +115,27 @@ class ResendActivationView(TemplateView):
         user._send_confirmation_email()
 
         return HttpResponseRedirect(reverse('dashboard'))
+
+
+class SearchView(View):
+    """Search for Preffered Tutorial
+    """
+    template_name = 'accounts/search.html'
+    context = {}
+
+    def get(self, *args, **kwargs):
+        feed = Event.objects.all().order_by('-date_created')
+        search = self.request.GET.get('q')
+        if search:
+            feed = feed.filter(
+                Q(title__icontains=search)|
+                Q(educator__last_name__icontains=search)|
+                Q(educator__first_name__icontains=search)|
+                Q(info__icontains=search)|
+                Q(tags__name__icontains=search)
+                )
+            self.context['feed'] = feed
+        else:
+            self.context['feed'] = feed
+        return render(self.request, self.template_name,self.context)
+        

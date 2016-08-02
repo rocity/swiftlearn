@@ -1,24 +1,5 @@
-{% extends 'base.html' %}
 {% load staticfiles notifications %}
-
-{% block content %}
-<div class="row dashboard">
-    {% include 'includes/user_details.html' %}
-
-    <div class="col-md-6 col-lg-6 tutorial-feed">
-        <div class="row feed-header ">
-            <div class="col-md-12 col-lg-12">
-                <form id="search-form" >
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="submit" id="btn-search"><i class="fa fa-search" aria-hidden="true"></i></button>
-                        </span>
-                        <input type="text" id="search" autocomplete="off" class="form-control" placeholder="Search a tutorial">
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="item-container">
+    {% if feed %}
             {% for item in feed %}
             <div class="row items ">
                 <div class="col-md-3 col-lg-3 text-center item-picture">
@@ -42,9 +23,8 @@
                 </div>
             </div>
             {% endfor %}
-        </div>
-    </div>
-
-    {% include 'includes/recent_activities.html' %}
-</div>
-{% endblock %}
+    {% else %}
+      <div class="row items ">
+        <b>Search Not Found!</b>
+      </div>
+    {% endif %}
