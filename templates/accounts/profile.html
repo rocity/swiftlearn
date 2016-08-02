@@ -54,15 +54,9 @@
         </div>'>HIRE AS TUTOR</button>
         </div>
         <div class="owl-carousel ">
-            <div> <img src="{% static 'images/angular-logo.png' %}"> </div>
-            <div> <img src="{% static 'images/bootstrap.png' %}"> </div>
-            <div> <img src="{% static 'images/django.png' %}"></div>
-            <div> <img src="{% static 'images/android.png' %}"> </div>
-            <div> <img src="{% static 'images/html.png' %}"> </div>
-            <div> <img src="{% static 'images/jquery.png' %}"> </div>
-            <div> <img src="{% static 'images/node.png' %}"> </div>
-            <div> <img src="{% static 'images/sass.png' %}"> </div>
-            <div> <img src="{% static 'images/oracle.png' %}"> </div>
+            {% for badge in profile.badges.all %}
+            <div> <img src="{{ badge.icon.url }}"> </div>
+            {% endfor %}
         </div>
         {% include 'includes/profile_progress.html' %}
     </div>

@@ -72,6 +72,7 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
     profile_picture = models.ImageField(upload_to='profiles/', null=True, blank=True)
     quote = models.TextField(null=True, blank=True)
     overview = models.TextField(null=True, blank=True)
+    badges = models.ManyToManyField('Badge', blank=True)
 
     # more info
     position = models.CharField(max_length=255, null=True, blank=True)
@@ -138,7 +139,7 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
         return reverse('profile', args=[self.id])
 
     def get_gmt(self):
-        return self.get_timezone(self.city)
+        return "GMT {}".format(self.get_gmtzone(self.city))
 
     def _send_confirmation_email(self):
         """ Send confirmation key to user.
@@ -195,3 +196,25 @@ class Skill(models.Model):
 
     def __str__(self):
         return "{name}".format(name=self.name)
+
+
+class Badge(models.Model):
+    """ User's achievement badges
+    """
+    title = models.CharField(max_length=200)
+    icon = models.ImageField(upload_to='badges/', null=True, blank=True)
+
+    criteria = models.ManyToManyField('BadgeCriteria', blank=True)
+
+    def __str__(self):
+        return "{title}".format(title=self.title)
+
+
+class BadgeCriteria(models.Model):
+    """ Badge tutorials
+    """
+    desc = models.CharField(max_length=255)
+    points = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return "{desc}".format(desc=self.desc)
