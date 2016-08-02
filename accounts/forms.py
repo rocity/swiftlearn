@@ -63,3 +63,35 @@ class LoginForm(AuthenticationForm):
             raise forms.ValidationError(self.error_msg, code='invalid_login')
 
         return self.cleaned_data
+
+
+class ResetPasswordForm(forms.Form):
+    """ form for password reset
+    """
+    email = forms.EmailField(widget=forms.EmailInput({
+        'class': 'form-control', 'placeholder': 'E-mail address'
+    }))
+
+
+class ChangePasswordForm(forms.ModelForm):
+    """ form for user to change password
+    """
+    new_password = forms.CharField(widget=forms.PasswordInput({
+        'class': 'form-control', 'placeholder': 'New Password'
+    }))
+    confirm_password = forms.CharField(widget=forms.PasswordInput({
+        'class': 'form-control', 'placeholder': 'Confirm password'
+    }))
+
+    class Meta:
+        model = Account
+        fields = ('new_password', 'confirm_password')
+
+    def clean_password(self):
+        new_password = self.cleaned_data['new_password']
+        confirm_password = self.cleaned_data['confirm_password']
+
+        if new_password != confirm_password:
+            raise forms.ValidationError("Password didn't match. Try again.")
+
+        return new_password
