@@ -11,8 +11,16 @@ from django.shortcuts import render, get_object_or_404
 from braces.views import LoginRequiredMixin
 from events.models import Event
 
-from .forms import SignupForm, LoginForm
+from .forms import SignupForm, LoginForm, ResetPasswordForm, ChangePasswordForm
 from .models import ConfirmationKey, Account
+
+from django.contrib.auth.tokens import default_token_generator
+from django.contrib import messages
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.template import loader
+from django.core.mail import send_mail
+from swiftlearn.settings import DEFAULT_FROM_EMAIL
 
 import json
 
@@ -41,7 +49,7 @@ class SignupView(TemplateView):
                 if form.errors:
                     for error in form.errors:
                         e = form.errors[error]
-                        errors_dict[error] = unicode(e)
+                        errors_dict[error] = str(e)
                 return HttpResponseBadRequest(json.dumps(errors_dict))
         return render(self.request, self.template_name, {'form': form})
 
@@ -117,6 +125,7 @@ class ResendActivationView(TemplateView):
         return HttpResponseRedirect(reverse('dashboard'))
 
 
+<<<<<<< HEAD
 class SearchView(View):
     """Search for Preffered Tutorial
     """
@@ -134,3 +143,72 @@ class SearchView(View):
                 Q(tags__name__icontains=search)
                 )
         return render(self.request, self.template_name,{'feed':feed})
+=======
+class ResetPasswordRequestView(TemplateView):
+    """ User reset password request view
+    """
+    template_name = 'accounts/password_reset.html'
+
+    def get(self, *args, **kwargs):
+        form = ResetPasswordForm()
+        return render(self.request, self.template_name, {'form': form})
+
+    def post(self, *args, **kwargs):
+        form = ResetPasswordForm(self.request.POST)
+        if form.is_valid():
+            data  = form.cleaned_data['email']
+            users = Account.objects.filter(email=data)
+            if users.exists():
+                for user in users:
+                    c = {
+                        'email': user,
+                        'domain': self.request.META['HTTP_HOST'],
+                        'site_name': 'Swiftkind Tutorials',
+                        'uid': urlsafe_base64_encode(force_bytes(user)),
+                        'token': default_token_generator.make_token(user),
+                        }
+
+                    email_template_name='accounts/password_reset_email.html'
+                    subject = "Swiftkind Password Reset"
+                    email = loader.render_to_string(email_template_name, c)
+                    send_mail(subject, email, DEFAULT_FROM_EMAIL , [user.email], fail_silently=False)
+                messages.success(self.request, "Check your inbox to continue reseting password.")
+                return render(self.request, self.template_name, {'form': form})
+            else:
+                messages.error(self.request, 'The email does not exist.')
+                return render(self.request, self.template_name, {'form': form})
+
+        return render(self.request, self.template_name, {'form': form})
+
+
+class ResetPasswordConfirmView(TemplateView):
+    """ User change password view
+    """
+    template_name = 'accounts/password_change.html'
+
+    def get(self, *args, **kwargs):
+        form = ChangePasswordForm()
+        return render(self.request, self.template_name, {'form': form})
+
+    def post(self, request, uidb64=None, token=None):
+        form = ChangePasswordForm(self.request.POST)
+
+        try:
+            uid = urlsafe_base64_decode(uidb64)
+            user = Account.objects.get(email=uid)
+        except Account.DoesNotExist:
+            user=None
+
+        if user is not None and default_token_generator.check_token(user, token):
+            if form.is_valid():
+                password = form.cleaned_data['password']
+                user.set_password(password)
+                user.save()
+                return HttpResponseRedirect(reverse('login'))
+            else:
+                messages.error(request, 'Password reset has not been unsuccessful.')
+                return render(self.request, self.template_name, {'form': form})
+        else:
+            messages.error(request,'The reset password link is no longer valid.')
+            return render(self.request, self.template_name, {'form': form})
+>>>>>>> Forgot password
