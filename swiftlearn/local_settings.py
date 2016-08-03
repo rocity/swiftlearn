@@ -10,6 +10,7 @@ DATABASES = {
     }
 }
 
+DEFAULT_FROM_EMAIL = 'swiftkindgong@gmail.com'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'swiftkindgong@gmail.com'
 EMAIL_HOST_PASSWORD = ''
