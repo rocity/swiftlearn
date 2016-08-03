@@ -1,5 +1,5 @@
 from django import forms
-from .models import Event
+from .models import Event, Feedback
 
 
 class EventForm(forms.ModelForm):
@@ -46,3 +46,18 @@ class EventForm(forms.ModelForm):
             'fee',
             'tags',
         )
+
+
+class FeedbackForm(forms.ModelForm):
+    
+    rate_star = forms.IntegerField(widget=forms.NumberInput({
+        'class':'form-control',
+        'placeholder':'Rating Star, select 1 to 5!'}
+        ),label='',required=False,max_value=5, min_value=1)
+    feedback = forms.CharField(widget=forms.Textarea({
+        'class':'form-control',
+        'placeholder':'Feedback Message'
+        }),label='')
+    class Meta:
+        model = Feedback
+        fields = ('rate_star','feedback')

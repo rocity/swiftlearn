@@ -11,7 +11,7 @@ from django.views.generic import TemplateView, View
 from django.shortcuts import render, get_object_or_404
 
 from braces.views import LoginRequiredMixin
-from events.models import Event
+from events.models import Event, Feedback
 
 from .forms import SignupForm, LoginForm, ResetPasswordForm, ChangePasswordForm
 from .models import ConfirmationKey, Account
@@ -100,7 +100,8 @@ class ProfileView(LoginRequiredMixin, TemplateView):
     def get(self, *args, **kwargs):
         user_id = kwargs.get('user_id')
         profile = get_object_or_404(Account, id=user_id) if user_id else self.request.user
-        return render(self.request, self.template_name, {'profile': profile})
+        feeds = Feedback.objects.all().order_by('-feed_date')
+        return render(self.request, self.template_name, {'profile': profile,'feeds':feeds})
 
 
 class ActivationView(TemplateView):

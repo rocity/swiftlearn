@@ -6,7 +6,7 @@ from django.views.generic import TemplateView, View
 from django.shortcuts import render, get_object_or_404
 
 from braces.views import LoginRequiredMixin
-from .forms import EventForm
+from .forms import EventForm, FeedbackForm
 from .models import Event
 
 
@@ -68,3 +68,25 @@ class EventJoinView(LoginRequiredMixin, View):
         print(joined)
 
         return HttpResponseRedirect(reverse('event', args=[event.id]))
+
+
+class FeedbackView(LoginRequiredMixin, TemplateView):
+    """ Create new feedback for Event 
+    """
+    template_name = "events/feedback.html"
+
+    def get(self, *args, **kwargs):
+        event = Event.objects.get(id=kwargs.get('event_id'))
+        form = FeedbackForm()
+        return render(self.request, self.template_name,{'form':form, 'event':event})
+
+    def post(self, *args, **kwargs):
+        event = Event.objects.get(id=kwargs.get('event_id'))
+        form = FeedbackForm(self.request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = self.request.user
+            instance.event_title = event
+            instance.save()
+            return HttpResponseRedirect(reverse('profileme'))
+        return render(self.request, self.template_name,{'form':form,'event':event})

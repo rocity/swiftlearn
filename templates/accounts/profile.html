@@ -136,82 +136,26 @@
             <h4>
                <i class="fa fa-comment" aria-hidden="true"></i> TUTORIAL FEEDBACK
             </h4>
+        <!-- list of feedback -->
+        {% for feed in feeds %}
             <div class="feedback-content">
                 <h3>
-                <a href="#">HOW TO SING</a>
-            </h3>
+                    <a href="#">{{feed.event_title}}</a>
+                </h3>
                 <h6>
-                February 20-23,2016
-            </h6>
+                    {{ feed.feed_date | date }}
+               </h6>
                 <div class="rating">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
+                     <!-- rating stars -->
+                    {% include 'accounts/rating_star.html' %} 
                 </div>
-                <h4>  <a href="#">Chris Watson</a></h4>
+                <h4> <a href="#">{{ feed.user.get_full_name }}</a></h4>
                 <p>
-                    Sed varius nunc erat, et rhoncus elit sodales et. Praesent eget felis suscipit, maximus elit quis, dignissim justo. Nulla finibus, magna nec dignissim molestie, sapien justo dapibus magna, vel rutrum velit tortor non turpis.
+                    {{ feed.feedback }}
                 </p>
             </div>
-                                    <div class="feedback-content">
-                <h3>
-                <a href="#">HOW TO SING</a>
-            </h3>
-                <h6>
-                February 20-23,2016
-            </h6>
-                <div class="rating">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-                <h4>  <a href="#">Chris Watson</a></h4>
-                <p>
-                    Sed varius nunc erat, et rhoncus elit sodales et. Praesent eget felis suscipit, maximus elit quis, dignissim justo. Nulla finibus, magna nec dignissim molestie, sapien justo dapibus magna, vel rutrum velit tortor non turpis.
-                </p>
-            </div>
-                                    <div class="feedback-content">
-                <h3>
-                <a href="#">HOW TO SING</a>
-            </h3>
-                <h6>
-                February 20-23,2016
-            </h6>
-                <div class="rating">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-                <h4>  <a href="#">Chris Watson</a></h4>
-                <p>
-                    Sed varius nunc erat, et rhoncus elit sodales et. Praesent eget felis suscipit, maximus elit quis, dignissim justo. Nulla finibus, magna nec dignissim molestie, sapien justo dapibus magna, vel rutrum velit tortor non turpis.
-                </p>
-            </div>
-                                    <div class="feedback-content">
-                <h3>
-                <a href="#">HOW TO SING</a>
-            </h3>
-                <h6>
-                February 20-23,2016
-            </h6>
-                <div class="rating">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-                <h4>  <a href="#">Chris Watson</a></h4>
-                <p>
-                    Sed varius nunc erat, et rhoncus elit sodales et. Praesent eget felis suscipit, maximus elit quis, dignissim justo. Nulla finibus, magna nec dignissim molestie, sapien justo dapibus magna, vel rutrum velit tortor non turpis.
-                </p>
-            </div>
+        {% endfor %}
+        <!--  -->
         </div>
     </div>
 </div>

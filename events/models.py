@@ -71,3 +71,16 @@ class Participant(RecentActivityMixin, models.Model):
                 self.ra_model.EVENT, self.ra_model.JOINED, obj=self.event)
         
         return instance
+
+
+class Feedback(models.Model):
+    """ Create new Feedback on Tutorials
+    """
+    user = models.ForeignKey(Account)
+    event_title = models.ForeignKey(Event)
+    feedback = models.TextField()
+    rate_star =  models.IntegerField(default=1)
+    feed_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{user}{title}".format(user=self.user, title=self.event_title) 
