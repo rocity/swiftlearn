@@ -24,6 +24,8 @@ from swiftlearn.settings import DEFAULT_FROM_EMAIL
 
 import json
 
+from el_pagination.decorators import page_template
+
 class SignupView(TemplateView):
     """ Registration view for new learners
     """
@@ -84,8 +86,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'accounts/dashboard.html'
     
     def get(self, *args, **kwargs):
-        feed = Event.objects.all().order_by('-date_created')
-        return render(self.request, self.template_name, {'feed': feed})
+        return render(self.request, self.template_name, {})
 
 
 class ProfileView(LoginRequiredMixin, TemplateView):
@@ -144,6 +145,7 @@ class SearchView(View):
         return render(self.request, self.template_name,{'feed':feed})
 
 
+<<<<<<< HEAD
 class ResetPasswordRequestView(TemplateView):
     """ User reset password request view
     """
@@ -212,3 +214,11 @@ class ResetPasswordConfirmView(TemplateView):
         else:
             messages.error(request,'The reset password link is no longer valid.')
             return render(self.request, self.template_name, {'form': form})
+=======
+class FeedView(View):
+    template_name = 'accounts/pagination.html'
+
+    def get(self, *args, **kwargs):
+        feed = Event.objects.all().order_by('-date_created')
+        return render(self.request, self.template_name, {'feed': feed})
+>>>>>>> ebbf49a... endless pagination
