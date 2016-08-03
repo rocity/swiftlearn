@@ -27,6 +27,8 @@ from swiftlearn.settings import DEFAULT_FROM_EMAIL
 from el_pagination.decorators import page_template
 
 
+from el_pagination.decorators import page_template
+
 class SignupView(TemplateView):
     """ Registration view for new learners
     """
@@ -181,7 +183,6 @@ class ResetPasswordRequestView(TemplateView):
                 return render(self.request, self.template_name, {'form': form})
 
         return render(self.request, self.template_name, {'form': form})
-
 
 
 class ResetPasswordConfirmView(TemplateView):
