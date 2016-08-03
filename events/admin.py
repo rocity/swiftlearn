@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Event
+from .models import Event, Participant
 
 
 class EventAdmin(admin.ModelAdmin):
@@ -7,3 +7,4 @@ class EventAdmin(admin.ModelAdmin):
     filter_horizontal = ('tags',)
 
 admin.site.register(Event, EventAdmin)
+admin.site.register(Participant)

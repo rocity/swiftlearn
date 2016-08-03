@@ -7,6 +7,7 @@ from .models import (
     Education,
     Badge,
     BadgeCriteria,
+    Transaction,
 )
 
 
@@ -17,3 +18,4 @@ admin.site.register(AccountCompletionTask)
 admin.site.register(Education)
 admin.site.register(Badge)
 admin.site.register(BadgeCriteria)
+admin.site.register(Transaction)

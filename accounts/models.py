@@ -10,7 +10,7 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
-from .mixins import TimezoneMixin
+from .mixins.timezone import TimezoneMixin
 
 
 class AccountCompletionTask(models.Model):
@@ -86,6 +86,8 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
     updated_at = models.DateTimeField(auto_now=True)
     is_activated = models.BooleanField(default=False)
 
+    # billing info
+    balance = models.DecimalField(max_digits=9, decimal_places=2, default=0.00)
     objects = AccountManager()
 
     is_admin   = models.BooleanField(default=False)
@@ -157,6 +159,27 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
         email_to = confirm_key.user
         msg = EmailMessage(subject, message, to=[email_to])
         msg.send()
+
+
+class Transaction(models.Model):
+    """ transaction model
+    """
+    CREDIT = "credit"
+    DEBIT = "debit"
+    TRANS_TYPE = (
+        (CREDIT, "Credit"),
+        (DEBIT, "Debit"),
+    )
+    user = models.ForeignKey(Account)
+    amount = models.DecimalField(max_digits=9, decimal_places=2, default=0.00)
+    trans_type = models.CharField(max_length=10, choices=TRANS_TYPE, default=CREDIT)
+    running_balance = models.DecimalField(max_digits=9, decimal_places=2, default=0.00)
+    description = models.TextField(null=True, blank=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "[{amount}] {type}".format(
+            amount=self.amount, type=self.trans_type)
 
 
 class ConfirmationKey(models.Model):

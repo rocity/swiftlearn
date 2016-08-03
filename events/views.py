@@ -53,3 +53,18 @@ class EventCreateView(LoginRequiredMixin, TemplateView):
 
             return HttpResponseRedirect(reverse('events'))
         return render(self.request, self.template_name, {'form': form})
+
+
+class EventJoinView(LoginRequiredMixin, View):
+    """ Join an upcoming event
+    """
+    def get(self, *args, **kwargs):
+        # join an event
+        # TODO: add a billing
+        event_id = kwargs.get('event_id')
+        event = get_object_or_404(Event, id=event_id)
+        resp, joined = event.join(user=self.request.user)
+        print(resp)
+        print(joined)
+
+        return HttpResponseRedirect(reverse('event', args=[event.id]))

@@ -2,9 +2,10 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from accounts.models import Account, Skill
 from userlogs.mixins import RecentActivityMixin
+from .mixins.join import JoinEvent
 
 
-class Event(RecentActivityMixin, models.Model):
+class Event(RecentActivityMixin, JoinEvent, models.Model):
     """ educator's session
     """
     educator = models.ForeignKey(Account)
@@ -33,6 +34,13 @@ class Event(RecentActivityMixin, models.Model):
             self.ra_model.EVENT, action_type, obj=self)
 
         return instance
+
+    def join(self, user):
+        return self.join_event(self, user)
+
+    def get_participants(self):
+        from events.models import Participant
+        return Participant.objects.filter(event=self.id)
 
 
 class Participant(RecentActivityMixin, models.Model):
