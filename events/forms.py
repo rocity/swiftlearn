@@ -12,6 +12,12 @@ class EventForm(forms.ModelForm):
     info = forms.CharField(widget=forms.Textarea({
         'class': 'form-control',
         'placeholder': 'Description details',
+        'rows': '8',
+    }))
+    fee = forms.CharField(widget=forms.NumberInput({
+        'class': 'form-control price',
+        'placeholder': '$',
+        'type': 'number',
     }))
     start_date = forms.DateField(widget=forms.DateInput({
         'class': 'form-control',

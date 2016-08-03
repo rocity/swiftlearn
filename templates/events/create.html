@@ -3,6 +3,82 @@
 
 {% block content %}
 <div class="row dashboard">
+    {% include 'includes/user_details.html' %}
+
+    <div class=" col-md-9 create-event">
+        <div>
+            <h4 class="event-quote">
+              Please tell us the details of your event
+          </h4>
+        </div>
+       
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Event Title</label>
+                {{ form.title.errors.as_text }}
+                {{ form.title }}
+                <div class="row">
+                    <div class="col-md-9">
+                        <label>Description</label>
+                        {{ form.info.errors.as_text }}
+                        {{ form.info }}
+                    </div>
+                    <div class="col-md-3">
+                        <label>Fee</label>
+                        {{ form.fee.errors.as_text }}
+                        {{ form.fee }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Select date</label>
+                        {{ form.start_date.errors.as_text }}
+                        {{ form.start_date }}
+                    </div>
+                    <div class="col-md-4">
+                        <label>Start time</label>
+                        {{ form.start_time.errors.as_text }}
+                        {{ form.start_time }}    
+                    </div>
+                    <div class="col-md-4">
+                        <label>End Time</label>
+                        {{ form.end_time.errors.as_text }}
+                        {{ form.end_time }}
+                    </div>
+                </div>
+                <div class="row bottom">
+                    <div class="col-md-8">
+                        <label>Categories</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control category" placeholder="Search for categories" aria-describedby="category">
+                            <span class="input-group-addon category-btn" id="category"><span class="caret"></span></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Event URL</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control url" placeholder="file:///D:/work/swift%20tutorial/create-event.html?title=dasda" aria-describedby="category">
+                            <span class="input-group-addon url-btn" id="category"><a href=""><i class="fa fa-link" aria-hidden="true"></i> copy link</a></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-3">
+                       <div class="checkbox email-update">
+                           <label><input type="checkbox" name="" class="">Send me email updates of this event</label>
+                       </div>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="create-btn form-control"><i class="fa fa-check" aria-hidden="true"></i> CREATE EVENT</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+<div class="row dashboard">
     {% include 'includes/user_details.html' %}    
 
     <div class=" col-md-9 create-event">
@@ -61,4 +137,3 @@
         </form>
     </div>
 </div>
-{% endblock %}

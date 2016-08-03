@@ -18,7 +18,7 @@
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="tutorial-link"><i class="fa fa-plus" aria-hidden="true"></i> Start tutorial!</a>
+                    <a href="{% url 'event_create' %}" class="tutorial-link"><i class="fa fa-plus" aria-hidden="true"></i> Start Teaching!</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-bell-o" aria-hidden="true"></i>Notifications <span class="number">12</span></a>
@@ -47,7 +47,7 @@
                             <a href="#"> My Bookmarks</a>
                         </li>
                         <li>
-                            <a href="#" class="start-teaching">Start Teaching </a>
+                            <a href="{% url 'event_create' %}" class="start-teaching">Start Teaching </a>
                             <img src="{% static 'images/surprise-icon.png' %}">
                         </li>
                         <li class="divider" role="separator"></li>
