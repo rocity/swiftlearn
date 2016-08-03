@@ -1,30 +1,9 @@
 {% load staticfiles notifications %}
-    {% if feed %}
-            {% for item in feed %}
-            <div class="row items ">
-                <div class="col-md-3 col-lg-3 text-center item-picture">
-                    <img src="{% static 'images/sass.png' %}">
-                    <a href="{% url 'event' item.id %}"> View</a>
-                </div>
-                <div class="col-md-9 col-lg-9 item-details">
-                    <h3>
-                        <a href="#">{{ item.title }}</a>
-                    </h3>
-                    <h6>
-                        <a href="#">{{ item.tags.all|join:", " }}</a>
-                    </h6>
-                    <p>{{ item.info|truncatewords:28 }}</p>
-                    <div class="tutor">
-                        <h6>
-                        <a href="{% url 'profile' item.educator.id %}">{{ item.educator.get_full_name }}</a> - {{ item.educator.city }}, {{ item.educator.country }}  <a href="#">{{ item.date_created|timesince|single_timetag }} ago</a>
-                    </h6>
-                        
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-    {% else %}
-      <div class="row items ">
-        <b>Search Not Found!</b>
-      </div>
-    {% endif %}
+
+{% if feed %}
+    {% include 'accounts/pagination.html' %}
+{% else %}
+  <div class="row items ">
+    <b>Search Not Found!</b>
+  </div>
+{% endif %}

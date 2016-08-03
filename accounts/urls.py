@@ -13,5 +13,5 @@ urlpatterns = [
     url(r'^search/$', SearchView.as_view(), name='search'),
     url(r'^reset_password/$', ResetPasswordRequestView.as_view(), name="reset_password"),
     url(r'^reset_password_confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', ResetPasswordConfirmView.as_view(),name='reset_password_confirm'),
-
+    url(r'^feeds/$', FeedView.as_view(), name='feeds'),
 ]
