@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'accounts',
     'events',
     'userlogs',
+    'rest_framework',
 ]
 
 MIDDLEWARE_CLASSES = [
