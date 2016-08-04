@@ -224,3 +224,26 @@ class FeedView(View):
     def get(self, *args, **kwargs):
         feed = Event.objects.all().order_by('-date_created')
         return render(self.request, self.template_name, {'feed': feed})
+
+
+class SubscribeView(TemplateView):
+    """ Subscribe to other user
+    """
+    def get(self, *args, **kwargs):
+        subscriber = Account.objects.get(email=self.request.user)
+        user_id = kwargs.get('user_id')
+        user = Account.objects.get(id=user_id)
+        user.subscribers.add(subscriber)
+        
+        return HttpResponseRedirect(reverse('profile', kwargs={'user_id':user_id}))
+
+class UnsubscribeView(TemplateView):
+    """ Unsubscribe from other user
+    """
+    def get(self, *args, **kwargs):
+        subscriber = Account.objects.get(email=self.request.user)
+        user_id = kwargs.get('user_id')
+        user = Account.objects.get(id=user_id)
+        user.subscribers.remove(subscriber)
+        
+        return HttpResponseRedirect(reverse('profile', kwargs={'user_id':user_id}))

@@ -74,6 +74,7 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
     quote = models.TextField(null=True, blank=True)
     overview = models.TextField(null=True, blank=True)
     badges = models.ManyToManyField('Badge', blank=True)
+    subscribers = models.ManyToManyField('Account', blank=True)
 
     # more info
     position = models.CharField(max_length=255, null=True, blank=True)
