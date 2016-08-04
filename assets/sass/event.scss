@@ -1,0 +1,276 @@
+//create event
+.create-event {
+    background: #fdfdfd;
+    padding: 5%;
+    border: 1px solid #efefef;
+    .event-quote {
+        margin-bottom: 50px;
+    }
+    .form-control {
+        -webkit-box-shadow: none;
+        background: #fdfdfd;
+        border-bottom: solid 1px #c1c1c1;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-radius: 0px;
+        padding: 0;
+        margin: 20px 0;
+        color: #303030;
+        font-family: $Montserrat-SemiBold;
+        &.event-title {
+            font-size: 26px;
+        }
+        &.desc-header {
+            font-size: 20px;
+        }
+        &.price {
+            padding: 26px 0;
+        }
+        &.category {
+            font-family: $Lato-Regular;
+            border-right: none;
+            margin: 0;
+        }
+        &.url {
+            border-top: none;
+            border-left: none;
+            border-radius: 0px;
+            border-right: none;
+            margin: 0;
+            font-family: $Lato-Regular;
+        }
+        &::-webkit-input-placeholder {
+            /* Chrome/Opera/Safari */
+            color: #c1c1c1;
+        }
+    }
+    button {
+        margin-top: 20px;
+    }
+    .category-btn {
+        background: none;
+        border-right: none;
+        border-top: none;
+        border-bottom-right-radius: 0px;
+    }
+    .url-btn {
+        background: none;
+        border: none;
+        a {
+            color: #0288d1;
+            text-decoration: none;
+        }
+    }
+    .email-update {
+        margin-top: 30px;
+        color: #0288d1;
+    }
+    .create-btn {
+        background: #0288d1;
+        color: #fff;
+        border: none;
+        height: 40px;
+        &:hover {
+            background: #0b75af;
+            transition: 1s;
+        }
+    }
+}
+
+//event-details
+.event-details {
+    .description {
+        font-family: $Lato-Regular;
+        line-height: 150%;
+        color: #888888;
+        letter-spacing: 0.1px;
+        h3 {
+            color: #303030;
+            margin: 20px 0;
+        }
+    }
+    .form-control {
+        border: #bcbcbc solid 1px;
+        border-radius: 2px;
+        &:focus {
+            box-shadow: none;
+        }
+    }
+    .header {
+        background: #485563;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #485563, #29323c);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #485563, #29323c);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        display: flex;
+        height: 300px;
+        align-items: center;
+        color: #fff;
+        // border-top-left-radius: 5px;
+        // border-top-right-radius: 5px;
+        font-family: $Lato-Light, 'sans-serif';
+        line-height: 150%;
+        letter-spacing: 0.5px;
+        .join-event {
+            background: #ed145b;
+            color: #fff;
+            letter-spacing: 0.5px;
+            width: 150px;
+            border-radius: 2px;
+            &:active {
+                border: none;
+            }
+            &:focus {
+                border: none;
+            }
+        }
+        img {
+            width: 70px
+        }
+        h3 {
+            line-height: 150%;
+        }
+        h5 {
+            margin-top: 20px;
+            a {
+                color: #fff;
+                text-decoration: none;
+                font-family: $Lato-Regular, 'sans-serif';
+            }
+        }
+        .social-icons {
+            a {
+                margin: 0 1em;
+                color: #fff;
+            }
+        }
+    }
+    .event-content {
+        background: #fdfdfd;
+        padding: 5% 7%;
+        border-radius: 5px;
+        margin: 10px 0;
+        .post {
+            margin-top: 1em;
+            background: #00bfa5;
+            color: #fff;
+            width: 100px;
+        }
+    }
+}
+
+.avatar {
+    display: block;
+    width: 3em;
+    float: left;
+    margin: 0.2em 0 0;
+    img {
+        display: block;
+        width: 100%;
+        border-radius: 5px;
+    }
+}
+
+.comment-section {
+    line-height: 150%;
+    .comment {
+        margin: 20px 0;
+    }
+    .child-comment {
+        margin: 20px 0em 20px 4em;
+    }
+    .close {
+        color: rgba(0, 0, 0, .2);
+        font-weight: 100;
+        font-size: 0.8em;
+    }
+    .content {
+        display: block;
+        margin-left: 4em;
+        a {
+            color: #303030;
+            font-weight: 700;
+            text-decoration: none;
+            &:hover {
+                transition: 1s;
+            }
+            &.favorite {
+                color: #ed145b;
+            }
+        }
+    }
+    .metadata {
+        color: rgba(0, 0, 0, .4);
+        font-size: .875em;
+        display: inline-block;
+        margin-left: 1em;
+        span {
+            display: inline-block;
+            margin: 0 .5em 0 0;
+        }
+    }
+    .actions {
+        a {
+            color: rgba(0, 0, 0, .4);
+            font-size: .875em;
+            font-weight: 200;
+            margin: 0 10px;
+            &:first-child {
+                margin-left: 0px;
+            }
+            &:hover {
+                color: #1f62ae;
+                transition: 1s;
+            }
+        }
+    }
+}
+
+.event-sidebar {
+    .owl-carousel {
+        background: none;
+        margin: 0;
+    }
+    .participants {
+        img {
+            border-radius: 5px;
+        }
+    }
+    .author {
+        display: block;
+        margin-left: 4em;
+        line-height: 50%;
+        margin-top: 1em;
+        a {
+            color: #303030;
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+    }
+    .about-author {
+        margin: 3em 0;
+        p {
+            font-style: italic;
+            color: #666666;
+            font-weight: 400;
+            line-height: 150%;
+            text-align: justify;
+        }
+    }
+    .form {
+        .form-control {
+            border: #888888 solid 1px;
+            border-radius: 2px;
+            &:focus {
+                box-shadow: none;
+            }
+        }
+        .subscribe-btn {
+            color: #fff;
+            background: #ed145b;
+            border: solid 1px #ed145b;
+        }
+    }
+}

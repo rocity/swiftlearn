@@ -30,11 +30,40 @@
             /* Chrome/Opera/Safari */
             color: #a1a1a1;
         }
-        .email-signup {
-            background: #055179;
-        }
+   
         .signup-btn {
             background: #055179;
+        }
+        .email-signup{
+            background: none;
+            color: #222;
+            text-decoration: none;
+             font-family: $Montserrat-Light;
+            &:hover{
+                background: none;
+                color: #222;
+
+            }
+            &:focus{
+                background: none;
+                color: #222;
+                border:none;
+            }
+            &:active{
+                border:none;
+                background: none;
+                color: #222;
+                border:none;
+            }
+            &.form-control{
+                border-top: 1px solid #c9c9c9;
+                border-bottom: none;
+                border-left: none;
+                border-right: none;
+                border-radius: 0;
+                -webkit-box-shadow:none;
+            }
+
         }
         button {
             font-family: $Lato-Regular;
@@ -64,12 +93,34 @@
 }
 
 .social-signup {
-    text-align: center;
-    a {
-        margin: 0 10px;
-        img {
-            width: 50px;
+    .form-control{
+        border: none;
+    }
+    div{
+        padding: 0 5px;
+    }
+    a{  
+        font-size: 0.9em;
+        color: #fff;
+        text-decoration: none;
+        margin: 5px 0;
+        border-radius: 0;
+        letter-spacing: 0.5px;
+        line-height: 150%;
 
-        }
+    }
+
+    .facebook{
+        background: #1a528b;
+
+    }
+    .google{
+        background: #c44b36;
+    }
+    .twitter{
+        background: #00abf1;
+    }
+    .linkedin{
+        background: #0097bd;
     }
 }

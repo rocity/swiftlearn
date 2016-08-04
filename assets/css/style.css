@@ -7,6 +7,10 @@
   src: url(../fonts/Lato-Regular.ttf);
 }
 @font-face {
+  font-family: 'Lato-LightItalic';
+  src: url(../fonts/Lato-LightItalic.ttf);
+}
+@font-face {
   font-family: 'Lato-Light';
   src: url(../fonts/Lato-Light.ttf);
 }
@@ -42,7 +46,7 @@
   font-family: 'Georgia-Regular';
   src: url(../fonts/georgia.ttf);
 }
-/* line 46, ../sass/_typography.scss */
+/* line 51, ../sass/_typography.scss */
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -83,7 +87,7 @@ body {
 }
 /* line 29, ../sass/_dashboard.scss */
 .user-profile .user-details h3 {
-  font-family: "Montserrat-Regular";
+  font-family: "Montserrat-Regular", "sans-serif";
   margin-top: 0px;
 }
 /* line 32, ../sass/_dashboard.scss */
@@ -96,7 +100,7 @@ body {
 .user-profile .user-details h4 {
   font-size: 1em;
   color: #666;
-  font-family: "Montserrat-Light";
+  font-family: "Montserrat-Light", "sans-serif";
   margin-top: -5px;
 }
 /* line 45, ../sass/_dashboard.scss */
@@ -114,7 +118,7 @@ body {
 /* line 55, ../sass/_dashboard.scss */
 .user-profile .feeds {
   color: #999;
-  font-family: "Montserrat-Light";
+  font-family: "Montserrat-Light", "sans-serif";
   margin: 20px 0;
 }
 /* line 59, ../sass/_dashboard.scss */
@@ -152,7 +156,7 @@ body {
 /* line 85, ../sass/_dashboard.scss */
 .user-profile .recent-tutorials .tutorial-items h4 {
   font-size: 16px;
-  font-family: "Montserrat-Light";
+  font-family: "Montserrat-Light", "sans-serif";
 }
 /* line 89, ../sass/_dashboard.scss */
 .user-profile .recent-tutorials .tutorial-items a {
@@ -161,7 +165,7 @@ body {
 
 /* line 96, ../sass/_dashboard.scss */
 .profile-status {
-  font-family: "Montserrat-Light";
+  font-family: "Montserrat-Light", "sans-serif";
   padding: 10%;
   background: #f8fcfa;
   color: #747575;
@@ -258,7 +262,7 @@ body {
 /* line 170, ../sass/_dashboard.scss */
 .recent-activities .activity-item .activity-details a {
   text-decoration: none;
-  font-family: "Montserrat-Light";
+  font-family: "Montserrat-Light", "sans-serif";
 }
 /* line 174, ../sass/_dashboard.scss */
 .recent-activities .activity-item .activity-details .time {
@@ -274,7 +278,7 @@ body {
 }
 /* line 186, ../sass/_dashboard.scss */
 .item-container .items {
-  font-family: "Montserrat-Light";
+  font-family: "Montserrat-Light", "sans-serif";
   background: #fff;
   margin: 10px 0 10px;
   border: 1px solid #f9f9f9;
@@ -316,7 +320,7 @@ body {
 }
 /* line 221, ../sass/_dashboard.scss */
 .item-container .items .item-details h3 {
-  font-family: "Montserrat-Regular";
+  font-family: "Montserrat-Regular", "sans-serif";
   font-size: 16px;
   line-height: 150%;
 }
@@ -328,7 +332,7 @@ body {
 }
 /* line 232, ../sass/_dashboard.scss */
 .item-container .items .item-details p {
-  font-family: "OpenSans-Light";
+  font-family: "OpenSans-Light", "sans-serif";
   color: #999;
   font-size: 13px;
   line-height: 150%;
@@ -377,7 +381,7 @@ body {
 .navbar-default {
   background: #fff;
   border: none;
-  font-family: "Montserrat-Light";
+  font-family: "Montserrat-Light", "sans-serif";
   box-shadow: 2px 2px 2px #eeeeee;
 }
 /* line 12, ../sass/_header.scss */
@@ -391,7 +395,7 @@ body {
   padding: 7px 15px;
   margin-top: 7px;
   border-radius: 5px;
-  font-family: "Montserrat-Light";
+  font-family: "Montserrat-Light", "sans-serif";
 }
 /* line 24, ../sass/_header.scss */
 .navbar-default ul li .tutorial-link:hover {
@@ -528,7 +532,7 @@ body {
 }
 /* line 7, ../sass/_sign-up.scss */
 .signup-page .signup {
-  font-family: "Montserrat-Light";
+  font-family: "Montserrat-Light", "sans-serif";
   display: flex;
   height: 100vh;
   align-items: center;
@@ -539,7 +543,7 @@ body {
 }
 /* line 15, ../sass/_sign-up.scss */
 .signup-page .signup input {
-  font-family: "Montserrat-Light";
+  font-family: "Montserrat-Light", "sans-serif";
   background: #fff;
   border-radius: 10px;
   border: #d7d7d7 solid 2px;
@@ -558,17 +562,47 @@ body {
   /* Chrome/Opera/Safari */
   color: #a1a1a1;
 }
-/* line 33, ../sass/_sign-up.scss */
-.signup-page .signup .email-signup {
-  background: #055179;
-}
-/* line 36, ../sass/_sign-up.scss */
+/* line 34, ../sass/_sign-up.scss */
 .signup-page .signup .signup-btn {
   background: #055179;
 }
-/* line 39, ../sass/_sign-up.scss */
+/* line 37, ../sass/_sign-up.scss */
+.signup-page .signup .email-signup {
+  background: none;
+  color: #222;
+  text-decoration: none;
+  font-family: "Montserrat-Light", "sans-serif";
+}
+/* line 42, ../sass/_sign-up.scss */
+.signup-page .signup .email-signup:hover {
+  background: none;
+  color: #222;
+}
+/* line 47, ../sass/_sign-up.scss */
+.signup-page .signup .email-signup:focus {
+  background: none;
+  color: #222;
+  border: none;
+}
+/* line 52, ../sass/_sign-up.scss */
+.signup-page .signup .email-signup:active {
+  border: none;
+  background: none;
+  color: #222;
+  border: none;
+}
+/* line 58, ../sass/_sign-up.scss */
+.signup-page .signup .email-signup.form-control {
+  border-top: 1px solid #c9c9c9;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+}
+/* line 68, ../sass/_sign-up.scss */
 .signup-page .signup button {
-  font-family: "Lato-Regular";
+  font-family: "Lato-Regular", "sans-serif";
   height: 45px;
   color: #fff;
   border-radius: 10px;
@@ -576,35 +610,57 @@ body {
   text-transform: uppercase;
   margin: 10px 0;
 }
-/* line 47, ../sass/_sign-up.scss */
+/* line 76, ../sass/_sign-up.scss */
 .signup-page .signup button:hover {
   background: #2d7aa3;
   transition: 1s;
 }
-/* line 51, ../sass/_sign-up.scss */
+/* line 80, ../sass/_sign-up.scss */
 .signup-page .signup button:focus {
   -webkit-box-shadow: none;
 }
-/* line 56, ../sass/_sign-up.scss */
+/* line 85, ../sass/_sign-up.scss */
 .signup-page .signup .login-link p {
   margin-top: 10px;
 }
-/* line 58, ../sass/_sign-up.scss */
+/* line 87, ../sass/_sign-up.scss */
 .signup-page .signup .login-link p a {
   text-decoration: none;
 }
 
-/* line 66, ../sass/_sign-up.scss */
-.social-signup {
-  text-align: center;
+/* line 96, ../sass/_sign-up.scss */
+.social-signup .form-control {
+  border: none;
 }
-/* line 68, ../sass/_sign-up.scss */
+/* line 99, ../sass/_sign-up.scss */
+.social-signup div {
+  padding: 0 5px;
+}
+/* line 102, ../sass/_sign-up.scss */
 .social-signup a {
-  margin: 0 10px;
+  font-size: 0.9em;
+  color: #fff;
+  text-decoration: none;
+  margin: 5px 0;
+  border-radius: 0;
+  letter-spacing: 0.5px;
+  line-height: 150%;
 }
-/* line 70, ../sass/_sign-up.scss */
-.social-signup a img {
-  width: 50px;
+/* line 113, ../sass/_sign-up.scss */
+.social-signup .facebook {
+  background: #1a528b;
+}
+/* line 117, ../sass/_sign-up.scss */
+.social-signup .google {
+  background: #c44b36;
+}
+/* line 120, ../sass/_sign-up.scss */
+.social-signup .twitter {
+  background: #00abf1;
+}
+/* line 123, ../sass/_sign-up.scss */
+.social-signup .linkedin {
+  background: #0097bd;
 }
 
 /* line 1, ../sass/_log-in.scss */
@@ -614,7 +670,7 @@ body {
 }
 /* line 6, ../sass/_log-in.scss */
 .login-page .log-in {
-  font-family: "Lato-Light";
+  font-family: "Lato-Light", "sans-serif";
   display: flex;
   height: 100vh;
   align-items: center;
@@ -638,7 +694,7 @@ body {
   padding: 20px;
   font-size: 1.2em;
   color: #fff;
-  font-family: "Lato-Light";
+  font-family: "Lato-Light", "sans-serif";
 }
 /* line 28, ../sass/_log-in.scss */
 .login-page .log-in input:focus {
@@ -703,178 +759,178 @@ body {
   background-position-y: -330px;
 }
 
-/* line 16, ../sass/_profile.scss */
+/* line 17, ../sass/_profile.scss */
 .hire .popover {
   width: 100%;
 }
 
-/* line 20, ../sass/_profile.scss */
+/* line 22, ../sass/_profile.scss */
 .profile-header {
   display: flex;
   align-items: center;
   z-index: 9;
   margin-top: -180px;
-  font-family: "Montserrat-Light";
+  font-family: "Montserrat-Light", "sans-serif";
 }
-/* line 26, ../sass/_profile.scss */
+/* line 28, ../sass/_profile.scss */
 .profile-header img {
   width: 100%;
 }
-/* line 30, ../sass/_profile.scss */
+/* line 32, ../sass/_profile.scss */
 .profile-header .username {
   font-size: 20px;
   color: #c1c1c1;
 }
-/* line 35, ../sass/_profile.scss */
+/* line 37, ../sass/_profile.scss */
 .profile-header .profile-background img {
   width: 200px;
   border-radius: 30px;
   padding: 15px;
   background: #fdfdfd;
 }
-/* line 42, ../sass/_profile.scss */
+/* line 44, ../sass/_profile.scss */
 .profile-header .quote {
   font-family: "Georgia-Regular";
   color: #999;
   font-size: 24px;
 }
-/* line 48, ../sass/_profile.scss */
+/* line 50, ../sass/_profile.scss */
 .profile-header h3 span {
   color: #999;
   font-size: 16px;
 }
 
-/* line 55, ../sass/_profile.scss */
+/* line 57, ../sass/_profile.scss */
 .profile-content {
   margin: 20px 0;
   background: #fdfdfd;
   border-radius: 5px;
   padding: 5% 7%;
 }
-/* line 60, ../sass/_profile.scss */
+/* line 62, ../sass/_profile.scss */
 .profile-content h4 {
-  font-family: "Montserrat-Light";
+  font-family: "Montserrat-Light", "sans-serif";
 }
-/* line 63, ../sass/_profile.scss */
+/* line 65, ../sass/_profile.scss */
 .profile-content p {
-  font-family: "OpenSans-Regular";
+  font-family: "OpenSans-Regular", "sans-serif";
   line-height: 150%;
   letter-spacing: 0.1px;
   margin: 20px 0;
 }
-/* line 71, ../sass/_profile.scss */
+/* line 73, ../sass/_profile.scss */
 .profile-content table tr td {
   border: none;
 }
-/* line 72, ../sass/_profile.scss */
+/* line 74, ../sass/_profile.scss */
 .profile-content table tr td p {
   margin: 0;
 }
 
-/* line 81, ../sass/_profile.scss */
+/* line 83, ../sass/_profile.scss */
 .profile-details {
   background: #fdfdfd;
 }
-/* line 83, ../sass/_profile.scss */
+/* line 85, ../sass/_profile.scss */
 .profile-details .nav-tabs {
   margin-left: 0;
   border: none;
 }
-/* line 86, ../sass/_profile.scss */
+/* line 88, ../sass/_profile.scss */
 .profile-details .nav-tabs .tab-name {
   padding: 20px 20px 0;
 }
-/* line 88, ../sass/_profile.scss */
+/* line 90, ../sass/_profile.scss */
 .profile-details .nav-tabs .tab-name :first-child {
   margin-left: 50px;
 }
-/* line 91, ../sass/_profile.scss */
+/* line 93, ../sass/_profile.scss */
 .profile-details .nav-tabs .tab-name a {
   color: #222;
 }
 
-/* line 98, ../sass/_profile.scss */
+/* line 100, ../sass/_profile.scss */
 .btn-hire {
   width: 100%;
   background: #00bfa5;
   color: #fff;
   margin: 20px 0 0;
 }
-/* line 103, ../sass/_profile.scss */
+/* line 105, ../sass/_profile.scss */
 .btn-hire:hover {
   color: #fff;
   transition: 1s;
   background: #00bfa5;
 }
-/* line 108, ../sass/_profile.scss */
+/* line 110, ../sass/_profile.scss */
 .btn-hire:focus {
   outline: none;
   background: #00bfa5;
 }
-/* line 112, ../sass/_profile.scss */
+/* line 114, ../sass/_profile.scss */
 .btn-hire:active {
   color: #fff;
   transition: 1s;
   background: #00bfa5;
 }
-/* line 117, ../sass/_profile.scss */
+/* line 119, ../sass/_profile.scss */
 .btn-hire:visited {
   color: #fff;
   transition: 1s;
   background: #00bfa5;
 }
 
-/* line 124, ../sass/_profile.scss */
+/* line 126, ../sass/_profile.scss */
 .owl-carousel {
   margin: 20px 0;
   background: #fdfdfd;
   padding: 10px;
 }
 
-/* line 131, ../sass/_profile.scss */
+/* line 133, ../sass/_profile.scss */
 .portfolio .video {
   display: inline-block;
   margin: 20px 0;
 }
-/* line 134, ../sass/_profile.scss */
+/* line 136, ../sass/_profile.scss */
 .portfolio .video .item {
   width: 220px;
   margin: 10px;
   float: left;
 }
-/* line 138, ../sass/_profile.scss */
+/* line 140, ../sass/_profile.scss */
 .portfolio .video .item img {
   width: 100%;
   height: auto;
   border-radius: 5px;
 }
-/* line 143, ../sass/_profile.scss */
+/* line 145, ../sass/_profile.scss */
 .portfolio .video .item a {
   text-decoration: none;
-  font-family: "Montserrat-Regular";
+  font-family: "Montserrat-Regular", "sans-serif";
   color: #777;
   text-transform: uppercase;
   margin: 10px 0 0;
   line-height: 150%;
 }
-/* line 153, ../sass/_profile.scss */
+/* line 155, ../sass/_profile.scss */
 .portfolio .modal {
   background: rgba(248, 248, 251, 0.9);
 }
-/* line 156, ../sass/_profile.scss */
+/* line 158, ../sass/_profile.scss */
 .portfolio .modal-content {
   box-shadow: none;
   border: solid #c1c1c1 1px;
 }
-/* line 159, ../sass/_profile.scss */
+/* line 161, ../sass/_profile.scss */
 .portfolio .modal-content .modal-header {
   border: none;
 }
-/* line 162, ../sass/_profile.scss */
+/* line 164, ../sass/_profile.scss */
 .portfolio .modal-content .modal-body {
   padding: 50px;
 }
-/* line 163, ../sass/_profile.scss */
+/* line 165, ../sass/_profile.scss */
 .portfolio .modal-content .modal-body .form-control {
   -webkit-box-shadow: none;
   background: #fdfdfd;
@@ -886,16 +942,16 @@ body {
   padding: 0;
   margin: 20px 0;
   color: #303030;
-  font-family: "Montserrat-SemiBold";
+  font-family: "Montserrat-SemiBold", "sans-serif";
 }
-/* line 177, ../sass/_profile.scss */
+/* line 179, ../sass/_profile.scss */
 .portfolio .modal-content .modal-body .upload-file {
   width: 500px;
   height: 129px;
   border: 2px dashed #888;
   margin: 47px auto 0;
 }
-/* line 182, ../sass/_profile.scss */
+/* line 184, ../sass/_profile.scss */
 .portfolio .modal-content .modal-body .upload-file p {
   width: 100%;
   height: 100%;
@@ -904,7 +960,7 @@ body {
   font-family: Arial;
   margin-top: 10%;
 }
-/* line 190, ../sass/_profile.scss */
+/* line 192, ../sass/_profile.scss */
 .portfolio .modal-content .modal-body .upload-file input {
   position: absolute;
   margin: 0;
@@ -914,11 +970,11 @@ body {
   outline: none;
   opacity: 0;
 }
-/* line 201, ../sass/_profile.scss */
+/* line 203, ../sass/_profile.scss */
 .portfolio .modal-content .modal-footer {
   border: none;
 }
-/* line 203, ../sass/_profile.scss */
+/* line 205, ../sass/_profile.scss */
 .portfolio .modal-content .modal-footer .upload-btn {
   margin-right: 30px;
   background: #00bfa5;
@@ -929,37 +985,121 @@ body {
   text-transform: uppercase;
 }
 
-/* line 217, ../sass/_profile.scss */
+/* line 219, ../sass/_profile.scss */
 .feedback .feedback-content {
-  font-family: "Montserrat-Light";
+  font-family: "Montserrat-Light", "sans-serif";
   margin: 50px 0;
   line-height: 150%;
   border-bottom: #ebebeb solid 1px;
 }
-/* line 222, ../sass/_profile.scss */
+/* line 224, ../sass/_profile.scss */
 .feedback .feedback-content:last-child {
   border: none;
 }
-/* line 225, ../sass/_profile.scss */
+/* line 227, ../sass/_profile.scss */
 .feedback .feedback-content a {
   text-decoration: none;
 }
-/* line 228, ../sass/_profile.scss */
+/* line 230, ../sass/_profile.scss */
 .feedback .feedback-content .rating {
   color: #fdd835;
 }
 
-/* line 1, ../sass/create-event.scss */
+/* line 237, ../sass/_profile.scss */
+.profile-setting {
+  background: #fdfdfd;
+}
+/* line 239, ../sass/_profile.scss */
+.profile-setting .setting-container {
+  padding: 2em;
+}
+/* line 242, ../sass/_profile.scss */
+.profile-setting .header {
+  border-bottom: 1px #e1e1e1 solid;
+}
+/* line 244, ../sass/_profile.scss */
+.profile-setting .header span {
+  font-size: 1em;
+  color: #999999;
+}
+/* line 252, ../sass/_profile.scss */
+.profile-setting .sub-header span {
+  font-size: 1em;
+  color: #999999;
+}
+/* line 258, ../sass/_profile.scss */
+.profile-setting .input {
+  border-radius: 5px;
+  border: solid 1px #c9c9c9;
+  background: #fdfdfd;
+}
+/* line 262, ../sass/_profile.scss */
+.profile-setting .input:focus {
+  box-shadow: none;
+}
+/* line 266, ../sass/_profile.scss */
+.profile-setting .setting-content {
+  margin-left: 10em;
+  color: #666;
+  margin-top: 1em;
+}
+/* line 271, ../sass/_profile.scss */
+.profile-setting .title {
+  display: block;
+  color: #666;
+  font-family: "Montserrat-Light", "sans-serif";
+}
+/* line 275, ../sass/_profile.scss */
+.profile-setting .title p {
+  display: block;
+  float: left;
+  width: 9em;
+  text-align: right;
+  margin-top: 0.2em;
+}
+/* line 281, ../sass/_profile.scss */
+.profile-setting .title p span {
+  font-size: 0.9em;
+  color: #999999;
+}
+/* line 287, ../sass/_profile.scss */
+.profile-setting .foot-note {
+  margin: 1em;
+  font-size: 0.9em;
+}
+/* line 290, ../sass/_profile.scss */
+.profile-setting .foot-note .available {
+  text-align: right;
+  color: #00a651;
+}
+/* line 298, ../sass/_profile.scss */
+.profile-setting .profile-picture {
+  margin-top: 3em;
+  width: 220px;
+}
+/* line 302, ../sass/_profile.scss */
+.profile-setting .profile-picture img {
+  width: 100%;
+  border-radius: 5px;
+}
+/* line 306, ../sass/_profile.scss */
+.profile-setting .profile-picture .change-btn {
+  background: #337ab7;
+  color: #fff;
+  margin-top: 1em;
+}
+
+/* line 2, ../sass/event.scss */
 .create-event {
   background: #fdfdfd;
   padding: 5%;
   border: 1px solid #efefef;
 }
-/* line 5, ../sass/create-event.scss */
+/* line 6, ../sass/event.scss */
 .create-event .event-quote {
   margin-bottom: 50px;
 }
-/* line 8, ../sass/create-event.scss */
+/* line 9, ../sass/event.scss */
 .create-event .form-control {
   -webkit-box-shadow: none;
   background: #fdfdfd;
@@ -971,75 +1111,296 @@ body {
   padding: 0;
   margin: 20px 0;
   color: #303030;
-  font-family: "Montserrat-SemiBold";
+  font-family: "Montserrat-SemiBold", "sans-serif";
 }
-/* line 20, ../sass/create-event.scss */
+/* line 21, ../sass/event.scss */
 .create-event .form-control.event-title {
   font-size: 26px;
 }
-/* line 23, ../sass/create-event.scss */
+/* line 24, ../sass/event.scss */
 .create-event .form-control.desc-header {
   font-size: 20px;
 }
-/* line 26, ../sass/create-event.scss */
+/* line 27, ../sass/event.scss */
 .create-event .form-control.price {
   padding: 26px 0;
 }
-/* line 29, ../sass/create-event.scss */
+/* line 30, ../sass/event.scss */
 .create-event .form-control.category {
-  font-family: "Lato-Regular";
+  font-family: "Lato-Regular", "sans-serif";
   border-right: none;
   margin: 0;
 }
-/* line 34, ../sass/create-event.scss */
+/* line 35, ../sass/event.scss */
 .create-event .form-control.url {
   border-top: none;
   border-left: none;
   border-radius: 0px;
   border-right: none;
   margin: 0;
-  font-family: "Lato-Regular";
+  font-family: "Lato-Regular", "sans-serif";
 }
-/* line 42, ../sass/create-event.scss */
+/* line 43, ../sass/event.scss */
 .create-event .form-control::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   color: #c1c1c1;
 }
-/* line 47, ../sass/create-event.scss */
+/* line 48, ../sass/event.scss */
 .create-event button {
   margin-top: 20px;
 }
-/* line 50, ../sass/create-event.scss */
+/* line 51, ../sass/event.scss */
 .create-event .category-btn {
   background: none;
   border-right: none;
   border-top: none;
   border-bottom-right-radius: 0px;
 }
-/* line 56, ../sass/create-event.scss */
+/* line 57, ../sass/event.scss */
 .create-event .url-btn {
   background: none;
   border: none;
 }
-/* line 59, ../sass/create-event.scss */
+/* line 60, ../sass/event.scss */
 .create-event .url-btn a {
   color: #0288d1;
   text-decoration: none;
 }
-/* line 64, ../sass/create-event.scss */
+/* line 65, ../sass/event.scss */
 .create-event .email-update {
   margin-top: 30px;
   color: #0288d1;
 }
-/* line 68, ../sass/create-event.scss */
+/* line 69, ../sass/event.scss */
 .create-event .create-btn {
   background: #0288d1;
   color: #fff;
   border: none;
   height: 40px;
 }
-/* line 73, ../sass/create-event.scss */
+/* line 74, ../sass/event.scss */
 .create-event .create-btn:hover {
   background: #0b75af;
   transition: 1s;
+}
+
+/* line 83, ../sass/event.scss */
+.event-details .description {
+  font-family: "Lato-Regular", "sans-serif";
+  line-height: 150%;
+  color: #888888;
+  letter-spacing: 0.1px;
+}
+/* line 88, ../sass/event.scss */
+.event-details .description h3 {
+  color: #303030;
+  margin: 20px 0;
+}
+/* line 93, ../sass/event.scss */
+.event-details .form-control {
+  border: #bcbcbc solid 1px;
+  border-radius: 2px;
+}
+/* line 96, ../sass/event.scss */
+.event-details .form-control:focus {
+  box-shadow: none;
+}
+/* line 100, ../sass/event.scss */
+.event-details .header {
+  background: #485563;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #485563, #29323c);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #485563, #29323c);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: flex;
+  height: 300px;
+  align-items: center;
+  color: #fff;
+  font-family: "Lato-Light", "sans-serif", "sans-serif";
+  line-height: 150%;
+  letter-spacing: 0.5px;
+}
+/* line 116, ../sass/event.scss */
+.event-details .header .join-event {
+  background: #ed145b;
+  color: #fff;
+  letter-spacing: 0.5px;
+  width: 150px;
+  border-radius: 2px;
+}
+/* line 122, ../sass/event.scss */
+.event-details .header .join-event:active {
+  border: none;
+}
+/* line 125, ../sass/event.scss */
+.event-details .header .join-event:focus {
+  border: none;
+}
+/* line 129, ../sass/event.scss */
+.event-details .header img {
+  width: 70px;
+}
+/* line 132, ../sass/event.scss */
+.event-details .header h3 {
+  line-height: 150%;
+}
+/* line 135, ../sass/event.scss */
+.event-details .header h5 {
+  margin-top: 20px;
+}
+/* line 137, ../sass/event.scss */
+.event-details .header h5 a {
+  color: #fff;
+  text-decoration: none;
+  font-family: "Lato-Regular", "sans-serif", "sans-serif";
+}
+/* line 144, ../sass/event.scss */
+.event-details .header .social-icons a {
+  margin: 0 1em;
+  color: #fff;
+}
+/* line 150, ../sass/event.scss */
+.event-details .event-content {
+  background: #fdfdfd;
+  padding: 5% 7%;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+/* line 155, ../sass/event.scss */
+.event-details .event-content .post {
+  margin-top: 1em;
+  background: #00bfa5;
+  color: #fff;
+  width: 100px;
+}
+
+/* line 164, ../sass/event.scss */
+.avatar {
+  display: block;
+  width: 3em;
+  float: left;
+  margin: 0.2em 0 0;
+}
+/* line 169, ../sass/event.scss */
+.avatar img {
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+}
+
+/* line 176, ../sass/event.scss */
+.comment-section {
+  line-height: 150%;
+}
+/* line 178, ../sass/event.scss */
+.comment-section .comment {
+  margin: 20px 0;
+}
+/* line 181, ../sass/event.scss */
+.comment-section .child-comment {
+  margin: 20px 0em 20px 4em;
+}
+/* line 184, ../sass/event.scss */
+.comment-section .close {
+  color: rgba(0, 0, 0, 0.2);
+  font-weight: 100;
+  font-size: 0.8em;
+}
+/* line 189, ../sass/event.scss */
+.comment-section .content {
+  display: block;
+  margin-left: 4em;
+}
+/* line 192, ../sass/event.scss */
+.comment-section .content a {
+  color: #303030;
+  font-weight: 700;
+  text-decoration: none;
+}
+/* line 196, ../sass/event.scss */
+.comment-section .content a:hover {
+  transition: 1s;
+}
+/* line 199, ../sass/event.scss */
+.comment-section .content a.favorite {
+  color: #ed145b;
+}
+/* line 204, ../sass/event.scss */
+.comment-section .metadata {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: .875em;
+  display: inline-block;
+  margin-left: 1em;
+}
+/* line 209, ../sass/event.scss */
+.comment-section .metadata span {
+  display: inline-block;
+  margin: 0 .5em 0 0;
+}
+/* line 215, ../sass/event.scss */
+.comment-section .actions a {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: .875em;
+  font-weight: 200;
+  margin: 0 10px;
+}
+/* line 220, ../sass/event.scss */
+.comment-section .actions a:first-child {
+  margin-left: 0px;
+}
+/* line 223, ../sass/event.scss */
+.comment-section .actions a:hover {
+  color: #1f62ae;
+  transition: 1s;
+}
+
+/* line 232, ../sass/event.scss */
+.event-sidebar .owl-carousel {
+  background: none;
+  margin: 0;
+}
+/* line 237, ../sass/event.scss */
+.event-sidebar .participants img {
+  border-radius: 5px;
+}
+/* line 241, ../sass/event.scss */
+.event-sidebar .author {
+  display: block;
+  margin-left: 4em;
+  line-height: 50%;
+  margin-top: 1em;
+}
+/* line 246, ../sass/event.scss */
+.event-sidebar .author a {
+  color: #303030;
+  font-weight: 700;
+  font-size: 1.2em;
+}
+/* line 252, ../sass/event.scss */
+.event-sidebar .about-author {
+  margin: 3em 0;
+}
+/* line 254, ../sass/event.scss */
+.event-sidebar .about-author p {
+  font-style: italic;
+  color: #666666;
+  font-weight: 400;
+  line-height: 150%;
+  text-align: justify;
+}
+/* line 263, ../sass/event.scss */
+.event-sidebar .form .form-control {
+  border: #888888 solid 1px;
+  border-radius: 2px;
+}
+/* line 266, ../sass/event.scss */
+.event-sidebar .form .form-control:focus {
+  box-shadow: none;
+}
+/* line 270, ../sass/event.scss */
+.event-sidebar .form .subscribe-btn {
+  color: #fff;
+  background: #ed145b;
+  border: solid 1px #ed145b;
 }

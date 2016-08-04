@@ -12,11 +12,13 @@
         position-y: -330px;
     }
 }
+
 .hire {
     .popover {
         width: 100%;
     }
 }
+
 .profile-header {
     display: flex;
     align-items: center;
@@ -227,6 +229,85 @@
         }
         .rating {
             color: #fdd835;
+        }
+    }
+}
+
+//edit profile
+.profile-setting {
+    background: #fdfdfd;
+    .setting-container {
+        padding: 2em;
+    }
+    .header {
+        border-bottom: 1px #e1e1e1 solid;
+        span{
+            font-size: 1em;
+             color: #999999;
+
+        }
+    }
+       .sub-header {
+       // border-top: 1px #e1e1e1 solid;
+        span{
+            font-size: 1em;
+             color: #999999;
+
+        }
+    }
+    .input {
+        border-radius: 5px;
+        border: solid 1px #c9c9c9;
+        background: #fdfdfd;
+        &:focus {
+            box-shadow: none;
+        }
+    }
+    .setting-content {
+        margin-left: 10em;
+        color: #666;
+        margin-top: 1em;
+    }
+    .title {
+        display: block;
+        color: #666;
+           font-family: $Montserrat-Light;
+        p {
+            display: block;
+            float: left;
+            width: 9em;
+            text-align: right;
+            margin-top: 0.2em;
+            span {
+                font-size: 0.9em;
+                color: #999999;
+            }
+        }
+    }
+    .foot-note {
+        margin: 1em;
+        font-size: 0.9em;
+        .available{
+            text-align: right;
+            color: #00a651;
+        }
+        .checkbox{
+
+        }
+    }
+    .profile-picture{
+        
+        margin-top: 3em;
+        width: 220px;
+        img{
+            width: 100%;
+            border-radius: 5px;
+        }
+        .change-btn{
+            background: #337ab7;
+            color: #fff;
+            margin-top: 1em;
+
         }
     }
 }

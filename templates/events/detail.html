@@ -1,13 +1,156 @@
 {% extends 'base.html' %}
+{% load staticfiles profile %}
 
 
 {% block content %}
-<h2>{{ event.title }}</h2>
-<p>by: {{ event.educator.get_full_name }}</p>
-<p>${{ event.fee }}</p>
-{% with event.get_participants as participants %}
-<p>{{ participants|length }} {{ participants|pluralize:"is,are"}} going</p>
-{% endwith %}
+{% with participants=event.get_participants %}
+<div class="row dashboard">
+    {% include 'includes/user_details.html' %}
 
-<a href="{% url 'event_join' event.id %}" class="btn btn-success">Join Event</a>
+    <div class="col-md-9 event-details">
+        <div class="header">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h3 class="">{{ event.title }}</h3>
+                        <a href="{% url 'event_join' event.id %}" class="btn join-event">JOIN EVENT</a>
+                        <div class="event-date">
+                            <h5>
+                                Happening on <a href=""><strong>{{ event.start_date|date:"D, jS M" }} {{ event.start_time|time:"h:i A" }}</strong></a>
+                            </h5>
+                        </div>
+                       <div class="social-icons">
+                            <a href="#"><i class="fa fa-google" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                       </div>
+        
+                    </div>
+                    <div class="col-md-10 col-md-offset-1">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class=" event-content description">
+                    <p>{{ event.info }}</p>
+                </div>
+                <div class="event-content">
+                    <label><i class="fa fa-pencil" aria-hidden="true"></i> Write something or ask a question</label>
+                    <textarea class="form-control"></textarea>
+                    <div class="text-right">
+                        <button class="btn post">Post</button>
+                    </div>
+                </div>
+                <div class="event-content comment-section">
+                    <div class="comment">
+                        <a href="#" class="avatar">
+                            <img src="{% static 'images/img6.jpg' %}">
+                        </a>
+                        <div class="content">
+                            <a href="#" class="pull-right close"><i class="fa fa-times" aria-hidden="true"></i></a>
+                            <a href="#" class="author">John Micheal Cruz</a>
+                            <div class="metadata">
+                                <span class="date">Yesterday at 12:30AM</span>
+                            </div>
+                            <div class="text">
+                                <p>
+                                    tnim turpis lobortis risus, ut semper ipsum enim ac magna. tnim turpis lobortis risus, ut semper ipsum enim ac magna. tnim turpis lobortis risus, ut semper ipsum enim ac magna. tnim turpis lobortis risus, ut semper ipsum enim ac magna.
+                                </p>
+                            </div>
+                            <div class="actions">
+                                <a href="#">Reply</a>
+                                <a href="#" class="favorite"><i class="fa fa-heart " aria-hidden="true"></i> <span>1</span> Favorite</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" child-comment">
+                        <a href="#" class="avatar">
+                            <img src="{% static 'images/img6.jpg' %}">
+                        </a>
+                        <div class="content">
+                            <a href="#" class="pull-right close"><i class="fa fa-times" aria-hidden="true"></i></a>
+                            <a href="#" class="author">John Micheal Cruz</a>
+                            <div class="metadata">
+                                <span class="date">Yesterday at 12:30AM</span>
+                            </div>
+                            <div class="text">
+                                <p>
+                                    tnim turpis lobortis risus, ut semper ipsum enim ac magna. tnim turpis lobortis risus, ut semper ipsum enim ac magna. tnim turpis lobortis risus, ut semper ipsum enim ac magna. tnim turpis lobortis risus, ut semper ipsum enim ac magna.
+                                </p>
+                            </div>
+                            <div class="actions">
+                                <a href="#">Reply</a>
+                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> Favorite</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" child-comment">
+                        <a href="#" class="avatar">
+                            <img src="{% static 'images/img6.jpg' %}">
+                        </a>
+                        <div class="content">
+                            <a href="#" class="pull-right close"><i class="fa fa-times" aria-hidden="true"></i></a>
+                            <a href="#" class="author">John Micheal Cruz</a>
+                            <div class="metadata">
+                                <span class="date">Yesterday at 12:30AM</span>
+                            </div>
+                            <div class="text">
+                                <p>
+                                    tnim turpis lobortis risus, ut semper ipsum enim ac magna. tnim turpis lobortis risus, ut semper ipsum enim ac magna. tnim turpis lobortis risus, ut semper ipsum enim ac magna. tnim turpis lobortis risus, ut semper ipsum enim ac magna.
+                                </p>
+                            </div>
+                            <div class="actions">
+                                <a href="#">Reply</a>
+                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> <span>10</span> Favorite</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="event-sidebar">
+                    <div class="owl-carousel participants">
+                        {% for participant in participants %}
+                        <div> <img src="{{ participant.user.profile_picture|get_image_url }}"> </div>
+                        {% endfor %}
+                    </div>
+                    <a href="#" class="view-participants pull-right">View all participants</a>
+                    <div class="about-author">
+                        <h4>
+                        AUTHOR
+                    </h4>
+                        <p>{{ event.educator.overview|truncatewords:"25" }}</p>
+                        <div class="avatar">
+                            <img src="{{ event.educator.profile_picture|get_image_url }}">
+                        </div>
+                        <div class="author">
+                            <h5>
+                                <a href="#">{{ event.educator.get_full_name|title }}</a></h5>
+                            <h5>
+                            {{ event.educator.position }}
+                       </h5>
+                        </div>
+                    </div>
+                    <h5>
+                    Get e-mail updates
+                </h5>
+                    <div class="form">
+                        <form>
+                            <div class="input-group">
+                                <input type="" name="" class="subscribe form-control" placeholder="email@yourcompany.com" aria-describedby="subscribe">
+                                <span class="input-group-btn">
+                                <button class="btn subscribe-btn" type="button">Subscribe</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endwith %}
 {% endblock %}
