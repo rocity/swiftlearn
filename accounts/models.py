@@ -161,9 +161,6 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
         msg = EmailMessage(subject, message, to=[email_to])
         msg.send()
 
-    # def create(self, *args, **kwargs):
-    #     self.subscribers = kwargs['request'].user
-    #     return super(Account, self).create(*args, **kwargs)
 
 class Transaction(models.Model):
     """ transaction model
