@@ -25,6 +25,15 @@
             <span class="quote">"</span>{{ profile.quote }}<span  class="quote">"</span>
         </p>
     </div>
+    {% if not user == profile %}
+    <div class="">
+        {% if user in profile.subscribers.all %}
+        <a href="{% url 'unsubscribe' profile.id %}"><button class="btn btn-subscribe" type="button">Unsubscribe | {{ profile.subscribers.all.count }}</button></a>
+        {% else %}
+        <a href="{% url 'subscribe' profile.id %}"><button class="btn btn-subscribe" type="button">Subscribe | {{ profile.subscribers.all.count }}</button></a>
+        {% endif %}
+    </div>
+    {% endif %}
 </div>
 <div class="row">
     <div class="col-lg-3">
@@ -51,7 +60,7 @@
             <button class="btn btn-success">
                 SEND INVITE
             </button>
-        </div>'>HIRE AS TUTOR</button>
+            </div>'>HIRE AS TUTOR</button>
         </div>
         <div class="owl-carousel ">
             {% for badge in profile.badges.all %}
