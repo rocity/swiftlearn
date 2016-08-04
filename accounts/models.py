@@ -74,6 +74,7 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
     quote = models.TextField(null=True, blank=True)
     overview = models.TextField(null=True, blank=True)
     badges = models.ManyToManyField('Badge', blank=True)
+    subscribers = models.ManyToManyField('Account', blank=True)
 
     # more info
     position = models.CharField(max_length=255, null=True, blank=True)
@@ -158,6 +159,9 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
         msg = EmailMessage(subject, message, to=[email_to])
         msg.send()
 
+    # def create(self, *args, **kwargs):
+    #     self.subscribers = kwargs['request'].user
+    #     return super(Account, self).create(*args, **kwargs)
 
 class ConfirmationKey(models.Model):
     """ learner's email confirmation key
