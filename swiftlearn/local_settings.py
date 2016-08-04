@@ -10,9 +10,9 @@ DATABASES = {
     }
 }
 
-DEFAULT_FROM_EMAIL = 'swiftkindgong@gmail.com'
+DEFAULT_FROM_EMAIL = 'ravewin7@gmil.com'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'swiftkindgong@gmail.com'
+EMAIL_HOST_USER = 'ravewin7@gmail.com'
 EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True

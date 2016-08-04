@@ -1,0 +1,27 @@
+<!-- Validate rate stars -->
+{% if feed.rate_star == 1 %}
+<!-- this for 1 star -->
+    <i class="fa fa-star " aria-hidden="true"></i>
+{% elif feed.rate_star == 2 %}
+<!-- this for 2 stars -->
+    <i class="fa fa-star " aria-hidden="true"></i>
+    <i class="fa fa-star " aria-hidden="true"></i>
+{% elif feed.rate_star == 3 %}
+<!-- this for 3 stars -->
+    <i class="fa fa-star " aria-hidden="true"></i>
+    <i class="fa fa-star " aria-hidden="true"></i>
+    <i class="fa fa-star " aria-hidden="true"></i>
+{% elif feed.rate_star == 4 %}
+<!-- this for 4 stars -->
+    <i class="fa fa-star " aria-hidden="true"></i>
+    <i class="fa fa-star " aria-hidden="true"></i>
+    <i class="fa fa-star " aria-hidden="true"></i>
+    <i class="fa fa-star " aria-hidden="true"></i>
+<!-- this for 5 stars -->
+{% else %}
+    <i class="fa fa-star " aria-hidden="true"></i>
+    <i class="fa fa-star " aria-hidden="true"></i>
+    <i class="fa fa-star " aria-hidden="true"></i>
+    <i class="fa fa-star " aria-hidden="true"></i>
+    <i class="fa fa-star " aria-hidden="true"></i>
+{% endif %}

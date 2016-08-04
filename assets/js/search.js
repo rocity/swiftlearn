@@ -9,7 +9,6 @@ $(document).ready(function(){
             });
        return false;   
     })
-
     // pagination
     $.get('/feeds/').done(function(data){
         $('.item-container').html(data); 
