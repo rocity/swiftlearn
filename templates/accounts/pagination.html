@@ -8,6 +8,7 @@
                     <a href="{% url 'event' item.id %}"> View</a>
                     <h5 class="going-count">
                        <i class="fa fa-check" aria-hidden="true"></i> {{ item.get_participants|length }} Going
+
                     </h5>
                 </div>
                 <div class="col-md-9 col-lg-9 item-details">
@@ -15,7 +16,9 @@
                         <a href="#">{{ item.title }}</a>
                     </h3>
                     <h5 class="date">
+
                         {{ item.start_date|date:"D, jS M" }} {{ item.start_time|time:"h:i A" }}
+
                     </h5>
                     <h6 class="catergory">
                         <a href="#">{{ item.tags.all|join:", " }}</a>
