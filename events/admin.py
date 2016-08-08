@@ -14,10 +14,10 @@ class FeedbackAdmin(admin.ModelAdmin):
 
 class EventMessageAdmin(admin.ModelAdmin):
     model = EventMessage
-    list_display = ['user', 'message', 'message_date']
+    list_display = ['user', 'event_title', 'message', 'message_date']
 
 
 admin.site.register(Event, EventAdmin)
 admin.site.register(Participant)
 admin.site.register(Feedback, FeedbackAdmin)
-admin.site.register(EventMessage, )
+admin.site.register(EventMessage, EventMessageAdmin)
