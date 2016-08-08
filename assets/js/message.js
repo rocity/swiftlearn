@@ -5,7 +5,12 @@ $(function(){
         var data = $(this).serialize();
         $.post(url, data).then(function(response){
             $('#result').prepend(response);
+            
+            $('#form-messages').trigger("reset");
+            data = {};
+          
         });
+
         return false;
     });
 
