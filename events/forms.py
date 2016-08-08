@@ -1,5 +1,5 @@
 from django import forms
-from .models import Event, Feedback
+from .models import Event, Feedback, EventMessage
 
 
 class EventForm(forms.ModelForm):
@@ -61,3 +61,14 @@ class FeedbackForm(forms.ModelForm):
     class Meta:
         model = Feedback
         fields = ('rate_star','feedback')
+
+
+class EventMessageForm(forms.ModelForm):
+
+    message = forms.CharField(widget=forms.Textarea({
+        'class': 'form-control',
+        }))
+
+    class Meta:
+        model = EventMessage
+        fields = ('message',)

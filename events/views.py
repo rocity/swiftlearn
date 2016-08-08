@@ -6,8 +6,9 @@ from django.views.generic import TemplateView, View
 from django.shortcuts import render, get_object_or_404
 
 from braces.views import LoginRequiredMixin
-from .forms import EventForm, FeedbackForm
-from .models import Event
+from .forms import EventForm, FeedbackForm, EventMessageForm
+from .models import Event, EventMessage
+from accounts.models import Account
 
 
 class EventListView(LoginRequiredMixin, TemplateView):
@@ -32,8 +33,27 @@ class EventDetailView(LoginRequiredMixin, TemplateView):
     def get(self, *args, **kwargs):
         event_id = kwargs.get('event_id')
         event = get_object_or_404(Event, id=event_id)
+        messages = event.eventmessage_set.all().order_by('-message_date')
+        form = EventMessageForm()
+        return render(self.request, self.template_name, {
+            'event': event,
+            'form': form,
+            'messages': messages
+            })
 
-        return render(self.request, self.template_name, {'event': event})
+    def post(self, *args, **kwargs):
+        event = Event.objects.get(id=kwargs.get('event_id'))
+        form = EventMessageForm(self.request.POST)
+
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.event_title = event
+            instance.user = self.request.user
+            instance.save()
+            self.template_name = 'events/comment.html'
+            return render(self.request, self.template_name, {'message': instance})
+
+        return render(self.request, self.template_name, {'form': form, 'event':event})
 
 
 class EventCreateView(LoginRequiredMixin, TemplateView):

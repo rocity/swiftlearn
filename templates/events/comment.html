@@ -1,0 +1,26 @@
+{% load staticfiles profile %}
+
+
+<div class="event-content comment-section">
+    <div class="comment">
+        <a href="#" class="avatar">
+            <img src="{{ user.profile_picture|get_image_url }}">
+        </a>
+        <div class="content">
+            <a href="#" class="pull-right close"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <a href="#" class="author">{{ event.educator.get_full_name }}</a>
+            <div class="metadata">
+                <span class="date">{{ message.message_date }}</span>
+            </div>
+            <div class="text">
+                <p>
+                     {{ message.message }}
+                </p>
+            </div>
+            <div class="actions">
+                <a href="#">Reply</a>
+                <a href="#" class="favorite"><i class="fa fa-heart " aria-hidden="true"></i> <span>1</span> Favorite</a>
+            </div>
+        </div>
+    </div>
+</div>
