@@ -22,26 +22,7 @@ class SignupForm(forms.ModelForm):
     class Meta:
         model = Account
         fields = ('email', 'password', 'confirm_password')
-
-    def clean_password(self):
-        password = self.cleaned_data['password']
-        confirm_password = self.data['confirm_password']
-
-        if password != confirm_password:
-            raise forms.ValidationError("Password didn't match. Try again.")
-
-        return password
-
-    def save(self, commit=True, **kwargs):
-        instance = super(SignupForm, self).save(commit=False)
-        instance.username = instance._extract_username()
-
-        if commit:
-            instance.set_password(self.cleaned_data['password'])
-            instance.save()
-
-        return instance
-
+   
 
 class LoginForm(AuthenticationForm):
     """ form for user login

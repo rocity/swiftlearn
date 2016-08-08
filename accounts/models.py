@@ -129,7 +129,7 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
     def _extract_username(self):
         """ extract username from email
         """
-        return "{username}".format(username=self.email.split('@')[0])
+        return "{username}".format(username=self.email)
 
     def generate_confirm_key(self):
         """ Generate a new confirm key for this

@@ -20,35 +20,29 @@ $(document).ready(function(){
     var url = $(this).attr('action');
     var data  = $('#signup').serialize();
 
-    $.ajax({
-            url:url,
-            data:data,
-            type:"POST",
-            dataType:'json',
-            error:function(response){
-                var errors = JSON.parse(response.responseText);
-                $.each(errors,function(index, error){
-                     // error dissemination 
-                     var id = "#"+index+"_group";
-                        $(id).addClass('has-error');
-                        $(id).prepend(error).css({"color": "#a94442"});
-                        $('.errorlist').css({"list-style":"none","margin":"0","padding":"0"});
-                    // set focus text field if there is a error
-                     var txtid="#id_"+index;
-                        $(txtid).focus();
-                });
-            }
-    }).done(function(response){
-        // success 
+    $.post( url, data, function(response){
+
         if(response == "success"){
-              window.location.href="/dashboard/";  
+            window.location.href = "/dashboard";
         }
-      });
+    }).fail(function(response){
+        var errors = JSON.parse(response.responseText);
+        $.each(errors, function(index, error){
+
+            var id = "#"+index+"_group";
+            $(id).addClass('has-error');
+            $(id).prepend('<p class="error">'+error+'</p>').css({"color":"#a94442"});
+
+            var txtid = "#id_"+index;
+            $(txtid).focus();
+        });
+    });
+
         event.preventDefault();
     });
 });
 
 function clearValidation(){
   $('.form-group').removeClass('has-error');
-  $('.errorlist').remove();
+  $('.error').remove();
 }
