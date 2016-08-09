@@ -14,7 +14,7 @@ from braces.views import LoginRequiredMixin
 from events.models import Event, Feedback
 
 from .forms import SignupForm, LoginForm, ResetPasswordForm, ChangePasswordForm
-from .models import ConfirmationKey, Account
+from .models import ConfirmationKey, Account, Skill
 
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib import messages
@@ -46,8 +46,13 @@ class LoginView(TemplateView):
     def post(self, *args, **kwargs):
         form = LoginForm(data=self.request.POST)
         if form.is_valid():
-            login(self.request, form.user_cache)
-            return HttpResponseRedirect(reverse('dashboard'))
+            user = Account.objects.get(email=form.user_cache)
+            if user.expertise.exists():
+                login(self.request, form.user_cache)
+                return HttpResponseRedirect(reverse('dashboard'))
+            else:
+                login(self.request, form.user_cache)
+                return HttpResponseRedirect(reverse('user_category'))
         return render(self.request, self.template_name, {'form': form})
 
 
@@ -212,6 +217,7 @@ class SubscribeView(TemplateView):
         
         return HttpResponseRedirect(reverse('profile', kwargs={'user_id':user_id}))
 
+
 class UnsubscribeView(TemplateView):
     """ Unsubscribe from other user
     """
@@ -222,3 +228,28 @@ class UnsubscribeView(TemplateView):
         user.subscribers.remove(subscriber)
         
         return HttpResponseRedirect(reverse('profile', kwargs={'user_id':user_id}))
+
+
+class UserCategoryView(LoginRequiredMixin, TemplateView):
+    """ Category Selection View that can proceed to the Dashboard view
+    """
+    template_name = 'accounts/user_select_category.html'
+
+    def get(self, *args, **kwargs):
+        images = Skill.objects.all()
+        return render(self.request, self.template_name, {'images':images})
+ 
+    def post(self, *args, **kwargs):
+        images = Skill.objects.all()
+
+        user = Account.objects.get(email=self.request.user)
+        categories = self.request.POST.getlist('category')
+        message = ""
+        if not categories:
+            message = "Required to select categories!"
+        if user:
+            user.expertise = categories
+            user.save()
+            return HttpResponseRedirect(reverse('dashboard'))
+        return render(self.request, self.template_name, {'images':images,'message':message})
+        

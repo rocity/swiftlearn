@@ -38,8 +38,8 @@ class AccountSerializer(serializers.ModelSerializer):
         password = validated_data.get('password')
 
         user = Account.objects.create(email=email)
-        user.username = user._extract_username(password)
-        user.set_password()
+        user.username = user._extract_username()
+        user.set_password(password)
         user.save()
         user._send_confirmation_email() # activate account
 
