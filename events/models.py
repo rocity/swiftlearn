@@ -92,6 +92,7 @@ class EventMessage(models.Model):
     user = models.ForeignKey(Account)
     event_title = models.ForeignKey(Event)
     message = models.TextField(max_length=200)
+    parent = models.ForeignKey('self', null=True, blank=True, related_name="replies")
     message_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

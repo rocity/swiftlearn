@@ -33,7 +33,7 @@ class EventDetailView(LoginRequiredMixin, TemplateView):
     def get(self, *args, **kwargs):
         event_id = kwargs.get('event_id')
         event = get_object_or_404(Event, id=event_id)
-        messages = event.eventmessage_set.all().order_by('-message_date')
+        messages = event.eventmessage_set.filter(parent=None).order_by('-message_date')
         form = EventMessageForm()
         return render(self.request, self.template_name, {
             'event': event,
@@ -54,6 +54,26 @@ class EventDetailView(LoginRequiredMixin, TemplateView):
             return render(self.request, self.template_name, {'message': instance})
 
         return render(self.request, self.template_name, {'form': form, 'event':event})
+
+
+class EventReply(LoginRequiredMixin, TemplateView):
+    """Create Reply to a post
+    """
+    def post(self, *args, **kwargs):
+        message = EventMessage.objects.get(id=kwargs.get('message_id'))
+        event = Event.objects.get(id=kwargs.get('event_id'))
+        form = EventMessageForm(self.request.POST)
+
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.event_title = event
+            instance.user = self.request.user
+            instance.parent = message
+            instance.save()
+            self.template_name = 'events/reply.html'
+            return render(self.request, self.template_name, {'message': instance})
+        return render(self.request, self.template_name, {'form': form, 'event':event})
+
 
 
 class EventCreateView(LoginRequiredMixin, TemplateView):

@@ -1089,17 +1089,17 @@ body {
   margin-top: 1em;
 }
 
-/* line 2, ../sass/event.scss */
+/* line 4, ../sass/event.scss */
 .create-event {
   background: #fdfdfd;
   padding: 5%;
   border: 1px solid #efefef;
 }
-/* line 6, ../sass/event.scss */
+/* line 8, ../sass/event.scss */
 .create-event .event-quote {
   margin-bottom: 50px;
 }
-/* line 9, ../sass/event.scss */
+/* line 11, ../sass/event.scss */
 .create-event .form-control {
   -webkit-box-shadow: none;
   background: #fdfdfd;
@@ -1113,25 +1113,25 @@ body {
   color: #303030;
   font-family: "Montserrat-SemiBold", "sans-serif";
 }
-/* line 21, ../sass/event.scss */
+/* line 23, ../sass/event.scss */
 .create-event .form-control.event-title {
   font-size: 26px;
 }
-/* line 24, ../sass/event.scss */
+/* line 26, ../sass/event.scss */
 .create-event .form-control.desc-header {
   font-size: 20px;
 }
-/* line 27, ../sass/event.scss */
+/* line 29, ../sass/event.scss */
 .create-event .form-control.price {
   padding: 26px 0;
 }
-/* line 30, ../sass/event.scss */
+/* line 32, ../sass/event.scss */
 .create-event .form-control.category {
   font-family: "Lato-Regular", "sans-serif";
   border-right: none;
   margin: 0;
 }
-/* line 35, ../sass/event.scss */
+/* line 37, ../sass/event.scss */
 .create-event .form-control.url {
   border-top: none;
   border-left: none;
@@ -1140,72 +1140,80 @@ body {
   margin: 0;
   font-family: "Lato-Regular", "sans-serif";
 }
-/* line 43, ../sass/event.scss */
+/* line 45, ../sass/event.scss */
 .create-event .form-control::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   color: #c1c1c1;
 }
-/* line 48, ../sass/event.scss */
+/* line 50, ../sass/event.scss */
 .create-event button {
   margin-top: 20px;
 }
-/* line 51, ../sass/event.scss */
+/* line 53, ../sass/event.scss */
 .create-event .category-btn {
   background: none;
   border-right: none;
   border-top: none;
   border-bottom-right-radius: 0px;
 }
-/* line 57, ../sass/event.scss */
+/* line 59, ../sass/event.scss */
 .create-event .url-btn {
   background: none;
   border: none;
 }
-/* line 60, ../sass/event.scss */
+/* line 62, ../sass/event.scss */
 .create-event .url-btn a {
   color: #0288d1;
   text-decoration: none;
 }
-/* line 65, ../sass/event.scss */
+/* line 67, ../sass/event.scss */
 .create-event .email-update {
   margin-top: 30px;
   color: #0288d1;
 }
-/* line 69, ../sass/event.scss */
+/* line 71, ../sass/event.scss */
 .create-event .create-btn {
   background: #0288d1;
   color: #fff;
   border: none;
   height: 40px;
 }
-/* line 74, ../sass/event.scss */
+/* line 76, ../sass/event.scss */
 .create-event .create-btn:hover {
   background: #0b75af;
   transition: 1s;
 }
 
-/* line 83, ../sass/event.scss */
+/* line 85, ../sass/event.scss */
 .event-details .description {
   font-family: "Lato-Regular", "sans-serif";
   line-height: 150%;
   color: #888888;
   letter-spacing: 0.1px;
 }
-/* line 88, ../sass/event.scss */
+/* line 90, ../sass/event.scss */
 .event-details .description h3 {
   color: #303030;
   margin: 20px 0;
 }
-/* line 93, ../sass/event.scss */
+/* line 95, ../sass/event.scss */
 .event-details .form-control {
   border: #bcbcbc solid 1px;
   border-radius: 2px;
 }
-/* line 96, ../sass/event.scss */
+/* line 98, ../sass/event.scss */
 .event-details .form-control:focus {
   box-shadow: none;
 }
-/* line 100, ../sass/event.scss */
+/* line 102, ../sass/event.scss */
+.event-details #id_message {
+  border: #bcbcbc solid 1px;
+  border-radius: 2px;
+  max-width: 100%;
+  width: 100%;
+  height: 54px;
+}
+/* line 109, ../sass/event.scss */
 .event-details .header {
   background: #485563;
   /* fallback for old browsers */
@@ -1221,7 +1229,7 @@ body {
   line-height: 150%;
   letter-spacing: 0.5px;
 }
-/* line 116, ../sass/event.scss */
+/* line 125, ../sass/event.scss */
 .event-details .header .join-event {
   background: #ed145b;
   color: #fff;
@@ -1229,45 +1237,45 @@ body {
   width: 150px;
   border-radius: 2px;
 }
-/* line 122, ../sass/event.scss */
+/* line 131, ../sass/event.scss */
 .event-details .header .join-event:active {
   border: none;
 }
-/* line 125, ../sass/event.scss */
+/* line 134, ../sass/event.scss */
 .event-details .header .join-event:focus {
   border: none;
 }
-/* line 129, ../sass/event.scss */
+/* line 138, ../sass/event.scss */
 .event-details .header img {
   width: 70px;
 }
-/* line 132, ../sass/event.scss */
+/* line 141, ../sass/event.scss */
 .event-details .header h3 {
   line-height: 150%;
 }
-/* line 135, ../sass/event.scss */
+/* line 144, ../sass/event.scss */
 .event-details .header h5 {
   margin-top: 20px;
 }
-/* line 137, ../sass/event.scss */
+/* line 146, ../sass/event.scss */
 .event-details .header h5 a {
   color: #fff;
   text-decoration: none;
   font-family: "Lato-Regular", "sans-serif", "sans-serif";
 }
-/* line 144, ../sass/event.scss */
+/* line 153, ../sass/event.scss */
 .event-details .header .social-icons a {
   margin: 0 1em;
   color: #fff;
 }
-/* line 150, ../sass/event.scss */
+/* line 159, ../sass/event.scss */
 .event-details .event-content {
   background: #fdfdfd;
   padding: 5% 7%;
   border-radius: 5px;
   margin: 10px 0;
 }
-/* line 155, ../sass/event.scss */
+/* line 164, ../sass/event.scss */
 .event-details .event-content .post {
   margin-top: 1em;
   background: #00bfa5;
@@ -1275,113 +1283,113 @@ body {
   width: 100px;
 }
 
-/* line 164, ../sass/event.scss */
+/* line 173, ../sass/event.scss */
 .avatar {
   display: block;
   width: 3em;
   float: left;
   margin: 0.2em 0 0;
 }
-/* line 169, ../sass/event.scss */
+/* line 178, ../sass/event.scss */
 .avatar img {
   display: block;
   width: 100%;
   border-radius: 5px;
 }
 
-/* line 176, ../sass/event.scss */
+/* line 185, ../sass/event.scss */
 .comment-section {
   line-height: 150%;
 }
-/* line 178, ../sass/event.scss */
+/* line 187, ../sass/event.scss */
 .comment-section .comment {
   margin: 20px 0;
 }
-/* line 181, ../sass/event.scss */
+/* line 190, ../sass/event.scss */
 .comment-section .child-comment {
   margin: 20px 0em 20px 4em;
 }
-/* line 184, ../sass/event.scss */
+/* line 193, ../sass/event.scss */
 .comment-section .close {
   color: rgba(0, 0, 0, 0.2);
   font-weight: 100;
   font-size: 0.8em;
 }
-/* line 189, ../sass/event.scss */
+/* line 198, ../sass/event.scss */
 .comment-section .content {
   display: block;
   margin-left: 4em;
 }
-/* line 192, ../sass/event.scss */
+/* line 201, ../sass/event.scss */
 .comment-section .content a {
   color: #303030;
   font-weight: 700;
   text-decoration: none;
 }
-/* line 196, ../sass/event.scss */
+/* line 205, ../sass/event.scss */
 .comment-section .content a:hover {
   transition: 1s;
 }
-/* line 199, ../sass/event.scss */
+/* line 208, ../sass/event.scss */
 .comment-section .content a.favorite {
   color: #ed145b;
 }
-/* line 204, ../sass/event.scss */
+/* line 213, ../sass/event.scss */
 .comment-section .metadata {
   color: rgba(0, 0, 0, 0.4);
   font-size: .875em;
   display: inline-block;
   margin-left: 1em;
 }
-/* line 209, ../sass/event.scss */
+/* line 218, ../sass/event.scss */
 .comment-section .metadata span {
   display: inline-block;
   margin: 0 .5em 0 0;
 }
-/* line 215, ../sass/event.scss */
+/* line 224, ../sass/event.scss */
 .comment-section .actions a {
   color: rgba(0, 0, 0, 0.4);
   font-size: .875em;
   font-weight: 200;
   margin: 0 10px;
 }
-/* line 220, ../sass/event.scss */
+/* line 229, ../sass/event.scss */
 .comment-section .actions a:first-child {
   margin-left: 0px;
 }
-/* line 223, ../sass/event.scss */
+/* line 232, ../sass/event.scss */
 .comment-section .actions a:hover {
   color: #1f62ae;
   transition: 1s;
 }
 
-/* line 232, ../sass/event.scss */
+/* line 241, ../sass/event.scss */
 .event-sidebar .owl-carousel {
   background: none;
   margin: 0;
 }
-/* line 237, ../sass/event.scss */
+/* line 246, ../sass/event.scss */
 .event-sidebar .participants img {
   border-radius: 5px;
 }
-/* line 241, ../sass/event.scss */
+/* line 250, ../sass/event.scss */
 .event-sidebar .author {
   display: block;
   margin-left: 4em;
   line-height: 50%;
   margin-top: 1em;
 }
-/* line 246, ../sass/event.scss */
+/* line 255, ../sass/event.scss */
 .event-sidebar .author a {
   color: #303030;
   font-weight: 700;
   font-size: 1.2em;
 }
-/* line 252, ../sass/event.scss */
+/* line 261, ../sass/event.scss */
 .event-sidebar .about-author {
   margin: 3em 0;
 }
-/* line 254, ../sass/event.scss */
+/* line 263, ../sass/event.scss */
 .event-sidebar .about-author p {
   font-style: italic;
   color: #666666;
@@ -1389,16 +1397,16 @@ body {
   line-height: 150%;
   text-align: justify;
 }
-/* line 263, ../sass/event.scss */
+/* line 272, ../sass/event.scss */
 .event-sidebar .form .form-control {
   border: #888888 solid 1px;
   border-radius: 2px;
 }
-/* line 266, ../sass/event.scss */
+/* line 275, ../sass/event.scss */
 .event-sidebar .form .form-control:focus {
   box-shadow: none;
 }
-/* line 270, ../sass/event.scss */
+/* line 279, ../sass/event.scss */
 .event-sidebar .form .subscribe-btn {
   color: #fff;
   background: #ed145b;

@@ -64,11 +64,10 @@ class FeedbackForm(forms.ModelForm):
 
 
 class EventMessageForm(forms.ModelForm):
-
     message = forms.CharField(widget=forms.Textarea({
-        'class': 'form-control',
+        'id': 'id_message',
+        'required': True, 
         }))
-
     class Meta:
         model = EventMessage
         fields = ('message',)
