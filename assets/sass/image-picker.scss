@@ -1,0 +1,77 @@
+.step-container {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.options {
+    margin-top: 3em;
+    background: #fff;
+    padding: 1em;
+    border-radius: 5px;
+    .option-header {
+        margin-left: 4em;
+    }
+    .option-footer {
+        margin: 3em 4.5em 4em 3em;
+        button {
+            width: 200px;
+            background: #00a651;
+            &:hover {
+                transition: 1s;
+                background: #097c41;
+        
+            }
+        }
+    }
+    .options-container {
+        height: 420px;
+        overflow: auto;
+        padding: 3em;
+        ul.thumbnails.image_picker_selector {
+            overflow: auto;
+            list-style-image: none;
+            list-style-position: outside;
+            list-style-type: none;
+            padding: 0px;
+            margin: 0px;
+        }
+        ul.thumbnails.image_picker_selector ul {
+            overflow: auto;
+            list-style-image: none;
+            list-style-position: outside;
+            list-style-type: none;
+            padding: 0px;
+            margin: 0px;
+        }
+        ul.thumbnails.image_picker_selector li.group_title {
+            float: none;
+        }
+        ul.thumbnails.image_picker_selector li {
+            margin: 0px 15px 10px 15px;
+            width: 145px;
+            display: inline-block;
+        }
+        ul.thumbnails.image_picker_selector li .thumbnail {
+            padding: 6px 6px 3px;
+            border: 1px solid #dddddd;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            display: block;
+            a {
+                color: #666;
+                text-decoration: none;
+                font-weight: 700;
+                margin-top: 10px;
+                display: block;
+            }
+        }
+        ul.thumbnails.image_picker_selector li .thumbnail img {
+            -webkit-user-drag: none;
+            width: 250px;
+        }
+        ul.thumbnails.image_picker_selector li .thumbnail.selected {
+            border: 3px solid #00a651;
+        }
+    }
+}

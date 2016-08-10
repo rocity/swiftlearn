@@ -1,0 +1,91 @@
+/* line 1, ../sass/image-picker.scss */
+.step-container {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* line 6, ../sass/image-picker.scss */
+.options {
+  margin-top: 3em;
+  background: #fff;
+  padding: 1em;
+  border-radius: 5px;
+}
+/* line 11, ../sass/image-picker.scss */
+.options .option-header {
+  margin-left: 4em;
+}
+/* line 14, ../sass/image-picker.scss */
+.options .option-footer {
+  margin: 3em 4.5em 4em 3em;
+}
+/* line 16, ../sass/image-picker.scss */
+.options .option-footer button {
+  width: 200px;
+  background: #00a651;
+}
+/* line 19, ../sass/image-picker.scss */
+.options .option-footer button:hover {
+  transition: 1s;
+  background: #097c41;
+}
+/* line 26, ../sass/image-picker.scss */
+.options .options-container {
+  height: 420px;
+  overflow: auto;
+  padding: 3em;
+}
+/* line 30, ../sass/image-picker.scss */
+.options .options-container ul.thumbnails.image_picker_selector {
+  overflow: auto;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+/* line 38, ../sass/image-picker.scss */
+.options .options-container ul.thumbnails.image_picker_selector ul {
+  overflow: auto;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+/* line 46, ../sass/image-picker.scss */
+.options .options-container ul.thumbnails.image_picker_selector li.group_title {
+  float: none;
+}
+/* line 49, ../sass/image-picker.scss */
+.options .options-container ul.thumbnails.image_picker_selector li {
+  margin: 0px 15px 10px 15px;
+  width: 145px;
+  display: inline-block;
+}
+/* line 54, ../sass/image-picker.scss */
+.options .options-container ul.thumbnails.image_picker_selector li .thumbnail {
+  padding: 6px 6px 3px;
+  border: 1px solid #dddddd;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  display: block;
+}
+/* line 61, ../sass/image-picker.scss */
+.options .options-container ul.thumbnails.image_picker_selector li .thumbnail a {
+  color: #666;
+  text-decoration: none;
+  font-weight: 700;
+  margin-top: 10px;
+  display: block;
+}
+/* line 69, ../sass/image-picker.scss */
+.options .options-container ul.thumbnails.image_picker_selector li .thumbnail img {
+  -webkit-user-drag: none;
+  width: 250px;
+}
+/* line 73, ../sass/image-picker.scss */
+.options .options-container ul.thumbnails.image_picker_selector li .thumbnail.selected {
+  border: 3px solid #00a651;
+}

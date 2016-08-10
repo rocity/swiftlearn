@@ -1,0 +1,68 @@
+{% load staticfiles profile %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tell us what you want to learn</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/image-picker.css' %}">
+</head>
+
+<body>
+
+    <div class="page step-container">
+        <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="">Swift Tutorial</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#">Welcome, Earvin! </a>
+                </li>
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" type="button" id="user-profile" data-toggle="dropdown" aria-hashpop="true" aria-expanded="true">
+                        <img src="static/images/img6.jpg">
+                    </a>
+                    <ul class="dropdown-menu user-dropdown" aria-labelledby="user-profile">
+                        <li><a href="{% url 'logout' %}">Log out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+        <div class="container ">
+            <div class="row">
+
+                <div class= "options">
+                 <div class="option-header">
+                       <h2>Tell us what you want to learn</h2>
+                       <b>{{ message }}</b>
+                 </div>
+                 <form method="post">
+                 {% csrf_token %}
+                    <div class="options-container">
+                        <select multiple="multiple" name="category" class="image-picker show-labels  show-html">
+                    {% for image in images %}
+                        <option data-img-src="{{ image.logo.url }}" value="{{ image.id }}">{{ image.name }}</option>
+                    {% endfor %}  
+                    </select>
+                    </div>
+                   <div class=" option-footer text-right">
+                     <button type="submit" class="btn btn-success">Next</button>
+                   </div>
+                 </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://use.fontawesome.com/5fbc41cc4a.js"></script>
+    <script src="{% static 'js/jquery-1.9.1.min.js' %}"></script>
+    <script src="{% static 'js/images.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %} "></script>
+    <script src="{% static 'js/image-picker.js' %}"></script>
+</body>
+
+</html>

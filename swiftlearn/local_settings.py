@@ -13,6 +13,6 @@ DATABASES = {
 DEFAULT_FROM_EMAIL = 'ravewin7@gmil.com'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'ravewin7@gmail.com'
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_PASSWORD = 'lav051689'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True

@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 
-from .models import Account
+from .models import Account,Skill
 from events.models import Event
 
 
@@ -77,3 +77,4 @@ class ChangePasswordForm(forms.ModelForm):
             raise forms.ValidationError("Password didn't match. Try again.")
 
         return password
+        

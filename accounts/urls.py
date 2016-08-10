@@ -16,4 +16,5 @@ urlpatterns = [
     url(r'^feeds/$', FeedView.as_view(), name='feeds'),
     url(r'^profile/(?P<user_id>[0-9]+)/subscribe/$', SubscribeView.as_view(), name='subscribe'),
     url(r'^profile/(?P<user_id>[0-9]+)/unsubscribe/$', UnsubscribeView.as_view(), name='unsubscribe'),
+    url(r'^user_category/$', UserCategoryView.as_view(), name='user_category'),
 ]
