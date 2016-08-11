@@ -1,3 +1,5 @@
+@import "variables";
+
 //create event
 .create-event {
     background: #fdfdfd;
@@ -96,6 +98,13 @@
         &:focus {
             box-shadow: none;
         }
+    }
+    #id_message {
+        border: #bcbcbc solid 1px;
+        border-radius: 2px;
+        max-width: 100%;
+        width: 100%;
+        height: 54px;
     }
     .header {
         background: #485563;

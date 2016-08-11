@@ -21,9 +21,9 @@
                         </div>
                        <div class="social-icons">
                             <a href="#"><i class="fa fa-google" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                        </div>
         
                     </div>
@@ -37,79 +37,88 @@
                 <div class=" event-content description">
                     <p>{{ event.info }}</p>
                 </div>
-                <div class="event-content">
-                    <label><i class="fa fa-pencil" aria-hidden="true"></i> Write something or ask a question</label>
-                    <textarea class="form-control"></textarea>
-                    <div class="text-right">
-                        <button class="btn post">Post</button>
+                <form class="form-messages" method="post" action="{% url 'event' event.id %}">
+                {% csrf_token %}
+                    <div class="event-content">
+                        <label><i class="fa fa-pencil" aria-hidden="true"></i> Write something or ask a question</label>
+                             {{ form.message }}
+                        <div class="text-right">
+                            <button class="btn post">Post</button>
+                        </div>
                     </div>
-                </div>
-                <div class="event-content comment-section">
-                    <div class="comment">
+                </form>
+                    <div id="result">
+                    
+                   {% for message in messages %} 
+                   
+                    <div class="event-content comment-section">
+                    <div class="comment-{{ message.id }}">
                         <a href="#" class="avatar">
-                            <img src="{% static 'images/img6.jpg' %}">
+                        <img src="{{ user.profile_picture|get_image_url }}">
                         </a>
                         <div class="content">
                             <a href="#" class="pull-right close"><i class="fa fa-times" aria-hidden="true"></i></a>
-                            <a href="#" class="author">John Micheal Cruz</a>
+                            <a href="#" class="author">{{ message.user.get_full_name }}</a>
                             <div class="metadata">
-                                <span class="date">Yesterday at 12:30AM</span>
+                                <span class="date">{{ message.message_date | timesince }}</span>
                             </div>
                             <div class="text">
                                 <p>
-                                    tnim turpis lobortis risus, ut semper ipsum enim ac magna. tnim turpis lobortis risus, ut semper ipsum enim ac magna. tnim turpis lobortis risus, ut semper ipsum enim ac magna. tnim turpis lobortis risus, ut semper ipsum enim ac magna.
+                                    {{ message.message }}
                                 </p>
                             </div>
+                            
+                            {% for reply in message.replies.all %}
+                                     <div class="event-content comment-section">
+                                    <div class="comment">
+                                        <a href="#" class="avatar">
+                                            <img src="{{ user.profile_picture|get_image_url }}">
+                                        </a>
+                                        <div class="content">
+                                            <a href="#" class="pull-right close"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                            <a href="#" class="author">{{ reply.user.get_full_name }}</a>
+                                            <div class="metadata">
+                                                <span class="date">{{ reply.message_date | timesince }}</span>
+                                            </div>
+                                            <div class="text">
+                                                <p>
+                                                     {{ reply.message }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                       
+                            
+                   
                             <div class="actions">
-                                <a href="#">Reply</a>
+                                <div class="reply-list">
+                                </div>
+                                <a href="#" class="reply">Reply</a>
                                 <a href="#" class="favorite"><i class="fa fa-heart " aria-hidden="true"></i> <span>1</span> Favorite</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=" child-comment">
-                        <a href="#" class="avatar">
-                            <img src="{% static 'images/img6.jpg' %}">
-                        </a>
-                        <div class="content">
-                            <a href="#" class="pull-right close"><i class="fa fa-times" aria-hidden="true"></i></a>
-                            <a href="#" class="author">John Micheal Cruz</a>
-                            <div class="metadata">
-                                <span class="date">Yesterday at 12:30AM</span>
-                            </div>
-                            <div class="text">
-                                <p>
-                                    tnim turpis lobortis risus, ut semper ipsum enim ac magna. tnim turpis lobortis risus, ut semper ipsum enim ac magna. tnim turpis lobortis risus, ut semper ipsum enim ac magna. tnim turpis lobortis risus, ut semper ipsum enim ac magna.
-                                </p>
-                            </div>
-                            <div class="actions">
-                                <a href="#">Reply</a>
-                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> Favorite</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=" child-comment">
-                        <a href="#" class="avatar">
-                            <img src="{% static 'images/img6.jpg' %}">
-                        </a>
-                        <div class="content">
-                            <a href="#" class="pull-right close"><i class="fa fa-times" aria-hidden="true"></i></a>
-                            <a href="#" class="author">John Micheal Cruz</a>
-                            <div class="metadata">
-                                <span class="date">Yesterday at 12:30AM</span>
-                            </div>
-                            <div class="text">
-                                <p>
-                                    tnim turpis lobortis risus, ut semper ipsum enim ac magna. tnim turpis lobortis risus, ut semper ipsum enim ac magna. tnim turpis lobortis risus, ut semper ipsum enim ac magna. tnim turpis lobortis risus, ut semper ipsum enim ac magna.
-                                </p>
-                            </div>
-                            <div class="actions">
-                                <a href="#">Reply</a>
-                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> <span>10</span> Favorite</a>
+                                <div class="comment-reply hide">
+                               
+                                    <form class="form-reply" action="{% url 'reply' message.id event.id %}">
+                                        {% csrf_token %}
+                                            <input type="hidden" class="parent-id" value="{{ message.id }}"/>
+                                              {{ form.message }}
+                                            <div class="text-right">
+                                                <button class="btn post">Reply</button>
+                                            </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                 
+                {% endfor %}
+                
+                </div>
+  
             </div>
+            
             <div class="col-md-4">
                 <div class="event-sidebar">
                     <div class="owl-carousel participants">

@@ -83,4 +83,17 @@ class Feedback(models.Model):
     feed_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return "{user}{title}".format(user=self.user, title=self.event_title) 
+        return "{user}{title}".format(user=self.user, title=self.event_title)
+
+
+class EventMessage(models.Model):
+    """ Post message at event
+    """
+    user = models.ForeignKey(Account)
+    event_title = models.ForeignKey(Event)
+    message = models.TextField(max_length=200)
+    parent = models.ForeignKey('self', null=True, blank=True, related_name="replies")
+    message_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{user} {message}".format(user=self.user, message=self.message)
