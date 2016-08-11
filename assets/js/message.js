@@ -28,7 +28,7 @@ $(function () {
             var url = replyForm.find('.form-reply').attr('action');
 
             $.post(url, form).done(function (response) {
-                $('#reply-list').append(response);
+                parent.find('.reply-list').append(response);
                 $('.form-reply').trigger("reset");
                 data = {};
             });
