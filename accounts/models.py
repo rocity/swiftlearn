@@ -91,6 +91,9 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
     balance = models.DecimalField(max_digits=9, decimal_places=2, default=0.00)
     objects = AccountManager()
 
+    # type of user tutor or student
+    user_type = models.CharField(max_length=225, null=True, blank=True)
+
     is_admin   = models.BooleanField(default=False)
     is_staff   = models.BooleanField(default=False)
     is_active  = models.BooleanField(_('active'), default=True,

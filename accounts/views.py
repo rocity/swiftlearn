@@ -3,7 +3,7 @@ import json
 from django.conf import settings
 from django.contrib.auth import login, logout
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 
 from django.db.models import Q
 
@@ -25,14 +25,27 @@ from django.core.mail import send_mail
 from swiftlearn.settings import DEFAULT_FROM_EMAIL
 
 
+class IndexView(TemplateView):
+    """ Main page of the site
+    """
+    template_name = 'index.html'
+
+    def get(self, *args, **kwargs):
+        return render(self.request, self.template_name, {})
+
+
 class SignupView(TemplateView):
     """ Registration view for new learners
     """
     template_name = 'accounts/signup.html'
 
     def get(self, *args, **kwargs):
+        user_type = self.request.GET.get('t')
+        if not user_type == 'tutor' and not user_type == 'student':
+            raise Http404()
         form = SignupForm()
-        return render(self.request, self.template_name, {'form': form})
+        return render(self.request, self.template_name, {'form': form,'user_type':user_type})
+
 
 class LoginView(TemplateView):
     """ Login view for users
@@ -244,12 +257,10 @@ class UserCategoryView(LoginRequiredMixin, TemplateView):
 
         user = Account.objects.get(email=self.request.user)
         categories = self.request.POST.getlist('category')
-        message = ""
         if not categories:
             message = "Required to select categories!"
-        if user:
+        else:
             user.expertise = categories
             user.save()
             return HttpResponseRedirect(reverse('dashboard'))
         return render(self.request, self.template_name, {'images':images,'message':message})
-        

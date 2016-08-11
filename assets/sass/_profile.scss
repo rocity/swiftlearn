@@ -1,3 +1,86 @@
+.modal {
+    background: rgba(248, 248, 251, 0.9);
+}
+
+.modal-content {
+    box-shadow: none;
+    border: solid #c1c1c1 1px;
+    .modal-header {
+        border: none;
+        img {
+            width: 100px;
+        }
+    }
+    .modal-body {
+        .form-control {
+            -webkit-box-shadow: none;
+            background: #fdfdfd;
+            border-bottom: solid 1px #c1c1c1;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-radius: 0px;
+            padding: 0;
+            margin: 20px 0;
+            color: #303030;
+            font-family: $Montserrat-SemiBold;
+        }
+        padding: 50px;
+        .upload-file {
+            width: 500px;
+            height: 129px;
+            border: 2px dashed #888;
+            margin: 47px auto 0;
+            p {
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                color: #888;
+                font-family: Arial;
+                margin-top: 10%;
+            }
+            input {
+                position: absolute;
+                margin: 0;
+                padding: 0;
+                width: 500px;
+                height: 129px;
+                outline: none;
+                opacity: 0;
+            }
+        }
+    }
+    .modal-footer {
+        border: none;
+        .upload-btn {
+            margin-right: 30px;
+            background: #00bfa5;
+            color: #fff;
+            width: 150px;
+            margin-bottom: 30px;
+            margin-top: -15px;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.setting-nav {
+    font-family: $Montserrat-Light;
+    font-size: 1em;
+    display: block;
+    a {
+        display: block;
+        margin: 0.5em 0;
+        color: #303030;
+        text-decoration: none;
+        padding: 0.5em 1.5em;
+    }
+    .active {
+        border-left: solid 2px #23527c;
+    }
+}
+
+//profile page
 .profile-header-background {
     background: #fdfdfd;
     height: 160px;
@@ -6,11 +89,7 @@
 
 .cover-photo {
     height: 300px;
-    background: {
-        image: url("../images/cover.jpg");
-        size: cover;
-        position-y: -330px;
-    }
+    @extend .pink;
 }
 
 .hire {
@@ -34,8 +113,14 @@
         color: #c1c1c1;
     }
     .profile-background {
-        img {
+        .profile-holder {
+            background: #fff;
+            border-radius: 30px;
             width: 200px;
+            margin: 0 auto;
+        }
+        img {
+            width: 210px;
             border-radius: 30px;
             padding: 15px;
             background: #fdfdfd;
@@ -59,6 +144,7 @@
     background: #fdfdfd;
     border-radius: 5px;
     padding: 5% 7%;
+    border: solid 1px #f1f1f1;
     h4 {
         font-family: $Montserrat-Light;
     }
@@ -152,67 +238,6 @@
             }
         }
     }
-    .modal {
-        background: rgba(248, 248, 251, 0.9);
-    }
-    .modal-content {
-        box-shadow: none;
-        border: solid #c1c1c1 1px;
-        .modal-header {
-            border: none;
-        }
-        .modal-body {
-            .form-control {
-                -webkit-box-shadow: none;
-                background: #fdfdfd;
-                border-bottom: solid 1px #c1c1c1;
-                border-top: none;
-                border-left: none;
-                border-right: none;
-                border-radius: 0px;
-                padding: 0;
-                margin: 20px 0;
-                color: #303030;
-                font-family: $Montserrat-SemiBold;
-            }
-            padding: 50px;
-            .upload-file {
-                width: 500px;
-                height: 129px;
-                border: 2px dashed #888;
-                margin: 47px auto 0;
-                p {
-                    width: 100%;
-                    height: 100%;
-                    text-align: center;
-                    color: #888;
-                    font-family: Arial;
-                    margin-top: 10%;
-                }
-                input {
-                    position: absolute;
-                    margin: 0;
-                    padding: 0;
-                    width: 100%;
-                    height: 100%;
-                    outline: none;
-                    opacity: 0;
-                }
-            }
-        }
-        .modal-footer {
-            border: none;
-            .upload-btn {
-                margin-right: 30px;
-                background: #00bfa5;
-                color: #fff;
-                width: 150px;
-                margin-bottom: 30px;
-                margin-top: -15px;
-                text-transform: uppercase;
-            }
-        }
-    }
 }
 
 .feedback {
@@ -236,23 +261,29 @@
 //edit profile
 .profile-setting {
     background: #fdfdfd;
+    padding: 0;
+    border: solid 1px #f1f1f1;
     .setting-container {
         padding: 2em;
     }
     .header {
         border-bottom: 1px #e1e1e1 solid;
-        span{
+        h3 {
+            margin: 1em;
+        }
+        span {
             font-size: 1em;
-             color: #999999;
-
+            color: #999999;
         }
     }
-       .sub-header {
-       // border-top: 1px #e1e1e1 solid;
-        span{
+    .sub-header {
+        // border-top: 1px #e1e1e1 solid;
+        h3 {
+            margin: 1em;
+        }
+        span {
             font-size: 1em;
-             color: #999999;
-
+            color: #999999;
         }
     }
     .input {
@@ -263,15 +294,125 @@
             box-shadow: none;
         }
     }
+    .profile-btn {
+        background: #337ab7;
+        color: #fff;
+        margin-top: 1em;
+        letter-spacing: 0.5px;
+    }
     .setting-content {
         margin-left: 10em;
         color: #666;
         margin-top: 1em;
+        .billing-id {
+            padding: 0.2em 1em;
+            strong {
+                border-bottom: 1px dotted #c5c5c5;
+            }
+        }
+    }
+    .current-credit {
+        font-family: $Montserrat-Light;
+        p {
+            margin-bottom: -20px;
+        }
+        border: #D1D1D1 solid 0.5px;
+        padding: 1.5em 3em;
+        border-radius: 5px;
+        margin-right: 2em;
+        font-weight: 700;
+    }
+    .paypal-container {
+        margin-top: 10%;
+        .paypal {
+            .modal-header {
+                padding: 0;
+            }
+            .modal-body {
+                padding: 1em 2em 4em 3em;
+            }
+            .close {
+                margin: 1em;
+            }
+            .input {
+                border-radius: 5px;
+                border: solid 1px #c9c9c9;
+                background: #fdfdfd;
+                padding-left: 1em;
+                margin-bottom: 0;
+                font-family: $Lato-Light;
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+            ::-webkit-input-placeholder {
+                /* Chrome/Opera/Safari */
+                font-family: $Lato-Light;
+            }
+            .paypal-btn {
+                width: 100%;
+                img {
+                    width: 50px;
+                    height: auto;
+                    margin: 0;
+                }
+            }
+            .paypal-text {
+                margin-top: 1em;
+            }
+            img {
+                margin: 2em 0 0 3em;
+            }
+            p {
+                font-family: $Lato-Light;
+                font-size: 1em;
+                letter-spacing: 0.1px;
+                height: 30px;
+                line-height: 150%;
+                color: #666666;
+                strong {
+                    font-family: $Montserrat-SemiBold;
+                }
+            }
+        }
+    }
+    #billing {
+        padding-bottom: 3em;
+        .sub-header {
+            h3 {
+                margin-left: 0;
+            }
+        }
+    }
+    .transaction {
+        padding: 0;
+    }
+    .history-table {
+        border: #D1D1D1 solid 0.5px;
+        padding: 3em;
+        border-radius: 5px;
+        table {
+            thead {
+                border: none;
+                tr {
+                    td {
+                        padding: 3em;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    td {
+                        padding: 1em 0 1em 0;
+                    }
+                }
+            }
+        }
     }
     .title {
         display: block;
         color: #666;
-           font-family: $Montserrat-Light;
+        font-family: $Montserrat-Light;
         p {
             display: block;
             float: left;
@@ -287,27 +428,47 @@
     .foot-note {
         margin: 1em;
         font-size: 0.9em;
-        .available{
+        .available {
             text-align: right;
             color: #00a651;
         }
-        .checkbox{
-
+        .checkbox {}
+        .danger {
+            color: red;
+            text-decoration: none;
         }
     }
-    .profile-picture{
-        
+    .profile-picture {
         margin-top: 3em;
         width: 220px;
-        img{
+        img {
             width: 100%;
             border-radius: 5px;
         }
-        .change-btn{
+        .dropdown-menu {
+            width: 220px;
+            li {
+                text-align: center;
+                a {
+                    padding: 1em 0 1em 0;
+                    margin: 0 auto;
+                }
+                :hover {
+                    background: #e4f3ff;
+                }
+            }
+        }
+    }
+}
+.save-btn{
+
+    margin: 3em;
+    button{
+        background: #337ab7;
+        color: #fff;
+        &:hover{
             background: #337ab7;
             color: #fff;
-            margin-top: 1em;
-
         }
     }
 }

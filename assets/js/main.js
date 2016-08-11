@@ -19,6 +19,8 @@ $(document).ready(function() {
             }
         }
     });
+
+
     $('[data-toggle="popover"]').popover({
         html: true
     });
@@ -33,15 +35,16 @@ $(document).ready(function() {
             text.removeClass('hidden');
         }
     });
-    $('#profile-tab a').click(function(e) {
-        e.preventDefault()
-        $(this).tab('show')
-    })
+
+
+    $('#setting-nav a').click(function(e) {
+        e.preventDefault();
+        $(this).tab('show');
+        $('#setting-nav a').removeClass('active');
+        $(this).addClass('active');
+    });
 
     $('#portfolio-modal').on('shown.bs.modal', function() {
-        $('#myInput').focus()
-    })
-     $('upload-file input').change(function () {
-    
+        $('#myInput').focus();
     });
 });
