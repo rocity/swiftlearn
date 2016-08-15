@@ -37,15 +37,17 @@
                 <div class= "options">
                  <div class="option-header">
                        <h2>Tell us what you want to learn</h2>
-                       <b>{{ message }}</b>
+                      
                  </div>
                  <form method="post">
                  {% csrf_token %}
                     <div class="options-container">
+                    <b>{{ message }}</b>
                         <select multiple="multiple" name="category" class="image-picker show-labels  show-html">
                     {% for image in images %}
                         <option data-img-src="{{ image.logo.url }}" value="{{ image.id }}">{{ image.name }}</option>
                     {% endfor %}  
+
                     </select>
                     </div>
                    <div class=" option-footer text-right">

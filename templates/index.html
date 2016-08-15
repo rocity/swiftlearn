@@ -1,0 +1,61 @@
+{% load staticfiles profile %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>welcome!</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/hover.css' %}">
+</head>
+
+<body>
+    <div class="home-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="content text-center">
+                        <h1>Learn anything</h1>
+                        <div class="col-md-8 col-md-offset-2">
+                            <h4>
+                All of the text are ediitable. Simply click anywhere in the paragraph or heading text and start typing. 
+                 </h4>
+                 <h3>
+                    SIGN UP AS
+                 </h3>
+                        </div>
+                        <div class="col-md-3 col-md-offset-3 ">
+                          <div class="signup-option hvr-bubble-float-bottom">
+                              <img src="{% static 'images/teacher.png' %}">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur.
+                            </p>
+                            <button class="btn">TUTOR</button>
+                            <input type="hidden" class="tutor" value="tutor" >
+                          </div>
+                        </div>
+                        <div class="col-md-3 ">
+                           <div class="signup-option hvr-bubble-float-bottom">
+                             <img src="{% static 'images/student.png' %}">
+                            <p>
+                                Lorem ipsum dolor sit amet, adipiscing elit.
+                            </p>
+                            <button class="btn">STUDENT</button>
+                            <input type="hidden" class="student" value="student" >
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://use.fontawesome.com/5fbc41cc4a.js"></script>
+    <script src="{% static 'js/jquery-1.9.1.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/image-picker.js' %}"></script>
+    <script src="{% static 'js/signup_as.js' %}"></script>
+</body>
+
+</html>

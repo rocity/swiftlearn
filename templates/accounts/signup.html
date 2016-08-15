@@ -28,6 +28,7 @@
                                 <form class="hidden email-entry" method="post" action="{% url 'signupapi' %}" id="signup">
                                     <div id="non_field_errors_group"></div>
                                     {% csrf_token %}
+                                    <input type="hidden" name="user_type" value="{{ user_type}}">
                                     <div class="form-group" id="email_group">
                                         {{ form.email }}
                                     </div>

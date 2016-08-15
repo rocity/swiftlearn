@@ -1,16 +1,21 @@
-$('#signup-options button').on("click", function() {
-    var signup = $('.email-entry');
-    var options = $('#signup-options');
-    
-    if ($(this).val() == 'email') {
+$(function(){
+    $('#signup-options button').on("click", function(event) {
+        var signup = $('.email-entry');
+        var options = $('#signup-options');
         
-        signup.removeClass('hidden');
-        options.addClass('hidden');
+        if ($(this).val() == 'email') {
+            
+            signup.removeClass('hidden');
+            options.addClass('hidden');
 
-    } else {
-        signup.addClass('hidden');
-    }
+        } else {
+            signup.addClass('hidden');
+        }
+    event.preventDefault();
+    });
+
 });
+
 
 $(document).ready(function(){
     $('#signup').on('submit',function(event){
@@ -19,7 +24,7 @@ $(document).ready(function(){
     // form execution
     var url = $(this).attr('action');
     var data  = $('#signup').serialize();
-
+    
     $.post( url, data, function(response){
 
         if(response == "success"){

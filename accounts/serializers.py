@@ -24,7 +24,7 @@ class AccountSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Account
-        fields = ('email','password','confirm_password')
+        fields = ('email','password','confirm_password','user_type')
         write_only_fields = ('password',)
 
     def validate(self, data):
@@ -36,8 +36,8 @@ class AccountSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         email = validated_data.get('email')
         password = validated_data.get('password')
-
-        user = Account.objects.create(email=email)
+        user_type = validated_data.get('user_type')
+        user = Account.objects.create(email=email,user_type=user_type)
         user.username = user._extract_username()
         user.set_password(password)
         user.save()
