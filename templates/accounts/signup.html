@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html>
@@ -42,7 +43,7 @@
                                 </form>
                                 <div id="signup-options">
                                     <button type="submit" class="btn email-signup form-control" value="email">sign up with email</button>
-                                    <button type="submit" class="btn fb form-control" value="facebook">sign up with facebook</button>
+                                    <a href="">{% include "socialaccount/snippets/provider_list.html" with process="login" %}</a>
                                 </div>
                             </div>
                         </div>

@@ -42,6 +42,15 @@ INSTALLED_APPS = [
     'events',
     'userlogs',
     'rest_framework',
+
+    #social media
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -87,9 +96,15 @@ WSGI_APPLICATION = 'swiftlearn.wsgi.application'
 # AUTHORIZATION #
 #################
 
-AUTH_BACKEND = 'django.contrib.auth.backends.ModelBackend'
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+)
 AUTH_USER_MODEL = 'accounts.Account'
 LOGIN_URL = '/login/'
+
+LOGIN_REDIRECT_URL = '/accounts/email/'
 
 DEFAULT_PROFILE_IMAGE = 'images/profile-default.png'
 
@@ -136,6 +151,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+SITE_ID = 1
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
