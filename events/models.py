@@ -86,14 +86,14 @@ class Feedback(models.Model):
         return "{user}{title}".format(user=self.user, title=self.event_title)
 
 
-class EventMessage(models.Model):
-    """ Post message at event
+class EventComment(models.Model):
+    """ Post comment at event
     """
     user = models.ForeignKey(Account)
     event_title = models.ForeignKey(Event)
-    message = models.TextField(max_length=200)
+    comment = models.TextField(max_length=200)
     parent = models.ForeignKey('self', null=True, blank=True, related_name="replies")
-    message_date = models.DateTimeField(auto_now_add=True)
+    comment_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return "{user} {message}".format(user=self.user, message=self.message)
+        return "{user} {comment}".format(user=self.user, comment=self.comment)
