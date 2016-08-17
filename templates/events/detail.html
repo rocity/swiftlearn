@@ -37,39 +37,37 @@
                 <div class=" event-content description">
                     <p>{{ event.info }}</p>
                 </div>
-                <form class="form-messages" method="post" action="{% url 'event' event.id %}">
+                <form class="form-comments" method="post" action="{% url 'comments_list' event.id %}">
                 {% csrf_token %}
                     <div class="event-content">
                         <label><i class="fa fa-pencil" aria-hidden="true"></i> Write something or ask a question</label>
-                             {{ form.message }}
+                             {{ form.comment }}
                         <div class="text-right">
-                            <button class="btn post">Post</button>
+                            <button class="btn post" id="click">Post</button>
                         </div>
                     </div>
                 </form>
-                    <div id="result">
-                    
-                   {% for message in messages %} 
-                   
+                <div id="result">
+                    {% for comment in comments %}                   
                     <div class="event-content comment-section">
-                    <div class="comment-{{ message.id }}">
-                        <a href="#" class="avatar">
-                        <img src="{{ user.profile_picture|get_image_url }}">
-                        </a>
-                        <div class="content">
-                            <a href="#" class="pull-right close"><i class="fa fa-times" aria-hidden="true"></i></a>
-                            <a href="#" class="author">{{ message.user.get_full_name }}</a>
-                            <div class="metadata">
-                                <span class="date">{{ message.message_date | timesince }}</span>
-                            </div>
-                            <div class="text">
-                                <p>
-                                    {{ message.message }}
-                                </p>
-                            </div>
-                            
-                            {% for reply in message.replies.all %}
-                                     <div class="event-content comment-section">
+                        <div class="comment-{{ comment.id }}">
+                            <a href="#" class="avatar">
+                            <img src="{{ comment.user.profile_picture|get_image_url }}">
+                            </a>
+                            <div class="content">
+                                <a href="#" class="pull-right close"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                <a href="#" class="author">{{ comment.user.get_full_name }}</a>
+                                <div class="metadata">
+                                    <span class="date">{{ comment.comment_date | timesince }}</span>
+                                </div>
+                                <div class="text">
+                                    <p>
+                                        {{ comment.comment }}
+                                    </p>
+                                </div>
+                                
+                                {% for reply in comment.replies.all %}
+                                <div class="event-content comment-section">
                                     <div class="comment">
                                         <a href="#" class="avatar">
                                             <img src="{{ user.profile_picture|get_image_url }}">
@@ -78,45 +76,38 @@
                                             <a href="#" class="pull-right close"><i class="fa fa-times" aria-hidden="true"></i></a>
                                             <a href="#" class="author">{{ reply.user.get_full_name }}</a>
                                             <div class="metadata">
-                                                <span class="date">{{ reply.message_date | timesince }}</span>
+                                                <span class="date">{{ reply.comment_date | timesince }}</span>
                                             </div>
                                             <div class="text">
                                                 <p>
-                                                     {{ reply.message }}
+                                                    {{ reply.comment }}
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            {% endfor %}
-                       
-                            
-                   
-                            <div class="actions">
-                                <div class="reply-list">
-                                </div>
-                                <a href="#" class="reply">Reply</a>
-                                <a href="#" class="favorite"><i class="fa fa-heart " aria-hidden="true"></i> <span>1</span> Favorite</a>
-                                <div class="comment-reply hide">
-                               
-                                    <form class="form-reply" action="{% url 'reply' message.id event.id %}">
-                                        {% csrf_token %}
-                                            <input type="hidden" class="parent-id" value="{{ message.id }}"/>
-                                              {{ form.message }}
+                                {% endfor %}
+                                <div class="actions">
+                                    <div class="reply-list">
+                                    </div>
+                                    <a href="#" class="reply">Reply</a>
+                                    <a href="#" class="favorite"><i class="fa fa-heart " aria-hidden="true"></i> <span>1</span> Favorite</a>
+                                    <div class="comment-reply hide">                               
+                                        <form class="form-reply" action="{% url 'reply_list' event.id comment.id %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" class="parent-id" value="{{ comment.id }}"/>
+                                                {{ form.comment }}
                                             <div class="text-right">
                                                 <button class="btn post">Reply</button>
                                             </div>
-                                    </form>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                 
-                {% endfor %}
-                
-                </div>
-  
+                    </div>                 
+                    {% endfor %}
+                </div>  
             </div>
             
             <div class="col-md-4">
@@ -130,22 +121,23 @@
                     <div class="about-author">
                         <h4>
                         AUTHOR
-                    </h4>
+                        </h4>
                         <p>{{ event.educator.overview|truncatewords:"25" }}</p>
                         <div class="avatar">
                             <img src="{{ event.educator.profile_picture|get_image_url }}">
                         </div>
                         <div class="author">
                             <h5>
-                                <a href="#">{{ event.educator.get_full_name|title }}</a></h5>
+                                <a href="#">{{ event.educator.get_full_name|title }}</a>
+                            </h5>
                             <h5>
                             {{ event.educator.position }}
-                       </h5>
+                            </h5>
                         </div>
                     </div>
                     <h5>
                     Get e-mail updates
-                </h5>
+                    </h5>
                     <div class="form">
                         <form>
                             <div class="input-group">
