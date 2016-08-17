@@ -48,3 +48,29 @@ $(document).ready(function() {
         $('#myInput').focus();
     });
 });
+
+$(function(){
+    $('#btn-change-password').on('click',function(){
+        resetValidation();
+        var form =  $('#form_password_change');
+        var url = form.attr('action')
+        $.post(url,form.serialize()).done(function(response){
+        var success = $('#success').prepend(response);
+        success.addClass('alert alert-danger')
+
+        })
+        .fail(function(response){
+            var res = JSON.parse(response.responseText)
+            $.each(res, function(index, content){
+              var id = '#'+index+'_error';
+              $(id).addClass('alert alert-danger');
+              $(id).prepend(content);
+              $('ul').css({'list-style':'None','padding':'0','margin':'0'});
+            });
+        });
+    });
+});
+function resetValidation(){
+    $('ul').remove();
+    $('.error').removeClass('alert alert-danger');
+}

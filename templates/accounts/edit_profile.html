@@ -1,0 +1,722 @@
+{% extends 'base.html'%}
+{% block content %}
+    <div class="page">
+        <div class="container">
+            <div class="row dashboard">
+                <div class="col-md-4 col-lg-3 user-profile">
+                    <div class="user-details">
+                        <div class="row">
+                            <div class="col-md-2 col-lg-3">
+                                <img src="static/images/img6.jpg" class="img-rounded">
+                            </div>
+                            <div class="col-md-10 col-lg-9">
+                                <h3>
+                         <a href="#">Earvin Gemenez</a>
+                      </h3>
+                                <h4>
+                            Love Expert
+                        </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="setting-nav nav nav-tabs " id="setting-nav">
+                        <a href="#profile" class="active hvr-sweep-to-right">Profile</a>
+                        <a href="#account" class="hvr-sweep-to-right">Account</a>
+                        <a href="#billing" class="hvr-sweep-to-right"> Billing</a>
+                        <a href="#" class="hvr-sweep-to-right">Privacy</a>
+                    </div>
+                    <div class=" profile-status">
+                        <label for=""> You're 40% closer to complete your profile </label>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" id="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-1">
+                                <i class="fa fa-check-circle  alert-info" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-lg-10">
+                                <p>
+                                    Write profile details
+                                </p>
+                            </div>
+                            <div class="col-lg-1">
+                                <i class="fa fa-check-circle  alert-info" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-lg-10">
+                                <p>
+                                    Verify account information
+                                </p>
+                            </div>
+                            <div class="col-lg-1">
+                                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-lg-10">
+                                <p>
+                                    Select field of interests
+                                </p>
+                            </div>
+                            <div class="col-lg-1">
+                                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-lg-10">
+                                <p>
+                                    Lorem ipsum dolor
+                                </p>
+                            </div>
+                            <div class="col-lg-1">
+                                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-lg-10">
+                                <p>
+                                    Cum sociis natoque penatibus
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 feeds ">
+                            <ul>
+                                <li>
+                                    <a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> My Feeds</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i> My Bookmarks</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> My Trends</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-12 col-lg-12 recent-tutorials">
+                            <h4 class="column-header">
+                            RECENT TUTORIALS
+                        </h4>
+                            <div class="tutorial-items">
+                                <div class="row">
+                                    <div class="col-md-2 col-lg-2">
+                                        <img src="static/images/angular-logo.png">
+                                    </div>
+                                    <div class="col-md-10 col-lg-10">
+                                        <h4>
+                                <a href="#">Angular JS</a>
+                            </h4>
+                                        <p>
+                                            <a href="#">by Paul Gilmore </a> | 9 days
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tutorial-items">
+                                <div class="row">
+                                    <div class="col-md-2 col-lg-2">
+                                        <img src="static/images/bootstrap.png">
+                                    </div>
+                                    <div class="col-md-10 col-lg-10">
+                                        <h4>
+                                <a href="#">How to align items in bootstrap</a>
+                            </h4>
+                                        <p>
+                                            <a href="#">by Paul Gilmore </a> | 9 days
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tutorial-items">
+                                <div class="row">
+                                    <div class="col-md-2 col-lg-2">
+                                        <img src="static/images/Jquery.png">
+                                    </div>
+                                    <div class="col-md-10 col-lg-10">
+                                        <h4>
+                                <a href="#">Jquery</a>
+                            </h4>
+                                        <p>
+                                            <a href="#">by Paul Gilmore </a> | 9 days
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 profile-setting tab-content">
+                    <div class="tab-pane active" id="profile">
+                        <div class="header">
+                            <h3>
+                        Profile
+                    </h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="setting-container">
+                                    <div class="form">
+                                        <form method="post" id="form_profile" >
+                                        {% csrf_token %}
+                                        <input type="hidden" name="form_identity" value="edit_profile">
+
+                                        <div class="setting-section">
+                                                <div class="title ">
+                                                    <p>
+                                                        Overview
+                                                    </p>
+                                                </div>
+                                                <div class="setting-content">
+                                                    {{ form.overview.errors.as_text }}
+                                                    {{ form.overview }}
+                                                    <div class="foot-note">
+                                                        <p>
+                                                            Please provide a brief overview of yourself and tutorials.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="setting-section">
+                                                <div class="title ">
+                                                    <p>
+                                                        First
+                                                    </p>
+                                                </div>
+                                                <div class="setting-content">
+                                                    {{ form.first_name.errors.as_text }}
+                                                    {{ form.first_name }}
+                                                    <div class="foot-note">
+                                                        <p>
+                                                            <strong>Reminder:</strong> Please provide a name appropriate for your audience.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="setting-section">
+                                                <div class="title text-right">
+                                                    <p>
+                                                        Middle <span>(optional)</span>
+                                                    </p>
+                                                </div>
+                                                <div class="setting-content">
+                                                    {{ form.middle_name.errors.as_text }}
+                                                    {{ form.middle_name }}
+                                                </div>
+                                            </div>
+                                            <div class="setting-section">
+                                                <div class="title text-right">
+                                                    <p>
+                                                        Last
+                                                    </p>
+                                                </div>
+                                                <div class="setting-content">
+                                                    {{ form.last_name.errors.as_text }}
+                                                    {{ form.last_name }}
+                                                </div>
+                                            </div>
+                                            <div class="setting-section">
+                                                <div class="title ">
+                                                    <p>
+                                                        Primary skill
+                                                    </p>
+                                                </div>
+                                                <div class="setting-content">
+                                                    {{ form.primary_expertise.errors.as_text }}
+                                                    {{ form.primary_expertise }}
+                                                    <div class="foot-note">
+                                                        <p>
+                                                            <strong>Reminder:</strong> Provice us other skills you're good at. Please take note of your audience <a href="#">preferrence</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="setting-section">
+                                                <div class="title ">
+                                                    <p>
+                                                        Other skills
+                                                    </p>
+                                                </div>
+                                                <div class="setting-content">
+                                                    {{ form.expertise.errors.as_text }}
+                                                    {{ form.expertise }}
+                                                </div>
+                                            </div>
+                                            <div class="setting-section">
+                                                <div class="title ">
+                                                    <p>
+                                                        Country
+                                                    </p>
+                                                </div>
+                                                <div class="setting-content">
+                                                  {{ form.country.errors.as_text }}
+                                                  {{ form.country }}
+                                                </div>
+                                            </div>
+                                            <div class="setting-section">
+                                                <div class="title ">
+                                                    <p>
+                                                        Phone number
+                                                    </p>
+                                                </div>
+                                                <div class="setting-content">
+                                                    {{ form.phone.errors.as_text }}
+                                                    {{ form.phone }}
+                                                    <div class="foot-note">
+                                                        <p>
+                                                            This number is used for account recovery incase your e-mail is not available.
+                                                        </p>
+                                                        <div class="checkbox">
+                                                            <p>
+                                                                <input type="checkbox" value="">Display this to my profile</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="setting-section">
+                                                <div class="title ">
+                                                    <p>
+                                                        City
+                                                    </p>
+                                                </div>
+                                                <div class="setting-content">
+                                                    {{ form.city.errors.as_text }}
+                                                    {{ form.city }}
+                                                </div>
+                                            </div>
+                                            <div class="setting-section">
+                                                <div class="title ">
+                                                    <p>
+                                                        Timezone
+                                                    </p>
+                                                </div>
+                                                <div class="setting-content">
+                                                    {{ form.timezone.errors.as_text }}
+                                                    {{ form.timezone }}
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="sub-header">
+                                    <h3>
+                            Education
+                        </h3>
+                                </div>
+                                <div class="setting-container">
+                                    <div class="form">
+                                            <div class="setting-section">
+                                                <div class="title ">
+                                                    <p>
+                                                        School
+                                                    </p>
+                                                </div>
+                                                <div class="setting-content">
+                                                    {{ form.school.errors.as_text }}
+                                                    {{ form.school }}
+                                                    <div class="foot-note">
+                                                        <p>
+                                                            Please provide the school where you last graduated or attended.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="setting-section">
+                                                <div class="title ">
+                                                    <p>
+                                                        Dates attended
+                                                    </p>
+                                                </div>
+                                                <div class="setting-content">
+                                                    <div class="">
+                                                        <div class="col-md-6">
+                                                            {{ form.date_attended_fr.errors.as_text }}
+                                                            {{ form.date_attended_fr }}
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            {{ form.date_attended_to.errors.as_text }}
+                                                            {{ form.date_attended_to }}
+                                                            <div class="foot-note">
+                                                                <p>
+                                                                    (or year expected to graduate)
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="sub-header">
+                                    <h3>
+                            Miscellaneous <span>(optional)</span>
+                        </h3>
+                                </div>
+                                <div class="setting-container">
+                                    <div class="setting-section">
+                                        <div class="title ">
+                                            <p>
+                                                Company
+                                            </p>
+                                        </div>
+                                        <div class="setting-content">
+                                           {{ form.company.errors.as_text}}
+                                           {{ form.company }}
+                                            <div class="foot-note">
+                                                <div class="checkbox">
+                                                    <p>
+                                                        <input type="checkbox" value="">Display this to my profile</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="setting-section">
+                                        <div class="title ">
+                                            <p>
+                                                Personal website
+                                            </p>
+                                        </div>
+                                        <div class="setting-content">
+                                           {{ form.personal_website.errors.as_text }}
+                                           {{ form.personal_website }}
+                                            <div class="foot-note">
+                                                <div class="checkbox">
+                                                    <p>
+                                                        <input type="checkbox" value="">Display this to my profile</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="setting-section">
+                                        <div class="title ">
+                                            <p>
+                                                Social accounts
+                                            </p>
+                                        </div>
+                                        <div class="setting-content">
+                                            <a href="#"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="save-btn text-center">
+                                        <button type="submit" class="btn btn-profile">Save Changes</button>
+                                    </div>
+                                </div>
+                            </form>
+                            </div> 
+                            <div class="col-md-4">
+                                <div class="profile-picture">
+                                    <img src="static/images/pic1.png">
+                                    <div class="dropdown">
+                                        <button class="btn form-control profile-btn dropdown-toggle" id="change-picture" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            Change
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="change-picture">
+                                            <li>
+                                                <a href="#">Upload photo</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Edit</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Remove</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="account">
+                        <div class="header">
+                            <h3>
+                        Account
+                    </h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="setting-container">
+                                    <div class="form">
+                                        <form method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="form_identity" value="edit_account">
+                                            <div class="setting-section">
+                                                <div class="title ">
+                                                    <p>
+                                                        Primary email
+                                                    </p>
+                                                </div>
+                                                <div class="setting-content">
+                                                   {{ form2.email.errors.as_text }}
+                                                   {{ form2.email }}
+                                                    <div class="foot-note">
+                                                        <p>
+                                                            Reminder: Please provide a valid email address
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="setting-section">
+                                                <div class="title ">
+                                                    <p>
+                                                        Secondary email <span>(optional)</span>
+                                                    </p>
+                                                </div>
+                                                <div class="setting-content">
+                                                   {{ form2.secondary_eamil.errors.as_text }}
+                                                   {{ form2.secondary_email }}
+                                                    <div class="foot-note">
+                                                        <p>
+                                                            The address is used to contact you incase you lost your access to your primary e-mail
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="setting-section">
+                                                <div class="title text-right">
+                                                    <p>
+                                                        Password
+                                                    </p>
+                                                </div>
+                                                <div class="setting-content">
+                                                    <a href="#changes-password" data-toggle="modal">Change Password</a>
+                                                </div>
+                                            </div>
+                                            <div class="setting-section">
+                                                <div class="title ">
+                                                    <p>
+                                                        Language
+                                                    </p>
+                                                </div>
+                                                <div class="setting-content">
+                                                   {{ form2.language.errors.as_text }}
+                                                   {{ form2.language }}
+                                                </div>
+                                            </div>
+                                            <div class="setting-section">
+                                                <div class="title ">
+                                                    <p>
+                                                        Deactivate
+                                                    </p>
+                                                </div>
+                                                <div class="setting-content">
+                                                    <div class="foot-note">
+                                                        <p>
+                                                            Deactivating your account disables other people to view your account <a href="#" class="danger">Deactivate your account</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                 <div class="save-btn text-center">
+                                        <button class="btn">Save Changes</button>
+                                    </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="billing">
+                        <div class="header">
+                            <h3>
+                        Billing
+                    </h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="setting-container">
+                                    <div class="form">
+                                        <form>
+                                            <div class="setting-section">
+                                                <div class="title ">
+                                                    <p>
+                                                        Billing acount ID
+                                                    </p>
+                                                </div>
+                                                <div class="setting-content">
+                                                    <p class="billing-id"><strong>0171-8295-7259-1120</strong></p>
+                                                    <div class="foot-note">
+                                                        <p>
+                                                            Your billing account ID is shown on all your billing document
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="setting-section">
+                                                <div class="title ">
+                                                    <p>
+                                                        Billing alert <span>(optional)</span>
+                                                    </p>
+                                                </div>
+                                                <div class="setting-content">
+                                                    <input type="text" name="" class="input form-control" placeholder="$20.00">
+                                                    <div class="foot-note">
+                                                        <div class="checkbox">
+                                                            <p>
+                                                                <input type="checkbox" value="">E-mail me anything my monthly expenses has exceeded this amount
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="setting-container">
+                                    <div class="current-credit">
+                                        <p>
+                                            Current credit
+                                        </p>
+                                        <h1 class="text-right">
+                                 <strong>$0.19</strong>
+                               </h1>
+                                        <button class="btn form-control profile-btn" data-toggle="modal" data-target="#buy-credit"> Buy More Credits</button>
+                                        <!-- Modal -->
+                                        <div class="modal  fade" id="buy-credit" tabindex="-1" role="dialog" aria-labelledby="buy-credit">
+                                            <div class="modal-dialog paypal-container" role="document">
+                                                <div class="modal-content paypal">
+                                                    <div class="modal-header">
+                                                        <img src="static/images/paypal.png" >
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                                    </div>
+                                                    <div class="modal-body ">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                               <p class="paypal-text">
+                                                                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat ligula dignissim ipsum.
+                                                               </p>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                               
+                                                                <p><strong>Amount</strong></p>
+                                                                <input type="text" class="input form-control" name="" placeholder="$">
+                                                                <button class="btn  profile-btn paypal-btn "> Pay with <img src="static/images/paypal-white.png"></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-10 col-md-offset-1 transaction">
+                                <div class="sub-header">
+                                    <h3>Transaction History</h3>
+                                </div>
+                                <div class="setting-container history-table">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Description</th>
+                                                <th>Amount</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Aug 2, 2016</td>
+                                                <td>Payment for singing tutorial</td>
+                                                <td>$15.00</td>
+                                                <td><a href="#">View Invoice</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aug 2, 2016</td>
+                                                <td>Payment for singing tutorial</td>
+                                                <td>$15.00</td>
+                                                <td><a href="#">View Invoice</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aug 2, 2016</td>
+                                                <td>Payment for singing tutorial</td>
+                                                <td>$15.00</td>
+                                                <td><a href="#">View Invoice</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aug 2, 2016</td>
+                                                <td>Payment for singing tutorial</td>
+                                                <td>$15.00</td>
+                                                <td><a href="#">View Invoice</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aug 2, 2016</td>
+                                                <td>Payment for singing tutorial</td>
+                                                <td>$15.00</td>
+                                                <td><a href="#">View Invoice</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aug 2, 2016</td>
+                                                <td>Payment for singing tutorial</td>
+                                                <td>$15.00</td>
+                                                <td><a href="#">View Invoice</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aug 2, 2016</td>
+                                                <td>Payment for singing tutorial</td>
+                                                <td>$15.00</td>
+                                                <td><a href="#">View Invoice</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                 <div class="save-btn text-center">
+                                        <button class="btn">Save Changes</button>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="modal fade" id="changes-password" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel">Change password</h4>
+      </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <form method="post" id="form_password_change" action="{% url 'edit_profile' %}">
+              {% csrf_token %}
+                <input type="hidden" name="form_identity" value="edit_password">
+                <div class="input-group">
+                <div  id="success" role='alert' class="error"></div>
+                <div  id="password_error" role='alert' class="error"></div>
+                   {{ form3.password }}
+                </div>
+                 <div class="input-group">
+                <div  id="new_password_error" role='alert' class="error"></div>
+                    {{ form3.new_password }}
+                </div>
+                <div class="input-group">
+                <div  id="password_confirmation_error" role='alert' class="error"></div>
+                    {{ form3.password_confirmation }}
+                </div>
+                <div class="input-group">
+                   <button type="button" class="btn btn-primary btn-block" id="btn-change-password">Save changes</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+{% block js %}
+<script type="text/javascript">
+ $(function(){
+ {% if form_script == 'edit_account' %}
+     var tab_a = $('a[href="#account"]');
+     tab_a.tab('show');
+     $('#setting-nav a').removeClass('active');
+     tab_a.addClass('active');
+{% endif %}
+});
+
+ </script>
+ {% endblock %}

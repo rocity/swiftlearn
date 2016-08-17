@@ -3,7 +3,7 @@ import json
 from django.conf import settings
 from django.contrib.auth import login, logout
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect, HttpResponse, Http404, HttpResponseBadRequest
 
 from django.db.models import Q
 
@@ -13,8 +13,15 @@ from django.shortcuts import render, get_object_or_404
 from braces.views import LoginRequiredMixin
 from events.models import Event, Feedback
 
-from .forms import SignupForm, LoginForm, ResetPasswordForm, ChangePasswordForm
-from .models import ConfirmationKey, Account, Skill
+from .forms import ( 
+    SignupForm, 
+    LoginForm, 
+    ResetPasswordForm, 
+    ChangePasswordForm, 
+    EditProfileForm, 
+    EditAccountForm 
+    )
+from .models import ConfirmationKey, Account, Skill, Education
 
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib import messages
@@ -95,6 +102,75 @@ class ProfileView(LoginRequiredMixin, TemplateView):
         profile = get_object_or_404(Account, id=user_id) if user_id else self.request.user
         feeds = Feedback.objects.all().order_by('-feed_date')
         return render(self.request, self.template_name, {'profile': profile,'feeds':feeds})
+ 
+
+class EditProfileView(LoginRequiredMixin, TemplateView):
+    """ User can edit his/her profile information
+    """
+    template_name = 'accounts/edit_profile.html';
+
+    def get(self, *args, **kwargs): 
+        account = Account.objects.get(email=self.request.user)
+        education, create = Education.objects.get_or_create(user=account) 
+        form = EditProfileForm(
+            instance = account,
+            initial = {
+                'primary_expertise' : self.request.user.primary_expertise,
+                'school' : education.school,
+                'date_attended_fr' : education.date_attended_fr,
+                'date_attended_to' : education.date_attended_to,
+            })
+        form2 = EditAccountForm(instance=account)
+        form3 = ChangePasswordForm()
+        return render(self.request, self.template_name, {'form':form, 'form2':form2, 'form3':form3})
+
+    def post(self, *args, **kwargs):
+        form_identity = self.request.POST['form_identity']
+        account = Account.objects.get(email=self.request.user)
+        education, create = Education.objects.get_or_create(user=account) 
+        form2 = EditAccountForm(instance=account)
+        form3 = ChangePasswordForm()
+        form = EditProfileForm(
+            instance = account,
+            initial = {
+                'primary_expertise' : self.request.user.primary_expertise,
+                'school' : education.school,
+                'date_attended_fr' : education.date_attended_fr,
+                'date_attended_to' : education.date_attended_to,
+            })
+        if form_identity == 'edit_profile':
+            form_script = 'edit_profile'
+            form = EditProfileForm(self.request.POST,instance=account)
+            if form.is_valid():
+                form_m = form.save(commit=False)
+                form.save()
+                form.save_m2m()
+        elif form_identity == 'edit_account':
+            form_script = 'edit_account'
+            form2 =  EditAccountForm(self.request.POST,instance=account)
+            if form2.is_valid():
+                form2.save()
+        elif form_identity == 'edit_password':
+            form_script = ''
+            form3 = ChangePasswordForm(self.request.POST, instance=account, user=self.request.user)
+            if form3.is_valid():
+                instance = form3.save()
+                instance.backend = settings.AUTH_BACKEND
+                login(self.request,instance)
+                success='Successfully change!'
+                return HttpResponse(success)
+            else:
+                errors_dict = {}
+                for error in form3.errors:
+                    e = form3.errors[error]
+                    errors_dict[error] = str(e)
+                return HttpResponseBadRequest(json.dumps(errors_dict))
+        return render(self.request, self.template_name,  {
+            'form':form, 
+            'form2':form2,
+            'form3':form3, 
+            'form_script':form_script 
+            })
 
 
 class ActivationView(TemplateView):
