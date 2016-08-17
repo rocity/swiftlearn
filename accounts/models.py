@@ -117,10 +117,10 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return "{email}".format(email=self.email)
 
-    # def save(self, *args, **kwargs):
-    #     if not self.timezone:
-    #         self.timezone = self.get_gmt()
-    #     return super(Account, self).save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        if not self.timezone:
+            self.timezone = self.get_gmt()
+        return super(Account, self).save(*args, **kwargs)
 
     def get_full_name(self):
         """ Returns the first_name pluse the last_name, with a space
