@@ -1,20 +1,19 @@
-$(function(){
-    $('.form-messages').on('submit',function(e){
+$(function () {
+    //create comment to selected event
+    $(document).on('submit', '.form-comments', function(e){
         e.preventDefault();
         var url = $(this).attr('action');
         var data = $(this).serialize();
-        $.post(url, data).then(function(response){
-            $('#result').prepend(response);
-            
-            $('.form-messages').trigger("reset");
-            data = {}; 
+        $.post(url, data).done(function(){
+            $('#result').prepend(result);
+            location.reload();
+            $('.form-comments').trigger("reset");
+            data = {};
         });
         return false;
     });
 
-});
-
-$(function () {
+    //reply to a comment
     $('.reply').on('click', function (e) {
         e.preventDefault();
         var parent = $(this).parent(); 
@@ -29,10 +28,12 @@ $(function () {
 
             $.post(url, form).done(function (response) {
                 parent.find('.reply-list').append(response);
+                location.reload();
                 $('.form-reply').trigger("reset");
                 data = {};
             });
             return false;
         });
     });
+
 });
