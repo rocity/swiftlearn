@@ -51,6 +51,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.linkedin_oauth2',
+    'allauth.socialaccount.providers.twitter',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -104,7 +107,10 @@ AUTHENTICATION_BACKENDS = (
 AUTH_USER_MODEL = 'accounts.Account'
 LOGIN_URL = '/login/'
 
-LOGIN_REDIRECT_URL = '/accounts/email/'
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_QUERY_EMAIL = True
+LOGIN_REDIRECT_URL = "/dashboard/"
 
 DEFAULT_PROFILE_IMAGE = 'images/profile-default.png'
 
@@ -166,6 +172,41 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
+
+SOCIALACCOUNT_PROVIDERS = \
+    { 'google':
+        { 
+          'SCOPE': ['profile', 'email'],
+          'AUTH_PARAMS': { 'access_type': 'online' } }}
+
+SOCIALACCOUNT_PROVIDERS = \
+    {'facebook':
+       {'METHOD': 'oauth2',
+        'SCOPE': ['email', 'public_profile', 'user_friends'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time'],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': True,
+        'VERSION': 'v2.4'}}
+
+SOCIALACCOUNT_PROVIDERS = \
+    {'linkedin_oauth2':
+          {'SCOPE': ['r_emailaddress'],
+           'VERIFIED_EMAIL': True,
+           }
+    }
 
 ##################
 # LOCAL SETTINGS #
