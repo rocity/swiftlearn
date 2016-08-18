@@ -85,14 +85,3 @@ class FeedbackView(LoginRequiredMixin, TemplateView):
         event = Event.objects.get(id=kwargs.get('event_id'))
         form = FeedbackForm()
         return render(self.request, self.template_name,{'form':form, 'event':event})
-
-    def post(self, *args, **kwargs):
-        event = Event.objects.get(id=kwargs.get('event_id'))
-        form = FeedbackForm(self.request.POST)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = self.request.user
-            instance.event_title = event
-            instance.save()
-            return HttpResponseRedirect(reverse('profileme'))
-        return render(self.request, self.template_name,{'form':form,'event':event})

@@ -4,8 +4,8 @@ $(function () {
         e.preventDefault();
         var url = $(this).attr('action');
         var data = $(this).serialize();
-        $.post(url, data).done(function(){
-            $('#result').prepend(result);
+        $.post(url, data).done(function(response){
+            $('#result').prepend(response);
             location.reload();
             $('.form-comments').trigger("reset");
             data = {};

@@ -146,23 +146,27 @@
                <i class="fa fa-comment" aria-hidden="true"></i> TUTORIAL FEEDBACK
             </h4>
         <!-- list of feedback -->
-        {% for feed in feeds %}
-            <div class="feedback-content">
-                <h3>
-                    <a href="#">{{feed.event_title}}</a>
-                </h3>
-                <h6>
-                    {{ feed.feed_date | date }}
-               </h6>
-                <div class="rating">
-                     <!-- rating stars -->
-                    {% include 'accounts/rating_star.html' %} 
-                </div>
-                <h4> <a href="#">{{ feed.user.get_full_name }}</a></h4>
-                <p>
-                    {{ feed.feedback }}
-                </p>
-            </div>
+        {% for event in events %}        
+            {% for feed in feeds %}
+                {% if feed.event_title == event %}
+                    <div class="feedback-content">
+                        <h3>
+                            <a href="#">{{feed.event_title}}</a>
+                        </h3>
+                        <h6>
+                            {{ feed.feed_date | date }}
+                       </h6>
+                        <div class="rating">
+                             <!-- rating stars -->
+                            {% include 'accounts/rating_star.html' %} 
+                        </div>
+                        <h4> <a href="#">{{ feed.user.get_full_name }}</a></h4>
+                        <p>
+                            {{ feed.feedback }}
+                        </p>
+                    </div>
+                {% endif %}
+            {% endfor %}
         {% endfor %}
         <!--  -->
         </div>
