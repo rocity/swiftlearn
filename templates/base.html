@@ -8,15 +8,24 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/owl.carousel.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/hover.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/image-picker.css' %}">
 </head>
 
 <body>
     <nav class="navbar navbar-default">
         <div class="container">
+        {% if user.expertise.exists %}
             <div class="navbar-header">
                 <a class="navbar-brand" href="{% url 'dashboard' %}">Swift Tutorial</a>
             </div>
+        {% else %}
+            <div class="navbar-header">
+                <a class="navbar-brand" href="">Swift Tutorial</a>
+            </div>
+        {% endif %}
             <ul class="nav navbar-nav navbar-right">
+            {% if user.expertise.exists %}
                 <li>
                     <a href="{% url 'event_create' %}" class="tutorial-link"><i class="fa fa-plus" aria-hidden="true"></i> Start Teaching!</a>
                 </li>
@@ -27,7 +36,14 @@
                     <a href="#" class="dropdown-toggle" type="button" id="user-profile" data-toggle="dropdown" aria-hashpop="true" aria-expanded="true">
                         <img src="{{ MEDIA_URL }}{{ user.profile_picture|get_image_url }}">
                     </a>
+            {% else %}
+                <li class="dropdown ">
+                   <a href="#" class="dropdown-toggle" type="button" id="user-profile" data-toggle="dropdown" aria-hashpop="true" aria-expanded="true">
+                        <img src="{{ MEDIA_URL }}{{ user.profile_picture|get_image_url }}">
+                    </a>
+            {% endif %}
                     <ul class="dropdown-menu user-dropdown" aria-labelledby="user-profile">
+                    {% if user.expertise.exists %}
                         <li>
                             <a href="{% url 'profileme' %}" class="profile-link">
                                 <h5>Earvin Gemenez</h5>
@@ -52,6 +68,9 @@
                         </li>
                         <li class="divider" role="separator"></li>
                         <li><a href="{% url 'logout' %}">Log out</a></li>
+                    {% else %}
+                        <li><a href="{% url 'logout' %}">Log out</a></li>
+                    {% endif %}
                     </ul>
                 </li>
             </ul>
@@ -82,6 +101,9 @@
     <script src="{% static 'js/bootstrap.js' %}"></script>
     <script src="{% static 'js/search.js' %}"></script>
     <script src="{% static 'js/message.js' %}"></script>
+    <script src="{% static 'js/images.js' %}"></script>
+    <script src="{% static 'js/image-picker.js' %}"></script>
+
      {% block js %}
           <script src="{% static 'el-pagination/js/el-pagination.js' %}"></script>
      {% endblock %}

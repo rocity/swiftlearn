@@ -63,6 +63,7 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=250, unique=True)
     username = models.CharField(max_length=250, unique=True)
     first_name = models.CharField(max_length=40, null=True, blank=True)
+    middle_name = models.CharField(max_length=40, null=True, blank=True)
     last_name = models.CharField(max_length=40, null=True, blank=True)
     city = models.CharField(max_length=200, null=True, blank=True)
     country = models.CharField(max_length=200, null=True, blank=True)
@@ -93,6 +94,16 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
 
     # type of user tutor or student
     user_type = models.CharField(max_length=225, null=True, blank=True)
+
+    # optional user profile
+    company = models.CharField(max_length=225, null=True, blank=True)
+    personal_website = models.CharField(max_length=255, null=True, blank=True)
+    social_accounts = models.CharField(max_length=255, null=True, blank=True)
+
+    # edit account 
+    language = models.CharField(max_length=225, null=True, blank=True)
+    secondary_email = models.EmailField(max_length=225, null=True, blank=True)
+    activation_account = models.BooleanField(default=True)
 
     is_admin   = models.BooleanField(default=False)
     is_staff   = models.BooleanField(default=False)
@@ -209,15 +220,18 @@ class Education(models.Model):
     """ education background
     """
     user = models.ForeignKey(Account)
-    school = models.CharField(max_length=255)
-    degree = models.CharField(max_length=255)
+    school = models.CharField(max_length=255, null=True, blank=True)
+    degree = models.CharField(max_length=255, null=True, blank=True)
     date_attended_fr = models.DateField(null=True, blank=True)
     date_attended_to = models.DateField(null=True, blank=True)
 
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
+        # if self.school or self.degree:
         return "{degree}".format(degree=self.degree)
+        # else:
+        #     return "No education"
 
 
 class Skill(models.Model):
