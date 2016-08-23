@@ -42,6 +42,18 @@ INSTALLED_APPS = [
     'events',
     'userlogs',
     'rest_framework',
+
+    #social media
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.linkedin_oauth2',
+    'allauth.socialaccount.providers.twitter',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -87,9 +99,18 @@ WSGI_APPLICATION = 'swiftlearn.wsgi.application'
 # AUTHORIZATION #
 #################
 
-AUTH_BACKEND = 'django.contrib.auth.backends.ModelBackend'
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+)
 AUTH_USER_MODEL = 'accounts.Account'
 LOGIN_URL = '/login/'
+
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_QUERY_EMAIL = True
+LOGIN_REDIRECT_URL = "/dashboard/"
 
 DEFAULT_PROFILE_IMAGE = 'images/profile-default.png'
 
@@ -136,6 +157,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+SITE_ID = 1
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
@@ -150,6 +172,41 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
+
+SOCIALACCOUNT_PROVIDERS = \
+    { 'google':
+        { 
+          'SCOPE': ['profile', 'email'],
+          'AUTH_PARAMS': { 'access_type': 'online' } }}
+
+SOCIALACCOUNT_PROVIDERS = \
+    {'facebook':
+       {'METHOD': 'oauth2',
+        'SCOPE': ['email', 'public_profile', 'user_friends'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time'],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': True,
+        'VERSION': 'v2.4'}}
+
+SOCIALACCOUNT_PROVIDERS = \
+    {'linkedin_oauth2':
+          {'SCOPE': ['r_emailaddress'],
+           'VERIFIED_EMAIL': True,
+           }
+    }
 
 ##################
 # LOCAL SETTINGS #

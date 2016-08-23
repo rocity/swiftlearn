@@ -1,4 +1,6 @@
 {% load staticfiles %}
+{% load socialaccount %}
+
 
 <!DOCTYPE html>
 <html>
@@ -42,7 +44,9 @@
                                 </form>
                                 <div id="signup-options">
                                     <button type="submit" class="btn email-signup form-control" value="email">sign up with email</button>
-                                    <button type="submit" class="btn fb form-control" value="facebook">sign up with facebook</button>
+                                    <a href="{% provider_login_url 'facebook' method='oauth2' %}" class="btn email-signup form-control">Facebook</a>
+                                    <a href="{% provider_login_url 'google' method='oauth2' %}" class="btn email-signup form-control">Google</a>
+                                    <a href="{% provider_login_url 'linkedin_oauth2' %}" class="btn email-signup form-control">LinkedIn</a>
                                 </div>
                             </div>
                         </div>
