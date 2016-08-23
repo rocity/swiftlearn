@@ -4,9 +4,9 @@
 <div class="row dashboard">
 
     <div class="col-md-6 col-md-offset-3">
-    <p><h2>{{ event.title }}</h2></p>
-    <p><i>{{ event.educator.get_full_name }}</i></p>
-        <form method="post">
+        <p><h2>{{ event.title }}</h2></p>
+        <p><i>{{ event.educator.get_full_name }}</i></p>
+        <form class="form-feedback" method="post" action="{% url 'feedback_list' event.id %}">
             {% csrf_token %}
             <div class="form-group">
             {{ form.rate_star.errors.as_text }}
@@ -16,8 +16,8 @@
             {{ form.feedback.errors.as_text }}
             {{ form.feedback }}
             </div>
-            <div class="form-group">
-            <input type="submit" class="btn btn-default"  value="Submit">
+            <div class="text-right">
+                <button class="btn post" id="click">Submit</button>
             </div>
         </form>
     </div>

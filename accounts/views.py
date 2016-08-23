@@ -100,9 +100,14 @@ class ProfileView(LoginRequiredMixin, TemplateView):
     def get(self, *args, **kwargs):
         user_id = kwargs.get('user_id')
         profile = get_object_or_404(Account, id=user_id) if user_id else self.request.user
+        events = Event.objects.filter(educator=profile)
         feeds = Feedback.objects.all().order_by('-feed_date')
-        return render(self.request, self.template_name, {'profile': profile,'feeds':feeds})
- 
+
+        return render(self.request, self.template_name, {'profile': profile,
+                                                        'feeds':feeds,
+                                                        'events':events
+                                                        })
+
 
 class EditProfileView(LoginRequiredMixin, TemplateView):
     """ User can edit his/her profile information

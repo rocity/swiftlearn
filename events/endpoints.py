@@ -5,6 +5,10 @@ urlpatterns = [
     url(r'^$', EventsAPI.as_view({
         'get': 'list',
     }), name="events_list"),
+    url(r'^(?P<event_id>[0-9]+)/feedbacks/$', FeedbackAPI.as_view({
+        'get': 'list',
+        'post': 'create_feedback',
+    }), name="feedback_list"),
     url(r'^(?P<event_id>[0-9]+)/comments/$', EventCommentsAPI.as_view({
         'get': 'list',
         'post': 'create_comment',
