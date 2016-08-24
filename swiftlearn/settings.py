@@ -107,12 +107,13 @@ AUTHENTICATION_BACKENDS = (
 AUTH_USER_MODEL = 'accounts.Account'
 LOGIN_URL = '/login/'
 
-SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
+
 SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_QUERY_EMAIL = True
 LOGIN_REDIRECT_URL = "/user_category/"
 
 DEFAULT_PROFILE_IMAGE = 'images/profile-default.png'
+DEFAULT_COVER_IMAGE = 'images/cover-photo-default.png'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
