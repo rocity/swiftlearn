@@ -46,7 +46,7 @@
                     {% if user.expertise.exists %}
                         <li>
                             <a href="{% url 'profileme' %}" class="profile-link">
-                                <h5>Earvin Gemenez</h5>
+                                <h5>{{ profile.get_full_name }}</h5>
                                 <h6>view profile</h6></a>
                         </li>
                         <li class="divider" role="separator"></li>

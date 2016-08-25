@@ -3,7 +3,7 @@
 {% load tz %}
 
 {% block profile_header %}
-<div class="cover-photo" style="background-image:url('{{ profile.cover_photo|get_image_url }}');">
+<div class="cover-photo" style="background-image:url('{{ profile.cover_photo|get_cover_url }}');">
 </div>
 <div class="profile-header-background">
 </div>
@@ -13,7 +13,19 @@
 <div class="row  profile-header">
     <div class="col-lg-3 text-center">
         <div class="profile-background">
-            <img src="{{ profile.profile_picture|get_image_url }}" class="img-rounded">
+            {% if user.profile_picture == None %}
+            <div class="background">
+                <div class="face">
+                    <div class="left_eyes">
+                    </div>
+                    <div class="right_eyes"></div>
+                    <div class="mouth">
+                    </div>
+                </div>
+            </div>
+            {% else %}
+                <img src="{{ user.profile_picture|get_image_url }}" class="img-rounded">
+            {% endif %}
         </div>
     </div>
     <div class="col-lg-9 ">
