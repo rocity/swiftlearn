@@ -80,6 +80,7 @@ class LogoutView(LoginRequiredMixin, View):
     """ Logout View
     """
     def get(self, *args, **kwargs):
+        logout(self.request)
         return HttpResponseRedirect(reverse('login'))
 
 

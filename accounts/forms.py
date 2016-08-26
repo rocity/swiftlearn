@@ -28,6 +28,10 @@ class SignupForm(forms.ModelForm):
 class LoginForm(AuthenticationForm):
     """ form for user login
     """
+    username = forms.CharField(max_length=30, 
+                               widget=forms.TextInput(attrs={'type': 'email', 'class': 'form-control', 'name': 'username', 'placeholder': 'Email address'}))
+    password = forms.CharField(max_length=30, 
+                               widget=forms.PasswordInput(attrs={'class': 'form-control', 'name': 'password', 'placeholder': 'Password'}))
     error_msg = "Email/Password is incorrect."
 
     def clean(self):
