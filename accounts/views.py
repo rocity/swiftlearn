@@ -404,3 +404,4 @@ class UserCategoryView(LoginRequiredMixin, TemplateView):
             user.save()
             return HttpResponseRedirect(reverse('dashboard'))
         return render(self.request, self.template_name, {'images':images,'message':message})
+
