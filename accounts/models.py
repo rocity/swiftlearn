@@ -12,6 +12,12 @@ from django.utils.translation import ugettext_lazy as _
 
 from .mixins.timezone import TimezoneMixin
 
+from .storage import OverwriteStorage
+
+import os
+from django.conf import settings
+
+from .utils import get_directory, get_directory_cover_photo
 
 class AccountCompletionTask(models.Model):
     """ learner's account completion
@@ -60,6 +66,7 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
     """ Model class which contains the user's
         account information
     """
+
     email = models.EmailField(max_length=250, unique=True)
     username = models.CharField(max_length=250, unique=True)
     first_name = models.CharField(max_length=40, null=True, blank=True)
@@ -70,8 +77,8 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
     phone = models.CharField(max_length=200, null=True, blank=True)
     timezone = models.CharField(max_length=50, null=True, blank=True)
 
-    cover_photo = models.ImageField(upload_to='covers/', null=True, blank=True)
-    profile_picture = models.ImageField(upload_to='profiles/', null=True, blank=True)
+    cover_photo = models.ImageField(upload_to=get_directory_cover_photo, null=True, blank=True)
+    profile_picture = models.ImageField(upload_to=get_directory, null=True, blank=True)
     quote = models.TextField(null=True, blank=True)
     overview = models.TextField(null=True, blank=True)
     badges = models.ManyToManyField('Badge', blank=True)
@@ -114,13 +121,52 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
+    _profile_picture = None
+    _cover_photo = None
+
+    def __init__(self, *args, **kwargs):
+        super(Account, self).__init__(*args,**kwargs)
+        self._profile_picture = self.profile_picture
+        self._cover_photo = self.cover_photo
+
     def __str__(self):
         return "{email}".format(email=self.email)
 
     def save(self, *args, **kwargs):
         if not self.timezone:
             self.timezone = self.get_gmt()
+
+        if self.profile_picture != self._profile_picture and self._profile_picture !='':
+            self.delete_profile_picture()
+
+        if self.cover_photo != self._cover_photo and self._cover_photo !='':
+            self.delete_cover_photo()
+
         return super(Account, self).save(*args, **kwargs)
+        self._profile_picture = self.profile_picture
+        self._cover_photo = self.cover_photo
+
+    def delete_profile_picture(self, empty_image=False):
+        image_path = os.path.join(settings.MEDIA_ROOT, str(self._profile_picture))
+
+        try:
+            os.remove(image_path)
+        except Exception as e:
+            pass
+
+        if empty_image:
+            self.profile_picture =''
+
+    def delete_cover_photo(self, empty_image=False):
+        image_path = os.path.join(settings.MEDIA_ROOT, str(self._cover_photo))
+
+        try:
+            os.remove(image_path)
+        except Exception as e:
+            pass
+
+        if empty_image:
+            self.cover_photo =''
 
     def get_full_name(self):
         """ Returns the first_name pluse the last_name, with a space

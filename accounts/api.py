@@ -18,9 +18,9 @@ class SignUpAPI(APIView):
             serializer.save()
             
             user = Account.objects.get(email=serializer.data['email'])
-            user.backend = settings.AUTH_BACKEND
+            user.backend = settings.AUTHENTICATION_BACKENDS[0]
             login(self.request, user)
             
-            return Response("success", status=status.HTTP_201_CREATED)
+            return Response(status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         

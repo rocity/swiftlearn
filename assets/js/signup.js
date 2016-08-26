@@ -26,10 +26,7 @@ $(document).ready(function(){
     var data  = $('#signup').serialize();
     
     $.post( url, data, function(response){
-
-        if(response == "success"){
             window.location.href = "/user_category";
-        }
     }).fail(function(response){
         var errors = JSON.parse(response.responseText);
         $.each(errors, function(index, error){

@@ -1,144 +1,10 @@
 {% extends 'base.html'%}
 {% block content %}
+{% load staticfiles profile profile_completion %}
     <div class="page">
         <div class="container">
             <div class="row dashboard">
-                <div class="col-md-4 col-lg-3 user-profile">
-                    <div class="user-details">
-                        <div class="row">
-                            <div class="col-md-2 col-lg-3">
-                                <img src="static/images/img6.jpg" class="img-rounded">
-                            </div>
-                            <div class="col-md-10 col-lg-9">
-                                <h3>
-                         <a href="#">Earvin Gemenez</a>
-                      </h3>
-                                <h4>
-                            Love Expert
-                        </h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="setting-nav nav nav-tabs " id="setting-nav">
-                        <a href="#profile" class="active hvr-sweep-to-right">Profile</a>
-                        <a href="#account" class="hvr-sweep-to-right">Account</a>
-                        <a href="#billing" class="hvr-sweep-to-right"> Billing</a>
-                        <a href="#" class="hvr-sweep-to-right">Privacy</a>
-                    </div>
-                    <div class=" profile-status">
-                        <label for=""> You're 40% closer to complete your profile </label>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" id="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-1">
-                                <i class="fa fa-check-circle  alert-info" aria-hidden="true"></i>
-                            </div>
-                            <div class="col-lg-10">
-                                <p>
-                                    Write profile details
-                                </p>
-                            </div>
-                            <div class="col-lg-1">
-                                <i class="fa fa-check-circle  alert-info" aria-hidden="true"></i>
-                            </div>
-                            <div class="col-lg-10">
-                                <p>
-                                    Verify account information
-                                </p>
-                            </div>
-                            <div class="col-lg-1">
-                                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            </div>
-                            <div class="col-lg-10">
-                                <p>
-                                    Select field of interests
-                                </p>
-                            </div>
-                            <div class="col-lg-1">
-                                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            </div>
-                            <div class="col-lg-10">
-                                <p>
-                                    Lorem ipsum dolor
-                                </p>
-                            </div>
-                            <div class="col-lg-1">
-                                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            </div>
-                            <div class="col-lg-10">
-                                <p>
-                                    Cum sociis natoque penatibus
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 feeds ">
-                            <ul>
-                                <li>
-                                    <a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> My Feeds</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i> My Bookmarks</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> My Trends</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-12 col-lg-12 recent-tutorials">
-                            <h4 class="column-header">
-                            RECENT TUTORIALS
-                        </h4>
-                            <div class="tutorial-items">
-                                <div class="row">
-                                    <div class="col-md-2 col-lg-2">
-                                        <img src="static/images/angular-logo.png">
-                                    </div>
-                                    <div class="col-md-10 col-lg-10">
-                                        <h4>
-                                <a href="#">Angular JS</a>
-                            </h4>
-                                        <p>
-                                            <a href="#">by Paul Gilmore </a> | 9 days
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tutorial-items">
-                                <div class="row">
-                                    <div class="col-md-2 col-lg-2">
-                                        <img src="static/images/bootstrap.png">
-                                    </div>
-                                    <div class="col-md-10 col-lg-10">
-                                        <h4>
-                                <a href="#">How to align items in bootstrap</a>
-                            </h4>
-                                        <p>
-                                            <a href="#">by Paul Gilmore </a> | 9 days
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tutorial-items">
-                                <div class="row">
-                                    <div class="col-md-2 col-lg-2">
-                                        <img src="static/images/Jquery.png">
-                                    </div>
-                                    <div class="col-md-10 col-lg-10">
-                                        <h4>
-                                <a href="#">Jquery</a>
-                            </h4>
-                                        <p>
-                                            <a href="#">by Paul Gilmore </a> | 9 days
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+               {% include 'includes/edit_profile.html' %}
                 </div>
                 <div class="col-md-9 profile-setting tab-content">
                     <div class="tab-pane active" id="profile">
@@ -398,20 +264,17 @@
                             </div> 
                             <div class="col-md-4">
                                 <div class="profile-picture">
-                                    <img src="static/images/pic1.png">
+                                    <img src="{{ user.profile_picture|get_image_url }}">
                                     <div class="dropdown">
                                         <button class="btn form-control profile-btn dropdown-toggle" id="change-picture" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                             Change
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="change-picture">
                                             <li>
-                                                <a href="#">Upload photo</a>
+                                                <a href="#update_photo" data-toggle="modal">Upload photo</a>
                                             </li>
                                             <li>
-                                                <a href="#">Edit</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Remove</a>
+                                                <a href="#remove" data-toggle="modal">Remove</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -429,6 +292,7 @@
                             <div class="col-md-8">
                                 <div class="setting-container">
                                     <div class="form">
+                                     <div  id="success" role='alert' class="error"></div>
                                         <form method="post">
                                         {% csrf_token %}
                                         <input type="hidden" name="form_identity" value="edit_account">
@@ -661,6 +525,7 @@
                                  <div class="save-btn text-center">
                                         <button class="btn">Save Changes</button>
                                     </div>
+
                             </div>
                         </div>
                     </div>
@@ -673,7 +538,7 @@
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <button type="button" id="password-changes" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h4 class="modal-title" id="myModalLabel">Change password</h4>
       </div>
         <div class="modal-body">
@@ -683,7 +548,6 @@
               {% csrf_token %}
                 <input type="hidden" name="form_identity" value="edit_password">
                 <div class="input-group">
-                <div  id="success" role='alert' class="error"></div>
                 <div  id="password_error" role='alert' class="error"></div>
                    {{ form3.password }}
                 </div>
@@ -706,6 +570,58 @@
   </div>
 </div>
 
+<!-- modal for uploading profile picture  -->
+<div id="update_photo" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" >Profile Picture</h4>
+      </div>
+      <div class="modal-body">
+            
+        <form action="{% url 'edit_profile' %}"  class="dropzone"  id="my-awesome-dropzone" method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        
+          <div class="fallback">
+            <input name="profile_picture" type="file" required />
+          </div>
+           <input type="hidden" name="form_identity" value="upload">
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- modal for removing profile images -->
+<div class="modal fade" id="remove" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridModalLabel">Are you sure? Do you want to remove?</h4>
+      </div>
+      <div class="modal-body">
+     <div class="row">
+       <div class="col-md-6">
+         <button type="button" class="btn btn-warning btn-block" data-dismiss="modal" >No</button>
+       </div>
+        <div class="col-md-6">
+         <form action="{% url 'edit_profile' %}" method="post" enctype="multipart/form-data" >
+         {% csrf_token %}
+            <input type="hidden" name="form_identity" value="remove" >
+            <button type="submit" class="btn btn-danger btn-block">Yes</button>
+        </form>
+       </div>
+     </div>
+     </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
 {% block js %}
 <script type="text/javascript">
@@ -717,6 +633,21 @@
      tab_a.addClass('active');
 {% endif %}
 });
+  
+Dropzone.options.myAwesomeDropzone = {
+  paramName: "profile_picture",
+  maxFilesize: 3, // MB
+  maxFiles: 1, // number of uplaod
+  acceptedFiles: 'image/*',
+  accept: function(file, done) {
+   done();
+    },
+  addRemoveLinks: true,
+    removedfile: function(file) {
+    var _ref; 
+    return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+    },
+};
+</script>
 
- </script>
  {% endblock %}

@@ -171,6 +171,7 @@ class EditProfileForm(forms.ModelForm):
             edu.date_attended_to =date_to
             edu.date_attended_fr =date_fr
             edu.save()
+            instance.save()
         return instance
 
 
@@ -246,3 +247,30 @@ class ChangePasswordForm(forms.ModelForm):
             instance.set_password(self.data['new_password'])
             user = instance.save()
         return instance
+
+
+class EditProfilePicForm(forms.ModelForm):
+
+    class Meta:
+        model = Account
+        fields = ('profile_picture',)
+
+
+class RemoveProfilePicForm(forms.ModelForm):
+
+    class Meta:
+        model = Account
+        fields = ('profile_picture',)
+
+
+class CoverPhotoForm(forms.ModelForm):
+
+    class Meta:
+        model = Account
+        fields = ('cover_photo',)
+
+
+class RemoveCoverPhotoForm(forms.ModelForm):
+    class Meta:
+        model = Account
+        fields = ('cover_photo',)

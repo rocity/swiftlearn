@@ -1,4 +1,5 @@
 *.sqlite3
+*.css
 *.pyc
 *media/
 *static/

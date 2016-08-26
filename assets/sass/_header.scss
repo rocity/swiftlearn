@@ -48,17 +48,18 @@ body {}
     .navbar-right {
         .user-dropdown {
             width: 250px;
-            .profile-link{
-                h5{
+            .profile-link {
+                h5 {
                     color: #303030;
                 }
-                h6{
+                h6 {
                     color: #888;
                     font-size: 13px;
                 }
             }
         }
         .dropdown {
+            display: inline-block;
             #user-profile {
                 padding: 0;
                 transition: background 0s linear;
@@ -81,7 +82,7 @@ body {}
                         color: #fff;
                         border-radius: 5px;
                         margin-right: 45%;
-                        &:hover{
+                        &:hover {
                             background: #fdcc35;
                             transition: 0.5s;
                         }
@@ -89,21 +90,34 @@ body {}
                     a {
                         //margin: 10px 0;
                         padding: 5px 0 5px 20px;
-                       
                     }
                     img {
                         width: 25px;
                         margin-top: -80px;
                         margin-left: 116px;
-                        &:hover{
-                            background:none;
+                        &:hover {
+                            background: none;
                         }
                     }
-                     :hover{
-                            background: #e4f3ff;
-                        }
+                    :hover {
+                        background: #eeeeee;
+                    }
                 }
             }
+            // ul:before {
+            //     position: absolute;
+            //     z-index: -1;
+            //     content: '';
+            //     right: 3px;
+            //     top: -10px;
+            //     border-style: solid;
+            //     border-width: 0 10px 10px 10px;
+            //     border-color: #fff #fff #fff #fff;
+            //     -webkit-transition-duration: 0.3s;
+            //     transition-duration: 0.3s;
+            //     -webkit-transition-property: transform;
+            //     transition-property: transform;
+            // }
         }
     }
 }

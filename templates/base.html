@@ -5,11 +5,13 @@
 
 <head>
     <title>swift tutorial</title>
+    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/owl.carousel.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/hover.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/image-picker.css' %}">
+
 </head>
 
 <body>
@@ -46,7 +48,8 @@
                     {% if user.expertise.exists %}
                         <li>
                             <a href="{% url 'profileme' %}" class="profile-link">
-                                <h5>{{ profile.get_full_name }}</h5>
+
+                                <h5>{{ user.get_full_name }}</h5>
                                 <h6>view profile</h6></a>
                         </li>
                         <li class="divider" role="separator"></li>
@@ -96,18 +99,19 @@
     </div>
     <script src="https://use.fontawesome.com/5fbc41cc4a.js"></script>
     <script src="{% static 'js/jquery-1.9.1.min.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/dropzone.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
     <script src="{% static 'js/search.js' %}"></script>
-    <script src="{% static 'js/message.js' %}"></script>
-    <script src="{% static 'js/images.js' %}"></script>
-    <script src="{% static 'js/image-picker.js' %}"></script>
-    <script src="{% static 'js/feedback.js' %}"></script>
     
-     {% block js %}
+    {% block js %}
+          <script src="{% static 'js/message.js' %}"></script>
+          <script src="{% static 'js/images.js' %}"></script>
+          <script src="{% static 'js/image-picker.js' %}"></script>
+          <script src="{% static 'js/feedback.js' %}"></script>
           <script src="{% static 'el-pagination/js/el-pagination.js' %}"></script>
-     {% endblock %}
+    {% endblock %}
 </body>
 
 </html>
