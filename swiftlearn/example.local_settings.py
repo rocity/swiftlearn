@@ -3,6 +3,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = True
 
+ALLOWED_HOSTS = ['']
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -10,9 +12,9 @@ DATABASES = {
     }
 }
 
-DEFAULT_FROM_EMAIL = 'ravewin7@gmil.com'
+DEFAULT_FROM_EMAIL = ''
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'ravewin7@gmail.com'
-EMAIL_HOST_PASSWORD = 'lav051689'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
