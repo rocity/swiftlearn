@@ -377,50 +377,10 @@
                     <div class="tab-pane" id="billing">
                         <div class="header">
                             <h3>
-                        Billing
-                    </h3>
+                                Billing
+                            </h3>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="setting-container">
-                                    <div class="form">
-                                        <form>
-                                            <div class="setting-section">
-                                                <div class="title ">
-                                                    <p>
-                                                        Billing acount ID
-                                                    </p>
-                                                </div>
-                                                <div class="setting-content">
-                                                    <p class="billing-id"><strong>0171-8295-7259-1120</strong></p>
-                                                    <div class="foot-note">
-                                                        <p>
-                                                            Your billing account ID is shown on all your billing document
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="setting-section">
-                                                <div class="title ">
-                                                    <p>
-                                                        Billing alert <span>(optional)</span>
-                                                    </p>
-                                                </div>
-                                                <div class="setting-content">
-                                                    <input type="text" name="" class="input form-control" placeholder="$20.00">
-                                                    <div class="foot-note">
-                                                        <div class="checkbox">
-                                                            <p>
-                                                                <input type="checkbox" value="">E-mail me anything my monthly expenses has exceeded this amount
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="col-md-6">
                                 <div class="setting-container">
                                     <div class="current-credit">
@@ -428,31 +388,35 @@
                                             Current credit
                                         </p>
                                         <h1 class="text-right">
-                                 <strong>$0.19</strong>
-                               </h1>
+                                            <strong>$ {{ user.credits }}</strong>
+                                        </h1>
                                         <button class="btn form-control profile-btn" data-toggle="modal" data-target="#buy-credit"> Buy More Credits</button>
                                         <!-- Modal -->
                                         <div class="modal  fade" id="buy-credit" tabindex="-1" role="dialog" aria-labelledby="buy-credit">
                                             <div class="modal-dialog paypal-container" role="document">
                                                 <div class="modal-content paypal">
                                                     <div class="modal-header">
-                                                        <img src="static/images/paypal.png" >
+                                                        <img src="{% static 'images/paypal.png' %}">
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
                                                     </div>
                                                     <div class="modal-body ">
                                                         <div class="row">
                                                             <div class="col-md-6">
-                                                               <p class="paypal-text">
-                                                                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat ligula dignissim ipsum.
-                                                               </p>
+                                                                <p class="paypal-text">
+                                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat ligula dignissim ipsum.
+                                                                </p>
                                                             </div>
                                                             <div class="col-md-6">
-                                                               
                                                                 <p><strong>Amount</strong></p>
-                                                                <input type="text" class="input form-control" name="" placeholder="$">
-                                                                <button class="btn  profile-btn paypal-btn "> Pay with <img src="static/images/paypal-white.png"></button>
+                                                                <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+                                                                    {% csrf_token %}
+                                                                    {{ form_paypal }}
+                                                                    <input id="id_amount" name="amount" type="text" class="input form-control" placeholder="0.00">
+                                                                    <button type="submit" class="btn profile-btn paypal-btn">Pay with <img src="{% static 'images/paypal-white.png' %}"></button>
+                                                                </form>
+                                
                                                             </div>
                                                         </div>
                                                     </div>
@@ -476,56 +440,18 @@
                                                 <th></th>
                                             </tr>
                                         </thead>
+                                        {% for transaction in transactions %}
                                         <tbody>
                                             <tr>
-                                                <td>Aug 2, 2016</td>
-                                                <td>Payment for singing tutorial</td>
-                                                <td>$15.00</td>
-                                                <td><a href="#">View Invoice</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Aug 2, 2016</td>
-                                                <td>Payment for singing tutorial</td>
-                                                <td>$15.00</td>
-                                                <td><a href="#">View Invoice</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Aug 2, 2016</td>
-                                                <td>Payment for singing tutorial</td>
-                                                <td>$15.00</td>
-                                                <td><a href="#">View Invoice</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Aug 2, 2016</td>
-                                                <td>Payment for singing tutorial</td>
-                                                <td>$15.00</td>
-                                                <td><a href="#">View Invoice</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Aug 2, 2016</td>
-                                                <td>Payment for singing tutorial</td>
-                                                <td>$15.00</td>
-                                                <td><a href="#">View Invoice</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Aug 2, 2016</td>
-                                                <td>Payment for singing tutorial</td>
-                                                <td>$15.00</td>
-                                                <td><a href="#">View Invoice</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Aug 2, 2016</td>
-                                                <td>Payment for singing tutorial</td>
-                                                <td>$15.00</td>
+                                                <td>{{ transaction.date_created }}</td>
+                                                <td>{{ transaction.description }} </td>
+                                                <td>${{ transaction.amount }} </td>
                                                 <td><a href="#">View Invoice</a></td>
                                             </tr>
                                         </tbody>
+                                        {% endfor %}
                                     </table>
                                 </div>
-                                 <div class="save-btn text-center">
-                                        <button class="btn">Save Changes</button>
-                                    </div>
-
                             </div>
                         </div>
                     </div>
@@ -640,6 +566,7 @@ Dropzone.options.myAwesomeDropzone = {
   maxFiles: 1, // number of uplaod
   acceptedFiles: 'image/*',
   accept: function(file, done) {
+
    done();
     },
   addRemoveLinks: true,
@@ -650,4 +577,4 @@ Dropzone.options.myAwesomeDropzone = {
 };
 </script>
 
- {% endblock %}
+{% endblock %}

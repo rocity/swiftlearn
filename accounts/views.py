@@ -1,10 +1,12 @@
 import json
 import os
-from django.core.files.storage import FileSystemStorage
+import uuid
 
 from django.conf import settings
 from django.contrib.auth import login, logout
 from django.core.urlresolvers import reverse
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 from django.http import HttpResponseRedirect, HttpResponse, Http404, HttpResponseBadRequest
 
 from django.db.models import Q
@@ -14,6 +16,8 @@ from django.shortcuts import render, get_object_or_404
 
 from braces.views import LoginRequiredMixin
 from events.models import Event, Feedback
+
+from paypal.standard.forms import PayPalPaymentsForm
 
 from .forms import ( 
     SignupForm, 
@@ -27,7 +31,7 @@ from .forms import (
     CoverPhotoForm,
     RemoveCoverPhotoForm
     )
-from .models import ConfirmationKey, Account, Skill, Education
+from .models import ConfirmationKey, Account, Skill, Education, Transaction
 
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib import messages
@@ -35,8 +39,11 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template import loader
 from django.core.mail import send_mail
+<<<<<<< HEAD
+=======
+from swiftlearn.settings import SITE_URL, DEFAULT_FROM_EMAIL, PAYPAL_RECEIVER_EMAIL
 
-
+>>>>>>> Paypal payment edited
 
 class IndexView(TemplateView):
     """ Main page of the site
@@ -116,12 +123,28 @@ class ProfileView(LoginRequiredMixin, TemplateView):
                                                         })
 
 
-class EditProfileView(FileSystemStorage, LoginRequiredMixin, TemplateView):
+class EditProfileView(LoginRequiredMixin, TemplateView):
     """ User can edit his/her profile information
     """
-    template_name = 'accounts/edit_profile.html';
+    template_name = 'accounts/edit_profile.html'
 
-    def get(self, *args, **kwargs): 
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super(EditProfileView, self).dispatch(request, *args, **kwargs)
+
+    def get(self, *args, **kwargs):
+        user = get_object_or_404(Account, email=self.request.user)
+        transactions = Transaction.objects.filter(user=user).order_by('-date_created')
+        paypal_dict = {
+            "business" : settings.PAYPAL_RECEIVER_EMAIL,
+            "item_name" : "Tutorial Payment",
+            "invoice" : str(uuid.uuid4())[:8].upper(),
+            "notify_url" : settings.SITE_URL + reverse('paypal-ipn'),
+            "return_url" : settings.SITE_URL + "/profile/edit/",
+            "cancel_return" : settings.SITE_URL + "/profile/edit/",
+            "custom" : "Upgrade all users!",
+        }
+
         account = Account.objects.get(email=self.request.user)
         education, create = Education.objects.get_or_create(user=account) 
         form = EditProfileForm(
@@ -134,15 +157,17 @@ class EditProfileView(FileSystemStorage, LoginRequiredMixin, TemplateView):
             })
         form2 = EditAccountForm(instance=account)
         form3 = ChangePasswordForm()
-        return render(self.request, self.template_name, {
-            'form':form,
-            'form2':form2, 
-            'form3':form3
-            })
+        form_paypal = PayPalPaymentsForm(initial=paypal_dict)
+        return render(self.request, self.template_name, {'form':form, 
+                                                        'form2':form2, 
+                                                        'form3':form3,
+                                                        'form_paypal':form_paypal,
+                                                        'transactions':transactions
+                                                        })
 
+        
     def post(self, *args, **kwargs):
-        pic_next = self.request.POST.get('current_pic')
-        form_identity = self.request.POST.get('form_identity')
+        form_identity = self.request.POST.get('form_identity', False)
         account = Account.objects.get(email=self.request.user)
         education, create = Education.objects.get_or_create(user=account) 
         form2 = EditAccountForm(instance=account)
@@ -180,6 +205,7 @@ class EditProfileView(FileSystemStorage, LoginRequiredMixin, TemplateView):
                     e = form3.errors[error]
                     errors_dict[error] = str(e)
                 return HttpResponseBadRequest(json.dumps(errors_dict))
+<<<<<<< HEAD
         elif form_identity == 'upload':
             form4 = EditProfilePicForm(self.request.POST, self.request.FILES, instance=account)
             if form4.is_valid():
@@ -214,6 +240,12 @@ class EditProfileView(FileSystemStorage, LoginRequiredMixin, TemplateView):
             'form3':form3, 
             'form_script': form_identity 
             })
+=======
+        return render(self.request, self.template_name,{'form':form, 
+                                                        'form2':form2,
+                                                        'form3':form3,
+                                                        })
+>>>>>>> Paypal payment edited
 
 
 class ActivationView(TemplateView):

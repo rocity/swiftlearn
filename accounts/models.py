@@ -16,6 +16,10 @@ import os
 from django.conf import settings
 
 from .utils import get_directory, get_directory_cover_photo
+from paypal.standard.models import ST_PP_COMPLETED
+from paypal.standard.ipn.signals import valid_ipn_received
+from accounts.models import Account, Transaction
+
 
 class AccountCompletionTask(models.Model):
     """ learner's account completion
@@ -94,7 +98,7 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
     is_activated = models.BooleanField(default=False)
 
     # billing info
-    balance = models.DecimalField(max_digits=9, decimal_places=2, default=0.00)
+    credits = models.DecimalField(max_digits=9, decimal_places=2, default=0.00)
     objects = AccountManager()
 
     # type of user tutor or student
@@ -309,3 +313,18 @@ class BadgeCriteria(models.Model):
 
     def __str__(self):
         return "{desc}".format(desc=self.desc)
+
+
+def payment_notify(sender, **kwargs):
+    """PayPal payment notification
+    """
+    ipn_obj = sender
+    if ipn_obj.payment_status == ST_PP_COMPLETED:
+        user = Account.objects.get(email = ipn_obj.payer_email)
+        user.credits += ipn_obj.mc_gross
+        user.save()
+        Transaction.objects.create( user = user,
+                                    amount = ipn_obj.mc_gross,
+                                    description = ipn_obj.item_name
+                                    )
+valid_ipn_received.connect(payment_notify)
