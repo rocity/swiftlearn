@@ -40,7 +40,10 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template import loader
 from django.core.mail import send_mail
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> Paypal payment edited
 from swiftlearn.settings import SITE_URL, DEFAULT_FROM_EMAIL, PAYPAL_RECEIVER_EMAIL
 
 >>>>>>> Paypal payment edited
@@ -245,6 +248,9 @@ class EditProfileView(LoginRequiredMixin, TemplateView):
                                                         'form2':form2,
                                                         'form3':form3,
                                                         })
+<<<<<<< HEAD
+>>>>>>> Paypal payment edited
+=======
 >>>>>>> Paypal payment edited
 
 

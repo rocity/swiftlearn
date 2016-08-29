@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_URL = "http://swiftkind.com"
 
 # Application definition
 
@@ -59,7 +60,7 @@ INSTALLED_APPS = [
 
 ]
 
-PAYPAL_TEST = True
+PAYPAL_RECEIVER_EMAIL = ''
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
