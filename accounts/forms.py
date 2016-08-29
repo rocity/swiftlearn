@@ -19,19 +19,36 @@ class SignupForm(forms.ModelForm):
     confirm_password = forms.CharField(widget=forms.PasswordInput({
         'class': 'form-control', 'placeholder': 'Confirm password'
     }))
+    first_name = forms.CharField(widget=forms.TextInput({
+        'class':'input form-control',
+        'placeholder': 'First Name'
+         }))
+    last_name = forms.CharField(widget=forms.TextInput({
+        'class':'input form-control',
+        'placeholder': 'Last Name'
+         }))
 
     class Meta:
         model = Account
-        fields = ('email', 'password', 'confirm_password')
+        fields = ('email', 'first_name', 'last_name', 'password', 'confirm_password')
    
 
 class LoginForm(AuthenticationForm):
     """ form for user login
     """
     username = forms.CharField(max_length=30, 
-                               widget=forms.TextInput(attrs={'type': 'email', 'class': 'form-control', 'name': 'username', 'placeholder': 'Email address'}))
+                               widget=forms.TextInput(attrs={
+                                'type': 'email',
+                                'class': 'form-control',
+                                'name': 'username',
+                                'placeholder': 'Email address'
+                                }))
     password = forms.CharField(max_length=30, 
-                               widget=forms.PasswordInput(attrs={'class': 'form-control', 'name': 'password', 'placeholder': 'Password'}))
+                               widget=forms.PasswordInput(attrs={
+                                'class': 'form-control',
+                                'name': 'password',
+                                'placeholder': 'Password'
+                                }))
     error_msg = "Email/Password is incorrect."
 
     def clean(self):
