@@ -1,0 +1,58 @@
+.home-page {
+    background: linear-gradient(to right, rgba(255, 0, 60, 0.6), rgba(103, 19, 181, 0.8)), url('../images/home-bg.jpg');
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: cover;
+    height: 100vh;
+    display: block;
+    @include desktop {
+        padding-top: 10vh;
+    }
+    .login-btn {
+        background: none;
+        border: 1px solid #fff;
+        color: #fff;
+        width: 10em;
+    }
+    .content {
+        margin-top: 5vh;
+        color: #fff;
+        h1 {
+            font-family: $FabfeltScript;
+            font-size: 3.5em;
+            letter-spacing: 1px;
+        }
+        h3 {
+            font-family: $Montserrat-Light;
+        }
+        h4 {
+            font-family: $Lato-Light;
+            line-height: 1.2;
+            letter-spacing: 0.2px;
+        }
+        img {
+            width: 100px;
+        }
+        button {
+            background: #1976d3;
+            margin-top: 2vh;
+            width: 140px;
+            &:hover {
+                color: #fff;
+            }
+        }
+        p {
+            line-height: 170%;
+            margin-top: 20px;
+            font-family: $Lato-Light;
+            letter-spacing: 0.3px;
+            font-size: 1.2em;
+        }
+    }
+}
+
+.signup-option {
+    margin-top: 3em;
+    padding: 5vh 5px 10vh;
+    border: 1px solid #fff;
+    border-radius: 10px;
+}

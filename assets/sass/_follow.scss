@@ -1,0 +1,54 @@
+.follow-item {
+    position: relative;
+    img {
+        opacity: 1;
+        background: #222;
+        z-index: 1;
+        
+    }
+
+     .overlay{
+    	
+    	position: absolute;
+    	top: 0;
+    	bottom: 0;
+    	background-color: #000;
+    	width: 131px;
+    	height: 131px;
+    	opacity: 0;
+    }
+    .follow-btn {
+        opacity: 0;
+        z-index: 9;
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+           transition: all 1s ease;
+    }
+    &:hover{
+    	.follow-btn {
+    		opacity: 1;
+
+    	}
+    	img{
+    		opacity: 0.5;
+            background-color: #000;
+    	}
+    	.overlay{
+    		opacity: 1;
+    		transition: all ease-in-out 1.25s;
+
+    	}
+    }
+
+}
+
+.vertical-container {
+    display: table-cell;
+    .vertical-wrapper {
+        display: table-cell;
+        vertical-align: center;
+        //height: 200px;
+    }
+}

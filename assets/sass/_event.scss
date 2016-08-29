@@ -18,6 +18,7 @@
         margin: 20px 0;
         color: #303030;
         font-family: $Montserrat-SemiBold;
+        max-width: 100%;
         &.event-title {
             font-size: 26px;
         }
@@ -93,8 +94,10 @@
     .form-control {
         border: #bcbcbc solid 1px;
         border-radius: 2px;
+        max-width: 100%;
         &:focus {
             box-shadow: none;
+
         }
     }
     .header {
