@@ -215,6 +215,18 @@ SOCIALACCOUNT_PROVIDERS = \
            }
     }
 
+
+##################
+# E-MAIL SENDING #
+##################
+DEFAULT_FROM_EMAIL = 'Swift Learn <learn.swiftkind@gmail.com>'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'learn.swiftkind@gmail.com'
+EMAIL_HOST_PASSWORD = 'learnswiftkind123'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+
+
 ##################
 # LOCAL SETTINGS #
 ##################

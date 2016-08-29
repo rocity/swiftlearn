@@ -20,6 +20,7 @@ from paypal.standard.models import ST_PP_COMPLETED
 from paypal.standard.ipn.signals import valid_ipn_received
 from accounts.models import Account, Transaction
 
+from swiftlearn.settings import SITE_URL
 
 class AccountCompletionTask(models.Model):
     """ learner's account completion
@@ -218,7 +219,7 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
         confirm_key = self.generate_confirm_key()
 
         subject =   "Swift Tutorial Confirmation Key"
-        message =   "Click link to activate\n\n http://127.0.0.1:8000/activate/" + confirm_key.key
+        message =   "Click link to activate\n\n" + SITE_URL + "/activate/" + confirm_key.key
         email_to = confirm_key.user
         msg = EmailMessage(subject, message, to=[email_to])
         msg.send()
