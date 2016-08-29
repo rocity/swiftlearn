@@ -9,9 +9,13 @@
                 <h3>
                     <a href="{% url 'profileme' %}">{{ user.get_full_name|title }}</a>
                 </h3>
+               {% if user.position == None %}
+                <h4></h4>
+                {% else %}
                 <h4>
                     {{ user.position|title }}
                 </h4>
+                {% endif %}
             </div>
         </div>
     </div>
