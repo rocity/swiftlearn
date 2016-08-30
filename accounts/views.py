@@ -1,4 +1,6 @@
 import json
+import os
+from django.core.files.storage import FileSystemStorage
 
 from django.conf import settings
 from django.contrib.auth import login, logout
@@ -19,7 +21,11 @@ from .forms import (
     ResetPasswordForm, 
     ChangePasswordForm, 
     EditProfileForm, 
-    EditAccountForm 
+    EditAccountForm,
+    EditProfilePicForm,
+    RemoveProfilePicForm,
+    CoverPhotoForm,
+    RemoveCoverPhotoForm
     )
 from .models import ConfirmationKey, Account, Skill, Education
 
@@ -110,7 +116,7 @@ class ProfileView(LoginRequiredMixin, TemplateView):
                                                         })
 
 
-class EditProfileView(LoginRequiredMixin, TemplateView):
+class EditProfileView(FileSystemStorage, LoginRequiredMixin, TemplateView):
     """ User can edit his/her profile information
     """
     template_name = 'accounts/edit_profile.html';
@@ -128,14 +134,20 @@ class EditProfileView(LoginRequiredMixin, TemplateView):
             })
         form2 = EditAccountForm(instance=account)
         form3 = ChangePasswordForm()
-        return render(self.request, self.template_name, {'form':form, 'form2':form2, 'form3':form3})
+        return render(self.request, self.template_name, {
+            'form':form,
+            'form2':form2, 
+            'form3':form3
+            })
 
     def post(self, *args, **kwargs):
-        form_identity = self.request.POST['form_identity']
+        pic_next = self.request.POST.get('current_pic')
+        form_identity = self.request.POST.get('form_identity')
         account = Account.objects.get(email=self.request.user)
         education, create = Education.objects.get_or_create(user=account) 
         form2 = EditAccountForm(instance=account)
         form3 = ChangePasswordForm()
+        print(form_identity)
         form = EditProfileForm(
             instance = account,
             initial = {
@@ -145,37 +157,62 @@ class EditProfileView(LoginRequiredMixin, TemplateView):
                 'date_attended_to' : education.date_attended_to,
             })
         if form_identity == 'edit_profile':
-            form_script = 'edit_profile'
             form = EditProfileForm(self.request.POST,instance=account)
             if form.is_valid():
                 form_m = form.save(commit=False)
                 form.save()
                 form.save_m2m()
+                return HttpResponseRedirect(reverse('dashboard'))
         elif form_identity == 'edit_account':
-            form_script = 'edit_account'
             form2 =  EditAccountForm(self.request.POST,instance=account)
             if form2.is_valid():
                 form2.save()
         elif form_identity == 'edit_password':
-            form_script = ''
             form3 = ChangePasswordForm(self.request.POST, instance=account, user=self.request.user)
             if form3.is_valid():
                 instance = form3.save()
-                instance.backend = settings.AUTH_BACKEND
+                instance.backend = settings.AUTHENTICATION_BACKENDS[0]
                 login(self.request,instance)
-                success='Successfully change!'
-                return HttpResponse(success)
+                return HttpResponse(status=201)
             else:
                 errors_dict = {}
                 for error in form3.errors:
                     e = form3.errors[error]
                     errors_dict[error] = str(e)
                 return HttpResponseBadRequest(json.dumps(errors_dict))
+        elif form_identity == 'upload':
+            form4 = EditProfilePicForm(self.request.POST, self.request.FILES, instance=account)
+            if form4.is_valid():
+                form4.save()
+
+        elif form_identity =='remove':
+            form5 = RemoveProfilePicForm(self.request.POST, instance=account)
+            if form5.is_valid():
+                instance = form5.save(commit=False)
+                instance.profile_picture = ""
+                instance.save()
+                instance.delete_profile_picture()
+
+        elif form_identity == 'cover_photo':
+            form6 = CoverPhotoForm(self.request.POST,self.request.FILES, instance=account)
+            if form6.is_valid:
+                form6.save()
+                return HttpResponseRedirect(reverse('profileme'))
+
+        elif form_identity == 'removecover':
+            form7 = RemoveCoverPhotoForm(self.request.POST, instance=account)
+            if form7.is_valid():
+                instance = form7.save(commit=False)
+                instance.cover_photo = ""
+                instance.save()
+                instance.delete_cover_photo()
+                return HttpResponseRedirect(reverse('profileme'))
+
         return render(self.request, self.template_name,  {
             'form':form, 
             'form2':form2,
             'form3':form3, 
-            'form_script':form_script 
+            'form_script': form_identity 
             })
 
 

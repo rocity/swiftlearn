@@ -19,29 +19,27 @@ $(function(){
 
 $(document).ready(function(){
     $('#signup').on('submit',function(event){
-    // reset the validation before execute again
-    clearValidation();
-    // form execution
-    var url = $(this).attr('action');
-    var data  = $('#signup').serialize();
-    
-    $.post( url, data, function(response){
 
-        if(response == "success"){
-            window.location.href = "/user_category";
-        }
-    }).fail(function(response){
-        var errors = JSON.parse(response.responseText);
-        $.each(errors, function(index, error){
+        // reset the validation before execute again
+        clearValidation();
+        // form execution
+        var url = $(this).attr('action');
+        var data  = $('#signup').serialize();
 
-            var id = "#"+index+"_group";
-            $(id).addClass('has-error');
-            $(id).prepend('<p class="error">'+error+'</p>').css({"color":"#a94442"});
+        $.post( url, data).done(function(response){
+                window.location.href = "/user_category";
+        }).fail(function(response){
+            var errors = JSON.parse(response.responseText);
+            $.each(errors, function(index, error){
 
-            var txtid = "#id_"+index;
-            $(txtid).focus();
+                var id = "#"+index+"_group";
+                $(id).addClass('has-error');
+                $(id).prepend('<p class="error">'+error+'</p>').css({"color":"#a94442"});
+
+                var txtid = "#id_"+index;
+                $(txtid).focus();
+            });
         });
-    });
 
         event.preventDefault();
     });

@@ -4,8 +4,11 @@
 
                 <div class= "options">
                  <div class="option-header">
-                       <h2>Tell us what you want to learn</h2>
-                      
+                 {% if user.user_type == student %}
+                    <h2>Tell us what you want to learn</h2>
+                 {% else %}
+                    <h2>Tells us what you want to teach</h2>
+                 {% endif %}    
                  </div>
                  <form method="post">
                  {% csrf_token %}
@@ -25,4 +28,3 @@
                 </div>
             </div>
 {% endblock %}
- 

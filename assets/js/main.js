@@ -25,8 +25,6 @@ $(document).ready(function() {
         html: true
     });
 
-
-
     $(document).on("change", "#tracker-type", function() {
         var text = $('.input-fixed input');
         if ($(this).val() == 'Hourly') {
@@ -55,12 +53,13 @@ $(function(){
         var form =  $('#form_password_change');
         var url = form.attr('action')
         $.post(url,form.serialize()).done(function(response){
-        var success = $('#success').prepend(response);
-        success.addClass('alert alert-danger')
-
+        var success = $('#success').prepend('Successfully added!');
+        success.addClass('alert alert-success')
+        form[0].reset();
+        $('#changes-password').modal('hide');
         })
         .fail(function(response){
-            var res = JSON.parse(response.responseText)
+            var res = JSON.parse(response.responseText);
             $.each(res, function(index, content){
               var id = '#'+index+'_error';
               $(id).addClass('alert alert-danger');
@@ -74,3 +73,9 @@ function resetValidation(){
     $('ul').remove();
     $('.error').removeClass('alert alert-danger');
 }
+
+$(function(){
+  $('#password-changes').on('click',function(){
+    resetValidation();
+    });
+});

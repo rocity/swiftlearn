@@ -1,0 +1,11 @@
+{% load staticfiles profile profile_completion %}
+
+{% include 'includes/user_fullname.html' %}
+ <div class="setting-nav nav nav-tabs " id="setting-nav">
+    <a href="#profile" class="active hvr-sweep-to-right">Profile</a>
+    <a href="#account" class="hvr-sweep-to-right">Account</a>
+    <a href="#billing" class="hvr-sweep-to-right"> Billing</a>
+    <a href="#" class="hvr-sweep-to-right">Privacy</a>
+</div>
+{% include 'includes/profile_progress.html' %}
+{% include 'includes/user_feeds.html' %}

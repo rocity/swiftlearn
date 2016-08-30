@@ -42,5 +42,4 @@ class AccountSerializer(serializers.ModelSerializer):
         user.set_password(password)
         user.save()
         user._send_confirmation_email() # activate account
-
         return user  
