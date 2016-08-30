@@ -12,8 +12,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from .mixins.timezone import TimezoneMixin
 
-from .storage import OverwriteStorage
-
 import os
 from django.conf import settings
 

@@ -35,7 +35,7 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template import loader
 from django.core.mail import send_mail
-from swiftlearn.settings import DEFAULT_FROM_EMAIL
+
 
 
 class IndexView(TemplateView):
