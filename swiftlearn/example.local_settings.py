@@ -18,8 +18,3 @@ EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
-<<<<<<< HEAD:swiftlearn/example.local_settings.py
-=======
-
-PAYPAL_RECEIVER_EMAIL = 'swiftkindgong-facilitator@gmail.com'
->>>>>>> Paypal payment:swiftlearn/local_settings.py
