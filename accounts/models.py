@@ -16,6 +16,10 @@ import os
 from django.conf import settings
 
 from .utils import get_directory, get_directory_cover_photo
+from paypal.standard.models import ST_PP_COMPLETED
+from paypal.standard.ipn.signals import valid_ipn_received
+
+from django.conf import settings
 
 class AccountCompletionTask(models.Model):
     """ learner's account completion
@@ -94,7 +98,7 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
     is_activated = models.BooleanField(default=False)
 
     # billing info
-    balance = models.DecimalField(max_digits=9, decimal_places=2, default=0.00)
+    credits = models.DecimalField(max_digits=9, decimal_places=2, default=0.00)
     objects = AccountManager()
 
     # type of user tutor or student
@@ -214,7 +218,7 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
         confirm_key = self.generate_confirm_key()
 
         subject =   "Swift Tutorial Confirmation Key"
-        message =   "Click link to activate\n\n http://127.0.0.1:8000/activate/" + confirm_key.key
+        message =   "Click link to activate\n\n" + settings.SITE_URL + "/activate/" + confirm_key.key
         email_to = confirm_key.user
         msg = EmailMessage(subject, message, to=[email_to])
         msg.send()
@@ -309,3 +313,19 @@ class BadgeCriteria(models.Model):
 
     def __str__(self):
         return "{desc}".format(desc=self.desc)
+
+
+def payment_notify(sender, **kwargs):
+    """PayPal payment notification
+    """
+    ipn_obj = sender
+    if ipn_obj.payment_status == ST_PP_COMPLETED:
+        from accounts.models import Account, Transaction
+        user = Account.objects.get(email = ipn_obj.payer_email)
+        user.credits += ipn_obj.mc_gross
+        user.save()
+        Transaction.objects.create( user = user,
+                                    amount = ipn_obj.mc_gross,
+                                    description = ipn_obj.item_name
+                                    )
+valid_ipn_received.connect(payment_notify)

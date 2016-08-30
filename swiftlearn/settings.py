@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_URL = "http://swiftkind.com"
 
 # Application definition
 
@@ -54,7 +55,12 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.linkedin_oauth2',
     'allauth.socialaccount.providers.twitter',
+
+    'paypal.standard.ipn',
+
 ]
+
+PAYPAL_RECEIVER_EMAIL = ''
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -208,6 +214,18 @@ SOCIALACCOUNT_PROVIDERS = \
            'VERIFIED_EMAIL': True,
            }
     }
+
+
+##################
+# E-MAIL SENDING #
+##################
+DEFAULT_FROM_EMAIL = 'Swift Learn <learn.swiftkind@gmail.com>'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'learn.swiftkind@gmail.com'
+EMAIL_HOST_PASSWORD = 'learnswiftkind123'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+
 
 ##################
 # LOCAL SETTINGS #
