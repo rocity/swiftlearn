@@ -39,14 +39,7 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template import loader
 from django.core.mail import send_mail
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> Paypal payment edited
-from swiftlearn.settings import SITE_URL, DEFAULT_FROM_EMAIL, PAYPAL_RECEIVER_EMAIL
 
->>>>>>> Paypal payment edited
 
 class IndexView(TemplateView):
     """ Main page of the site
@@ -208,7 +201,6 @@ class EditProfileView(LoginRequiredMixin, TemplateView):
                     e = form3.errors[error]
                     errors_dict[error] = str(e)
                 return HttpResponseBadRequest(json.dumps(errors_dict))
-<<<<<<< HEAD
         elif form_identity == 'upload':
             form4 = EditProfilePicForm(self.request.POST, self.request.FILES, instance=account)
             if form4.is_valid():
@@ -243,15 +235,6 @@ class EditProfileView(LoginRequiredMixin, TemplateView):
             'form3':form3, 
             'form_script': form_identity 
             })
-=======
-        return render(self.request, self.template_name,{'form':form, 
-                                                        'form2':form2,
-                                                        'form3':form3,
-                                                        })
-<<<<<<< HEAD
->>>>>>> Paypal payment edited
-=======
->>>>>>> Paypal payment edited
 
 
 class ActivationView(TemplateView):

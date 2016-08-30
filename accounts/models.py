@@ -18,7 +18,6 @@ from django.conf import settings
 from .utils import get_directory, get_directory_cover_photo
 from paypal.standard.models import ST_PP_COMPLETED
 from paypal.standard.ipn.signals import valid_ipn_received
-from accounts.models import Account, Transaction
 
 from django.conf import settings
 
@@ -321,6 +320,7 @@ def payment_notify(sender, **kwargs):
     """
     ipn_obj = sender
     if ipn_obj.payment_status == ST_PP_COMPLETED:
+        from accounts.models import Account, Transaction
         user = Account.objects.get(email = ipn_obj.payer_email)
         user.credits += ipn_obj.mc_gross
         user.save()
