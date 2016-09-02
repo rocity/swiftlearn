@@ -500,24 +500,37 @@
 <div id="update_photo" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+     <div class="image-editor">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" >Profile Picture</h4>
       </div>
       <div class="modal-body">
-            
-        <form action="{% url 'edit_profile' %}"  class="dropzone"  id="my-awesome-dropzone" method="post" enctype="multipart/form-data" >
-        {% csrf_token %}
-        
-          <div class="fallback">
-            <input name="profile_picture" type="file" required />
-          </div>
-           <input type="hidden" name="form_identity" value="upload">
+        <form action="{% url 'edit_profile' %}"  method="post" id="form-upload" >
+        {% csrf_token %}     
+          <div class="error-msg"></div> 
+          <div class="cropit-preview"></div>
+              <div class="image-size-label"></div>
+             
+          <input type="hidden" name="form_identity" value="upload">
+          <input type="hidden" name="profile_picture" class="profile_picture">
+          <input type="hidden" name="image_name" class="image_name">
+          <input type="hidden" name="image_default" value=" {{ user.profile_picture|get_image_url }}" class="image_default">
+
+          <input type="range" id="zooming" class="cropit-image-zoom-input"> 
+
+        </div>
+       <div class="modal-footer">
+        <div class="fileUpload btn btn-primary">
+            <span>Upload</span>
+            <input type="file" class="upload cropit-image-input" id="fileupload" accept="image/*"/>
+        </div>   
+       <button type="button" id="btn_ccw" class="btn btn-primary rotate-ccw">Rotate counterclockwise</button>
+       <button type="button" id="btn_cw" class="btn btn-primary rotate-cw">Rotate clockwise</button>
+       <button type="button" id="btn_submit" class="btn btn-primary">Save changes</button>
+       </div>
+        </form>
       </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
-      </form>
     </div>
   </div>
 </div>
@@ -530,7 +543,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="gridModalLabel">Are you sure? Do you want to remove?</h4>
       </div>
-      <div class="modal-body">
+    <div class="modal-body">
      <div class="row">
        <div class="col-md-6">
          <button type="button" class="btn btn-warning btn-block" data-dismiss="modal" >No</button>
@@ -542,7 +555,7 @@
             <button type="submit" class="btn btn-danger btn-block">Yes</button>
         </form>
        </div>
-     </div>
+      </div>
      </div>
     </div>
   </div>
@@ -559,22 +572,6 @@
      tab_a.addClass('active');
 {% endif %}
 });
-  
-Dropzone.options.myAwesomeDropzone = {
-  paramName: "profile_picture",
-  maxFilesize: 3, // MB
-  maxFiles: 1, // number of uplaod
-  acceptedFiles: 'image/*',
-  accept: function(file, done) {
 
-   done();
-    },
-  addRemoveLinks: true,
-    removedfile: function(file) {
-    var _ref; 
-    return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
-    },
-};
-</script>
+ {% endblock %}
 
-{% endblock %}

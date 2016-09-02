@@ -40,6 +40,9 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template import loader
 from django.core.mail import send_mail
 
+import base64
+from django.core.files.base import ContentFile
+
 
 class IndexView(TemplateView):
     """ Main page of the site
@@ -168,7 +171,6 @@ class EditProfileView(LoginRequiredMixin, TemplateView):
         education, create = Education.objects.get_or_create(user=account) 
         form2 = EditAccountForm(instance=account)
         form3 = ChangePasswordForm()
-        print(form_identity)
         form = EditProfileForm(
             instance = account,
             initial = {
@@ -202,9 +204,14 @@ class EditProfileView(LoginRequiredMixin, TemplateView):
                     errors_dict[error] = str(e)
                 return HttpResponseBadRequest(json.dumps(errors_dict))
         elif form_identity == 'upload':
-            form4 = EditProfilePicForm(self.request.POST, self.request.FILES, instance=account)
+            form4 = EditProfilePicForm(self.request.POST, instance=account)
+            data = self.request.POST.get('profile_picture')
+            image_data = base64.b64decode(data.split(',')[1])
+            image_name = self.request.POST.get('image_name')
             if form4.is_valid():
-                form4.save()
+                form_m = form4.save(commit=False)
+                form_m.profile_picture = ContentFile(image_data, image_name)
+                form_m.save()
 
         elif form_identity =='remove':
             form5 = RemoveProfilePicForm(self.request.POST, instance=account)
@@ -213,7 +220,7 @@ class EditProfileView(LoginRequiredMixin, TemplateView):
                 instance.profile_picture = ""
                 instance.save()
                 instance.delete_profile_picture()
-
+                return HttpResponseRedirect(reverse('edit_profile'))
         elif form_identity == 'cover_photo':
             form6 = CoverPhotoForm(self.request.POST,self.request.FILES, instance=account)
             if form6.is_valid:

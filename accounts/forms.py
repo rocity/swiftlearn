@@ -284,7 +284,7 @@ class CoverPhotoForm(forms.ModelForm):
 
     class Meta:
         model = Account
-        fields = ('cover_photo',)
+        fields = ('cover_photo','cover_photo_position')
 
 
 class RemoveCoverPhotoForm(forms.ModelForm):

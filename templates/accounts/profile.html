@@ -4,20 +4,41 @@
 
 {% block profile_header %}
 {% if user == profile %}
-<div class="cover-photo" style="background-image:url('{{ profile.cover_photo|get_cover_url }}');">
+<div class="cover-photo cover-container">
+    <img class="cover-img" id="img" src="{{ profile.cover_photo|get_cover_url }}" >
     <div class="edit-coverphoto pull-right ">
-        <a href="#cover_photo" class="hvr-bubble-float-right" data-toggle="modal">
+     <form action="{% url 'edit_profile' %}" method="POST" enctype="multipart/form-data" >
+     {% csrf_token %}
+
+        <input type="file" id="upload" name="cover_photo" accept="image/*" onchange="readURL(this);" style="visibility: hidden;"/>
+
+        <input type="hidden" name="cover_photo_position" id="cover_position" value="{{ user.cover_photo_position }}px">
+        <input type="hidden" name="form_identity" value="cover_photo">
+
+        <button type="button" onclick="window.location.reload();" class="btn btn-danger hidden" id="btn-cancel">cancel</button>
+        <button type="submit" class="btn btn-warning hidden" id="btn-upload">Save</button>
+        
+     </form>
+        <a id="uploading" href="" onclick="document.getElementById('upload').click(); return false" class="hvr-bubble-float-right">
             <i class="fa fa-camera" aria-hidden="true"></i> 
-            Change cover photo
+            Change cover photo by uploading
         </a>
-        <a href="#remove" class="hvr-bubble-float-right" data-toggle="modal">
+
+         <a id="reposition" href="#cover_photo" class="hvr-bubble-float-right" data-toggle="modal">
+           <i class="fa fa-arrows" aria-hidden="true"></i>
+            Reposition
+        </a>
+
+        <a id="remove" href="#remove_modal" class="hvr-bubble-float-right" data-toggle="modal">
            <i class="fa fa-times" aria-hidden="true"></i>
             Remove cover photo
         </a>
+       
     </div>
 </div>
 {% else %}
-<div class="cover-photo" style="background-image:url('{{ profile.cover_photo|get_cover_url }}');">
+<div class="cover-photo">
+
 </div>
 {% endif %}
 <div class="profile-header-background">
@@ -194,33 +215,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="cover_photo" role="dialog" aria-labelledby="modalLabel" tabindex="-1">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="modalLabel">Cover Photo</h4>
-      </div>
-      <div class="modal-body">
-        <div class="upload-file">
-         <div class="img-container">
-            <form action="{% url 'edit_profile' %}" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-                <input type='file' name="cover_photo" onchange="readURL(this);" />
-                <input type="hidden" name="form_identity" value="cover_photo">
-                <img id="img" class="img-rounded" />     
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-default">save</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="remove" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade" id="remove_modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
     <div class="modal-header">
@@ -244,20 +239,4 @@
     </div>
   </div>
 </div>
-<script type="text/javascript">
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#img')
-                    .attr('src', e.target.result)
-                    .width(120)
-                    .height(120);
-            };
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-</script>
 {% endblock %}

@@ -86,6 +86,9 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
     badges = models.ManyToManyField('Badge', blank=True)
     subscribers = models.ManyToManyField('Account', blank=True)
 
+    # cover photo position
+    cover_photo_position = models.CharField(max_length=225, null=True, blank=True)
+
     # more info
     position = models.CharField(max_length=255, null=True, blank=True)
     primary_expertise = models.ForeignKey('Skill', related_name='primary_expertise', null=True, blank=True)
