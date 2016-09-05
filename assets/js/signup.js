@@ -19,7 +19,6 @@ $(function(){
 
 $(document).ready(function(){
     $('#signup').on('submit',function(event){
-
         // reset the validation before execute again
         clearValidation();
         // form execution
