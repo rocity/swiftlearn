@@ -2,54 +2,67 @@
   font-family: 'Lato-Thin';
   src: url(../fonts/Lato-Thin.ttf);
 }
+
 @font-face {
   font-family: 'Lato-Regular';
   src: url(../fonts/Lato-Regular.ttf);
 }
+
 @font-face {
   font-family: 'Lato-LightItalic';
   src: url(../fonts/Lato-LightItalic.ttf);
 }
+
 @font-face {
   font-family: 'Lato-Light';
   src: url(../fonts/Lato-Light.ttf);
 }
+
 @font-face {
   font-family: 'Montserrat-Light';
   src: url(../fonts/Montserrat-Light.otf);
 }
+
 @font-face {
   font-family: 'Montserrat-Hairline';
   src: url(../fonts/Montserrat-Hairline.otf);
 }
+
 @font-face {
   font-family: 'Montserrat-Regular';
   src: url(../fonts/Montserrat-Regular.otf);
 }
+
 @font-face {
   font-family: 'Montserrat-SemiBold';
   src: url(../fonts/Montserrat-SemiBold.otf);
 }
+
 @font-face {
   font-family: 'Montserrat-UltraLight';
   src: url(../fonts/Montserrat-UltraLight.otf);
 }
+
 @font-face {
   font-family: 'OpenSans-Light';
   src: url(../fonts/OpenSans-Light.ttf);
 }
+
 @font-face {
   font-family: 'OpenSans-Regular';
   src: url(../fonts/OpenSans-Regular.ttf);
 }
+
 @font-face {
   font-family: 'Georgia-Regular';
   src: url(../fonts/georgia.ttf);
 }
+
 @font-face {
   font-family: 'FabfeltScript';
   src: url(../fonts/FabfeltScript-Bold.otf);
 }
+
 /* line 56, ../sass/_typography.scss */
 body {
   -webkit-font-smoothing: antialiased;
@@ -946,24 +959,23 @@ body {
 /* line 147, ../sass/_profile.scss */
 .profile-header .profile-background img {
   width: 210px;
-  height: 210px;
   border-radius: 30px;
   padding: 15px;
   background: #fdfdfd;
 }
-/* line 155, ../sass/_profile.scss */
+/* line 154, ../sass/_profile.scss */
 .profile-header .quote {
   font-family: "Georgia-Regular";
   color: #999;
   font-size: 24px;
 }
-/* line 161, ../sass/_profile.scss */
+/* line 160, ../sass/_profile.scss */
 .profile-header h3 span {
   color: #999;
   font-size: 16px;
 }
 
-/* line 168, ../sass/_profile.scss */
+/* line 167, ../sass/_profile.scss */
 .profile-content {
   margin: 20px 0;
   background: #fdfdfd;
@@ -971,104 +983,104 @@ body {
   padding: 5% 7%;
   border: solid 1px #f1f1f1;
 }
-/* line 174, ../sass/_profile.scss */
+/* line 173, ../sass/_profile.scss */
 .profile-content h4 {
   font-family: "Montserrat-Light", "sans-serif";
 }
-/* line 177, ../sass/_profile.scss */
+/* line 176, ../sass/_profile.scss */
 .profile-content p {
   font-family: "OpenSans-Regular", "sans-serif";
   line-height: 150%;
   letter-spacing: 0.1px;
   margin: 20px 0;
 }
-/* line 185, ../sass/_profile.scss */
+/* line 184, ../sass/_profile.scss */
 .profile-content table tr td {
   border: none;
 }
-/* line 186, ../sass/_profile.scss */
+/* line 185, ../sass/_profile.scss */
 .profile-content table tr td p {
   margin: 0;
 }
 
-/* line 195, ../sass/_profile.scss */
+/* line 194, ../sass/_profile.scss */
 .profile-details {
   background: #fdfdfd;
 }
-/* line 197, ../sass/_profile.scss */
+/* line 196, ../sass/_profile.scss */
 .profile-details .nav-tabs {
   margin-left: 0;
   border: none;
 }
-/* line 200, ../sass/_profile.scss */
+/* line 199, ../sass/_profile.scss */
 .profile-details .nav-tabs .tab-name {
   padding: 20px 20px 0;
 }
-/* line 202, ../sass/_profile.scss */
+/* line 201, ../sass/_profile.scss */
 .profile-details .nav-tabs .tab-name :first-child {
   margin-left: 50px;
 }
-/* line 205, ../sass/_profile.scss */
+/* line 204, ../sass/_profile.scss */
 .profile-details .nav-tabs .tab-name a {
   color: #222;
 }
 
-/* line 212, ../sass/_profile.scss */
+/* line 211, ../sass/_profile.scss */
 .btn-hire {
   width: 100%;
   background: #00bfa5;
   color: #fff;
   margin: 20px 0 0;
 }
-/* line 217, ../sass/_profile.scss */
+/* line 216, ../sass/_profile.scss */
 .btn-hire:hover {
   color: #fff;
   transition: 1s;
   background: #00bfa5;
 }
-/* line 222, ../sass/_profile.scss */
+/* line 221, ../sass/_profile.scss */
 .btn-hire:focus {
   outline: none;
   background: #00bfa5;
 }
-/* line 226, ../sass/_profile.scss */
+/* line 225, ../sass/_profile.scss */
 .btn-hire:active {
   color: #fff;
   transition: 1s;
   background: #00bfa5;
 }
-/* line 231, ../sass/_profile.scss */
+/* line 230, ../sass/_profile.scss */
 .btn-hire:visited {
   color: #fff;
   transition: 1s;
   background: #00bfa5;
 }
 
-/* line 238, ../sass/_profile.scss */
+/* line 237, ../sass/_profile.scss */
 .owl-carousel {
   margin: 20px 0;
   background: #fdfdfd;
   padding: 10px;
 }
 
-/* line 245, ../sass/_profile.scss */
+/* line 244, ../sass/_profile.scss */
 .portfolio .video {
   display: inline-block;
   margin: 20px 0;
 }
-/* line 248, ../sass/_profile.scss */
+/* line 247, ../sass/_profile.scss */
 .portfolio .video .item {
   width: 220px;
   margin: 10px;
   float: left;
 }
-/* line 252, ../sass/_profile.scss */
+/* line 251, ../sass/_profile.scss */
 .portfolio .video .item img {
   width: 100%;
   height: auto;
   border-radius: 5px;
 }
-/* line 257, ../sass/_profile.scss */
+/* line 256, ../sass/_profile.scss */
 .portfolio .video .item a {
   text-decoration: none;
   font-family: "Montserrat-Regular", "sans-serif";
@@ -1078,90 +1090,90 @@ body {
   line-height: 150%;
 }
 
-/* line 270, ../sass/_profile.scss */
+/* line 269, ../sass/_profile.scss */
 .feedback .feedback-content {
   font-family: "Montserrat-Light", "sans-serif";
   margin: 50px 0;
   line-height: 150%;
   border-bottom: #ebebeb solid 1px;
 }
-/* line 275, ../sass/_profile.scss */
+/* line 274, ../sass/_profile.scss */
 .feedback .feedback-content:last-child {
   border: none;
 }
-/* line 278, ../sass/_profile.scss */
+/* line 277, ../sass/_profile.scss */
 .feedback .feedback-content a {
   text-decoration: none;
 }
-/* line 281, ../sass/_profile.scss */
+/* line 280, ../sass/_profile.scss */
 .feedback .feedback-content .rating {
   color: #fdd835;
 }
 
-/* line 288, ../sass/_profile.scss */
+/* line 287, ../sass/_profile.scss */
 .profile-setting {
   background: #fdfdfd;
   padding: 0;
   border: solid 1px #f1f1f1;
 }
-/* line 292, ../sass/_profile.scss */
+/* line 291, ../sass/_profile.scss */
 .profile-setting .setting-container {
   padding: 2em;
 }
-/* line 295, ../sass/_profile.scss */
+/* line 294, ../sass/_profile.scss */
 .profile-setting .header {
   border-bottom: 1px #e1e1e1 solid;
 }
-/* line 297, ../sass/_profile.scss */
+/* line 296, ../sass/_profile.scss */
 .profile-setting .header h3 {
   margin: 1em;
 }
-/* line 300, ../sass/_profile.scss */
+/* line 299, ../sass/_profile.scss */
 .profile-setting .header span {
   font-size: 1em;
   color: #999999;
 }
-/* line 307, ../sass/_profile.scss */
+/* line 306, ../sass/_profile.scss */
 .profile-setting .sub-header h3 {
   margin: 1em;
 }
-/* line 310, ../sass/_profile.scss */
+/* line 309, ../sass/_profile.scss */
 .profile-setting .sub-header span {
   font-size: 1em;
   color: #999999;
 }
-/* line 315, ../sass/_profile.scss */
+/* line 314, ../sass/_profile.scss */
 .profile-setting .input {
   border-radius: 5px;
   border: solid 1px #c9c9c9;
   background: #fdfdfd;
 }
-/* line 319, ../sass/_profile.scss */
+/* line 318, ../sass/_profile.scss */
 .profile-setting .input:focus {
   box-shadow: none;
 }
-/* line 323, ../sass/_profile.scss */
+/* line 322, ../sass/_profile.scss */
 .profile-setting .profile-btn {
   background: #337ab7;
   color: #fff;
   margin-top: 1em;
   letter-spacing: 0.5px;
 }
-/* line 329, ../sass/_profile.scss */
+/* line 328, ../sass/_profile.scss */
 .profile-setting .setting-content {
   margin-left: 10em;
   color: #666;
   margin-top: 1em;
 }
-/* line 333, ../sass/_profile.scss */
+/* line 332, ../sass/_profile.scss */
 .profile-setting .setting-content .billing-id {
   padding: 0.2em 1em;
 }
-/* line 335, ../sass/_profile.scss */
+/* line 334, ../sass/_profile.scss */
 .profile-setting .setting-content .billing-id strong {
   border-bottom: 1px dotted #c5c5c5;
 }
-/* line 340, ../sass/_profile.scss */
+/* line 339, ../sass/_profile.scss */
 .profile-setting .current-credit {
   font-family: "Montserrat-Light", "sans-serif";
   border: #D1D1D1 solid 0.5px;
@@ -1170,27 +1182,27 @@ body {
   margin-right: 2em;
   font-weight: 700;
 }
-/* line 342, ../sass/_profile.scss */
+/* line 341, ../sass/_profile.scss */
 .profile-setting .current-credit p {
   margin-bottom: -20px;
 }
-/* line 351, ../sass/_profile.scss */
+/* line 350, ../sass/_profile.scss */
 .profile-setting .paypal-container {
   margin-top: 10%;
 }
-/* line 354, ../sass/_profile.scss */
+/* line 353, ../sass/_profile.scss */
 .profile-setting .paypal-container .paypal .modal-header {
   padding: 0;
 }
-/* line 357, ../sass/_profile.scss */
+/* line 356, ../sass/_profile.scss */
 .profile-setting .paypal-container .paypal .modal-body {
   padding: 1em 2em 4em 3em;
 }
-/* line 360, ../sass/_profile.scss */
+/* line 359, ../sass/_profile.scss */
 .profile-setting .paypal-container .paypal .close {
   margin: 1em;
 }
-/* line 363, ../sass/_profile.scss */
+/* line 362, ../sass/_profile.scss */
 .profile-setting .paypal-container .paypal .input {
   border-radius: 5px;
   border: solid 1px #c9c9c9;
@@ -1199,34 +1211,34 @@ body {
   margin-bottom: 0;
   font-family: "Lato-Light", "sans-serif";
 }
-/* line 370, ../sass/_profile.scss */
+/* line 369, ../sass/_profile.scss */
 .profile-setting .paypal-container .paypal .input:focus {
   box-shadow: none;
 }
-/* line 374, ../sass/_profile.scss */
+/* line 373, ../sass/_profile.scss */
 .profile-setting .paypal-container .paypal ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   font-family: "Lato-Light", "sans-serif";
 }
-/* line 378, ../sass/_profile.scss */
+/* line 377, ../sass/_profile.scss */
 .profile-setting .paypal-container .paypal .paypal-btn {
   width: 100%;
 }
-/* line 380, ../sass/_profile.scss */
+/* line 379, ../sass/_profile.scss */
 .profile-setting .paypal-container .paypal .paypal-btn img {
   width: 50px;
   height: auto;
   margin: 0;
 }
-/* line 386, ../sass/_profile.scss */
+/* line 385, ../sass/_profile.scss */
 .profile-setting .paypal-container .paypal .paypal-text {
   margin-top: 1em;
 }
-/* line 389, ../sass/_profile.scss */
+/* line 388, ../sass/_profile.scss */
 .profile-setting .paypal-container .paypal img {
   margin: 2em 0 0 3em;
 }
-/* line 392, ../sass/_profile.scss */
+/* line 391, ../sass/_profile.scss */
 .profile-setting .paypal-container .paypal p {
   font-family: "Lato-Light", "sans-serif";
   font-size: 1em;
@@ -1235,47 +1247,47 @@ body {
   line-height: 150%;
   color: #666666;
 }
-/* line 399, ../sass/_profile.scss */
+/* line 398, ../sass/_profile.scss */
 .profile-setting .paypal-container .paypal p strong {
   font-family: "Montserrat-SemiBold", "sans-serif";
 }
-/* line 405, ../sass/_profile.scss */
+/* line 404, ../sass/_profile.scss */
 .profile-setting #billing {
   padding-bottom: 3em;
 }
-/* line 408, ../sass/_profile.scss */
+/* line 407, ../sass/_profile.scss */
 .profile-setting #billing .sub-header h3 {
   margin-left: 0;
 }
-/* line 413, ../sass/_profile.scss */
+/* line 412, ../sass/_profile.scss */
 .profile-setting .transaction {
   padding: 0;
 }
-/* line 416, ../sass/_profile.scss */
+/* line 415, ../sass/_profile.scss */
 .profile-setting .history-table {
   border: #D1D1D1 solid 0.5px;
   padding: 3em;
   border-radius: 5px;
 }
-/* line 421, ../sass/_profile.scss */
+/* line 420, ../sass/_profile.scss */
 .profile-setting .history-table table thead {
   border: none;
 }
-/* line 424, ../sass/_profile.scss */
+/* line 423, ../sass/_profile.scss */
 .profile-setting .history-table table thead tr td {
   padding: 3em;
 }
-/* line 431, ../sass/_profile.scss */
+/* line 430, ../sass/_profile.scss */
 .profile-setting .history-table table tbody tr td {
   padding: 1em 0 1em 0;
 }
-/* line 438, ../sass/_profile.scss */
+/* line 437, ../sass/_profile.scss */
 .profile-setting .title {
   display: block;
   color: #666;
   font-family: "Montserrat-Light", "sans-serif";
 }
-/* line 442, ../sass/_profile.scss */
+/* line 441, ../sass/_profile.scss */
 .profile-setting .title p {
   display: block;
   float: left;
@@ -1283,64 +1295,64 @@ body {
   text-align: right;
   margin-top: 0.2em;
 }
-/* line 448, ../sass/_profile.scss */
+/* line 447, ../sass/_profile.scss */
 .profile-setting .title p span {
   font-size: 0.9em;
   color: #999999;
 }
-/* line 454, ../sass/_profile.scss */
+/* line 453, ../sass/_profile.scss */
 .profile-setting .foot-note {
   margin: 1em;
   font-size: 0.9em;
 }
-/* line 457, ../sass/_profile.scss */
+/* line 456, ../sass/_profile.scss */
 .profile-setting .foot-note .available {
   text-align: right;
   color: #00a651;
 }
-/* line 462, ../sass/_profile.scss */
+/* line 461, ../sass/_profile.scss */
 .profile-setting .foot-note .danger {
   color: red;
   text-decoration: none;
 }
-/* line 467, ../sass/_profile.scss */
+/* line 466, ../sass/_profile.scss */
 .profile-setting .profile-picture {
   margin-top: 3em;
   width: 220px;
 }
-/* line 470, ../sass/_profile.scss */
+/* line 469, ../sass/_profile.scss */
 .profile-setting .profile-picture img {
   width: 100%;
   border-radius: 5px;
 }
-/* line 474, ../sass/_profile.scss */
+/* line 473, ../sass/_profile.scss */
 .profile-setting .profile-picture .dropdown-menu {
   width: 220px;
 }
-/* line 476, ../sass/_profile.scss */
+/* line 475, ../sass/_profile.scss */
 .profile-setting .profile-picture .dropdown-menu li {
   text-align: center;
 }
-/* line 478, ../sass/_profile.scss */
+/* line 477, ../sass/_profile.scss */
 .profile-setting .profile-picture .dropdown-menu li a {
   padding: 1em 0 1em 0;
   margin: 0 auto;
 }
-/* line 482, ../sass/_profile.scss */
+/* line 481, ../sass/_profile.scss */
 .profile-setting .profile-picture .dropdown-menu li :hover {
   background: #e4f3ff;
 }
 
-/* line 490, ../sass/_profile.scss */
+/* line 489, ../sass/_profile.scss */
 .save-btn {
   margin: 3em;
 }
-/* line 492, ../sass/_profile.scss */
+/* line 491, ../sass/_profile.scss */
 .save-btn button {
   background: #337ab7;
   color: #fff;
 }
-/* line 495, ../sass/_profile.scss */
+/* line 494, ../sass/_profile.scss */
 .save-btn button:hover {
   background: #337ab7;
   color: #fff;
@@ -1669,7 +1681,7 @@ body {
 .gradient1 {
   background: #556270;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #556270, #FF6B6B);
+  background: -webkit-linear-gradient(to left, #556270, #ff6b6b);
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #556270, #ff6b6b);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -1679,7 +1691,7 @@ body {
 .reef {
   background: #50C9C3;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #50C9C3, #96DEDA);
+  background: -webkit-linear-gradient(to left, #50c9c3, #96deda);
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #50c9c3, #96deda);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -1883,4 +1895,66 @@ body {
 .vertical-container .vertical-wrapper {
   display: table-cell;
   vertical-align: center;
+}
+
+/* line 2, ../sass/_upload-demo.scss */
+.demo-content {
+  box-shadow: none;
+  background: #fff;
+  padding-top: 3em;
+  margin-top: 3em;
+}
+/* line 7, ../sass/_upload-demo.scss */
+.demo-content .demo-header {
+  border: none;
+}
+/* line 11, ../sass/_upload-demo.scss */
+.demo-content .demo-body {
+  padding: 50px;
+}
+/* line 12, ../sass/_upload-demo.scss */
+.demo-content .demo-body .form-control {
+  -webkit-box-shadow: none;
+  background: #fdfdfd;
+  border-bottom: solid 1px #c1c1c1;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0px;
+  padding: 0;
+  margin: 20px 0;
+  color: #303030;
+  font-family: "Montserrat-SemiBold", "sans-serif";
+}
+/* line 26, ../sass/_upload-demo.scss */
+.demo-content .demo-body .upload-file {
+  width: 100%;
+  height: 129px;
+  border: 2px dashed #888;
+  margin: 47px auto 0;
+  display: flex;
+  align-items: center;
+}
+/* line 34, ../sass/_upload-demo.scss */
+.demo-content .demo-body .upload-file input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 129px;
+  outline: none;
+  opacity: 0;
+}
+/* line 45, ../sass/_upload-demo.scss */
+.demo-content .demo-footer {
+  border: none;
+}
+/* line 47, ../sass/_upload-demo.scss */
+.demo-content .demo-footer .upload-btn {
+  margin-right: 3.5em;
+  background: #00bfa5;
+  color: #fff;
+  margin-bottom: 30px;
+  margin-top: -15px;
+  text-transform: uppercase;
 }
