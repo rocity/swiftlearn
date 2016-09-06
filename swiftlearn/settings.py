@@ -180,40 +180,39 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
-SOCIALACCOUNT_PROVIDERS = \
-    { 'google':
-        { 
-          'SCOPE': ['profile', 'email'],
-          'AUTH_PARAMS': { 'access_type': 'online' } }}
+SOCIALACCOUNT_PROVIDERS = { 
+'google':
+    { 
+      'SCOPE': ['profile', 'email'],
+      'AUTH_PARAMS': { 'access_type': 'online' }},
+'facebook':
+   {'METHOD': 'oauth2',
+    'SCOPE': ['email', 'public_profile', 'user_friends'],
+    'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+    'FIELDS': [
+        'id',
+        'email',
+        'name',
+        'first_name',
+        'last_name',
+        'verified',
+        'locale',
+        'timezone',
+        'link',
+        'gender',
+        'updated_time'],
+    'EXCHANGE_TOKEN': True,
+    'LOCALE_FUNC': 'path.to.callable',
+    'VERIFIED_EMAIL': True,
+    'VERSION': 'v2.4'},
 
-SOCIALACCOUNT_PROVIDERS = \
-    {'facebook':
-       {'METHOD': 'oauth2',
-        'SCOPE': ['email', 'public_profile', 'user_friends'],
-        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-        'FIELDS': [
-            'id',
-            'email',
-            'name',
-            'first_name',
-            'last_name',
-            'verified',
-            'locale',
-            'timezone',
-            'link',
-            'gender',
-            'updated_time'],
-        'EXCHANGE_TOKEN': True,
-        'LOCALE_FUNC': 'path.to.callable',
-        'VERIFIED_EMAIL': True,
-        'VERSION': 'v2.4'}}
+'linkedin_oauth2':
+    {'SCOPE': ['r_emailaddress'],
+     'VERIFIED_EMAIL': True,
+        }
 
-SOCIALACCOUNT_PROVIDERS = \
-    {'linkedin_oauth2':
-          {'SCOPE': ['r_emailaddress'],
-           'VERIFIED_EMAIL': True,
-           }
     }
+
 
 
 ##################
