@@ -9,7 +9,7 @@ class JoinEvent(AccountBalance):
         return super(JoinEvent, self).__init__(*args, **kwargs)
 
     def _has_enough_credit(self, event, user):
-        return True if user.balance >= event.fee else False
+        return True if user.credits >= event.fee else False
 
     def _has_joined(self, event, user):
         from events.models import Participant
