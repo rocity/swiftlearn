@@ -268,7 +268,7 @@ class ResendActivationView(TemplateView):
     """
     def get(self, *args, **kwargs):
         user = Account.objects.get(email=self.request.user)
-        user._send_confirmation_email(self.request)
+        user._send_confirmation_email()
 
         return HttpResponseRedirect(reverse('dashboard'))
 
