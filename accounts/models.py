@@ -222,7 +222,7 @@ class Account(TimezoneMixin, AbstractBaseUser, PermissionsMixin):
 
         subject =   "Swift Tutorial Confirmation Key"
         message =   "Click link to activate\n\n" + settings.SITE_URL + "/activate/" + confirm_key.key
-        email_to = confirm_key.user
+        email_to = confirm_key.user.email
         msg = EmailMessage(subject, message, to=[email_to])
         msg.send()
 

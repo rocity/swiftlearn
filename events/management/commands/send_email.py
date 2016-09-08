@@ -20,7 +20,7 @@ class Command(BaseCommand):
                 for participant in participants:
                     subject =   "Swiftlearn event reminder"
                     message =   "The event (" + str(event) + ") that you joined will be 3 days from now."
-                    msg = EmailMessage(subject, message, to=[participant.user])
+                    msg = EmailMessage(subject, message, to=[participant.user.email])
                     msg.send(fail_silently=False)
 
             #send email notification 1 day before the event
@@ -29,9 +29,8 @@ class Command(BaseCommand):
                 for participant in participants:
                     subject =   "Swiftlearn event reminder"
                     message =   "The event (" + str(event) + ") that you joined will be tomorrow."
-                    msg = EmailMessage(subject, message, to=[participant.user])
+                    msg = EmailMessage(subject, message, to=[participant.user.email])
                     msg.send(fail_silently=False)
 
     def handle(self, *args, **options):
         return self.send_notification()
-
