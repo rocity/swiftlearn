@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-SITE_URL = "http://swiftkind.com"
+SITE_URL = "https://learn.swiftkind.com"
 
 # Application definition
 

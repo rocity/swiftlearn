@@ -102,6 +102,9 @@ class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'accounts/dashboard.html'
     
     def get(self, *args, **kwargs):
+        user = Account.objects.get(email=self.request.user)
+        if user.expertise.count() == 0:
+            return HttpResponseRedirect(reverse('user_category'))      
         return render(self.request, self.template_name, {})
 
 
@@ -307,7 +310,7 @@ class ResetPasswordRequestView(TemplateView):
                 for user in users:
                     c = {
                         'email': user,
-                        'domain': self.request.META['HTTP_HOST'],
+                        'domain': settings.SITE_URL,
                         'site_name': 'Swiftkind Tutorials',
                         'uid': urlsafe_base64_encode(force_bytes(user)),
                         'token': default_token_generator.make_token(user),
@@ -316,7 +319,7 @@ class ResetPasswordRequestView(TemplateView):
                     email_template_name = 'accounts/password_reset_email.html'
                     subject = "Swiftkind Password Reset"
                     email = loader.render_to_string(email_template_name, c)
-                    send_mail(subject, email, DEFAULT_FROM_EMAIL , [user.email], fail_silently=False)
+                    send_mail(subject, email, settings.DEFAULT_FROM_EMAIL , [user.email], fail_silently=False)
                 messages.success(self.request, "Check your inbox to continue reseting password.")
                 return render(self.request, self.template_name, {'form': form})
             else:
@@ -411,4 +414,3 @@ class UserCategoryView(LoginRequiredMixin, TemplateView):
             user.save()
             return HttpResponseRedirect(reverse('dashboard'))
         return render(self.request, self.template_name, {'images':images,'message':message})
-
