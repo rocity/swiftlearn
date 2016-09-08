@@ -12,5 +12,4 @@ django-paypal==0.3.2
 # Production
 # uwsgi
 # psycopg2
-
-
+# sendgrid-django
