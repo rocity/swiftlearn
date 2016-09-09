@@ -19,21 +19,27 @@
         <button type="submit" class="btn btn-warning hidden" id="btn-upload">Save</button>
         
      </form>
-        <a id="uploading" href="" onclick="document.getElementById('upload').click(); return false" class="hvr-bubble-float-right">
-            <i class="fa fa-camera" aria-hidden="true"></i> 
-            Change cover photo by uploading
-        </a>
-
-         <a id="reposition" href="#cover_photo" class="hvr-bubble-float-right" data-toggle="modal">
-           <i class="fa fa-arrows" aria-hidden="true"></i>
-            Reposition
-        </a>
-
-        <a id="remove" href="#remove_modal" class="hvr-bubble-float-right" data-toggle="modal">
-           <i class="fa fa-times" aria-hidden="true"></i>
-            Remove cover photo
-        </a>
-       
+        {% if not profile.cover_photo %}
+            <a id="uploading" href="" onclick="document.getElementById('upload').click(); return false" class="hvr-bubble-float-right">
+                <i class="fa fa-camera" aria-hidden="true"></i> 
+                Upload Cover Photo
+            </a>
+        {% else %}
+            <a id="uploading" href="" onclick="document.getElementById('upload').click(); return false" class="hvr-bubble-float-right">
+                <i class="fa fa-camera" aria-hidden="true"></i> 
+                Upload Cover Photo
+            </a>
+            <a id="reposition" href="#cover_photo" class="hvr-bubble-float-right" data-toggle="modal">
+               <i class="fa fa-arrows" aria-hidden="true"></i>
+                Reposition
+            </a>
+            
+           
+            <a id="remove" href="#remove_modal" class="hvr-bubble-float-right" data-toggle="modal">
+               <i class="fa fa-times" aria-hidden="true"></i>
+                Remove cover photo
+            </a>
+        {% endif %}
     </div>
 </div>
 {% else %}
@@ -54,12 +60,21 @@
     </div>
     <div class="col-lg-9 ">
         <h1>{{ profile.get_full_name|title }}</h1>
-        <h3>
-            {{ user.position|title }} <span> - {{ profile.city }}, {{ profile.country }} ({{ profile.timezone }}) </span> 
-        </h3>
-        <p>
-            <span class="quote">"</span>{{ profile.quote }}<span  class="quote">"</span>
-        </p>
+        {% if not profile.city %}
+                <h3></h3>
+                {% else %}
+                <h3>
+                 <span> {{ profile.city }}, {{ profile.country }} ({{ profile.timezone }}) </span> 
+                </h3>
+        {% endif %}
+        {% if not profile.quote %}
+             <p>
+             </p>
+        {% else %}
+            <p>
+                <span class="quote">"</span>{{ profile.quote }}<span  class="quote">"</span>
+            </p>
+        {% endif %}
     </div>
     {% if not user == profile %}
     <div class="">
@@ -114,9 +129,15 @@
     <div class="col-lg-9 ">
         <div class="profile-content">
             <h4>OVERVIEW</h4>
-            <div class="overview-content">
-                {{ profile.overview }}
-            </div>
+            {% if not profile.overview %}
+                <div class="overview-content">
+                    
+                </div>
+            {% else %}
+                <div class="overview-content">
+                    {{ profile.overview }}
+                </div>
+            {% endif %}
         </div>
         <div class="profile-content">
             <h4>ABOUT {{ profile.first_name|upper }}</h4>

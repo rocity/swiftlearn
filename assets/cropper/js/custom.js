@@ -2,9 +2,11 @@ $(function() {
   var fileuploader = $('#fileupload');
   var defaultimg = $('.image_default').val(); 
   $('.image-editor').cropit({
-    exportZoom:.5,
+    type: 'image/jpeg',
+    exportZoom:1.5,
     imageBackground: true,
     imageBackgroundBorderWidth: 20,
+    quality: .9,
     imageState: {
       src: defaultimg,
     },
