@@ -64,10 +64,26 @@
                                     <p>
                                         {{ comment.comment }}
                                     </p>
+                                <div class="actions">
+                                    <div class="reply-list">
+                                    </div>
+                                    <a href="#" class="reply">Reply</a>
+                                    <a href="#" class="favorite"><i class="fa fa-heart " aria-hidden="true"></i> <span>1</span> Favorite</a>
+                                    <div class="comment-reply hide">                               
+                                        <form class="form-reply" action="{% url 'reply_list' event.id comment.id %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" class="parent-id" value="{{ comment.id }}"/>
+                                                {{ form.comment }}
+                                            <div class="text-right">
+                                                <button class="btn post">Reply</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                                 </div>
                                 
                                 {% for reply in comment.replies.all %}
-                                <div class="event-content comment-section">
+                               
                                     <div class="comment">
                                         <a href="#" class="avatar">
                                             <img src="{{ reply.user.profile_picture|get_image_url }}">
@@ -85,24 +101,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 {% endfor %}
-                                <div class="actions">
-                                    <div class="reply-list">
-                                    </div>
-                                    <a href="#" class="reply">Reply</a>
-                                    <a href="#" class="favorite"><i class="fa fa-heart " aria-hidden="true"></i> <span>1</span> Favorite</a>
-                                    <div class="comment-reply hide">                               
-                                        <form class="form-reply" action="{% url 'reply_list' event.id comment.id %}">
-                                            {% csrf_token %}
-                                            <input type="hidden" class="parent-id" value="{{ comment.id }}"/>
-                                                {{ form.comment }}
-                                            <div class="text-right">
-                                                <button class="btn post">Reply</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>                 
