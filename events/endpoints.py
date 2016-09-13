@@ -4,6 +4,7 @@ from .api import *
 urlpatterns = [
     url(r'^$', EventsAPI.as_view({
         'get': 'list',
+        'post': 'create_event',
     }), name="events_list"),
     url(r'^(?P<event_id>[0-9]+)/feedbacks/$', FeedbackAPI.as_view({
         'get': 'list',

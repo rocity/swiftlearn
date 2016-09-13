@@ -11,11 +11,28 @@ from braces.views import LoginRequiredMixin
 class EventsAPI(LoginRequiredMixin, ViewSet):
     """ API endpoint for the list of events
     """
+    serializer_class = EventSerializer
+
     def list(self, *args, **kwargs):
         events = Event.objects.filter(is_finished=False, educator=self.request.user)
         serializer = EventSerializer(events, many=True)
 
         return Response(serializer.data, status=204)
+
+    def create_event(self, request, **kwargs):
+        serializer = EventSerializer(data=dict(
+                                     educator=self.request.user.id,
+                                     title=request.data['title'],
+                                     info=request.data['info'],
+                                     fee=request.data['fee'],
+                                     start_date=request.data['start_date'],
+                                     start_time=request.data['start_time'],
+                                     end_time=request.data['end_time']
+            ))
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
 
 
 class EventCommentsAPI(LoginRequiredMixin, ViewSet):
