@@ -6,6 +6,11 @@ urlpatterns = [
         'get': 'list',
         'post': 'create_event',
     }), name="events_list"),
+    url(r'^(?P<event_id>[0-9]+)/$', EventsAPI.as_view({
+        'get': 'get_event',
+        'put': 'update_event',
+        'delete': 'delete_event',
+    }), name="events_update"),
     url(r'^(?P<event_id>[0-9]+)/feedbacks/$', FeedbackAPI.as_view({
         'get': 'list',
         'post': 'create_feedback',
@@ -14,8 +19,18 @@ urlpatterns = [
         'get': 'list',
         'post': 'create_comment',
     }), name="comments_list"),
-    url(r'^(?P<event_id>[0-9]+)/comment/(?P<comment_id>[0-9]+)/reply/$', EventCommentReplyAPI.as_view({
+    url(r'^(?P<event_id>[0-9]+)/comments/(?P<comment_id>[0-9]+)/$', EventCommentsAPI.as_view({
+        'get': 'get_comment',
+        'put': 'update_comment',
+        'delete': 'delete_comment',
+    }), name="comments_update"),
+    url(r'^(?P<event_id>[0-9]+)/comments/(?P<comment_id>[0-9]+)/reply/$', EventCommentReplyAPI.as_view({
         'get': 'list',
         'post': 'create_reply',
-    }), name="reply_list")
+    }), name="reply_list"),
+    url(r'^(?P<event_id>[0-9]+)/comments/(?P<comment_id>[0-9]+)/reply/(?P<reply_id>[0-9]+)/$', EventCommentReplyAPI.as_view({
+        'get': 'get_reply',
+        'update': 'update_reply',
+        'delete': 'delete_reply',
+    }), name="reply_update")
 ]

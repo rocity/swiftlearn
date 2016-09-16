@@ -141,15 +141,15 @@ class EditProfileForm(forms.ModelForm):
         }))
     school = forms.CharField(widget=forms.TextInput({
         'class':'input form-control'
-        }))
+        }), required=False)
     date_attended_fr = forms.CharField(widget=forms.TextInput({
         'type':'date',
         'class':'input form-control'
-        }))
+        }), required=False)
     date_attended_to = forms.CharField(widget=forms.TextInput({
         'type':'date',
         'class':'input form-control'
-        }))
+        }), required=False)
     company = forms.CharField(widget=forms.TextInput({
         'class':'input form-control'
         }),required=False)

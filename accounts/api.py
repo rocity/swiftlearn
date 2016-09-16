@@ -1,7 +1,5 @@
-import json
-
 from .models import Account
-from .serializers import AccountSerializer, LoginSerializer
+from .serializers import AccountSerializer
 from rest_framework import views, status, permissions
 from rest_framework.response import Response
 
@@ -29,12 +27,12 @@ class SignUpAPI(views.APIView):
 class LoginView(views.APIView):
     """API endpoint on Login
     """
-    serializer_class = LoginSerializer
+    serializer_class = AccountSerializer
 
     def post(self, request, format=None):
         data = self.request.data
-        email = data.get('email', None)
-        password = data.get('password', None)
+        email = data.get('email')
+        password = data.get('password')
         account = authenticate(email=email, password=password)
 
         if account is not None:
@@ -57,8 +55,6 @@ class LoginView(views.APIView):
 class LogoutView(views.APIView):
     """API endpoint on Logout
     """
-    permission_classes = (permissions.IsAuthenticated,)
-
     def post(self, request, format=None):
         logout(request)
         return Response({}, status=status.HTTP_204_NO_CONTENT)

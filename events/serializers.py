@@ -3,9 +3,19 @@ from .models import Event, EventComment, Feedback
 
 
 class EventSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Event
-        fields = '__all__'
+        fields = (
+                  'id',
+                  'title',
+                  'info',
+                  'fee',
+                  'start_date',
+                  'start_time',
+                  'end_time',
+                  'educator',
+                  )
 
 
 class EventCommentSerializer(serializers.ModelSerializer):

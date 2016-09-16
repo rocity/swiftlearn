@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
 from .models import Event, EventComment, Feedback
 from .serializers import EventSerializer, EventCommentSerializer, FeedbackSerializer
 
@@ -11,6 +12,7 @@ from braces.views import LoginRequiredMixin
 class EventsAPI(LoginRequiredMixin, ViewSet):
     """ API endpoint for the list of events
     """
+    permission_classes = (AllowAny,)
     serializer_class = EventSerializer
 
     def list(self, *args, **kwargs):
@@ -33,6 +35,26 @@ class EventsAPI(LoginRequiredMixin, ViewSet):
             serializer.save()
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
+
+    def get_event(self, request, **kwargs):
+        event_id = kwargs.get('event_id')
+        event = get_object_or_404(Event, id=event_id)
+        serializer = EventSerializer(event)
+    
+        return Response(serializer.data)
+
+    def update_event(self, request, **kwargs):
+        event = get_object_or_404(Event, pk=kwargs.get('event_id'))
+        serializer = EventSerializer(event, data=self.request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
+
+    def delete_event(self, request, **kwargs):
+        event = get_object_or_404(Event, pk=kwargs.get('event_id'))
+        event.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class EventCommentsAPI(LoginRequiredMixin, ViewSet):
@@ -59,6 +81,24 @@ class EventCommentsAPI(LoginRequiredMixin, ViewSet):
             serializer.save()
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
+
+    def get_comment(self, request, **kwargs):
+        comment = get_object_or_404(EventComment, pk=kwargs.get('comment_id'))
+        serializer = EventCommentSerializer(comment)
+        return Response(serializer.data)
+
+    def update_comment(self, request, **kwargs):
+        comment = get_object_or_404(EventComment, pk=kwargs.get('comment_id'))
+        serializer = EventCommentSerializer(comment, data=self.request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
+
+    def delete_comment(self, request, **kwargs):
+        comment = get_object_or_404(EventComment, pk=kwargs.get('comment_id'))
+        comment.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class EventCommentReplyAPI(LoginRequiredMixin, ViewSet):
@@ -88,6 +128,24 @@ class EventCommentReplyAPI(LoginRequiredMixin, ViewSet):
             serializer.save()
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
+
+    def get_reply(self, request, **kwargs):
+        reply = get_object_or_404(EventComment, pk=kwargs.get('reply_id'))
+        serializer = EventCommentSerializer(reply)
+        return Response(serializer.data)
+
+    def update_reply(self, request, **kwargs):
+        reply = get_object_or_404(EventComment, pk=kwargs.get('reply_id'))
+        serializer = EventCommentSerializer(reply, data=self.request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
+
+    def delete_reply(self, request, **kwargs):
+        reply = get_object_or_404(EventComment, pk=kwargs.get('reply_id'))
+        reply.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class FeedbackAPI(LoginRequiredMixin, ViewSet):
