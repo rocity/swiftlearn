@@ -117,6 +117,7 @@ LOGIN_URL = '/login/'
 SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_QUERY_EMAIL = True
 LOGIN_REDIRECT_URL = "/user_category/"
+SOCIALACCOUNT_ADAPTER = 'allauth.socialaccount.adapter.DefaultSocialAccountAdapter'
 
 DEFAULT_PROFILE_IMAGE = 'images/profile-default.png'
 DEFAULT_COVER_IMAGE = 'images/cover-photo-default.png'
@@ -185,6 +186,7 @@ SOCIALACCOUNT_PROVIDERS = {
     { 
       'SCOPE': ['profile', 'email'],
       'AUTH_PARAMS': { 'access_type': 'online' }},
+
 'facebook':
    {'METHOD': 'oauth2',
     'SCOPE': ['email', 'public_profile', 'user_friends'],

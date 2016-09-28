@@ -50,6 +50,8 @@ class IndexView(TemplateView):
     template_name = 'index.html'
 
     def get(self, *args, **kwargs):
+        if self.request.user.is_authenticated():
+            return HttpResponseRedirect(reverse('dashboard'))
         return render(self.request, self.template_name, {})
 
 
@@ -72,6 +74,8 @@ class LoginView(TemplateView):
     template_name = 'accounts/login.html'
 
     def get(self, *args, **kwargs):
+        if self.request.user.is_authenticated():
+            return HttpResponseRedirect(reverse('dashboard'))
         form = LoginForm()
         return render(self.request, self.template_name, {'form': form})
 

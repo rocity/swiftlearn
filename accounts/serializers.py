@@ -46,4 +46,21 @@ class AccountSerializer(serializers.ModelSerializer):
         user.set_password(password)
         user.save()
         user._send_confirmation_email() # activate account
-        return user  
+        return user
+
+
+class LoginSerializer(serializers.ModelSerializer):
+    
+    email = serializers.EmailField(
+        validators=[
+        UniqueValidator(
+            queryset=Account.objects.all(),
+            message="This email is already Exist!.",
+            )]
+        )
+
+    password = serializers.CharField()
+
+    class Meta:
+        model = Account
+        fields = ('email', 'password')
