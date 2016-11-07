@@ -6,7 +6,10 @@ $(function () {
         var data = $(this).serialize();
         $.post(url, data).done(function(response){
             $('#result').prepend(response);
-            location.reload();
+            // console.log(response);
+            // location.reload();
+            var resp = returnhtml(response);
+            $('#result').prepend(resp);
             $('.form-comments').trigger("reset");
             data = {};
         });
@@ -35,5 +38,22 @@ $(function () {
             return false;
         });
     });
+
+    function returnhtml(data) {
+        var content = '<div class="content">' +
+            '<a href="#" class="pull-right close"><i class="fa fa-times" aria-hidden="true"></i></a>' +
+            '<a href="#" class="author">' + data.full_name + '</a>' +
+            '<div class="metadata">' +
+            '<span class="date">' + data.comment_date + '</span>' +
+            '</div>' +
+            '<div class="text">' +
+            '<p>' + data.comment + '</p>' +
+            '</div></div>',
+            avatar = '<a href="#" class="avatar"><img src=""></a>',
+            commentDiv = '<div class="comment">' + avatar + content + '</div>',
+            commentSection = '<div class="event-content comment-section">' + commentDiv + '</div>';
+
+        return commentSection;
+    }
 
 });

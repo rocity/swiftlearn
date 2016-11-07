@@ -19,6 +19,8 @@ class EventSerializer(serializers.ModelSerializer):
 
 
 class EventCommentSerializer(serializers.ModelSerializer):
+    full_name = serializers.CharField(source='get_user_full_name', read_only=True)
+    avatar = serializers.CharField(source='get_user_avatar', read_only=True)
     class Meta:
         model = EventComment
         fields = '__all__'
