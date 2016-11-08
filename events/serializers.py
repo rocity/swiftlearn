@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Event, EventComment, Feedback
+from .models import Event, EventComment, Feedback, Bookmark
 
 
 class EventSerializer(serializers.ModelSerializer):
@@ -27,4 +27,9 @@ class EventCommentSerializer(serializers.ModelSerializer):
 class FeedbackSerializer(serializers.ModelSerializer):
     class Meta:
         model = Feedback
+        fields = '__all__'
+
+class BookmarkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Bookmark
         fields = '__all__'

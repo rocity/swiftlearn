@@ -85,3 +85,8 @@ class FeedbackView(LoginRequiredMixin, TemplateView):
         event = Event.objects.get(id=kwargs.get('event_id'))
         form = FeedbackForm()
         return render(self.request, self.template_name,{'form':form, 'event':event})
+
+class BookmarkView(LoginRequiredMixin, View):
+    """ Bookmark an event
+    """
+    pass

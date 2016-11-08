@@ -97,3 +97,13 @@ class EventComment(models.Model):
 
     def __str__(self):
         return "{user} {comment}".format(user=self.user, comment=self.comment)
+
+class Bookmark(models.Model):
+    """ User's saved bookmarks
+    """
+    user = models.ForeignKey(Account)
+    event_title = models.ForeignKey(Event)
+    bookmark_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{user} {event_title}".format(user=self.user, event_title=self.event_title)

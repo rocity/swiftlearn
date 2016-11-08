@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^(?P<event_id>[0-9]+)/join/$', EventJoinView.as_view(), name='event_join'),
     url(r'^(?P<event_id>[0-9]+)/$', EventDetailView.as_view(), name='event'),
     url(r'^(?P<event_id>[0-9]+)/feedback/$', FeedbackView.as_view(), name='feedback'),
+    url(r'^(?P<event_id>[0-9]+)/bookmark/$', BookmarkView.as_view(), name='bookmark'),
 ]

@@ -4,8 +4,8 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
-from .models import Event, EventComment, Feedback
-from .serializers import EventSerializer, EventCommentSerializer, FeedbackSerializer
+from .models import Event, EventComment, Feedback, Bookmark
+from .serializers import EventSerializer, EventCommentSerializer, FeedbackSerializer, BookmarkSerializer
 from .forms import EventCommentForm
 
 from braces.views import LoginRequiredMixin
@@ -191,6 +191,21 @@ class FeedbackAPI(LoginRequiredMixin, ViewSet):
                                         event_title=event_id,
                                         feedback=request.data['feedback'],
                                         rate_star=request.data['rate_star']))
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
+
+class BookmarkAPI(LoginRequiredMixin, ViewSet):
+    """ API endpoint for user bookmarks on specific events
+    """
+    serializer_class = BookmarkSerializer
+
+    def create_bookmark(self, request, **kwargs):
+        event_id = kwargs.get('event_id')
+        serializer = BookmarkSerializer(data=dict(
+                                        user=self.request.user.id,
+                                        event_title=event_id))
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=201)
