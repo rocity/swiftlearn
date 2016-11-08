@@ -17,22 +17,24 @@
                      {{ message.message }}
                 </p>
             </div>
+
             <div class="actions">
+                <div class="reply-list">
+                </div>
                 <a href="#" class="reply">Reply</a>
                 <a href="#" class="favorite"><i class="fa fa-heart " aria-hidden="true"></i> <span>1</span> Favorite</a>
-                <div class="comment-reply hide">
-                 <form class="form-messages" method="post" >
-                    {% csrf_token %}
-                    <div class="event-content">
-                            <input type="hidden" class="parent-id" value="{{ message.id }}"/>
-                             {{ form.message }}
+                <div class="comment-reply hide">                               
+                    <form class="form-reply" action="{% url 'reply_list' event.id comment.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" class="parent-id" value="{{ comment.id }}"/>
+                            {{ form.comment }}
                         <div class="text-right">
-                            <button class="btn post">Post</button>
+                            <button class="btn post">Reply</button>
                         </div>
-                    </div>
-                </form>
+                    </form>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

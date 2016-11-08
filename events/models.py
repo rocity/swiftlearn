@@ -97,9 +97,3 @@ class EventComment(models.Model):
 
     def __str__(self):
         return "{user} {comment}".format(user=self.user, comment=self.comment)
-
-    def get_user_full_name(self):
-        return self.user.get_full_name()
-
-    def get_user_avatar(self):
-        return self.user.profile_picture
