@@ -370,6 +370,12 @@ class FeedView(View):
 
     def get(self, *args, **kwargs):
         feed = Event.objects.all().order_by('-date_created')
+
+        # check for bookmark status of logged user and the event
+        for item in feed:
+            if item.bookmark_set.filter(event_title=item.id, user=self.request.user.id).exists():
+                item.bookmarked = True
+
         return render(self.request, self.template_name, {'feed': feed})
 
 

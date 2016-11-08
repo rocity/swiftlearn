@@ -147,6 +147,18 @@
                             </div>
                         </form>
                     </div>
+
+                    <h5>Bookmark</h5>
+                    <div class="form">
+                        <form class="bookmark-event" method="post" action="{% url 'bookmark_list' event.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-bookmark-o" aria-hidden="true"></i>&nbsp;
+                                Bookmark
+                            </button>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>
