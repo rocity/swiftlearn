@@ -27,7 +27,7 @@ $(function () {
 
             $.post(url, form).done(function (response) {
                 parent.find('.reply-list').append(response);
-                location.reload();
+                // location.reload();
                 $('.form-reply').trigger("reset");
                 data = {};
             });

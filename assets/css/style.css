@@ -2,67 +2,54 @@
   font-family: 'Lato-Thin';
   src: url(../fonts/Lato-Thin.ttf);
 }
-
 @font-face {
   font-family: 'Lato-Regular';
   src: url(../fonts/Lato-Regular.ttf);
 }
-
 @font-face {
   font-family: 'Lato-LightItalic';
   src: url(../fonts/Lato-LightItalic.ttf);
 }
-
 @font-face {
   font-family: 'Lato-Light';
   src: url(../fonts/Lato-Light.ttf);
 }
-
 @font-face {
   font-family: 'Montserrat-Light';
   src: url(../fonts/Montserrat-Light.otf);
 }
-
 @font-face {
   font-family: 'Montserrat-Hairline';
   src: url(../fonts/Montserrat-Hairline.otf);
 }
-
 @font-face {
   font-family: 'Montserrat-Regular';
   src: url(../fonts/Montserrat-Regular.otf);
 }
-
 @font-face {
   font-family: 'Montserrat-SemiBold';
   src: url(../fonts/Montserrat-SemiBold.otf);
 }
-
 @font-face {
   font-family: 'Montserrat-UltraLight';
   src: url(../fonts/Montserrat-UltraLight.otf);
 }
-
 @font-face {
   font-family: 'OpenSans-Light';
   src: url(../fonts/OpenSans-Light.ttf);
 }
-
 @font-face {
   font-family: 'OpenSans-Regular';
   src: url(../fonts/OpenSans-Regular.ttf);
 }
-
 @font-face {
   font-family: 'Georgia-Regular';
   src: url(../fonts/georgia.ttf);
 }
-
 @font-face {
   font-family: 'FabfeltScript';
   src: url(../fonts/FabfeltScript-Bold.otf);
 }
-
 /* line 56, ../sass/_typography.scss */
 body {
   -webkit-font-smoothing: antialiased;
@@ -1636,34 +1623,40 @@ body {
   color: #1f62ae;
   transition: 1s;
 }
+/* line 232, ../sass/_event.scss */
+.comment-section .actions .author {
+  color: #303030;
+  font-weight: 700;
+  margin: 0;
+}
 
-/* line 236, ../sass/_event.scss */
+/* line 241, ../sass/_event.scss */
 .event-sidebar .owl-carousel {
   background: none;
   margin: 0;
 }
-/* line 241, ../sass/_event.scss */
+/* line 246, ../sass/_event.scss */
 .event-sidebar .participants img {
   border-radius: 5px;
 }
-/* line 245, ../sass/_event.scss */
+/* line 250, ../sass/_event.scss */
 .event-sidebar .author {
   display: block;
   margin-left: 4em;
   line-height: 50%;
   margin-top: 1em;
 }
-/* line 250, ../sass/_event.scss */
+/* line 255, ../sass/_event.scss */
 .event-sidebar .author a {
   color: #303030;
   font-weight: 700;
   font-size: 1.2em;
 }
-/* line 256, ../sass/_event.scss */
+/* line 261, ../sass/_event.scss */
 .event-sidebar .about-author {
   margin: 3em 0;
 }
-/* line 258, ../sass/_event.scss */
+/* line 263, ../sass/_event.scss */
 .event-sidebar .about-author p {
   font-style: italic;
   color: #666666;
@@ -1671,16 +1664,16 @@ body {
   line-height: 150%;
   text-align: justify;
 }
-/* line 267, ../sass/_event.scss */
+/* line 272, ../sass/_event.scss */
 .event-sidebar .form .form-control {
   border: #888888 solid 1px;
   border-radius: 2px;
 }
-/* line 270, ../sass/_event.scss */
+/* line 275, ../sass/_event.scss */
 .event-sidebar .form .form-control:focus {
   box-shadow: none;
 }
-/* line 274, ../sass/_event.scss */
+/* line 279, ../sass/_event.scss */
 .event-sidebar .form .subscribe-btn {
   color: #fff;
   background: #ed145b;
@@ -1691,7 +1684,7 @@ body {
 .gradient1 {
   background: #556270;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #556270, #ff6b6b);
+  background: -webkit-linear-gradient(to left, #556270, #FF6B6B);
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #556270, #ff6b6b);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -1701,7 +1694,7 @@ body {
 .reef {
   background: #50C9C3;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #50c9c3, #96deda);
+  background: -webkit-linear-gradient(to left, #50C9C3, #96DEDA);
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #50c9c3, #96deda);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */

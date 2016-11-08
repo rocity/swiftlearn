@@ -66,6 +66,26 @@
                                     </p>
                                 <div class="actions">
                                     <div class="reply-list">
+                                        {% for reply in comment.replies.all %}
+                                        
+                                            <div class="comment">
+                                                <a href="#" class="avatar">
+                                                    <img src="{{ reply.user.profile_picture|get_image_url }}">
+                                                </a>
+                                                <div class="content">
+                                                    <a href="#" class="pull-right close"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                                    <a href="#" class="author">{{ reply.user.get_full_name }}</a>
+                                                    <div class="metadata">
+                                                        <span class="date">{{ reply.comment_date | timesince }}</span>
+                                                    </div>
+                                                    <div class="text">
+                                                        <p>
+                                                            {{ reply.comment }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
                                     </div>
                                     <a href="#" class="reply">Reply</a>
                                     <a href="#" class="favorite"><i class="fa fa-heart " aria-hidden="true"></i> <span>1</span> Favorite</a>
@@ -82,26 +102,7 @@
                                 </div>
                                 </div>
                                 
-                                {% for reply in comment.replies.all %}
-                               
-                                    <div class="comment">
-                                        <a href="#" class="avatar">
-                                            <img src="{{ reply.user.profile_picture|get_image_url }}">
-                                        </a>
-                                        <div class="content">
-                                            <a href="#" class="pull-right close"><i class="fa fa-times" aria-hidden="true"></i></a>
-                                            <a href="#" class="author">{{ reply.user.get_full_name }}</a>
-                                            <div class="metadata">
-                                                <span class="date">{{ reply.comment_date | timesince }}</span>
-                                            </div>
-                                            <div class="text">
-                                                <p>
-                                                    {{ reply.comment }}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endfor %}
+
                             </div>
                         </div>
                     </div>                 
