@@ -1,0 +1,40 @@
+{% extends 'base.html'%}
+
+{% block content %}
+    <div class="row dashboard">
+    {% include 'includes/user_details.html' %}
+
+        <div class="col-md-6 col-lg-6 tutorial-feed">
+        <h1>Your Bookmarked Events</h1>
+        {% for bookmark in bookmarks %}
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="bookmarked">
+                            <a
+                                href="{% url 'bookmark_remove' bookmark.event_title.id bookmark.id %}"
+                                class="bookmark-link pull-right">
+                                <i
+                                    class="fa fa-bookmark bookmark-event-icon"
+                                    aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <a href="#" title="{{ bookmark.event_title }}">{{ bookmark.event_title }}</a>
+                        <p>
+                            {{ bookmark.event_title.info }}
+                        </p>
+
+                        <p>
+                            <a href="#">
+                                {{ bookmark.bookmark_date|timesince }} ago
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
+    {% include 'includes/recent_activities.html' %}
+    </div>
+{% endblock %}
