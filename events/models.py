@@ -104,6 +104,7 @@ class Bookmark(models.Model):
     user = models.ForeignKey(Account)
     event_title = models.ForeignKey(Event)
     bookmark_date = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=True)
 
     def __str__(self):
         return "{user} {event_title}".format(user=self.user, event_title=self.event_title)
