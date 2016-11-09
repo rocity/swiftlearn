@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Event, Participant, Feedback, EventComment
+from .models import Event, Participant, Feedback, EventComment, Bookmark
 
 
 class EventAdmin(admin.ModelAdmin):
@@ -21,3 +21,4 @@ admin.site.register(Event, EventAdmin)
 admin.site.register(Participant)
 admin.site.register(Feedback, FeedbackAdmin)
 admin.site.register(EventComment, EventCommentAdmin)
+admin.site.register(Bookmark)

@@ -22,9 +22,9 @@
                                     class="bookmark-event"
                                     action="{% url 'bookmark_list' item.id %}">
                                     {% csrf_token %}
-                                    <button class="btn" type="submit">
-                                        <i class="fa fa-bookmark-o" aria-hidden="true"></i>
-                                    </button>
+                                        <i
+                                            class="fa fa-bookmark-o bookmark-event-icon-o"
+                                            aria-hidden="true"></i>
                                 </form>
                             {% endif %}
                         </a>
