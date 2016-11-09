@@ -15,7 +15,7 @@ from django.views.generic import TemplateView, View
 from django.shortcuts import render, get_object_or_404
 
 from braces.views import LoginRequiredMixin
-from events.models import Event, Feedback
+from events.models import Event, Feedback, Bookmark
 
 from paypal.standard.forms import PayPalPaymentsForm
 
@@ -39,7 +39,6 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template import loader
 from django.core.mail import send_mail
-from django.core.exceptions import ObjectDoesNotExist
 
 import base64
 from django.core.files.base import ContentFile
@@ -381,7 +380,7 @@ class FeedView(View):
 
                 item.bookmarked = True
                 item.bookmark = bookmark_object
-            except ObjectDoesNotExist:
+            except Bookmark.DoesNotExist:
                 item.bookmarked = False
 
         return render(self.request, self.template_name, {'feed': feed})
@@ -432,3 +431,12 @@ class UserCategoryView(LoginRequiredMixin, TemplateView):
             user.save()
             return HttpResponseRedirect(reverse('dashboard'))
         return render(self.request, self.template_name, {'images':images,'message':message})
+
+class BookmarksView(LoginRequiredMixin, TemplateView):
+    """ Display events that the user bookmarked
+    """
+    template_name = 'accounts/bookmarks.html'
+
+    def get(self, *args, **kwargs):
+        bookmarks = Bookmark.objects.filter(user=self.request.user.id, active=True)
+        return render(self.request, self.template_name, {'bookmarks': bookmarks})
