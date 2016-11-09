@@ -193,10 +193,8 @@ class BookmarkAPI(LoginRequiredMixin, ViewSet):
     def remove_bookmark(self, request, **kwargs):
         bookmark = get_object_or_404(Bookmark, pk=kwargs.get('bookmark_id'))
 
-        # import pdb;pdb.set_trace()
-
         serializer = BookmarkSerializer(bookmark, data=dict(active=False), partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors)
+            return Response(serializer.data, status=200)
+        return Response(serializer.errors, status=400)

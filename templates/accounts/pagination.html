@@ -13,29 +13,25 @@
                 </div>
                 <div class="col-md-9 col-lg-9 item-details">
                     <div class="bookmarked">
-                        <a href="#" class="pull-right ">
+                        {# <a href="#" class="pull-right "> #}
                             {% if item.bookmarked %}
-                                <form
-                                    class="unbookmark-event"
-                                    action="{% url 'bookmark_remove' item.id item.bookmark.id %}"
-                                    method="post">
-                                    {% csrf_token %}
+                                <a
+                                    href="{% url 'bookmark_remove' item.id item.bookmark.id %}"
+                                    class="bookmark-link pull-right">
                                     <i
                                         class="fa fa-bookmark bookmark-event-icon"
                                         aria-hidden="true"></i>
-                                </form>
+                                </a>
                             {% else %}
-                                <form
-                                    method="post"
-                                    class="bookmark-event"
-                                    action="{% url 'bookmark_list' item.id %}">
-                                    {% csrf_token %}
-                                        <i
-                                            class="fa fa-bookmark-o bookmark-event-icon-o"
-                                            aria-hidden="true"></i>
-                                </form>
+                                <a
+                                    href="{% url 'bookmark_list' item.id %}"
+                                    class="bookmark-link pull-right">
+                                    <i
+                                        class="fa fa-bookmark-o bookmark-event-icon-o"
+                                        aria-hidden="true"></i>
+                                </a>
                             {% endif %}
-                        </a>
+                        {# </a> #}
                     </div>
                     <h3 class="title">
                         <a href="#">{{ item.title }}</a>
