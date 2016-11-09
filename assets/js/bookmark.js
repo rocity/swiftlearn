@@ -5,53 +5,27 @@ $(function () {
             e.preventDefault();
 
             var t = $(this),
-                form = t.parent('.bookmark-event');
+                url = t.parent('a.bookmark-link').attr('href');
 
-            form.submit();
+            $.get(url).done(function(data){
+                if (typeof data !== 'undefined') {
+                    t.addClass('fa-bookmark').removeClass('fa-bookmark-o');
+                    t.parent('a.bookmark-link').attr('href', data.status_link);
+                }
+            });
 
         })
         .on('click', '.bookmark-event-icon', function (e) {
             e.preventDefault();
 
             var t = $(this),
-                form = t.parent('.unbookmark-event');
+                url = t.parent('a.bookmark-link').attr('href');
 
-            form.submit();
-
-        });
-
-    // Add event to user bookmarks
-    $(document)
-        .on('submit', '.unbookmark-event', function (e) {
-            e.preventDefault();
-
-            var t = $(this),
-                url = t.attr('action'),
-                data = t.serialize(),
-                icon = t.find('i.fa-bookmark');
-
-            $.post(url, data).done(function (response) {
-                if (typeof response !== 'undefined') {
-                    icon.addClass('fa-bookmark-o').removeClass('fa-bookmark');
+            $.get(url).done(function(data){
+                if (typeof data !== 'undefined') {
+                    t.addClass('fa-bookmark-o').removeClass('fa-bookmark');
+                    t.parent('a.bookmark-link').attr('href', data.status_link);
                 }
-            })
-
-            return false;
-        })
-        .on('submit', '.bookmark-event', function (e) {
-            e.preventDefault();
-
-            var t = $(this),
-                url = t.attr('action'),
-                data = t.serialize(),
-                icon = t.find('i.fa-bookmark-o');
-
-            $.post(url, data).done(function (response) {
-                if (typeof response !== 'undefined') {
-                    icon.addClass('fa-bookmark').removeClass('fa-bookmark-o');
-                }
-            })
-
-            return false;
+            });
         });
 });
