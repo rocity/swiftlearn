@@ -10,6 +10,7 @@ $(function () {
             $.get(url).done(function(data){
                 if (typeof data !== 'undefined') {
                     t.addClass('fa-bookmark').removeClass('fa-bookmark-o');
+                    t.addClass('bookmark-event-icon').removeClass('bookmark-event-icon-o');
                     t.parent('a.bookmark-link').attr('href', data.status_link);
                 }
             });
@@ -24,6 +25,7 @@ $(function () {
             $.get(url).done(function(data){
                 if (typeof data !== 'undefined') {
                     t.addClass('fa-bookmark-o').removeClass('fa-bookmark');
+                    t.addClass('bookmark-event-icon-o').removeClass('bookmark-event-icon');
                     t.parent('a.bookmark-link').attr('href', data.status_link);
                 }
             });
