@@ -15,7 +15,15 @@
                     <div class="bookmarked">
                         <a href="#" class="pull-right ">
                             {% if item.bookmarked %}
-                                <i class="fa fa-bookmark" aria-hidden="true"></i>
+                                <form
+                                    class="unbookmark-event"
+                                    action="{% url 'bookmark_remove' item.id item.bookmark.id %}"
+                                    method="post">
+                                    {% csrf_token %}
+                                    <i
+                                        class="fa fa-bookmark bookmark-event-icon"
+                                        aria-hidden="true"></i>
+                                </form>
                             {% else %}
                                 <form
                                     method="post"

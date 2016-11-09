@@ -39,6 +39,7 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template import loader
 from django.core.mail import send_mail
+from django.core.exceptions import ObjectDoesNotExist
 
 import base64
 from django.core.files.base import ContentFile
@@ -373,8 +374,15 @@ class FeedView(View):
 
         # check for bookmark status of logged user and the event
         for item in feed:
-            if item.bookmark_set.filter(event_title=item.id, user=self.request.user.id).exists():
+            try:
+                bookmark_object = item.bookmark_set.get(event_title=item.id,
+                                                        user=self.request.user.id,
+                                                        active=True)
+
                 item.bookmarked = True
+                item.bookmark = bookmark_object
+            except ObjectDoesNotExist:
+                item.bookmarked = False
 
         return render(self.request, self.template_name, {'feed': feed})
 
