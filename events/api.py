@@ -3,10 +3,9 @@ from django.shortcuts import render, get_object_or_404
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
-from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
 from .models import Event, EventComment, Feedback, Bookmark
 from .serializers import EventSerializer, EventCommentSerializer, FeedbackSerializer, BookmarkSerializer
-from .forms import EventCommentForm
+
 
 from braces.views import LoginRequiredMixin
 
