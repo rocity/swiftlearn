@@ -31,7 +31,7 @@ from .forms import (
     CoverPhotoForm,
     RemoveCoverPhotoForm
     )
-from .models import ConfirmationKey, Account, Skill, Education, Transaction
+from .models import ConfirmationKey, Account, Skill, Education, Transaction, Conversation
 
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib import messages
@@ -418,3 +418,12 @@ class UserCategoryView(LoginRequiredMixin, TemplateView):
             user.save()
             return HttpResponseRedirect(reverse('dashboard'))
         return render(self.request, self.template_name, {'images':images,'message':message})
+
+class MessageView(LoginRequiredMixin, TemplateView):
+    """ Conversations of the user with other users
+    """
+    template_name = 'accounts/messages.html'
+
+    def get(self, *args, **kwargs):
+        conversations = Conversation.objects.filter(users__pk=self.request.user.id)
+        return render(self.request, self.template_name, {'conversations': conversations})

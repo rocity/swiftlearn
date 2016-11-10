@@ -317,6 +317,27 @@ class BadgeCriteria(models.Model):
     def __str__(self):
         return "{desc}".format(desc=self.desc)
 
+class Conversation(models.Model):
+    """ Conversations with other users
+    """
+    title = models.TextField(null=True)
+    users = models.ManyToManyField(Account)
+
+    def __str__(self):
+        return "{id}".format(id=self.id)
+
+class Message(models.Model):
+    """ Messages sent to other users
+    """
+    conversation = models.ForeignKey(Conversation, null=True)
+    sender = models.ForeignKey(Account, related_name='sender')
+    body = models.TextField()
+    date_sent = models.DateTimeField(auto_now_add=True)
+    date_edited = models.DateTimeField(auto_now=True)
+    deleted = models.BooleanField(default=False)
+
+    def __str__(self):
+        return "{sender} {body}".format(sender=self.sender.id, body=self.body)
 
 def payment_notify(sender, **kwargs):
     """PayPal payment notification

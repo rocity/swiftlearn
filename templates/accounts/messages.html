@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="row dashboard">
+    {% include 'includes/user_details.html' %}
+    
+    <div class="col-md-6 col-lg-6">
+        <h1>Messages</h1>
+        {{conversations}}
+        {% for convo in conversations %}
+            {{convo.id}}
+        {% endfor %}
+    </div>
+    {% include 'includes/recent_activities.html' %}
+</div>
+</div>
+{% endblock %}

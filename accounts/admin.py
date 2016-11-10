@@ -8,6 +8,8 @@ from .models import (
     Badge,
     BadgeCriteria,
     Transaction,
+    Conversation,
+    Message
 )
 
 
@@ -19,3 +21,5 @@ admin.site.register(Education)
 admin.site.register(Badge)
 admin.site.register(BadgeCriteria)
 admin.site.register(Transaction)
+admin.site.register(Conversation)
+admin.site.register(Message)
