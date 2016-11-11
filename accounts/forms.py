@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 
-from .models import Account, Skill, Education
+from .models import Account, Skill, Education, Message
 from events.models import Event
 
 import datetime
@@ -291,3 +291,11 @@ class RemoveCoverPhotoForm(forms.ModelForm):
     class Meta:
         model = Account
         fields = ('cover_photo',)
+
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = ('body',)
+        widgets = {
+            'body': forms.TextInput(attrs={'class': 'form-control'})
+        }

@@ -29,9 +29,10 @@ from .forms import (
     EditProfilePicForm,
     RemoveProfilePicForm,
     CoverPhotoForm,
-    RemoveCoverPhotoForm
+    RemoveCoverPhotoForm,
+    MessageForm
     )
-from .models import ConfirmationKey, Account, Skill, Education, Transaction, Conversation
+from .models import ConfirmationKey, Account, Skill, Education, Transaction, Conversation, Message
 
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib import messages
@@ -427,3 +428,19 @@ class MessageView(LoginRequiredMixin, TemplateView):
     def get(self, *args, **kwargs):
         conversations = Conversation.objects.filter(users__in=[self.request.user])
         return render(self.request, self.template_name, {'conversations': conversations})
+
+class ConversationView(LoginRequiredMixin, TemplateView):
+    """ Conversations of the user with other users
+    """
+    template_name = 'accounts/conversation.html'
+
+    def get(self, *args, **kwargs):
+        form = MessageForm()
+        conversation_id = kwargs.get('conversation_id')
+        conversation_qs = Conversation.objects.filter(users__in=[self.request.user])
+        conversation = get_object_or_404(conversation_qs, pk=conversation_id)
+
+        messages = Message.objects.filter(conversation=conversation).order_by('date_sent')[:50]
+        return render(self.request, self.template_name, {'conversation': conversation,
+                                                        'messages': messages,
+                                                        'form': form})

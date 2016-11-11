@@ -1,7 +1,7 @@
 from rest_framework.validators import UniqueValidator
 from rest_framework import serializers
 
-from .models import Account
+from .models import Account, Message
 
 from django.contrib.auth import get_user_model
 
@@ -64,3 +64,8 @@ class LoginSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
         fields = ('email', 'password')
+
+class MessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Message
+        fields = '__all__'

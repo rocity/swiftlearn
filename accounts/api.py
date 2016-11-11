@@ -1,11 +1,14 @@
-from .models import Account
-from .serializers import AccountSerializer
+from .models import Account, Conversation
+from .serializers import AccountSerializer, MessageSerializer
 from rest_framework import views, status, permissions
 from rest_framework.response import Response
+from rest_framework.viewsets import ViewSet
 
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import get_object_or_404
 
+from braces.views import LoginRequiredMixin
 
 class SignUpAPI(views.APIView):
 
@@ -58,3 +61,24 @@ class LogoutView(views.APIView):
     def post(self, request, format=None):
         logout(request)
         return Response({}, status=status.HTTP_204_NO_CONTENT)
+
+class MessageAPI(LoginRequiredMixin, ViewSet):
+    serializer_class = MessageSerializer
+
+    def list(self, request, format=None):
+        return Response({}, status=200)
+
+    def create_message(self, request, **kwargs):
+        conversation_id = kwargs.get('conversation_id')
+        conversation_qs = Conversation.objects.filter(users__in=[self.request.user])
+        conversation = get_object_or_404(conversation_qs, pk=conversation_id)
+
+        serializer = MessageSerializer(data=dict(
+                                        conversation=conversation.id,
+                                        sender=self.request.user.id,
+                                        body=request.data['body'],
+                                        ))
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)

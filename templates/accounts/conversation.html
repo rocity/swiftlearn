@@ -1,0 +1,59 @@
+{% extends 'base.html'%}
+
+{% load staticfiles notifications %}
+{% load el_pagination_tags %}
+
+{% block content %}
+<div class="row dashboard">
+    {% include 'includes/user_details.html' %}
+    
+    <div class="col-md-6 col-lg-6">
+        <h1>
+            {% if conversation.title %}
+                {{ conversation.title }}
+            {% else %}
+                Conversation {{ conversation.id }}
+            {% endif %}
+        </h1>
+
+        <div id="conversation-container" style="display:block;height:350px;overflow:scroll;background-color:#fff;padding:10px;position:relative;">
+
+                <ul class="list-unstyled">
+                    {% for message in messages %}
+                        <li class="{% if message.sender == request.user  %} text-left {% else %} text-right {% endif %}">
+                            
+                            <div
+                                style="display: inline-block;"
+                                class="alert {% if message.sender == request.user  %} alert-warning {% else %} alert-info {% endif %}">
+                                <p>{{message.body}}</p>
+                                <small>
+                                    {{message.sender}} {{ message.date_sent|timesince|single_timetag }}
+                                </small>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+        </div>
+        
+        <form id="message-form" action="{% url 'message_list' conversation.id %}" method="post">
+            {% csrf_token %}
+            <div class="input-group">
+                {{form.body}}
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-paper-plane"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+
+    </div>
+    {% include 'includes/recent_activities.html' %}
+</div>
+</div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/messenger.js' %}"></script>
+{% endblock js %}

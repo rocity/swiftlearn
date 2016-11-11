@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^user_category/$', UserCategoryView.as_view(), name='user_category'),
     url(r'^profile/edit/$', EditProfileView.as_view(), name="edit_profile"),
     url(r'^messages/$', MessageView.as_view(), name="messages"),
+    url(r'^messages/(?P<conversation_id>[0-9]+)/$', ConversationView.as_view(), name='conversation'),
 ]
