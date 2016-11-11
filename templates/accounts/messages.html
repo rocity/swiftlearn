@@ -1,13 +1,51 @@
 {% extends 'base.html'%}
+
+{% load staticfiles profile %}
+
 {% block content %}
 <div class="row dashboard">
     {% include 'includes/user_details.html' %}
     
     <div class="col-md-6 col-lg-6">
-        <h1>Messages</h1>
-        {{conversations}}
-        {% for convo in conversations %}
-            {{convo.id}}
+        <h1>
+            Messages
+
+            <a href="#" class="btn btn-info pull-right">
+                <i class="fa fa-plus"></i>
+            </a>
+        </h1>
+        {% for conversation in conversations %}
+            <div class="panel">
+                <div class="panel-body">
+
+                    <div class="col-sm-9">
+                        <h3>
+                            
+                            {% if conversation.title %}
+                                {{ conversation.title }}
+                            {% else %}
+                                Conversation {{ conversation.id }}
+                            {% endif %}
+                        </h3>
+                    </div>
+                    <div class="col-sm-3">
+                        <ul class="list-inline">
+                            {% for user in conversation.users.all %}
+                                <li>
+                                    <img
+                                        class="img-rounded"
+                                        width="40"
+                                        src="{{ MEDIA_URL }}{{ user.profile_picture|get_image_url }}"
+                                        alt="{{user.email}}"
+                                        title="{{user.email}}">
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
         {% endfor %}
     </div>
     {% include 'includes/recent_activities.html' %}

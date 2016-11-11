@@ -425,5 +425,5 @@ class MessageView(LoginRequiredMixin, TemplateView):
     template_name = 'accounts/messages.html'
 
     def get(self, *args, **kwargs):
-        conversations = Conversation.objects.filter(users__pk=self.request.user.id)
+        conversations = Conversation.objects.filter(users__in=[self.request.user])
         return render(self.request, self.template_name, {'conversations': conversations})
