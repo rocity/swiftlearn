@@ -16,15 +16,13 @@
             {% endif %}
         </h1>
 
-        <div id="conversation-container" style="display:block;height:350px;overflow:scroll;background-color:#fff;padding:10px;position:relative;">
+        <div id="conversation-container" class="message-conversation">
 
-                <ul class="list-unstyled">
+                <ul class="list-unstyled ">
                     {% for message in messages %}
-                        <li class="{% if message.sender == request.user  %} text-left {% else %} text-right {% endif %}">
+                        <li class="{% if message.sender == request.user  %} message-left {% else %} message-right {% endif %}">
                             
-                            <div
-                                style="display: inline-block;"
-                                class="alert {% if message.sender == request.user  %} alert-warning {% else %} alert-info {% endif %}">
+                            <div class="message-box">
                                 <p>{{message.body}}</p>
                                 <small>
                                     {{message.sender}} {{ message.date_sent|timesince|single_timetag }}

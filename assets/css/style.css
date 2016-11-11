@@ -2,67 +2,54 @@
   font-family: 'Lato-Thin';
   src: url(../fonts/Lato-Thin.ttf);
 }
-
 @font-face {
   font-family: 'Lato-Regular';
   src: url(../fonts/Lato-Regular.ttf);
 }
-
 @font-face {
   font-family: 'Lato-LightItalic';
   src: url(../fonts/Lato-LightItalic.ttf);
 }
-
 @font-face {
   font-family: 'Lato-Light';
   src: url(../fonts/Lato-Light.ttf);
 }
-
 @font-face {
   font-family: 'Montserrat-Light';
   src: url(../fonts/Montserrat-Light.otf);
 }
-
 @font-face {
   font-family: 'Montserrat-Hairline';
   src: url(../fonts/Montserrat-Hairline.otf);
 }
-
 @font-face {
   font-family: 'Montserrat-Regular';
   src: url(../fonts/Montserrat-Regular.otf);
 }
-
 @font-face {
   font-family: 'Montserrat-SemiBold';
   src: url(../fonts/Montserrat-SemiBold.otf);
 }
-
 @font-face {
   font-family: 'Montserrat-UltraLight';
   src: url(../fonts/Montserrat-UltraLight.otf);
 }
-
 @font-face {
   font-family: 'OpenSans-Light';
   src: url(../fonts/OpenSans-Light.ttf);
 }
-
 @font-face {
   font-family: 'OpenSans-Regular';
   src: url(../fonts/OpenSans-Regular.ttf);
 }
-
 @font-face {
   font-family: 'Georgia-Regular';
   src: url(../fonts/georgia.ttf);
 }
-
 @font-face {
   font-family: 'FabfeltScript';
   src: url(../fonts/FabfeltScript-Bold.otf);
 }
-
 /* line 56, ../sass/_typography.scss */
 body {
   -webkit-font-smoothing: antialiased;
@@ -1691,7 +1678,7 @@ body {
 .gradient1 {
   background: #556270;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #556270, #ff6b6b);
+  background: -webkit-linear-gradient(to left, #556270, #FF6B6B);
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #556270, #ff6b6b);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -1701,7 +1688,7 @@ body {
 .reef {
   background: #50C9C3;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #50c9c3, #96deda);
+  background: -webkit-linear-gradient(to left, #50C9C3, #96DEDA);
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #50c9c3, #96deda);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -1905,4 +1892,50 @@ body {
 .vertical-container .vertical-wrapper {
   display: table-cell;
   vertical-align: center;
+}
+
+/* line 1, ../sass/_message.scss */
+.message-conversation {
+  position: relative;
+  display: block;
+  overflow: scroll;
+  height: 350px;
+  padding: 10px;
+  background-color: #ffffff;
+}
+/* line 9, ../sass/_message.scss */
+.message-conversation .message-box {
+  display: inline-block;
+  padding: 8px 12px;
+  margin-bottom: 1em;
+}
+/* line 14, ../sass/_message.scss */
+.message-conversation .message-box small {
+  font-size: 0.75em;
+}
+/* line 19, ../sass/_message.scss */
+.message-conversation .message-left {
+  text-align: left;
+}
+/* line 22, ../sass/_message.scss */
+.message-conversation .message-left .message-box {
+  background-color: #eceff1;
+  color: #333;
+}
+/* line 27, ../sass/_message.scss */
+.message-conversation .message-left small {
+  color: #9e9e9e;
+}
+/* line 31, ../sass/_message.scss */
+.message-conversation .message-right {
+  text-align: right;
+}
+/* line 34, ../sass/_message.scss */
+.message-conversation .message-right .message-box {
+  background-color: #1565c0;
+  color: #ffffff;
+}
+/* line 39, ../sass/_message.scss */
+.message-conversation .message-right small {
+  color: #b0bec5;
 }
