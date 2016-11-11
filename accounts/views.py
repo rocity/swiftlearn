@@ -440,7 +440,7 @@ class ConversationView(LoginRequiredMixin, TemplateView):
         conversation_qs = Conversation.objects.filter(users__in=[self.request.user])
         conversation = get_object_or_404(conversation_qs, pk=conversation_id)
 
-        messages = Message.objects.filter(conversation=conversation).order_by('date_sent')[:50]
+        messages = Message.objects.filter(conversation=conversation).order_by('date_sent')[50:]
         return render(self.request, self.template_name, {'conversation': conversation,
                                                         'messages': messages,
                                                         'form': form})

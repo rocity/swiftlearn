@@ -66,6 +66,9 @@ class LoginSerializer(serializers.ModelSerializer):
         fields = ('email', 'password')
 
 class MessageSerializer(serializers.ModelSerializer):
+    timepast = serializers.CharField(source='get_time_past', read_only=True)
+    sender_email = serializers.CharField(source='get_sender_email', read_only=True)
+
     class Meta:
         model = Message
         fields = '__all__'

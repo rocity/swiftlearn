@@ -18,16 +18,17 @@
 
         <div id="conversation-container" class="message-conversation">
 
-                <ul class="list-unstyled ">
+                <ul class="list-unstyled">
                     {% for message in messages %}
                         <li class="{% if message.sender == request.user  %} message-left {% else %} message-right {% endif %}">
-                            
+
                             <div class="message-box">
                                 <p>{{message.body}}</p>
                                 <small>
                                     {{message.sender}} {{ message.date_sent|timesince|single_timetag }}
                                 </small>
                             </div>
+
                         </li>
                     {% endfor %}
                 </ul>

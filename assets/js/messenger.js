@@ -3,7 +3,6 @@ $(function() {
     $('#conversation-container').scrollTop($('#conversation-container')[0].scrollHeight);
 
     $(document).on('submit', '#message-form', function (e) {
-        console.log('yohooo')
         e.preventDefault();
 
         var url = $(this).attr('action'),
@@ -11,10 +10,14 @@ $(function() {
 
         $.post(url, data).done(function (response) {
 
-            console.log(data);
+            $('#conversation-container ul').append(response);
+            $('#conversation-container').scrollTop($('#conversation-container')[0].scrollHeight);
 
+            // $('#message-form input').val('');
             data = {};
         })
+
+        $('#message-form input').val('');
 
         return false;
     })

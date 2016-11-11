@@ -1,0 +1,11 @@
+{% load notifications el_pagination_tags %}
+
+<li class="{% if sender == request.user.id  %} message-left {% else %} message-right {% endif %}">
+    <div class="message-box">
+        <p>{{body}}</p>
+        <small>
+            {{sender_email}} {{ timepast }}
+        </small>
+    </div>
+
+</li>

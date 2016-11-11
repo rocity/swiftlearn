@@ -3,6 +3,7 @@ from .serializers import AccountSerializer, MessageSerializer
 from rest_framework import views, status, permissions
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
+from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
 
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
@@ -63,7 +64,10 @@ class LogoutView(views.APIView):
         return Response({}, status=status.HTTP_204_NO_CONTENT)
 
 class MessageAPI(LoginRequiredMixin, ViewSet):
+    """ API for processing messages between users
+    """
     serializer_class = MessageSerializer
+    renderer_classes = (TemplateHTMLRenderer, JSONRenderer)
 
     def list(self, request, format=None):
         return Response({}, status=200)
@@ -80,5 +84,6 @@ class MessageAPI(LoginRequiredMixin, ViewSet):
                                         ))
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=201)
+
+            return Response(serializer.data, status=201, template_name='includes/message_box.html')
         return Response(serializer.errors, status=400)

@@ -21,6 +21,9 @@ from paypal.standard.ipn.signals import valid_ipn_received
 
 from django.conf import settings
 
+from django.utils.timesince import timesince
+from datetime import datetime
+
 class AccountCompletionTask(models.Model):
     """ learner's account completion
     """
@@ -338,6 +341,12 @@ class Message(models.Model):
 
     def __str__(self):
         return "{sender} {body}".format(sender=self.sender.id, body=self.body)
+
+    def get_time_past(self):
+        return timesince(self.date_sent)
+
+    def get_sender_email(self):
+        return self.sender.email
 
 def payment_notify(sender, **kwargs):
     """PayPal payment notification
