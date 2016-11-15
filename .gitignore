@@ -6,3 +6,4 @@
 *migrations/
 local_settings.py
 .sass-cache
+node_modules/
