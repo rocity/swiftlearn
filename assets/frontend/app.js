@@ -5,6 +5,7 @@
         .module('swiftlearn', [
             'ui.bootstrap',
             'ui.router',
+            'swiftlearn.components',
             'swiftlearn.dashboard'
         ])
         .constant('TEMPLATE_URL', '/static/frontend/templates/')
