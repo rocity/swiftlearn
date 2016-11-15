@@ -19,4 +19,6 @@ urlpatterns = [
     url(r'^profile/(?P<user_id>[0-9]+)/unsubscribe/$', UnsubscribeView.as_view(), name='unsubscribe'),
     url(r'^user_category/$', UserCategoryView.as_view(), name='user_category'),
     url(r'^profile/edit/$', EditProfileView.as_view(), name="edit_profile"),
+    url(r'^angular/$', AngularView.as_view(), name="angular"),
+
 ]

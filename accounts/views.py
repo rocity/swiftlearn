@@ -418,3 +418,12 @@ class UserCategoryView(LoginRequiredMixin, TemplateView):
             user.save()
             return HttpResponseRedirect(reverse('dashboard'))
         return render(self.request, self.template_name, {'images':images,'message':message})
+
+
+class AngularView(TemplateView):
+    """Angular Templates
+    """
+    template_name = 'angular_index.html'
+
+    def get(self, *args, **kwargs):
+        return render(self.request, self.template_name, {})
