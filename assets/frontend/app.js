@@ -1,19 +1,29 @@
-(function(){
+(function() {
     'use strict';
 
     angular
         .module('swiftlearn', [
             'ui.bootstrap',
-            'ui.router'
+            'ui.router',
+            'swiftlearn.dashboard'
         ])
-        .controller('DashboardController', DashboardController)
+        .constant('TEMPLATE_URL', '/static/frontend/templates/')
+        .config(routes)
 
     ;
 
-    function DashboardController($scope) {
-        // body...
-       
-        console.log('asfafs')
+    /////////////////////////////
+    function routes($stateProvider, $urlRouterProvider, TEMPLATE_URL) {
+        $urlRouterProvider.otherwise('/dashboard');
+
+        $stateProvider
+
+        .state('dashboard', {
+            url: '/dashboard',
+            templateUrl: TEMPLATE_URL + 'dashboard.html', 
+            controller: 'DashboardController'
+
+        })
     }
 
 })();
