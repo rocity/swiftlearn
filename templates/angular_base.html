@@ -1,0 +1,42 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>swift tutorial</title>
+    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/owl.carousel.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/hover.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/image-picker.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'cropper/css/crop.css' %}">
+
+</head>
+<body ng-app='swiftlearn'>
+{% block content %}
+{% endblock %}
+  <script src="https://use.fontawesome.com/5fbc41cc4a.js"></script>
+    <script src="{% static 'js/jquery-1.9.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'cropper/js/jquery.cropit.js' %}"></script>
+    <script src="{% static 'cropper/js/custom.js' %}"></script>
+    <script src="{% static 'cropper/js/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/search.js' %}"></script>
+    <script src="{% static 'node_modules/angular/angular.min.js' %}"></script>
+    <script src="{% static 'node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js' %}"></script>
+    <script src="{% static 'node_modules/angular-ui-router/release/angular-ui-router.min.js' %}"></script>
+    <script src="{% static 'frontend/app.js' %}"></script>
+    
+    {% block js %}
+          <script src="{% static 'js/message.js' %}"></script>
+          <script src="{% static 'js/images.js' %}"></script>
+          <script src="{% static 'js/image-picker.js' %}"></script>
+          <script src="{% static 'js/feedback.js' %}"></script>
+          <script src="{% static 'el-pagination/js/el-pagination.js' %}"></script>
+    {% endblock %}
+
+</body>
+</html>
