@@ -66,14 +66,15 @@ class LogoutView(views.APIView):
 
 
 class ProfileAPI(ViewSet):
-
+    """API endpoint for Profile
+    """
+    
     serializer_class = ProfileSerializer
 
     def detail(self, *args, **kwargs):
         user_id = kwargs.get('user_id')
         profile = get_object_or_404(Account, id=user_id) if user_id else self.request.user
         serializer = ProfileSerializer(profile)
-        
         return Response(serializer.data)
 
     def update_profile(self, *args, **kwargs):
@@ -83,11 +84,3 @@ class ProfileAPI(ViewSet):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors)
-
-
-        # event = get_object_or_404(Event, pk=kwargs.get('event_id'))
-        # serializer = EventSerializer(event, data=self.request.data)
-        # if serializer.is_valid():
-        #     serializer.save()
-        #     return Response(serializer.data)
-        # return Response(serializer.errors)
