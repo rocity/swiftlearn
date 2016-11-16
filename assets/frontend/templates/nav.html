@@ -1,0 +1,46 @@
+<nav class="navbar navbar-default" ng-controller="NavController as ctrl">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" ui-sref="dashboard">Swift Tutorial</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="" class="tutorial-link"><i class="fa fa-plus" aria-hidden="true"></i> Start Teaching!</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-bell-o" aria-hidden="true"></i>Notifications <span class="number">12</span></a>
+            </li>
+            <li class="dropdown" uib-dropdown>
+                <a href="#" class="dropdown-toggle" id="user-profile" uib-dropdown-toggle>
+                    <img src="">
+                </a>
+                <ul class="dropdown-menu user-dropdown" uib-dropdown-menu>
+                    <li>
+                        <a ui-sref="profile" class="profile-link">
+                            <h5></h5>
+                            <h6>view profile</h6></a>
+                    </li>
+                    <li class="divider" role="separator"></li>
+                    <li>
+                        <a href="#"> Messages</a>
+                    </li>
+                    <li>
+                        <a href="#"> Settings</a>
+                    </li>
+                    <li>
+                        <a href="#"> My Tutorials</a>
+                    </li>
+                    <li>
+                        <a href="#"> My Bookmarks</a>
+                    </li>
+                    <li>
+                        <a href="" class="start-teaching">Start Teaching </a>
+                        <img ng-src="/static/images/surprise-icon.png">
+                    </li>
+                    <li class="divider" role="separator"></li>
+                    <li><a ng-click="ctrl.logout()">Log out</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>

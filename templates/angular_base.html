@@ -14,6 +14,9 @@
 
 </head>
 <body ng-app='swiftlearn'>
+<div ng-include='"/static/frontend/templates/nav.html"'>
+  
+</div>
 {% block content %}
 {% endblock %}
   <script src="https://use.fontawesome.com/5fbc41cc4a.js"></script>
@@ -30,6 +33,8 @@
     <script src="{% static 'node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js' %}"></script>
     <script src="{% static 'node_modules/angular-ui-router/release/angular-ui-router.min.js' %}"></script>
 
+    <script src="{% static 'frontend/profile.js' %}"></script>
+    <script src="{% static 'frontend/components.js' %}"></script>
     <script src="{% static 'frontend/dashboard.js' %}"></script>
     <script src="{% static 'frontend/app.js' %}"></script>
 

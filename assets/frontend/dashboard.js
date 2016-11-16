@@ -9,8 +9,9 @@
 
      function DashboardController($scope) {
         // body...
-        $scope.hello = 'fasfasf';
-        console.log('asfafs')
+        
+        
     }
+
 
 })();
