@@ -1,10 +1,15 @@
 from .models import Account
-from .serializers import AccountSerializer
+from .serializers import AccountSerializer, ProfileSerializer
+from events.models import Event
+from events.serializers import EventSerializer
 from rest_framework import views, status, permissions
 from rest_framework.response import Response
+from rest_framework.viewsets import ViewSet
 
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, get_object_or_404
+
 
 
 class SignUpAPI(views.APIView):
@@ -58,3 +63,24 @@ class LogoutView(views.APIView):
     def post(self, request, format=None):
         logout(request)
         return Response({}, status=status.HTTP_204_NO_CONTENT)
+
+
+class ProfileAPI(ViewSet):
+    """API endpoint for Profile
+    """
+    
+    serializer_class = ProfileSerializer
+
+    def detail(self, *args, **kwargs):
+        user_id = kwargs.get('user_id')
+        profile = get_object_or_404(Account, id=user_id) if user_id else self.request.user
+        serializer = ProfileSerializer(profile)
+        return Response(serializer.data)
+
+    def update_profile(self, *args, **kwargs):
+        profile = get_object_or_404(Account, email=self.request.user)
+        serializer = ProfileSerializer(profile, data=self.request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
