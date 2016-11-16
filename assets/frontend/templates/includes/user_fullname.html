@@ -1,0 +1,18 @@
+<div class="col-md-4 col-lg-3 user-profile">
+    <div class="user-details">
+        <div class="row">
+            <div class="col-md-2 col-lg-3">
+                <img src="" class="img-rounded">
+            </div>
+            <div class="col-md-10 col-lg-9">
+                <h3>
+                    <a href="{% url 'profileme' %}">
+                        {{ userInfo.firstname }} {{ userInfo.lastname }}
+                    </a>
+                </h3>
+                <h4>
+                    {{ userInfo.position }}
+                </h4>
+            </div>
+        </div>
+    </div>

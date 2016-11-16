@@ -19,7 +19,7 @@ class EventsAPI(LoginRequiredMixin, ViewSet):
         events = Event.objects.filter(is_finished=False, educator=self.request.user)
         serializer = EventSerializer(events, many=True)
 
-        return Response(serializer.data, status=204)
+        return Response(serializer.data, status=200)
 
     def create_event(self, request, **kwargs):
         serializer = EventSerializer(data=dict(

@@ -1,0 +1,31 @@
+<!-- profile name -->
+<div class="container" ng-controller="DashboardController">
+    <sl-user-fullname info="user"></sl-user-fullname>
+
+
+
+    <div class="col-md-6 col-lg-6 tutorial-feed">
+
+        <!-- search bar -->
+        <div class="row feed-header ">
+            <div class="col-md-12 col-lg-12">
+                <form id="search-form" >
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit" id="btn-search"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </span>
+                        <input type="text" id="search" autocomplete="off" class="form-control" placeholder="Search a tutorial">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- events feed -->
+        <div class="item-container">
+            <div ng-repeat="event in events">
+                <sl-event-feed-item event="event"></sl-event-feed-item>
+            </div>
+        </div>
+    </div>
+
+</div>

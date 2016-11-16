@@ -1,0 +1,31 @@
+<div class="row items ">
+    <div class="col-md-3 col-lg-3 text-center item-picture">
+        <img src="{% static 'images/sass.png' %}">
+        <a href="#"> View</a>
+        <h5 class="going-count">
+           <i class="fa fa-check" aria-hidden="true"></i> 0 Going
+
+        </h5>
+    </div>
+    <div class="col-md-9 col-lg-9 item-details">
+        <h3 class="title">
+            <a href="#">{{ event.title }}</a>
+        </h3>
+        <h5 class="date">
+
+            {{ event.start_date }} {{ event.start_time }}
+
+        </h5>
+        <h6 class="catergory">
+            <a href="#">{{ event.tags }}</a>
+        </h6>
+        <p class="details">
+            {{ event.info }}
+        </p>
+        <div class="tutor">
+            <h6>
+            <a href="{% url 'profile' item.educator.id %}">{{ item.educator.get_full_name }}</a> - {{ item.educator.city }}, {{ item.educator.country }}  <a href="#">{{ item.date_created }} ago</a>
+        </h6>
+        </div>
+    </div>
+</div>
