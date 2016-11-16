@@ -12,12 +12,12 @@
             </li>
             <li class="dropdown" uib-dropdown>
                 <a href="#" class="dropdown-toggle" id="user-profile" uib-dropdown-toggle>
-                    <img src="">
+                    <img ng-src="{{ profile.profile_picture }}">
                 </a>
                 <ul class="dropdown-menu user-dropdown" uib-dropdown-menu>
                     <li>
                         <a ui-sref="profile" class="profile-link">
-                            <h5></h5>
+                            <h5>{{ profile.first_name }} {{ profile.last_name }}</h5>
                             <h6>view profile</h6></a>
                     </li>
                     <li class="divider" role="separator"></li>

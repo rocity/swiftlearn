@@ -1,0 +1,111 @@
+<div class="cover-photo cover-container">
+    <img class="cover-img" id="img" ng-src="{{ profile.cover_photo }}">
+    <div class="edit-coverphoto pull-right ">
+        <form action="" method="POST" enctype="multipart/form-data">
+            <input type="file" id="upload" name="cover_photo" accept="image/*" onchange="readURL(this);" style="visibility: hidden;" />
+            <input type="hidden" name="cover_photo_position" id="cover_position" value="{{ user.cover_photo_position }}px">
+            <input type="hidden" name="form_identity" value="cover_photo">
+            <button type="button" onclick="window.location.reload();" class="btn btn-danger hidden" id="btn-cancel">cancel</button>
+            <button type="submit" class="btn btn-warning hidden" id="btn-upload">Save</button>
+        </form>
+        <a id="uploading" href="" onclick="document.getElementById('upload').click(); return false" class="hvr-bubble-float-right">
+            <i class="fa fa-camera" aria-hidden="true"></i> Upload Cover Photo
+        </a>
+        <a id="reposition" href="#cover_photo" class="hvr-bubble-float-right" data-toggle="modal">
+            <i class="fa fa-arrows" aria-hidden="true"></i> Reposition
+        </a>
+        <a id="remove" href="#remove_modal" class="hvr-bubble-float-right" data-toggle="modal">
+            <i class="fa fa-times" aria-hidden="true"></i> Remove cover photo
+        </a>
+    </div>
+</div>
+<div class="profile-header-background">
+</div>
+<div class="row  profile-header">
+    <div class="col-lg-3 text-center">
+        <div class="profile-background">
+            <img ng-src="{{ profile.profile_picture }}" class="img-rounded">
+        </div>
+    </div>
+    <div class="col-lg-9 ">
+        <span class="quote">"{{ profile.email }}</span><span class="quote">"</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3">
+        <div class="hire">
+            <a href="" class="btn edit-profile-btn">EDIT PROFILE</a>
+        </div>
+        <div class="">
+            <button class="btn btn-hire" type="button" data-toggle="popover" data-content='<div class="container-fluid">
+            <form class="form-group ">
+            <label for="message">Message</label>
+            <textarea class="form-control" placeholder="message" cols="4"  id="message"></textarea>
+            <label for="schedule">Book a schedule</label>
+            <input type="date" name="schedule" id="schedule" class="form-control">
+            <label for="tracker-type">How would you like to pay?</label>
+            <div class="row">
+            <div class="col-lg-7">
+            <select class="form-control" id="tracker-type">
+            <option>Hourly</option>
+            <option>Fixed Rate</option>
+            </select>
+            </div>
+            <div class="col-lg-5 input-fixed">
+            <input type="number" name="budget" class="form-control hidden " placeholder="$">
+            </div>
+            </div>
+            </form>
+            <button class="btn btn-success">
+            SEND INVITE
+            </button>
+            </div>'>HIRE AS TUTOR</button>
+        </div>
+        <div class="owl-carousel ">
+            <div> <img src=""> </div>
+        
+        </div>
+        
+    </div>
+    <div class="col-lg-9 ">
+        <div class="profile-content">
+            <h4>OVERVIEW</h4> 
+            <div class="overview-content">
+            </div>
+            
+            
+        </div>
+        <div class="profile-content">
+            <h4>ABOUT </h4>
+            <table class="table">
+                <tr>
+                    <td>
+                        Other skills
+                    </td>
+                    <td>
+                        <div>
+                            
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td>
+                        Education
+                    </td>
+                    <td>
+                       
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td>
+                        Social networks
+                    </td>
+                    <td>
+                        <a href="#">Facebook</a>,
+                        <a href="#">Google</a>
+                    </td>
+                </tr>
+            </table>
+        </div>

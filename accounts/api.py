@@ -71,6 +71,12 @@ class ProfileAPI(ViewSet):
     
     serializer_class = ProfileSerializer
 
+    def list(self, *args, **kwargs):
+        members = Account.objects.filter(is_activated=True)
+        serializer = ProfileSerializer(members, many=True)
+        return Response(serializer.data, status=200)
+
+
     def detail(self, *args, **kwargs):
         user_id = kwargs.get('user_id')
         profile = get_object_or_404(Account, id=user_id) if user_id else self.request.user
