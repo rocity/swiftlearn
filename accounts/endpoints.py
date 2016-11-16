@@ -12,6 +12,9 @@ urlpatterns = [
         'get':'detail',
         'put':'update_profile',
     }), name="profile"),
+    url(r'^profiles/$', ProfileAPI.as_view({
+        'get':'list',
+    }), name="members"),
 
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)

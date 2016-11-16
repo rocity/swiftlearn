@@ -8,12 +8,16 @@
 
     ;
 
-    function NavController($scope){
+    function NavController($scope, ProfileServices, CURRENT_USER){
         var self = this;
-        self.logout = function(){
-            
 
-        }
+        self.ProfileServices = ProfileServices;
+
+        $scope.$watch(function() {
+            return !ProfileServices.loading;
+        }, function() {
+            $scope.profile = ProfileServices.members[CURRENT_USER.id];
+        });
     }
 
 })();

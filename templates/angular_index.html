@@ -3,3 +3,16 @@
 {% block content %}
 <ui-view></ui-view>
 {% endblock %}
+
+
+{% block js %}
+    <script type="text/javascript">
+        var user = {
+            'id': {{ request.user.id }}
+        };
+        angular
+            .module('swiftlearn')
+            .constant('CURRENT_USER', user);
+    </script>
+
+{% endblock %}
